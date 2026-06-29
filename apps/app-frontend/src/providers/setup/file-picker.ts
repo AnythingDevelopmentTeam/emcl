@@ -1,7 +1,5 @@
 import { provideFilePicker } from '@modrinth/ui'
-import { convertFileSrc, invoke } from '@tauri-apps/api/core'
-import { open } from '@tauri-apps/plugin-dialog'
-import { readFile } from '@tauri-apps/plugin-fs'
+import { convertFileSrc, invoke, open, readFile } from '@/helpers/tauri-compat'
 
 function getFileName(path: string, fallback: string) {
 	return path.split(/[\\/]/).pop() || fallback

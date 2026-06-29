@@ -34,7 +34,7 @@ import {
 	useVIntl,
 } from '@modrinth/ui'
 import { getPingLevel } from '@modrinth/utils'
-import { convertFileSrc } from '@tauri-apps/api/core'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import { Tooltip } from 'floating-vue'
 import type { Component } from 'vue'

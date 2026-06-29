@@ -1,0 +1,4 @@
+dist-electron/
+release/
+native/
+node_modules/

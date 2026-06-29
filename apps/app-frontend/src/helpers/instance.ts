@@ -1,11 +1,5 @@
-/**
- * All theseus API calls return serialized values (both return values and errors);
- * So, for example, addDefaultInstance creates a blank instance object, where the Rust struct is serialized,
- *  and deserialized into a usable JS object.
- */
 import type { Labrinth } from '@modrinth/api-client'
 import type { ContentItem, ContentOwner } from '@modrinth/ui'
-import { invoke } from '@tauri-apps/api/core'
 
 import type { InstallJobSnapshot } from './install'
 import type {
@@ -17,26 +11,41 @@ import type {
 } from './types'
 
 export async function remove(instanceId: string): Promise<void> {
-	return await invoke('plugin:instance|instance_remove', { instanceId })
+	try {
+		return await window.electronAPI.instanceRemove(instanceId)
+	} catch {
+	}
 }
 
 export async function get(instanceId: string): Promise<GameInstance | null> {
-	return await invoke('plugin:instance|instance_get', { instanceId })
+	try {
+		return await window.electronAPI.instanceGet(instanceId)
+	} catch {
+		return null
+	}
 }
 
 export async function get_many(instanceIds: string[]): Promise<GameInstance[]> {
-	return await invoke('plugin:instance|instance_get_many', { instanceIds })
+	try {
+		return await window.electronAPI.instanceGetMany(instanceIds)
+	} catch {
+		return []
+	}
 }
 
 export async function get_projects(
 	instanceId: string,
 	cacheBehaviour?: CacheBehaviour,
 ): Promise<Record<string, ContentFile>> {
-	return await invoke('plugin:instance|instance_get_projects', { instanceId, cacheBehaviour })
+	try {
+		return await window.electronAPI.instanceGetProjects(instanceId)
+	} catch {
+		return {}
+	}
 }
 
 export async function get_installed_project_ids(instanceId: string): Promise<string[]> {
-	return await invoke('plugin:instance|instance_get_installed_project_ids', { instanceId })
+	throw new Error('get_installed_project_ids not implemented in Electron build')
 }
 
 export type InstanceInstallTarget = {
@@ -59,24 +68,16 @@ export async function get_install_candidates(
 	projectType: string,
 	targets: InstanceInstallTarget[],
 ): Promise<InstanceInstallCandidate[]> {
-	return await invoke('plugin:instance|instance_get_install_candidates', {
-		projectId,
-		projectType,
-		targets,
-	})
+	throw new Error('get_install_candidates not implemented in Electron build')
 }
 
-// Get content items with rich metadata for an instance
-// Returns content items filtered to exclude modpack files (if linked),
-// sorted alphabetically by project name
 export async function get_content_items(
 	instanceId: string,
 	cacheBehaviour?: CacheBehaviour,
 ): Promise<ContentItem[]> {
-	return await invoke('plugin:instance|instance_get_content_items', { instanceId, cacheBehaviour })
+	throw new Error('get_content_items not implemented in Electron build')
 }
 
-// Linked modpack info returned from backend
 export interface LinkedModpackInfo {
 	project: Labrinth.Projects.v2.Project
 	version: Labrinth.Versions.v2.Version
@@ -86,49 +87,33 @@ export interface LinkedModpackInfo {
 	update_version: Labrinth.Versions.v2.Version | null
 }
 
-// Get linked modpack info for an instance
-// Returns project, version, and owner information for the linked modpack,
-// or null if the instance is not linked to a modpack
 export async function get_linked_modpack_info(
 	instanceId: string,
 	cacheBehaviour?: CacheBehaviour,
 ): Promise<LinkedModpackInfo | null> {
-	return await invoke('plugin:instance|instance_get_linked_modpack_info', {
-		instanceId,
-		cacheBehaviour,
-	})
+	throw new Error('get_linked_modpack_info not implemented in Electron build')
 }
 
-// Get content items that are part of the linked modpack
-// Returns the modpack's dependencies as ContentItem list
-// Returns empty array if the instance is not linked to a modpack
 export async function get_linked_modpack_content(
 	instanceId: string,
 	cacheBehaviour?: CacheBehaviour,
 ): Promise<ContentItem[]> {
-	return await invoke('plugin:instance|instance_get_linked_modpack_content', {
-		instanceId,
-		cacheBehaviour,
-	})
+	throw new Error('get_linked_modpack_content not implemented in Electron build')
 }
 
-// Convert a list of dependencies into ContentItems with rich metadata
 export async function get_dependencies_as_content_items(
 	dependencies: Labrinth.Versions.v3.Dependency[],
 	cacheBehaviour?: CacheBehaviour,
 ): Promise<ContentItem[]> {
-	return await invoke('plugin:instance|instance_get_dependencies_as_content_items', {
-		dependencies,
-		cacheBehaviour,
-	})
+	throw new Error('get_dependencies_as_content_items not implemented in Electron build')
 }
 
 export async function get_full_path(instanceId: string): Promise<string> {
-	return await invoke('plugin:instance|instance_get_full_path', { instanceId })
+	throw new Error('get_full_path not implemented in Electron build')
 }
 
 export async function get_mod_full_path(instanceId: string, projectPath: string): Promise<string> {
-	return await invoke('plugin:instance|instance_get_mod_full_path', { instanceId, projectPath })
+	throw new Error('get_mod_full_path not implemented in Electron build')
 }
 
 export interface JavaVersion {
@@ -139,28 +124,37 @@ export interface JavaVersion {
 }
 
 export async function get_optimal_jre_key(instanceId: string): Promise<JavaVersion | null> {
-	return await invoke('plugin:instance|instance_get_optimal_jre_key', { instanceId })
+	try {
+		return await window.electronAPI.instanceGetOptimalJreKey(instanceId)
+	} catch {
+		return null
+	}
 }
 
 export async function list(): Promise<GameInstance[]> {
-	return await invoke('plugin:instance|instance_list')
+	try {
+		return await window.electronAPI.instanceList()
+	} catch {
+		return []
+	}
 }
 
 export async function check_installed(instanceId: string, projectId: string): Promise<boolean> {
-	return await invoke('plugin:instance|instance_check_installed', { instanceId, projectId })
+	try {
+		return await window.electronAPI.instanceCheckInstalled(instanceId, projectId)
+	} catch {
+		return false
+	}
 }
 
 export async function update_all(instanceId: string): Promise<Record<string, string>> {
-	return await invoke('plugin:instance|instance_update_all', { instanceId })
+	throw new Error('update_all not implemented in Electron build')
 }
 
-// Updates a specified project
 export async function update_project(instanceId: string, projectPath: string): Promise<string> {
-	return await invoke('plugin:instance|instance_update_project', { instanceId, projectPath })
+	throw new Error('update_project not implemented in Electron build')
 }
 
-// Add a project to an instance from a version
-// Returns a path to the new project file
 export type DownloadReason = 'standalone' | 'dependency' | 'modpack' | 'update'
 
 export interface ResolutionPreferences {
@@ -198,22 +192,14 @@ export async function add_project_from_version(
 	reason: DownloadReason,
 	dependentOnVersionId?: string,
 ): Promise<string> {
-	return await invoke('plugin:instance|instance_add_project_from_version', {
-		instanceId,
-		versionId,
-		reason,
-		dependentOnVersionId,
-	})
+	throw new Error('add_project_from_version not implemented in Electron build')
 }
 
 export async function install_project_with_dependencies(
 	instanceId: string,
 	request: ResolveContentRequest,
 ): Promise<ResolveContentPlan> {
-	return await invoke('plugin:instance|instance_install_project_with_dependencies', {
-		instanceId,
-		request,
-	})
+	throw new Error('install_project_with_dependencies not implemented in Electron build')
 }
 
 export async function switch_project_version_with_dependencies(
@@ -221,64 +207,44 @@ export async function switch_project_version_with_dependencies(
 	projectPath: string,
 	versionId: string,
 ): Promise<string> {
-	return await invoke('plugin:instance|instance_switch_project_version_with_dependencies', {
-		instanceId,
-		projectPath,
-		versionId,
-	})
+	throw new Error('switch_project_version_with_dependencies not implemented in Electron build')
 }
 
-// Add a project to an instance from a path + project_type
-// Returns a path to the new project file
 export async function add_project_from_path(
 	instanceId: string,
 	projectPath: string,
 	projectType?: ContentFileProjectType,
 ): Promise<string> {
-	return await invoke('plugin:instance|instance_add_project_from_path', {
-		instanceId,
-		projectPath,
-		projectType,
-	})
+	throw new Error('add_project_from_path not implemented in Electron build')
 }
 
-// Toggle disabling a project
 export async function toggle_disable_project(
 	instanceId: string,
 	projectPath: string,
 	desiredEnabled?: boolean,
 ): Promise<string> {
-	return await invoke('plugin:instance|instance_toggle_disable_project', {
-		instanceId,
-		projectPath,
-		desiredEnabled,
-	})
+	try {
+		return await window.electronAPI.instanceToggleDisableProject(instanceId, projectPath, desiredEnabled)
+	} catch {
+		return ''
+	}
 }
 
-// Remove a project
 export async function remove_project(instanceId: string, projectPath: string): Promise<void> {
-	return await invoke('plugin:instance|instance_remove_project', { instanceId, projectPath })
+	throw new Error('remove_project not implemented in Electron build')
 }
 
-// Update a managed Modrinth instance to a specific version
 export async function update_managed_modrinth_version(
 	instanceId: string,
 	versionId: string,
 ): Promise<InstallJobSnapshot> {
-	return await invoke('plugin:instance|instance_update_managed_modrinth_version', {
-		instanceId,
-		versionId,
-	})
+	throw new Error('update_managed_modrinth_version not implemented in Electron build')
 }
 
-// Repair a managed Modrinth instance
 export async function update_repair_modrinth(instanceId: string): Promise<InstallJobSnapshot> {
-	return await invoke('plugin:instance|instance_repair_managed_modrinth', { instanceId })
+	throw new Error('update_repair_modrinth not implemented in Electron build')
 }
 
-// Export an instance to .mrpack
-// included_overrides is an array of paths to override folders to include (ie: 'mods', 'resource_packs')
-// Version id is optional (ie: 1.1.5)
 export async function export_instance_mrpack(
 	instanceId: string,
 	exportLocation: string,
@@ -287,47 +253,51 @@ export async function export_instance_mrpack(
 	description?: string,
 	name?: string,
 ): Promise<void> {
-	return await invoke('plugin:instance|instance_export_mrpack', {
-		instanceId,
-		exportLocation,
-		includedOverrides,
-		versionId,
-		description,
-		name,
-	})
+	try {
+		return await window.electronAPI.instanceExportMrpack(
+			instanceId,
+			exportLocation,
+			includedOverrides,
+			versionId ?? null,
+			description ?? null,
+			name ?? null,
+		)
+	} catch {
+	}
 }
 
-// Given a folder path, populate an array of all the subfolders
-// Intended to be used for finding potential override folders
-// profile
-// -- mods
-// -- resourcepacks
-// -- file1
-// => [mods, resourcepacks]
-// allows selection for 'included_overrides' in export_instance_mrpack
 export async function get_pack_export_candidates(instanceId: string): Promise<string[]> {
-	return await invoke('plugin:instance|instance_get_pack_export_candidates', { instanceId })
+	throw new Error('get_pack_export_candidates not implemented in Electron build')
 }
 
-// Run Minecraft using an instance
-// Returns PID of child
 export async function run(
 	instanceId: string,
 	serverAddress: string | null = null,
 ): Promise<unknown> {
-	return await invoke('plugin:instance|instance_run', { instanceId, serverAddress })
+	try {
+		return await window.electronAPI.instanceRun(instanceId)
+	} catch {
+		return null
+	}
 }
 
 export async function kill(instanceId: string): Promise<void> {
-	return await invoke('plugin:instance|instance_kill', { instanceId })
+	try {
+		return await window.electronAPI.instanceKill(instanceId)
+	} catch {
+	}
 }
 
-// Edits an instance
 export async function edit(instanceId: string, editInstance: Partial<GameInstance>): Promise<void> {
-	return await invoke('plugin:instance|instance_edit', { instanceId, editInstance })
+	try {
+		return await window.electronAPI.instanceEdit(instanceId, JSON.stringify(editInstance))
+	} catch {
+	}
 }
 
-// Edits an instance's icon
 export async function edit_icon(instanceId: string, iconPath: string | null): Promise<void> {
-	return await invoke('plugin:instance|instance_edit_icon', { instanceId, iconPath })
+	try {
+		return await window.electronAPI.instanceEditIcon(instanceId, iconPath ?? null)
+	} catch {
+	}
 }

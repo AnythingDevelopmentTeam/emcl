@@ -8,7 +8,7 @@ import {
 	OverflowMenu,
 	useVIntl,
 } from '@modrinth/ui'
-import { openUrl } from '@tauri-apps/plugin-opener'
+import { openUrl } from '@/helpers/tauri-compat'
 import { useTemplateRef } from 'vue'
 
 import ContextMenu from '@/components/ui/ContextMenu.vue'

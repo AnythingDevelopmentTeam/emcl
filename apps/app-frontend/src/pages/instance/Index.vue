@@ -306,7 +306,7 @@ import {
 	useLoadingBarToken,
 } from '@modrinth/ui'
 import { useQueryClient } from '@tanstack/vue-query'
-import { convertFileSrc } from '@tauri-apps/api/core'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import relativeTime from 'dayjs/plugin/relativeTime'

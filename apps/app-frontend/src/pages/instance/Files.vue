@@ -10,18 +10,7 @@ import {
 	useDebugLogger,
 	useVIntl,
 } from '@modrinth/ui'
-import { invoke } from '@tauri-apps/api/core'
-import {
-	mkdir,
-	readDir,
-	readFile as readFileBytes,
-	readTextFile,
-	remove,
-	rename,
-	stat,
-	writeFile as writeFileBytes,
-	writeTextFile,
-} from '@tauri-apps/plugin-fs'
+import { invoke, mkdir, readDir, readFile as readFileBytes, readTextFile, remove, rename, stat, writeFile as writeFileBytes, writeTextFile } from '@/helpers/tauri-compat'
 import { onUnmounted, ref, watch } from 'vue'
 
 import { instance_listener } from '@/helpers/events'

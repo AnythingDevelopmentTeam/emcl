@@ -32,8 +32,7 @@
 <script setup>
 import { MaximizeIcon, MinimizeIcon, RestoreIcon, XIcon } from '@modrinth/assets'
 import { ButtonStyled } from '@modrinth/ui'
-import { getCurrentWindow } from '@tauri-apps/api/window'
-import { saveWindowState, StateFlags } from '@tauri-apps/plugin-window-state'
+import { getCurrentWindow, saveWindowState, StateFlags } from '@/helpers/tauri-compat'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 import { get as getSettings } from '@/helpers/settings.ts'

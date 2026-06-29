@@ -1,13 +1,59 @@
-import { invoke } from '@tauri-apps/api/core'
-
-/// Gets the game versions from daedalus
-// Returns a VersionManifest
-export async function get_game_versions() {
-	return await invoke('plugin:metadata|metadata_get_game_versions')
+async function fetchJson(url) {
+	try {
+		const response = await fetch(url)
+		if (!response.ok) return null
+		return await response.json()
+	} catch {
+		return null
+	}
 }
 
-// Gets the given loader versions from daedalus
-// Returns Manifest
+const LOADER_META = {
+	fabric: 'https://meta.fabricmc.net/v2/versions/loader',
+	quilt: 'https://meta.quiltmc.org/v3/versions/loader',
+}
+
+export async function get_game_versions() {
+	const data = await fetchJson('https://launchermeta.mojang.com/mc/game/version_manifest.json')
+	if (!data) return null
+	return {
+		latest: data.latest,
+		versions: data.versions.map((v) => ({
+			id: v.id,
+			type: v.type,
+			url: v.url,
+			time: v.time,
+			releaseTime: v.releaseTime,
+			sha1: v.sha1,
+			complianceLevel: v.complianceLevel,
+		})),
+	}
+}
+
 export async function get_loader_versions(loader) {
-	return await invoke('plugin:metadata|metadata_get_loader_versions', { loader })
+	const metaUrl = LOADER_META[loader]
+	if (!metaUrl) return null
+
+	const data = await fetchJson(metaUrl)
+	if (!data) return null
+
+	const versions = {}
+	for (const entry of data) {
+		const mcVersion = entry.minecraftVersion?.gameVersionId ?? entry.minecraftVersion
+		if (!mcVersion) continue
+		if (!versions[mcVersion]) {
+			versions[mcVersion] = { id: mcVersion, stable: entry.stable ?? true, loaders: [] }
+		}
+		if (entry.loader) {
+			versions[mcVersion].loaders.push({
+				id: entry.loader.version,
+				url: '',
+				stable: entry.loader.stable ?? entry.stable ?? true,
+			})
+		}
+	}
+
+	return {
+		gameVersions: Object.values(versions),
+	}
 }

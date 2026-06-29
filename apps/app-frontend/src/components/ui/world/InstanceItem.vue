@@ -19,7 +19,7 @@ import {
 	useVIntl,
 } from '@modrinth/ui'
 import { capitalizeString } from '@modrinth/utils'
-import { convertFileSrc } from '@tauri-apps/api/core'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import type { Dayjs } from 'dayjs'
 import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'

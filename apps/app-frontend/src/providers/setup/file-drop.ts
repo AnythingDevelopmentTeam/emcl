@@ -1,7 +1,6 @@
 import { provideFileDrop } from '@modrinth/ui'
-import { invoke } from '@tauri-apps/api/core'
-import type { DragDropEvent } from '@tauri-apps/api/webview'
-import { getCurrentWebview } from '@tauri-apps/api/webview'
+import { invoke, getCurrentWebview } from '@/helpers/tauri-compat'
+import type { DragDropEvent } from '@/helpers/tauri-compat'
 
 function getFileName(path: string) {
 	return path.split(/[\\/]/).pop() || 'file'

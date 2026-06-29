@@ -159,7 +159,7 @@ import {
 	type PopupNotificationProgressItem,
 	useVIntl,
 } from '@modrinth/ui'
-import { convertFileSrc } from '@tauri-apps/api/core'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import { Dropdown } from 'floating-vue'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'

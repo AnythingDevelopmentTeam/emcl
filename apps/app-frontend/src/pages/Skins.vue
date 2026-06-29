@@ -21,7 +21,7 @@ import {
 } from '@modrinth/ui'
 import { arrayBufferToBase64 } from '@modrinth/utils'
 import { useQuery } from '@tanstack/vue-query'
-import { type DragDropEvent, getCurrentWebview } from '@tauri-apps/api/webview'
+import { type DragDropEvent, getCurrentWebview } from '@/helpers/tauri-compat'
 import { computedAsync } from '@vueuse/core'
 import type { Ref } from 'vue'
 import { computed, inject, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'

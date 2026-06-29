@@ -1,6 +1,6 @@
 import type { AbstractWebNotificationManager } from '@modrinth/ui'
 import { provideInstanceImport } from '@modrinth/ui'
-import { open } from '@tauri-apps/plugin-dialog'
+import { open } from '@/helpers/tauri-compat'
 
 import {
 	get_default_launcher_path,

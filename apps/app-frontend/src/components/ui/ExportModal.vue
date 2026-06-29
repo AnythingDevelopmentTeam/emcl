@@ -10,7 +10,7 @@ import {
 	StyledInput,
 	useVIntl,
 } from '@modrinth/ui'
-import { save } from '@tauri-apps/plugin-dialog'
+import { save } from '@/helpers/tauri-compat'
 import { ref } from 'vue'
 
 import { PackageIcon, VersionIcon } from '@/assets/icons'

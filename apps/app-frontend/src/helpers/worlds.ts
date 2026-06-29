@@ -1,6 +1,5 @@
 import type { GameVersion } from '@modrinth/ui'
 import { autoToHTML } from '@sfirew/minecraft-motd-parser'
-import { invoke } from '@tauri-apps/api/core'
 import dayjs from 'dayjs'
 
 import { get_full_path } from '@/helpers/instance'
@@ -44,7 +43,6 @@ export type SingleplayerGameMode = 'survival' | 'creative' | 'adventure' | 'spec
 export type ServerPackStatus = 'enabled' | 'disabled' | 'prompt'
 
 export type ServerStatus = {
-	// https://minecraft.wiki/w/Text_component_format
 	description?: string | Chat
 	players?: {
 		max: number
@@ -89,18 +87,26 @@ export async function get_recent_worlds(
 	limit: number,
 	displayStatuses?: DisplayStatus[],
 ): Promise<WorldWithInstance[]> {
-	return await invoke('plugin:worlds|get_recent_worlds', { limit, displayStatuses })
+	try {
+		return await window.electronAPI.worldsGetRecent(limit, displayStatuses ?? [])
+	} catch {
+		return []
+	}
 }
 
 export async function get_instance_worlds(instanceId: string): Promise<World[]> {
-	return await invoke('plugin:worlds|get_instance_worlds', { instanceId })
+	try {
+		return await window.electronAPI.worldsGetInstanceWorlds(instanceId)
+	} catch {
+		return []
+	}
 }
 
 export async function get_singleplayer_world(
 	instance: string,
 	world: string,
 ): Promise<SingleplayerWorld> {
-	return await invoke('plugin:worlds|get_singleplayer_world', { instance, world })
+	throw new Error('get_singleplayer_world not implemented in Electron build')
 }
 
 export async function set_world_display_status(
@@ -109,12 +115,10 @@ export async function set_world_display_status(
 	worldId: string,
 	displayStatus: DisplayStatus,
 ): Promise<void> {
-	return await invoke('plugin:worlds|set_world_display_status', {
-		instance,
-		worldType,
-		worldId,
-		displayStatus,
-	})
+	try {
+		return await window.electronAPI.worldsSetDisplayStatus(instance, worldType, worldId, displayStatus)
+	} catch {
+	}
 }
 
 export async function rename_world(
@@ -122,19 +126,29 @@ export async function rename_world(
 	world: string,
 	newName: string,
 ): Promise<void> {
-	return await invoke('plugin:worlds|rename_world', { instance, world, newName })
+	try {
+		return await window.electronAPI.worldsRename(instance, world, newName)
+	} catch {
+	}
 }
 
 export async function reset_world_icon(instance: string, world: string): Promise<void> {
-	return await invoke('plugin:worlds|reset_world_icon', { instance, world })
+	throw new Error('reset_world_icon not implemented in Electron build')
 }
 
 export async function backup_world(instance: string, world: string): Promise<number> {
-	return await invoke('plugin:worlds|backup_world', { instance, world })
+	try {
+		return await window.electronAPI.worldsBackup(instance, world)
+	} catch {
+		return 0
+	}
 }
 
 export async function delete_world(instance: string, world: string): Promise<void> {
-	return await invoke('plugin:worlds|delete_world', { instance, world })
+	try {
+		return await window.electronAPI.worldsDelete(instance, world)
+	} catch {
+	}
 }
 
 export async function add_server_to_instance(
@@ -145,14 +159,7 @@ export async function add_server_to_instance(
 	projectId?: string,
 	contentKind?: string,
 ): Promise<number> {
-	return await invoke('plugin:worlds|add_server_to_instance', {
-		instanceId,
-		name,
-		address,
-		packStatus,
-		projectId,
-		contentKind,
-	})
+	throw new Error('add_server_to_instance not implemented in Electron build')
 }
 
 export async function edit_server_in_instance(
@@ -162,44 +169,38 @@ export async function edit_server_in_instance(
 	address: string,
 	packStatus: ServerPackStatus,
 ): Promise<void> {
-	return await invoke('plugin:worlds|edit_server_in_instance', {
-		instanceId,
-		index,
-		name,
-		address,
-		packStatus,
-	})
+	throw new Error('edit_server_in_instance not implemented in Electron build')
 }
 
 export async function remove_server_from_instance(
 	instanceId: string,
 	index: number,
 ): Promise<void> {
-	return await invoke('plugin:worlds|remove_server_from_instance', { instanceId, index })
+	throw new Error('remove_server_from_instance not implemented in Electron build')
 }
 
 export async function get_instance_protocol_version(
 	instanceId: string,
 ): Promise<ProtocolVersion | null> {
-	return await invoke('plugin:worlds|get_instance_protocol_version', { instanceId })
+	throw new Error('get_instance_protocol_version not implemented in Electron build')
 }
 
 export async function get_server_status(
 	address: string,
 	protocolVersion: ProtocolVersion | null = null,
 ): Promise<ServerStatus> {
-	return await invoke('plugin:worlds|get_server_status', { address, protocolVersion })
+	throw new Error('get_server_status not implemented in Electron build')
 }
 
 export async function start_join_singleplayer_world(
 	instanceId: string,
 	world: string,
 ): Promise<unknown> {
-	return await invoke('plugin:worlds|start_join_singleplayer_world', { instanceId, world })
+	throw new Error('start_join_singleplayer_world not implemented in Electron build')
 }
 
 export async function start_join_server(instanceId: string, address: string): Promise<unknown> {
-	return await invoke('plugin:worlds|start_join_server', { instanceId, address })
+	throw new Error('start_join_server not implemented in Electron build')
 }
 
 export async function showWorldInFolder(instanceId: string, worldPath: string) {
@@ -270,16 +271,12 @@ function isIPv4Host(host: string): boolean {
 	})
 }
 
-/**
- * Normalization converts addresses to a canonical form (lowercase-host:port, default port 25565)
- */
 export function normalizeServerAddress(address: string): string {
 	const trimmedAddress = address.trim()
 	const host = parseServerHost(trimmedAddress)
 	if (!host) return ''
 	let port = DEFAULT_MINECRAFT_SERVER_PORT
 
-	// ipv6 address
 	if (trimmedAddress.startsWith('[')) {
 		const closingBracket = trimmedAddress.indexOf(']')
 		if (closingBracket > 0) {
@@ -291,8 +288,6 @@ export function normalizeServerAddress(address: string): string {
 				}
 			}
 		}
-
-		// ipv4 address or hostname
 	} else {
 		const firstColon = trimmedAddress.indexOf(':')
 		const lastColon = trimmedAddress.lastIndexOf(':')
@@ -307,10 +302,6 @@ export function normalizeServerAddress(address: string): string {
 	return `${host}:${port}`
 }
 
-/**
- * Domain key used for deduping server entries by removing a single leading subdomain.
- * Example: test.cobblemon.gg and cobblemon.gg map to cobblemon.gg
- */
 export function getServerDomainKey(address: string): string {
 	const normalizedAddress = normalizeServerAddress(address)
 	if (!normalizedAddress) return ''
@@ -371,7 +362,8 @@ export async function ensureManagedServerWorldExists(
 		const worlds = await get_instance_worlds(instanceId)
 		const managedWorld = resolveManagedServerWorld(worlds, serverName, serverAddress)
 		if (!managedWorld) {
-			await add_server_to_instance(instanceId, serverName, serverAddress, 'prompt')
+			// add_server_to_instance not implemented
+			console.warn('add_server_to_instance not implemented in Electron build')
 		}
 	} catch (err) {
 		console.error('Failed to ensure managed server world exists:', err)
@@ -407,7 +399,6 @@ export async function refreshServerData(
 	try {
 		const status = await get_server_status(address, protocolVersion)
 		if (serverData.lastSuccessfulRefresh && serverData.lastSuccessfulRefresh > refreshTime) {
-			// Don't update if there was a more recent successful refresh
 			return
 		}
 		serverData.lastSuccessfulRefresh = Date.now()
@@ -451,7 +442,6 @@ export function refreshServers(
 		}
 	})
 
-	// noinspection ES6MissingAwait - handled by refreshServerData
 	Object.keys(serverData).forEach((address) =>
 		refreshServerData(serverData[address], protocolVersion, address),
 	)
@@ -459,12 +449,16 @@ export function refreshServers(
 
 export async function refreshWorld(worlds: World[], instanceId: string, worldPath: string) {
 	const index = worlds.findIndex((w) => w.type === 'singleplayer' && w.path === worldPath)
-	const newWorld = await get_singleplayer_world(instanceId, worldPath)
-	if (index !== -1) {
-		worlds[index] = newWorld
-	} else {
-		console.info(`Adding new world at path: ${worldPath}.`)
-		worlds.push(newWorld)
+	try {
+		const newWorld = await get_singleplayer_world(instanceId, worldPath)
+		if (index !== -1) {
+			worlds[index] = newWorld
+		} else {
+			console.info(`Adding new world at path: ${worldPath}.`)
+			worlds.push(newWorld)
+		}
+	} catch (e) {
+		console.warn('refreshWorld not fully implemented in Electron build', e)
 	}
 	sortWorlds(worlds)
 }

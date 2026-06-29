@@ -26,7 +26,7 @@ import {
 	defineMessages,
 	useVIntl,
 } from '@modrinth/ui'
-import { openUrl } from '@tauri-apps/plugin-opener'
+import { openUrl } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import { computed, ref, watch } from 'vue'
 

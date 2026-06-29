@@ -12,7 +12,7 @@ import {
 	TrashIcon,
 } from '@modrinth/assets'
 import { HeadingLink, injectNotificationManager } from '@modrinth/ui'
-import { openUrl } from '@tauri-apps/plugin-opener'
+import { openUrl } from '@/helpers/tauri-compat'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 

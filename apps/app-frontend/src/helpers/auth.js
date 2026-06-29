@@ -3,64 +3,88 @@
  * So, for example, addDefaultInstance creates a blank instance object, where the Rust struct is serialized,
  *  and deserialized into a usable JS object.
  */
-import { invoke } from '@tauri-apps/api/core'
-
-// Example function:
-// User goes to auth_url to complete flow, and when completed, authenticate_await_completion() returns the credentials
-// export async function authenticate() {
-//   const auth_url = await authenticate_begin_flow()
-//   console.log(auth_url)
-//   await authenticate_await_completion()
-// }
 
 /**
  * Check if the authentication servers are reachable, throwing an exception if
  * not reachable.
  */
 export async function check_reachable() {
-	await invoke('plugin:auth|check_reachable')
+	try {
+		await window.electronAPI.authCheckReachable()
+	} catch {
+	}
 }
 
 /**
- * Authenticate a user with Hydra - part 1.
- * This begins the authentication flow quasi-synchronously.
+ * Authenticate a user with Microsoft OAuth.
+ * Opens an Electron window for the user to sign in.
  *
- * @returns {Promise<DeviceLoginSuccess>} A DeviceLoginSuccess object with two relevant fields:
- * @property {string} verification_uri - The URL to go to complete the flow.
- * @property {string} user_code - The code to enter on the verification_uri page.
+ * @returns {Promise<Object|null>} A Credentials object with user profile, or null if cancelled.
  */
 export async function login() {
-	return await invoke('plugin:auth|login')
+	try {
+		return await window.electronAPI.authLogin()
+	} catch {
+		return null
+	}
+}
+
+/**
+ * Create an offline Minecraft account.
+ *
+ * @param {string} username - The username for the offline account
+ * @returns {Promise<Object>} A Credentials object for the offline user.
+ */
+export async function create_offline(username) {
+	try {
+		return await window.electronAPI.authCreateOffline(username)
+	} catch {
+		return null
+	}
 }
 
 /**
  * Retrieves the default user
- * @return {Promise<UUID | undefined>}
+ * @return {Promise<string | undefined>}
  */
 export async function get_default_user() {
-	return await invoke('plugin:auth|get_default_user')
+	try {
+		return await window.electronAPI.authGetDefaultUser()
+	} catch {
+		return ''
+	}
 }
 
 /**
  * Updates the default user
- * @param {UUID} user
+ * @param {string} user - UUID of the user
  */
 export async function set_default_user(user) {
-	return await invoke('plugin:auth|set_default_user', { user })
+	try {
+		return await window.electronAPI.authSetDefaultUser(user)
+	} catch {
+	}
 }
 
 /**
  * Remove a user account from the database
- * @param {UUID} user
+ * @param {string} user - UUID of the user
  */
 export async function remove_user(user) {
-	return await invoke('plugin:auth|remove_user', { user })
+	try {
+		return await window.electronAPI.authRemoveUser(user)
+	} catch {
+	}
 }
 
 /**
  * Returns a list of users
- * @returns {Promise<Credential[]>}
+ * @returns {Promise<Object[]>}
  */
 export async function users() {
-	return await invoke('plugin:auth|get_users')
+	try {
+		return await window.electronAPI.authGetUsers()
+	} catch {
+		return []
+	}
 }

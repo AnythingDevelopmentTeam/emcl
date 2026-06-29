@@ -1,74 +1,91 @@
-import { invoke } from '@tauri-apps/api/core'
-import { save } from '@tauri-apps/plugin-dialog'
-
 import { get_full_path, get_mod_full_path } from '@/helpers/instance'
 
 export async function isDev() {
-	return await invoke('is_dev')
+	try {
+		return await window.electronAPI.utilsIsDev()
+	} catch {
+		return false
+	}
 }
 
 export async function areUpdatesEnabled() {
-	return await invoke('are_updates_enabled')
+	try {
+		return await window.electronAPI.utilsAreUpdatesEnabled()
+	} catch {
+		return false
+	}
 }
 
 export async function getUpdateSize(updateRid) {
-	return await invoke('get_update_size', { rid: updateRid })
+	throw new Error('getUpdateSize not implemented in Electron build')
 }
 
 export async function enqueueUpdateForInstallation(updateRid) {
-	return await invoke('enqueue_update_for_installation', { rid: updateRid })
+	throw new Error('enqueueUpdateForInstallation not implemented in Electron build')
 }
 
 export async function removeEnqueuedUpdate() {
-	return await invoke('remove_enqueued_update')
+	throw new Error('removeEnqueuedUpdate not implemented in Electron build')
 }
 
 export async function setRestartAfterPendingUpdate(should_restart) {
-	return await invoke('set_restart_after_pending_update', { shouldRestart: should_restart })
+	throw new Error('setRestartAfterPendingUpdate not implemented in Electron build')
 }
 
-// One of 'Windows', 'Linux', 'MacOS'
 export async function getOS() {
-	return await invoke('plugin:utils|get_os')
+	try {
+		return await window.electronAPI.utilsGetOs()
+	} catch {
+		return ''
+	}
 }
 
 export async function isNetworkMetered() {
-	return await invoke('plugin:utils|is_network_metered')
+	try {
+		return await window.electronAPI.utilsIsNetworkMetered()
+	} catch {
+		return false
+	}
 }
 
 export async function openPath(path) {
-	return await invoke('plugin:utils|open_path', { path })
+	try {
+		return await window.electronAPI.openerOpenPath(path)
+	} catch {
+		return null
+	}
 }
 
 export async function highlightInFolder(path) {
-	return await invoke('plugin:utils|highlight_in_folder', { path })
+	try {
+		return await window.electronAPI.openerShowItemInFolder(path)
+	} catch {
+		return null
+	}
 }
 
 export async function showLauncherLogsFolder() {
-	return await invoke('plugin:utils|show_launcher_logs_folder', {})
+	throw new Error('showLauncherLogsFolder not implemented in Electron build')
 }
 
 export async function createInstanceShortcut(instanceName, instanceId, options = {}) {
-	const outputPath = await save({
-		defaultPath: `Modrinth - ${instanceName}`,
-	})
+	try {
+		const outputPath = await window.electronAPI.dialogSave({
+			defaultPath: `Modrinth - ${instanceName}`,
+		})
 
-	if (!outputPath) return null
+		if (!outputPath) return null
 
-	return await invoke('plugin:shortcuts|create_instance_shortcut', {
-		instanceName,
-		instanceId,
-		outputPath,
-		server: options.server,
-		singleplayerWorld: options.singleplayerWorld,
-	})
+		throw new Error('createInstanceShortcut not implemented in Electron build')
+	} catch {
+		return null
+	}
 }
 
 export async function showAppDbBackupsFolder() {
-	return await invoke('plugin:utils|show_app_db_backups_folder', {})
+	throw new Error('showAppDbBackupsFolder not implemented in Electron build')
 }
 
-// Opens an instance's folder in the OS file explorer
 export async function showInstanceInFolder(instanceId) {
 	const fullPath = await get_full_path(instanceId)
 	return await openPath(fullPath)
@@ -80,7 +97,7 @@ export async function highlightModInInstance(instanceId, projectPath) {
 }
 
 export async function restartApp() {
-	return await invoke('restart_app')
+	throw new Error('restartApp not implemented in Electron build')
 }
 
 export const releaseColor = (releaseType) => {

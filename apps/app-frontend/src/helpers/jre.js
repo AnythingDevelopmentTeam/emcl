@@ -1,51 +1,42 @@
-/**
- * All theseus API calls return serialized values (both return values and errors);
- * So, for example, addDefaultInstance creates a blank instance object, where the Rust struct is serialized,
- *  and deserialized into a usable JS object.
- */
-import { invoke } from '@tauri-apps/api/core'
-
-/*
-
-JavaVersion {
-    path: Path
-    version: String
-}
-
-*/
-
 export async function get_java_versions() {
-	return await invoke('plugin:jre|get_java_versions')
+	try {
+		return await window.electronAPI.jreGetJavaVersions()
+	} catch {
+		return []
+	}
 }
 
 export async function set_java_version(javaVersion) {
-	return await invoke('plugin:jre|set_java_version', { javaVersion })
+	try {
+		return await window.electronAPI.jreSetJavaVersion(JSON.stringify(javaVersion))
+	} catch {
+	}
 }
 
-// Finds all the installation of Java 7, if it exists
-// Returns [JavaVersion]
 export async function find_filtered_jres(version) {
-	return await invoke('plugin:jre|jre_find_filtered_jres', { version })
+	throw new Error('find_filtered_jres not implemented in Electron build')
 }
 
-// Gets java version from a specific path by trying to run 'java -version' on it.
-// This also validates it, as it returns null if no valid java version is found at the path
 export async function get_jre(path) {
-	return await invoke('plugin:jre|jre_get_jre', { path })
+	throw new Error('get_jre not implemented in Electron build')
 }
 
-// Tests JRE version by running 'java -version' on it.
-// Returns true if the version is valid, and matches given (after extraction)
 export async function test_jre(path, majorVersion) {
-	return await invoke('plugin:jre|jre_test_jre', { path, majorVersion })
+	throw new Error('test_jre not implemented in Electron build')
 }
 
-// Automatically installs specified java version
 export async function auto_install_java(javaVersion) {
-	return await invoke('plugin:jre|jre_auto_install_java', { javaVersion })
+	try {
+		return await window.electronAPI.jreAutoInstallJava(javaVersion)
+	} catch {
+		return null
+	}
 }
 
-// Get max memory in KiB
 export async function get_max_memory() {
-	return await invoke('plugin:jre|jre_get_max_memory')
+	try {
+		return await window.electronAPI.jreGetMaxMemory()
+	} catch {
+		return null
+	}
 }

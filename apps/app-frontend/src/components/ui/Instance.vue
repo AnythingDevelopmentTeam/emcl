@@ -8,7 +8,7 @@ import {
 	TimerIcon,
 } from '@modrinth/assets'
 import { Avatar, ButtonStyled, injectNotificationManager, useRelativeTime } from '@modrinth/ui'
-import { convertFileSrc } from '@tauri-apps/api/core'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'

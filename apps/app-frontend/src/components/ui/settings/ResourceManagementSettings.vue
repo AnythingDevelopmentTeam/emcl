@@ -1,7 +1,7 @@
 <script setup>
 import { BoxIcon, FolderOpenIcon, FolderSearchIcon, TrashIcon } from '@modrinth/assets'
 import { ButtonStyled, injectNotificationManager, Slider, StyledInput } from '@modrinth/ui'
-import { open } from '@tauri-apps/plugin-dialog'
+import { open } from '@/helpers/tauri-compat'
 import { ref, watch } from 'vue'
 
 import ConfirmModalWrapper from '@/components/ui/modal/ConfirmModalWrapper.vue'

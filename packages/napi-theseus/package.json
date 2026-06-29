@@ -1,0 +1,9 @@
+{
+	"name": "@modrinth/napi-theseus",
+	"version": "1.0.0-local",
+	"private": true,
+	"main": "index.js",
+	"scripts": {
+		"build": "cargo build --release"
+	}
+}

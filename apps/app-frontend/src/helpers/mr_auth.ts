@@ -1,10 +1,3 @@
-/**
- * All theseus API calls return serialized values (both return values and errors);
- * So, for example, addDefaultInstance creates a blank instance object, where the Rust struct is serialized,
- *  and deserialized into a usable JS object.
- */
-import { invoke } from '@tauri-apps/api/core'
-
 export type ModrinthCredentials = {
 	session: string
 	expires: string
@@ -12,18 +5,31 @@ export type ModrinthCredentials = {
 	active: boolean
 }
 
-export async function login(): Promise<ModrinthCredentials> {
-	return await invoke('plugin:mr-auth|modrinth_login')
+export async function login(): Promise<ModrinthCredentials | null> {
+	try {
+		const result = await window.electronAPI.mrAuthGet()
+		if (!result) throw new Error('Modrinth login not supported yet in Electron build')
+		return result
+	} catch {
+		return null
+	}
 }
 
 export async function logout(): Promise<void> {
-	return await invoke('plugin:mr-auth|logout')
+	try {
+		return await window.electronAPI.mrAuthLogout()
+	} catch {
+	}
 }
 
 export async function get(): Promise<ModrinthCredentials | null> {
-	return await invoke('plugin:mr-auth|get')
+	try {
+		return await window.electronAPI.mrAuthGet()
+	} catch {
+		return null
+	}
 }
 
 export async function cancelLogin(): Promise<void> {
-	return await invoke('plugin:mr-auth|cancel_modrinth_login')
+	return null
 }

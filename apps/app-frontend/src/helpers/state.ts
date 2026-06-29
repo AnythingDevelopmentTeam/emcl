@@ -1,10 +1,3 @@
-/**
- * All theseus API calls return serialized values (both return values and errors);
- * So, for example, addDefaultInstance creates a blank instance object, where the Rust struct is serialized,
- *  and deserialized into a usable JS object.
- */
-import { invoke } from '@tauri-apps/api/core'
-
 export interface LoadingBarType {
 	type?: string
 	version?: string
@@ -41,18 +34,24 @@ export interface OpeningCommand {
 // Initialize the theseus API state
 // This should be called during the initializion/opening of the launcher
 export async function initialize_state() {
-	return await invoke<void>('initialize_state')
+	try {
+		return await window.electronAPI.initState('modrinth-app')
+	} catch {
+		return null
+	}
 }
 
 // Gets active progress bars
 export async function progress_bars_list() {
-	return await invoke<Record<string, LoadingBar>>('plugin:utils|progress_bars_list')
+	try {
+		return await window.electronAPI.utilsProgressBarsList() as Record<string, LoadingBar>
+	} catch {
+		return {}
+	}
 }
 
 // Get opening command
-// For example, if a user clicks on an .mrpack to open the app.
 // This should be called once and only when the app is done booting up and ready to receive a command
-// Returns a Command struct- see events.js
 export async function get_opening_command() {
-	return await invoke<OpeningCommand | null>('plugin:utils|get_opening_command')
+	return null as OpeningCommand | null
 }

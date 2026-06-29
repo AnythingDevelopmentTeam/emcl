@@ -2,7 +2,7 @@
 import { injectNotificationManager } from '@modrinth/ui'
 import type { SearchResult } from '@modrinth/utils'
 import dayjs from 'dayjs'
-import { computed, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import RowDisplay from '@/components/RowDisplay.vue'
@@ -45,15 +45,19 @@ window.addEventListener('online', () => {
 })
 
 async function fetchInstances() {
-	instances.value = await list().catch(handleError)
+	try {
+		instances.value = await list().catch(handleError)
 
-	const filters = []
-	for (const instance of instances.value) {
-		if (instance.link && instance.link.project_id) {
-			filters.push(`NOT"project_id"="${instance.link.project_id}"`)
+		const filters = []
+		for (const instance of instances.value) {
+			if (instance.link && instance.link.project_id) {
+				filters.push(`NOT"project_id"="${instance.link.project_id}"`)
+			}
 		}
+		installedModpacksFilter.value = filters.join(' AND ')
+	} catch {
+		instances.value = []
 	}
-	installedModpacksFilter.value = filters.join(' AND ')
 }
 
 async function fetchFeaturedModpacks() {
@@ -82,28 +86,32 @@ async function refreshFeaturedProjects() {
 	await Promise.all([fetchFeaturedModpacks(), fetchFeaturedMods()])
 }
 
-await fetchInstances()
-await refreshFeaturedProjects()
+let unlistenInstance: (() => void) | undefined
 
-const unlistenInstance = await instance_listener(
-	async (e: { event: string; instance_id: string }) => {
-		await fetchInstances()
+onMounted(async () => {
+	await fetchInstances()
+	await refreshFeaturedProjects()
 
-		if (e.event === 'added' || e.event === 'created' || e.event === 'removed') {
-			await refreshFeaturedProjects()
-		}
-	},
-)
+	unlistenInstance = await instance_listener(
+		async (e: { event: string; instance_id: string }) => {
+			await fetchInstances()
+
+			if (e.event === 'added' || e.event === 'created' || e.event === 'removed') {
+				await refreshFeaturedProjects()
+			}
+		},
+	)
+})
 
 onUnmounted(() => {
-	unlistenInstance()
+	unlistenInstance?.()
 })
 </script>
 
 <template>
 	<div class="p-6 flex flex-col gap-2">
 		<h1 v-if="recentInstances?.length > 0" class="m-0 text-2xl font-extrabold">Welcome back!</h1>
-		<h1 v-else class="m-0 text-2xl font-extrabold">Welcome to Modrinth App!</h1>
+		<h1 v-else class="m-0 text-2xl font-extrabold">Welcome to EMCL!</h1>
 		<RecentWorldsList :recent-instances="recentInstances" />
 		<RowDisplay
 			v-if="hasFeaturedProjects"

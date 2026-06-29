@@ -1,0 +1,72 @@
+{
+	"name": "@modrinth/app-electron",
+	"private": true,
+	"version": "1.0.0-local",
+	"main": "dist-electron/main.js",
+	"scripts": {
+		"dev": "concurrently \"pnpm dev:native\" \"pnpm dev:electron\"",
+		"dev:no-native": "concurrently \"cd ../../apps/app-frontend && pnpm dev\" \"wait-on http://localhost:1420 && electron .\"",
+		"dev:native": "cd ../../packages/napi-theseus && cargo build --release && node scripts/copy-addon.js",
+		"dev:electron": "wait-on http://localhost:1420 && electron .",
+		"build": "pnpm build:native && pnpm build:electron",
+		"build:native": "cd ../../packages/napi-theseus && cargo build --release && node scripts/copy-addon.js",
+		"build:electron": "tsc && electron-builder",
+		"build:ts": "tsc"
+	},
+	"dependencies": {
+		"electron-store": "^8.2.0"
+	},
+	"devDependencies": {
+		"@types/node": "^22.0.0",
+		"concurrently": "^9.0.0",
+		"electron": "^35.0.0",
+		"electron-builder": "^26.0.0",
+		"typescript": "^5.5.0",
+		"wait-on": "^8.0.0"
+	},
+	"build": {
+		"appId": "com.emcl.EMCL",
+		"productName": "EMCL",
+		"directories": {
+			"output": "release"
+		},
+		"files": [
+			"dist-electron/**/*",
+			"../../apps/app-frontend/dist/**/*"
+		],
+		"extraResources": [
+			{
+				"from": "../../target/release/napi_theseus.node",
+				"to": "native/napi_theseus.node"
+			}
+		],
+		"win": {
+			"target": "nsis",
+			"extraResources": [
+				{
+					"from": "../../target/release/napi_theseus.dll",
+					"to": "native/napi_theseus.dll"
+				}
+			]
+		},
+		"linux": {
+			"target": ["AppImage", "deb"],
+			"extraResources": [
+				{
+					"from": "../../target/release/napi_theseus.node",
+					"to": "native/napi_theseus.node"
+				}
+			]
+		},
+		"mac": {
+			"target": "dmg",
+			"extraResources": [
+				{
+					"from": "../../target/release/napi_theseus.node",
+					"to": "native/napi_theseus.node"
+				}
+			]
+		}
+	},
+	"packageManager": "pnpm@9.4.0"
+}

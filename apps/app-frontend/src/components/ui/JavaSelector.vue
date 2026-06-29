@@ -83,7 +83,7 @@ import {
 	XCircleIcon,
 } from '@modrinth/assets'
 import { ButtonStyled, injectNotificationManager, StyledInput } from '@modrinth/ui'
-import { open } from '@tauri-apps/plugin-dialog'
+import { open } from '@/helpers/tauri-compat'
 import { ref, watch } from 'vue'
 
 import JavaDetectionModal from '@/components/ui/JavaDetectionModal.vue'

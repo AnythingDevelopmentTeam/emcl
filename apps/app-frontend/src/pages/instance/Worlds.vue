@@ -159,7 +159,7 @@ import {
 	useVIntl,
 } from '@modrinth/ui'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
-import { platform } from '@tauri-apps/plugin-os'
+import { platform } from '@/helpers/tauri-compat'
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 

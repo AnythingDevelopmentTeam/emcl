@@ -1,5 +1,4 @@
 import type { User } from '@modrinth/utils'
-import { invoke } from '@tauri-apps/api/core'
 import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
 
@@ -20,19 +19,33 @@ export type UserFriend = {
 }
 
 export async function friends(): Promise<UserFriend[]> {
-	return await invoke('plugin:friends|friends')
+	try {
+		return await window.electronAPI.friendsList()
+	} catch {
+		return []
+	}
 }
 
 export async function friend_statuses(): Promise<UserStatus[]> {
-	return await invoke('plugin:friends|friend_statuses')
+	try {
+		return await window.electronAPI.friendsStatuses()
+	} catch {
+		return []
+	}
 }
 
 export async function add_friend(userId: string): Promise<void> {
-	return await invoke('plugin:friends|add_friend', { userId })
+	try {
+		return await window.electronAPI.friendsAdd(userId)
+	} catch {
+	}
 }
 
 export async function remove_friend(userId: string): Promise<void> {
-	return await invoke('plugin:friends|remove_friend', { userId })
+	try {
+		return await window.electronAPI.friendsRemove(userId)
+	} catch {
+	}
 }
 
 export type FriendWithUserData = {
@@ -67,7 +80,7 @@ export async function transformFriends(
 		return {
 			id: friend.id,
 			friend_id: friend.friend_id,
-			status: status?.profile_name ?? null,
+			status: status?.instance_name ?? null,
 			last_updated: status && status.last_update ? dayjs(status.last_update) : null,
 			created: dayjs(friend.created),
 			avatar: user?.avatar_url ?? '',

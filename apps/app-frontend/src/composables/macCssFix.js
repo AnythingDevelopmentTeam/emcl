@@ -1,4 +1,4 @@
-import { invoke } from '@tauri-apps/api/core'
+import { invoke } from '@/helpers/tauri-compat'
 
 import cssContent from '@/assets/stylesheets/macFix.css?inline'
 

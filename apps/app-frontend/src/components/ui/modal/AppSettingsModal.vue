@@ -19,8 +19,7 @@ import {
 	TabbedModal,
 	useVIntl,
 } from '@modrinth/ui'
-import { getVersion } from '@tauri-apps/api/app'
-import { platform as getOsPlatform, version as getOsVersion } from '@tauri-apps/plugin-os'
+import { getVersion, platform as getOsPlatform } from '@/helpers/tauri-compat'
 import { ref, watch } from 'vue'
 
 import AppearanceSettings from '@/components/ui/settings/AppearanceSettings.vue'
@@ -30,6 +29,7 @@ import JavaSettings from '@/components/ui/settings/JavaSettings.vue'
 import LanguageSettings from '@/components/ui/settings/LanguageSettings.vue'
 import PrivacySettings from '@/components/ui/settings/PrivacySettings.vue'
 import ResourceManagementSettings from '@/components/ui/settings/ResourceManagementSettings.vue'
+import type { AppSettings } from '@/helpers/settings.ts'
 import { get, set } from '@/helpers/settings.ts'
 import { injectAppUpdateDownloadProgress } from '@/providers/download-progress.ts'
 import { useTheming } from '@/store/state'
@@ -114,9 +114,10 @@ defineExpose({ show })
 const { progress, version: downloadingVersion } = injectAppUpdateDownloadProgress()
 
 const version = await getVersion()
-const osPlatform = getOsPlatform()
-const osVersion = getOsVersion()
-const settings = ref(await get())
+const osPlatform = await getOsPlatform()
+const osVersion = ''
+const loaded = await get()
+const settings = ref(loaded ?? ({} as AppSettings))
 
 watch(
 	settings,
@@ -178,7 +179,7 @@ const messages = defineMessages({
 						<ModrinthIcon class="w-6 h-6" />
 					</button>
 					<div class="max-w-[200px]">
-						<p class="m-0">Modrinth App {{ version }}</p>
+						<p class="m-0">EMCL {{ version }}</p>
 						<p class="m-0">
 							<span v-if="osPlatform === 'macos'">macOS</span>
 							<span v-else class="capitalize">{{ osPlatform }}</span>

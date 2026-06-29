@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { DropdownIcon, FolderOpenIcon, PlusIcon } from '@modrinth/assets'
 import { ButtonStyled, injectNotificationManager, OverflowMenu } from '@modrinth/ui'
-import { open } from '@tauri-apps/plugin-dialog'
+import { open } from '@/helpers/tauri-compat'
 import { useRouter } from 'vue-router'
 
 import { add_project_from_path } from '@/helpers/instance'

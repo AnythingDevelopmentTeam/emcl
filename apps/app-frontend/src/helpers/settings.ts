@@ -1,35 +1,5 @@
-/**
- * All theseus API calls return serialized values (both return values and errors);
- * So, for example, addDefaultInstance creates a blank instance object, where the Rust struct is serialized,
- *  and deserialized into a usable JS object.
- */
-import { invoke } from '@tauri-apps/api/core'
-
 import type { Hooks, MemorySettings, WindowSize } from '@/helpers/types'
 import type { ColorTheme, FeatureFlag } from '@/store/theme.ts'
-
-// Settings object
-/*
-
-Settings {
-    "memory": MemorySettings,
-    "game_resolution": [int int],
-    "custom_java_args": [String ...],
-    "custom_env_args" : [(string, string) ... ]>,
-    "java_globals": Hash of (string, Path),
-    "default_user": Uuid string (can be null),
-    "hooks": Hooks,
-    "max_concurrent_downloads": uint,
-    "version": u32,
-    "collapsed_navigation": bool,
-}
-
-Memorysettings {
-    "min": u32, can be null,
-    "max": u32,
-}
-
-*/
 
 export type AppSettings = {
 	max_concurrent_downloads: number
@@ -74,14 +44,22 @@ export type AppSettings = {
 
 // Get full settings object
 export async function get() {
-	return (await invoke('plugin:settings|settings_get')) as AppSettings
+	try {
+		return await window.electronAPI.settingsGet() as AppSettings
+	} catch {
+		return null
+	}
 }
 
 // Set full settings object
 export async function set(settings: AppSettings) {
-	return await invoke('plugin:settings|settings_set', { settings })
+	try {
+		return await window.electronAPI.settingsSet(settings)
+	} catch {
+		// ignore
+	}
 }
 
 export async function cancel_directory_change(): Promise<void> {
-	return await invoke('plugin:settings|cancel_directory_change')
+	return await window.electronAPI.settingsCancelDirectoryChange('modrinth-app')
 }

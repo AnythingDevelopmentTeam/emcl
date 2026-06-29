@@ -1,31 +1,31 @@
-/**
- * All theseus API calls return serialized values (both return values and errors);
- * So, for example, addDefaultInstance creates a blank instance object, where the Rust struct is serialized,
- *  and deserialized into a usable JS object.
- */
-import { invoke } from '@tauri-apps/api/core'
+const API_BASE = 'https://api.modrinth.com'
 
-// Gets cached category tags
+async function fetchTag(endpoint) {
+	try {
+		const response = await fetch(`${API_BASE}/v2/tag/${endpoint}`)
+		if (!response.ok) return []
+		return await response.json()
+	} catch {
+		return []
+	}
+}
+
 export async function get_categories() {
-	return await invoke('plugin:tags|tags_get_categories')
+	return fetchTag('category')
 }
 
-// Gets cached loaders tags
 export async function get_loaders() {
-	return await invoke('plugin:tags|tags_get_loaders')
+	return fetchTag('loader')
 }
 
-// Gets cached game_versions tags
 export async function get_game_versions() {
-	return await invoke('plugin:tags|tags_get_game_versions')
+	return fetchTag('game_version')
 }
 
-// Gets cached donation_platforms tags
 export async function get_donation_platforms() {
-	return await invoke('plugin:tags|tags_get_donation_platforms')
+	return fetchTag('donation_platform')
 }
 
-// Gets cached licenses tags
 export async function get_report_types() {
-	return await invoke('plugin:tags|tags_get_report_types')
+	return fetchTag('report_type')
 }

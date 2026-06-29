@@ -1,5 +1,3 @@
-import { invoke } from '@tauri-apps/api/core'
-
 import { install_job_listener } from './events'
 import type { InstanceLink, InstanceLoader } from './types'
 
@@ -121,23 +119,29 @@ export interface InstallJobSnapshot {
 }
 
 export async function install_get_modpack_preview(location: CreatePackLocation) {
-	return await invoke<InstallModpackPreview>('plugin:install|install_get_modpack_preview', {
-		location,
-	})
+	throw new Error('install_get_modpack_preview not implemented in Electron build')
 }
 
 export async function install_create_instance(request: InstallCreateInstanceRequest) {
-	return await invoke<InstallJobSnapshot>('plugin:install|install_create_instance', { request })
+	try {
+		return await window.electronAPI.installCreateInstance(
+			request.name,
+			request.gameVersion,
+			request.loader,
+			request.loaderVersion ?? null,
+			request.iconPath ?? null,
+			request.link ? JSON.stringify(request.link) : null,
+		)
+	} catch {
+		return null
+	}
 }
 
 export async function install_create_modpack_instance(
 	location: CreatePackLocation,
 	postInstallEdit?: InstallPostInstallEdit | null,
 ) {
-	return await invoke<InstallJobSnapshot>('plugin:install|install_create_modpack_instance', {
-		location,
-		postInstallEdit,
-	})
+	throw new Error('install_create_modpack_instance not implemented in Electron build')
 }
 
 export async function install_import_instance(
@@ -145,24 +149,15 @@ export async function install_import_instance(
 	basePath: string,
 	instanceFolder: string,
 ) {
-	return await invoke<InstallJobSnapshot>('plugin:install|install_import_instance', {
-		launcherType,
-		basePath,
-		instanceFolder,
-	})
+	throw new Error('install_import_instance not implemented in Electron build')
 }
 
 export async function install_duplicate_instance(sourceInstanceId: string) {
-	return await invoke<InstallJobSnapshot>('plugin:install|install_duplicate_instance', {
-		sourceInstanceId,
-	})
+	throw new Error('install_duplicate_instance not implemented in Electron build')
 }
 
 export async function install_existing_instance(instanceId: string, force: boolean) {
-	return await invoke<InstallJobSnapshot>('plugin:install|install_existing_instance', {
-		instanceId,
-		force,
-	})
+	throw new Error('install_existing_instance not implemented in Electron build')
 }
 
 export async function install_pack_to_existing_instance(
@@ -170,31 +165,47 @@ export async function install_pack_to_existing_instance(
 	location: CreatePackLocation,
 	postInstallEdit?: InstallPostInstallEdit | null,
 ) {
-	return await invoke<InstallJobSnapshot>('plugin:install|install_pack_to_existing_instance', {
-		instanceId,
-		location,
-		postInstallEdit,
-	})
+	throw new Error('install_pack_to_existing_instance not implemented in Electron build')
 }
 
 export async function install_job_list(includeFinished: boolean) {
-	return await invoke<InstallJobSnapshot[]>('plugin:install|install_job_list', { includeFinished })
+	try {
+		return await window.electronAPI.installJobList(includeFinished)
+	} catch {
+		return []
+	}
 }
 
 export async function install_job_get(jobId: string) {
-	return await invoke<InstallJobSnapshot>('plugin:install|install_job_get', { jobId })
+	try {
+		return await window.electronAPI.installJobGet(jobId)
+	} catch {
+		return null
+	}
 }
 
 export async function install_job_retry(jobId: string) {
-	return await invoke<InstallJobSnapshot>('plugin:install|install_job_retry', { jobId })
+	try {
+		return await window.electronAPI.installJobRetry(jobId)
+	} catch {
+		return null
+	}
 }
 
 export async function install_job_cancel(jobId: string) {
-	return await invoke<InstallJobSnapshot>('plugin:install|install_job_cancel', { jobId })
+	try {
+		return await window.electronAPI.installJobCancel(jobId)
+	} catch {
+		return null
+	}
 }
 
 export async function install_job_dismiss(jobId: string) {
-	return await invoke<void>('plugin:install|install_job_dismiss', { jobId })
+	try {
+		return await window.electronAPI.installJobDismiss(jobId)
+	} catch {
+		return null
+	}
 }
 
 export function installJobInstanceId(job: InstallJobSnapshot): string | null {

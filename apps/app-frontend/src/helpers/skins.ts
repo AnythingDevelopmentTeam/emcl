@@ -1,5 +1,4 @@
 import { arrayBufferToBase64 } from '@modrinth/utils'
-import { invoke } from '@tauri-apps/api/core'
 
 export interface Cape {
 	id: string
@@ -111,41 +110,55 @@ export function filterDefaultSkins(list: Skin[]) {
 }
 
 export async function get_available_capes(): Promise<Cape[]> {
-	return invoke('plugin:minecraft-skins|get_available_capes', {})
+	try {
+		return await window.electronAPI.skinsGetAvailableCapes()
+	} catch {
+		return []
+	}
 }
 
 export async function get_available_skins(): Promise<Skin[]> {
-	return invoke('plugin:minecraft-skins|get_available_skins', {})
+	try {
+		return await window.electronAPI.skinsGetAvailableSkins()
+	} catch {
+		return []
+	}
 }
 
 export async function add_and_equip_custom_skin(
 	textureBlob: Uint8Array,
 	variant: SkinModel,
 	cape?: Cape,
-): Promise<Skin> {
-	return await invoke('plugin:minecraft-skins|add_and_equip_custom_skin', {
-		textureBlob,
-		variant,
-		cape,
-	})
+): Promise<Skin | null> {
+	try {
+		return await window.electronAPI.skinsSaveCustomSkin(
+			JSON.stringify({ texture_key: '', variant, source: 'custom', is_equipped: true }),
+			textureBlob.buffer,
+			variant,
+			cape ? JSON.stringify(cape) : null,
+			false,
+		)
+	} catch {
+		return null
+	}
 }
 
 export async function equip_skin(skin: Skin): Promise<void> {
-	await invoke('plugin:minecraft-skins|equip_skin', {
-		skin,
-	})
+	try {
+		await window.electronAPI.skinsEquipSkin(JSON.stringify(skin))
+	} catch {
+	}
 }
 
 export async function remove_custom_skin(skin: Skin): Promise<void> {
-	await invoke('plugin:minecraft-skins|remove_custom_skin', {
-		skin,
-	})
+	try {
+		await window.electronAPI.skinsRemoveCustomSkin(JSON.stringify(skin))
+	} catch {
+	}
 }
 
 export async function set_custom_skin_order(textureKeys: string[]): Promise<void> {
-	await invoke('plugin:minecraft-skins|set_custom_skin_order', {
-		textureKeys,
-	})
+	throw new Error('set_custom_skin_order not implemented in Electron build')
 }
 
 export async function save_custom_skin(
@@ -154,14 +167,18 @@ export async function save_custom_skin(
 	variant: SkinModel,
 	cape: Cape | undefined,
 	replaceTexture: boolean,
-): Promise<Skin> {
-	return await invoke('plugin:minecraft-skins|save_custom_skin', {
-		skin,
-		textureBlob,
-		variant,
-		cape,
-		replaceTexture,
-	})
+): Promise<Skin | null> {
+	try {
+		return await window.electronAPI.skinsSaveCustomSkin(
+			JSON.stringify(skin),
+			textureBlob.buffer,
+			variant,
+			cape ? JSON.stringify(cape) : null,
+			replaceTexture,
+		)
+	} catch {
+		return null
+	}
 }
 
 export async function get_normalized_skin_texture(skin: Skin): Promise<string> {
@@ -171,24 +188,27 @@ export async function get_normalized_skin_texture(skin: Skin): Promise<string> {
 }
 
 export async function normalize_skin_texture(texture: Uint8Array | string): Promise<Uint8Array> {
-	return await invoke('plugin:minecraft-skins|normalize_skin_texture', { texture })
+	throw new Error('normalize_skin_texture not implemented in Electron build')
 }
 
 export async function unequip_skin(): Promise<void> {
-	await invoke('plugin:minecraft-skins|unequip_skin')
+	try {
+		await window.electronAPI.skinsUnequipSkin()
+	} catch {
+	}
 }
 
 export async function flush_pending_skin_change(): Promise<void> {
-	await invoke('plugin:minecraft-skins|flush_pending_skin_change')
+	try {
+		await window.electronAPI.skinsFlushPendingSkinChange()
+	} catch {
+	}
 }
 
 export async function flush_pending_skin_change_for_profile(profileId: string): Promise<void> {
-	await invoke('plugin:minecraft-skins|flush_pending_skin_change_for_profile', {
-		profileId,
-	})
+	throw new Error('flush_pending_skin_change_for_profile not implemented in Electron build')
 }
 
 export async function get_dragged_skin_data(path: string): Promise<Uint8Array> {
-	const data = await invoke('plugin:minecraft-skins|get_dragged_skin_data', { path })
-	return new Uint8Array(data)
+	throw new Error('get_dragged_skin_data not implemented in Electron build')
 }

@@ -3,7 +3,9 @@
 use reqwest::StatusCode;
 
 use crate::State;
-use crate::state::{Credentials, MinecraftLoginFlow};
+use crate::state::{
+    Credentials, MinecraftLoginFlow, MinecraftProfile,
+};
 use crate::util::fetch::INSECURE_REQWEST_CLIENT;
 
 #[tracing::instrument]
@@ -87,4 +89,38 @@ pub async fn users() -> crate::Result<Vec<Credentials>> {
     let state = State::get().await?;
     let users = Credentials::get_all(&state.pool).await?;
     Ok(users.into_iter().map(|x| x.1).collect())
+}
+
+/// Create an offline-mode Minecraft account
+#[tracing::instrument]
+pub async fn create_offline(
+    username: &str,
+) -> crate::Result<Credentials> {
+    use chrono::Utc;
+
+    let state = State::get().await?;
+
+    // Generate offline-mode UUID (v3 UUID from "OfflinePlayer:" + name)
+    let uuid = uuid::Uuid::new_v3(
+        &uuid::Uuid::NAMESPACE_URL,
+        format!("OfflinePlayer:{}", username).as_bytes(),
+    );
+
+    let creds = Credentials {
+        offline_profile: MinecraftProfile {
+            id: uuid,
+            name: username.to_string(),
+            skins: vec![],
+            capes: vec![],
+            fetch_time: None,
+        },
+        access_token: String::new(),
+        refresh_token: String::new(),
+        expires: Utc::now(),
+        active: true,
+    };
+
+    creds.upsert(&state.pool).await?;
+
+    Ok(creds)
 }
