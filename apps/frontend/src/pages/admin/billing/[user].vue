@@ -160,7 +160,7 @@
 								<ModrinthPlusIcon class="h-7 w-min" />
 							</template>
 							<template v-else-if="subscription.metadata?.type === 'pyro'">
-								<ModrinthServersIcon class="h-7 w-min" />
+								<ServersIcon class="h-7 w-min" />
 							</template>
 							<template v-else-if="subscription.metadata?.type === 'medal'">
 								<span>Medal Trial Server</span>
@@ -223,7 +223,7 @@ import {
 	ServerIcon,
 	UserIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	Avatar,
 	ButtonStyled,
@@ -238,13 +238,13 @@ import {
 	useFormatDateTime,
 	useRelativeTime,
 	useVIntl,
-} from '@modrinth/ui'
-import { capitalizeString } from '@modrinth/utils'
-import { DEFAULT_CREDIT_EMAIL_MESSAGE } from '@modrinth/utils/utils.ts'
+} from '@emcl/ui'
+import { capitalizeString } from '@emcl/utils'
+import { DEFAULT_CREDIT_EMAIL_MESSAGE } from '@emcl/utils/utils.ts'
 import { useQuery } from '@tanstack/vue-query'
 import dayjs from 'dayjs'
 
-import ModrinthServersIcon from '~/components/brand/ModrinthServersIcon.vue'
+import ServersIcon from '~/components/brand/ServersIcon.vue'
 import AdminBillingChargeCard from '~/components/ui/admin/AdminBillingChargeCard.vue'
 
 const { addNotification } = injectNotificationManager()

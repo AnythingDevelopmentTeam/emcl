@@ -35,7 +35,7 @@ export interface OpeningCommand {
 // This should be called during the initializion/opening of the launcher
 export async function initialize_state() {
 	try {
-		return await window.electronAPI.initState('modrinth-app')
+		return await window.electronAPI.initState()
 	} catch {
 		return null
 	}

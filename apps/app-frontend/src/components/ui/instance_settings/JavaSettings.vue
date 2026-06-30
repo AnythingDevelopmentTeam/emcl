@@ -7,7 +7,7 @@ import {
 	SearchIcon,
 	SpinnerIcon,
 	XCircleIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	ButtonStyled,
 	Checkbox,
@@ -16,7 +16,7 @@ import {
 	Slider,
 	StyledInput,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { open } from '@/helpers/tauri-compat'
 import { computed, readonly, ref, watch } from 'vue'
 

@@ -1,4 +1,4 @@
-import type { Labrinth } from '@modrinth/api-client'
+import type { Labrinth } from '@emcl/api-client'
 import {
 	BadgeDollarSignIcon,
 	GiftIcon,
@@ -6,9 +6,9 @@ import {
 	LandmarkIcon,
 	PayPalColorIcon,
 	VenmoColorIcon,
-} from '@modrinth/assets'
-import type { MessageDescriptor } from '@modrinth/ui'
-import { createContext, getCurrencyIcon, paymentMethodMessages, useDebugLogger } from '@modrinth/ui'
+} from '@emcl/assets'
+import type { MessageDescriptor } from '@emcl/ui'
+import { createContext, getCurrencyIcon, paymentMethodMessages, useDebugLogger } from '@emcl/ui'
 import { type Component, computed, type ComputedRef, type Ref, ref } from 'vue'
 
 import { type FieldConfig, getRailConfig } from '@/utils/muralpay-rails'

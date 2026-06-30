@@ -32,7 +32,7 @@ import {
 	LockIcon,
 	ScaleIcon,
 	ShieldIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 
 import NavStack from '~/components/ui/NavStack.vue'
 

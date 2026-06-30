@@ -6,8 +6,8 @@ import {
 	LogInIcon,
 	MessagesSquareIcon,
 	WrenchIcon,
-} from '@modrinth/assets'
-import { Admonition, ButtonStyled, Collapsible, NewModal } from '@modrinth/ui'
+} from '@emcl/assets'
+import { Admonition, ButtonStyled, Collapsible, NewModal } from '@emcl/ui'
 import { computed, ref } from 'vue'
 
 import { hide_ads_window, show_ads_window } from '@/helpers/ads.js'
@@ -138,7 +138,7 @@ async function copyToClipboard(text: string) {
 			<!-- Action buttons -->
 			<div class="flex items-center gap-2">
 				<ButtonStyled>
-					<a href="https://support.modrinth.com" class="!w-full" @click="modal?.hide()">
+					<a href="https://example.com/support" class="!w-full" @click="modal?.hide()">
 						<MessagesSquareIcon /> Contact support
 					</a>
 				</ButtonStyled>

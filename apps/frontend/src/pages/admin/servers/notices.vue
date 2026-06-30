@@ -260,8 +260,8 @@
 	</div>
 </template>
 <script setup lang="ts">
-import type { Archon } from '@modrinth/api-client'
-import { EditIcon, PlusIcon, SaveIcon, SettingsIcon, TrashIcon, XIcon } from '@modrinth/assets'
+import type { Archon } from '@emcl/api-client'
+import { EditIcon, PlusIcon, SaveIcon, SettingsIcon, TrashIcon, XIcon } from '@emcl/assets'
 import {
 	ButtonStyled,
 	Combobox,
@@ -278,8 +278,8 @@ import {
 	useFormatDateTime,
 	useRelativeTime,
 	useVIntl,
-} from '@modrinth/ui'
-import { NOTICE_LEVELS } from '@modrinth/ui/src/utils/notices.ts'
+} from '@emcl/ui'
+import { NOTICE_LEVELS } from '@emcl/ui/src/utils/notices.ts'
 import dayjs from 'dayjs'
 import { computed } from 'vue'
 

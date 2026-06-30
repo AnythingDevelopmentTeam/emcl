@@ -108,8 +108,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Archon, Labrinth } from '@modrinth/api-client'
-import { FilterIcon, SearchIcon, UserPlusIcon } from '@modrinth/assets'
+import type { Archon, Labrinth } from '@emcl/api-client'
+import { FilterIcon, SearchIcon, UserPlusIcon } from '@emcl/assets'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import { computed, ref, watch } from 'vue'
 

@@ -8,7 +8,7 @@ import {
 	languageSelectorMessages,
 	LOCALES,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 
 const { formatMessage } = useVIntl()
 const { locale, setLocale } = injectI18n()

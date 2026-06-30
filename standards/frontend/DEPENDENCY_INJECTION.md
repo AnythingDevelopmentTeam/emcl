@@ -23,7 +23,7 @@ Modrinth uses a lightweight DI layer built on Vue's `provide`/`inject` for shari
 All providers are defined using `createContext` from `packages/ui/src/providers/index.ts` (adapted from Reka UI). It produces a typed `[inject, provide]` tuple:
 
 ```ts
-import { createContext } from '@modrinth/ui'
+import { createContext } from '@emcl/ui'
 
 interface MyContext {
 	someValue: Ref<string>
@@ -107,7 +107,7 @@ Create a setup function in `apps/app-frontend/src/providers/setup/`:
 ```ts
 // apps/app-frontend/src/providers/setup/my-feature.ts
 import { ref } from 'vue'
-import { provideMyFeature } from '@modrinth/ui'
+import { provideMyFeature } from '@emcl/ui'
 
 export function setupMyFeatureProvider() {
 	const items = ref<Item[]>([])
@@ -150,7 +150,7 @@ In any component across `packages/ui`, `apps/frontend`, or `apps/app-frontend`:
 
 ```vue
 <script setup lang="ts">
-import { injectMyFeature } from '@modrinth/ui'
+import { injectMyFeature } from '@emcl/ui'
 
 const { items, addItem } = injectMyFeature()
 </script>

@@ -1,4 +1,4 @@
-import { arrayBufferToBase64 } from '@modrinth/utils'
+import { arrayBufferToBase64 } from '@emcl/utils'
 
 export interface Cape {
 	id: string

@@ -79,9 +79,9 @@
 </template>
 
 <script setup lang="ts">
-import type { Archon } from '@modrinth/api-client'
-import { NuxtModrinthClient } from '@modrinth/api-client'
-import { LinkIcon, SettingsIcon, TimerIcon } from '@modrinth/assets'
+import type { Archon } from '@emcl/api-client'
+import { NuxtModrinthClient } from '@emcl/api-client'
+import { LinkIcon, SettingsIcon, TimerIcon } from '@emcl/assets'
 import { useStorage } from '@vueuse/core'
 import { computed } from 'vue'
 

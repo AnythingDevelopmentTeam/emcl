@@ -1,8 +1,8 @@
-import { provideModrinthClient } from '@modrinth/ui'
+import { provideModrinthClient } from '@emcl/ui'
 
 import { createModrinthClient } from '~/helpers/api.ts'
 
-export function setupModrinthClientProvider(auth: Awaited<ReturnType<typeof useAuth>>) {
+export function setupClientProvider(auth: Awaited<ReturnType<typeof useAuth>>) {
 	const config = useRuntimeConfig()
 	const client = createModrinthClient(auth, {
 		apiBaseUrl: config.public.apiBaseUrl.replace('/v2/', '/'),

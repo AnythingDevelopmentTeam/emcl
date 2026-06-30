@@ -6,8 +6,8 @@ import {
 	SpinnerIcon,
 	StopCircleIcon,
 	TimerIcon,
-} from '@modrinth/assets'
-import { Avatar, ButtonStyled, injectNotificationManager, useRelativeTime } from '@modrinth/ui'
+} from '@emcl/assets'
+import { Avatar, ButtonStyled, injectNotificationManager, useRelativeTime } from '@emcl/ui'
 import { convertFileSrc } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import { computed, onMounted, onUnmounted, ref } from 'vue'

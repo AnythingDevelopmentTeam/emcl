@@ -148,9 +148,9 @@
 </template>
 
 <script setup lang="ts">
-import type { Paper } from '@modrinth/api-client'
-import { EyeIcon, EyeOffIcon, UploadIcon, XIcon } from '@modrinth/assets'
-import { commonMessages, defineMessages, useVIntl } from '@modrinth/ui'
+import type { Paper } from '@emcl/api-client'
+import { EyeIcon, EyeOffIcon, UploadIcon, XIcon } from '@emcl/assets'
+import { commonMessages, defineMessages, useVIntl } from '@emcl/ui'
 import { computed, onMounted, ref, watch } from 'vue'
 
 import { useDebugLogger } from '#ui/composables/debug-logger'

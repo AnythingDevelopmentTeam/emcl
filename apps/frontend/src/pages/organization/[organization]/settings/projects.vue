@@ -331,7 +331,7 @@ import {
 	SortDescIcon,
 	TrashIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	Avatar,
 	ButtonStyled,
@@ -346,8 +346,8 @@ import {
 	ProjectStatusBadge,
 	StyledInput,
 	useVIntl,
-} from '@modrinth/ui'
-import { formatProjectType } from '@modrinth/utils'
+} from '@emcl/ui'
+import { formatProjectType } from '@emcl/utils'
 import { useQuery } from '@tanstack/vue-query'
 
 import ModalCreation from '~/components/ui/create/ProjectCreateModal.vue'

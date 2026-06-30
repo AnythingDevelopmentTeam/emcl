@@ -40,8 +40,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Archon } from '@modrinth/api-client'
-import { RotateCounterClockwiseIcon, SpinnerIcon, XIcon } from '@modrinth/assets'
+import type { Archon } from '@emcl/api-client'
+import { RotateCounterClockwiseIcon, SpinnerIcon, XIcon } from '@emcl/assets'
 import { useMutation, useQueryClient } from '@tanstack/vue-query'
 import { computed, ref } from 'vue'
 

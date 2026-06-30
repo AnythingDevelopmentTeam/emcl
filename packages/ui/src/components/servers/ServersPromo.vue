@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ModrinthIcon, RightArrowIcon, XIcon } from '@modrinth/assets'
+import { ModrinthIcon, RightArrowIcon, XIcon } from '@emcl/assets'
 
 import AutoLink from '../base/AutoLink.vue'
 import ButtonStyled from '../base/ButtonStyled.vue'

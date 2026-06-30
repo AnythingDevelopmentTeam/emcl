@@ -7,7 +7,7 @@ import {
 	TrashExclamationIcon,
 	TrashIcon,
 	TriangleAlertIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import { useMagicKeys } from '@vueuse/core'
 import { Tooltip } from 'floating-vue'
 import { computed, getCurrentInstance, ref } from 'vue'

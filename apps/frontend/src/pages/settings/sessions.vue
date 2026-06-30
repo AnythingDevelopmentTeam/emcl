@@ -44,7 +44,7 @@
 	</div>
 </template>
 <script setup>
-import { XIcon } from '@modrinth/assets'
+import { XIcon } from '@emcl/assets'
 import {
 	ButtonStyled,
 	commonMessages,
@@ -55,7 +55,7 @@ import {
 	useFormatDateTime,
 	useRelativeTime,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
 
 definePageMeta({

@@ -1,5 +1,5 @@
-import type { AbstractWebNotificationManager } from '@modrinth/ui'
-import { provideInstanceImport } from '@modrinth/ui'
+import type { AbstractWebNotificationManager } from '@emcl/ui'
+import { provideInstanceImport } from '@emcl/ui'
 import { open } from '@/helpers/tauri-compat'
 
 import {

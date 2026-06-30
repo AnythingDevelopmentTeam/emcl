@@ -139,7 +139,7 @@ import {
 	MoreHorizontalIcon,
 	ScaleIcon,
 	TrashIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	AutoLink,
 	Avatar,
@@ -148,8 +148,8 @@ import {
 	OverflowMenu,
 	useFormatDateTime,
 	useRelativeTime,
-} from '@modrinth/ui'
-import { renderString } from '@modrinth/utils'
+} from '@emcl/ui'
+import { renderString } from '@emcl/utils'
 
 import { isStaff } from '~/helpers/users.js'
 

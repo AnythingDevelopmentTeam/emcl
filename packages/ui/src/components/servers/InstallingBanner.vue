@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import { RotateCounterClockwiseIcon } from '@modrinth/assets'
+import { RotateCounterClockwiseIcon } from '@emcl/assets'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 import { defineMessages, useVIntl } from '#ui/composables/i18n'

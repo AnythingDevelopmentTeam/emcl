@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CopyIcon, EditIcon, PlusIcon, SpinnerIcon, TrashIcon, UploadIcon } from '@modrinth/assets'
+import { CopyIcon, EditIcon, PlusIcon, SpinnerIcon, TrashIcon, UploadIcon } from '@emcl/assets'
 import {
 	Avatar,
 	ButtonStyled,
@@ -10,7 +10,7 @@ import {
 	OverflowMenu,
 	StyledInput,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { useQueryClient } from '@tanstack/vue-query'
 import { convertFileSrc, open } from '@/helpers/tauri-compat'
 import { computed, type Ref, ref, watch } from 'vue'

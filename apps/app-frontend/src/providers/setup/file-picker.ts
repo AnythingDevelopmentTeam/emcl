@@ -1,4 +1,4 @@
-import { provideFilePicker } from '@modrinth/ui'
+import { provideFilePicker } from '@emcl/ui'
 import { convertFileSrc, invoke, open, readFile } from '@/helpers/tauri-compat'
 
 function getFileName(path: string, fallback: string) {

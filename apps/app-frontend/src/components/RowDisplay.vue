@@ -10,8 +10,8 @@ import {
 	PlusIcon,
 	StopCircleIcon,
 	TrashIcon,
-} from '@modrinth/assets'
-import { HeadingLink, injectNotificationManager } from '@modrinth/ui'
+} from '@emcl/assets'
+import { HeadingLink, injectNotificationManager } from '@emcl/ui'
 import { openUrl } from '@/helpers/tauri-compat'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -177,12 +177,11 @@ const handleOptionsClick = async (args) => {
 			break
 		}
 		case 'open_link':
-			openUrl(`https://modrinth.com/${args.item.project_type}/${args.item.slug}`)
+			if (args.item.slug) {
+				openUrl(`https://example.com/${args.item.project_type}/${args.item.slug}`)
+			}
 			break
 		case 'copy_link':
-			await navigator.clipboard.writeText(
-				`https://modrinth.com/${args.item.project_type}/${args.item.slug}`,
-			)
 			break
 	}
 }
@@ -284,7 +283,7 @@ onUnmounted(() => {
 		<template #duplicate> <ClipboardCopyIcon /> Duplicate instance</template>
 		<template #copy_path> <ClipboardCopyIcon /> Copy path </template>
 		<template #install> <DownloadIcon /> Install </template>
-		<template #open_link> <GlobeIcon /> Open in Modrinth <ExternalIcon /> </template>
+		<template #open_link> <GlobeIcon /> Open <ExternalIcon /> </template>
 		<template #copy_link> <ClipboardCopyIcon /> Copy link </template>
 	</ContextMenu>
 </template>

@@ -164,9 +164,9 @@
 </template>
 
 <script setup lang="ts">
-import type { Labrinth } from '@modrinth/api-client'
-import { ExternalIcon, InfoIcon, TagCategoryFlagIcon } from '@modrinth/assets'
-import { IntlFormatted, useScrollIndicator, useVIntl } from '@modrinth/ui'
+import type { Labrinth } from '@emcl/api-client'
+import { ExternalIcon, InfoIcon, TagCategoryFlagIcon } from '@emcl/assets'
+import { IntlFormatted, useScrollIndicator, useVIntl } from '@emcl/ui'
 
 import type {
 	AnalyticsDashboardStat,

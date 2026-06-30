@@ -1,4 +1,4 @@
-import { MinecraftServerIcon } from '@modrinth/assets'
+import { MinecraftServerIcon } from '@emcl/assets'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { NotificationToast } from '../../components/notifications'

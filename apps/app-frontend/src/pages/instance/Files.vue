@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { EditingFile, FileItem, UploadState } from '@modrinth/ui'
+import type { EditingFile, FileItem, UploadState } from '@emcl/ui'
 import {
 	commonMessages,
 	defineMessages,
@@ -9,7 +9,7 @@ import {
 	ReadyTransition,
 	useDebugLogger,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { invoke, mkdir, readDir, readFile as readFileBytes, readTextFile, remove, rename, stat, writeFile as writeFileBytes, writeTextFile } from '@/helpers/tauri-compat'
 import { onUnmounted, ref, watch } from 'vue'
 

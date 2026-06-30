@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LeftArrowIcon } from '@modrinth/assets'
+import { LeftArrowIcon } from '@emcl/assets'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 

@@ -6,7 +6,7 @@ import {
 	MastodonIcon,
 	ToggleRightIcon,
 	TwitterIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	AutoLink,
 	ButtonStyled,
@@ -16,8 +16,8 @@ import {
 	IntlFormatted,
 	type MessageDescriptor,
 	useVIntl,
-} from '@modrinth/ui'
-import { commonSettingsMessages } from '@modrinth/ui/src/utils/common-messages.js'
+} from '@emcl/ui'
+import { commonSettingsMessages } from '@emcl/ui/src/utils/common-messages.js'
 
 import TextLogo from '~/components/brand/TextLogo.vue'
 
@@ -27,13 +27,13 @@ const { addNotification } = injectNotificationManager()
 const config = useRuntimeConfig()
 
 const messages = defineMessages({
-	modrinthInformation: {
-		id: 'layout.footer.modrinth-information',
-		defaultMessage: 'Modrinth information',
+	siteInformation: {
+		id: 'layout.footer.site-information',
+		defaultMessage: 'Site information',
 	},
 	openSource: {
 		id: 'layout.footer.open-source',
-		defaultMessage: 'Modrinth is <github-link>open source</github-link>.',
+		defaultMessage: 'This project is <github-link>open source</github-link>.',
 	},
 	legalDisclaimer: {
 		id: 'layout.footer.legal-disclaimer',
@@ -50,28 +50,28 @@ const socialLinks: {
 }[] = [
 	{
 		label: defineMessage({ id: 'layout.footer.social.discord', defaultMessage: 'Discord' }),
-		href: 'https://discord.modrinth.com',
+		href: 'https://discord.example.com',
 		icon: DiscordIcon,
 	},
 	{
 		label: defineMessage({ id: 'layout.footer.social.bluesky', defaultMessage: 'Bluesky' }),
-		href: 'https://bsky.app/profile/modrinth.com',
+		href: 'https://bsky.app/profile/example.com',
 		icon: BlueskyIcon,
 	},
 	{
 		label: defineMessage({ id: 'layout.footer.social.mastodon', defaultMessage: 'Mastodon' }),
-		href: 'https://floss.social/@modrinth',
+		href: 'https://floss.social/@example',
 		icon: MastodonIcon,
 		rel: 'me',
 	},
 	{
 		label: defineMessage({ id: 'layout.footer.social.x', defaultMessage: 'X' }),
-		href: 'https://x.com/modrinth',
+		href: 'https://x.com/example',
 		icon: TwitterIcon,
 	},
 	{
 		label: defineMessage({ id: 'layout.footer.social.github', defaultMessage: 'GitHub' }),
-		href: 'https://github.com/modrinth',
+		href: 'https://github.com/example',
 		icon: GithubIcon,
 	},
 ]
@@ -95,11 +95,11 @@ const footerLinks: {
 				label: defineMessage({ id: 'layout.footer.about.changelog', defaultMessage: 'Changelog' }),
 			},
 			{
-				href: 'https://status.modrinth.com',
+				href: 'https://status.example.com',
 				label: defineMessage({ id: 'layout.footer.about.status', defaultMessage: 'Status' }),
 			},
 			{
-				href: 'https://careers.modrinth.com',
+				href: 'https://careers.example.com',
 				label: defineMessage({ id: 'layout.footer.about.careers', defaultMessage: 'Careers' }),
 			},
 			{
@@ -116,17 +116,17 @@ const footerLinks: {
 		links: [
 			{
 				href: '/plus',
-				label: defineMessage({ id: 'layout.footer.products.plus', defaultMessage: 'Modrinth+' }),
+				label: defineMessage({ id: 'layout.footer.products.plus', defaultMessage: 'Plus' }),
 			},
 			{
 				href: '/app',
-				label: defineMessage({ id: 'layout.footer.products.app', defaultMessage: 'Modrinth App' }),
+				label: defineMessage({ id: 'layout.footer.products.app', defaultMessage: 'App' }),
 			},
 			{
 				href: '/hosting',
 				label: defineMessage({
 					id: 'layout.footer.products.servers',
-					defaultMessage: 'Modrinth Hosting',
+					defaultMessage: 'Hosting',
 				}),
 			},
 		],
@@ -135,28 +135,28 @@ const footerLinks: {
 		label: defineMessage({ id: 'layout.footer.resources', defaultMessage: 'Resources' }),
 		links: [
 			{
-				href: 'https://support.modrinth.com',
+				href: 'https://support.example.com',
 				label: defineMessage({
 					id: 'layout.footer.resources.help-center',
 					defaultMessage: 'Help Center',
 				}),
 			},
 			{
-				href: 'https://translate.modrinth.com',
+				href: 'https://translate.example.com',
 				label: defineMessage({
 					id: 'layout.footer.resources.translate',
 					defaultMessage: 'Translate',
 				}),
 			},
 			{
-				href: 'https://github.com/modrinth/code/issues',
+				href: 'https://github.com/example/code/issues',
 				label: defineMessage({
 					id: 'layout.footer.resources.report-issues',
 					defaultMessage: 'Report issues',
 				}),
 			},
 			{
-				href: 'https://docs.modrinth.com/api/',
+				href: 'https://docs.example.com/api/',
 				label: defineMessage({
 					id: 'layout.footer.resources.api-docs',
 					defaultMessage: 'API documentation',
@@ -239,7 +239,7 @@ function developerModeIncrement() {
 				<div
 					class="flex flex-col items-center gap-3 md:items-start"
 					role="region"
-					:aria-label="formatMessage(messages.modrinthInformation)"
+					:aria-label="formatMessage(messages.siteInformation)"
 				>
 					<div class="flex items-center gap-2">
 						<TextLogo
@@ -278,7 +278,7 @@ function developerModeIncrement() {
 							<IntlFormatted :message-id="messages.openSource">
 								<template #github-link="{ children }">
 									<a
-										href="https://github.com/modrinth/code"
+										href="https://github.com/example/code"
 										class="text-brand hover:underline"
 										target="_blank"
 										rel="noopener"
@@ -288,7 +288,7 @@ function developerModeIncrement() {
 								</template>
 							</IntlFormatted>
 						</p>
-						<p class="m-0">© {{ state.buildYear ?? '2025' }} Rinth, Inc.</p>
+						<p class="m-0">© {{ state.buildYear ?? '2025' }} Example, Inc.</p>
 					</div>
 				</div>
 				<div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:contents">

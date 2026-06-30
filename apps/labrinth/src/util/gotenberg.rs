@@ -67,7 +67,7 @@ impl GotenbergClient {
     /// Initialize the client from environment variables.
     pub fn from_env(redis: RedisPool) -> eyre::Result<Self> {
         let client = reqwest::Client::builder()
-            .user_agent("Modrinth")
+            .user_agent("EMCL")
             .build()
             .wrap_err("failed to build reqwest client")?;
 

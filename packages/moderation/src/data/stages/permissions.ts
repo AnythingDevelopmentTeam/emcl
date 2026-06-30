@@ -1,4 +1,4 @@
-import { SignatureIcon } from '@modrinth/assets'
+import { SignatureIcon } from '@emcl/assets'
 
 import type { Stage } from '../../types/stage'
 

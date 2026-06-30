@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DropdownIcon, FolderOpenIcon, PlusIcon } from '@modrinth/assets'
-import { ButtonStyled, injectNotificationManager, OverflowMenu } from '@modrinth/ui'
+import { DropdownIcon, FolderOpenIcon, PlusIcon } from '@emcl/assets'
+import { ButtonStyled, injectNotificationManager, OverflowMenu } from '@emcl/ui'
 import { open } from '@/helpers/tauri-compat'
 import { useRouter } from 'vue-router'
 

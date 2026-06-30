@@ -166,7 +166,7 @@ import {
 	MinecraftServerIcon,
 	XCircleIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import { computed } from 'vue'
 
 import { useModalStack } from '../../composables/modal-stack'

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { InfoIcon } from '@modrinth/assets'
+import { InfoIcon } from '@emcl/assets'
 
 import { defineMessages, useVIntl } from '#ui/composables/i18n.ts'
 

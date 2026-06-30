@@ -1,4 +1,4 @@
-import { CheckIcon, EyeIcon, RotateCounterClockwiseIcon } from '@modrinth/assets'
+import { CheckIcon, EyeIcon, RotateCounterClockwiseIcon } from '@emcl/assets'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ref } from 'vue'
 

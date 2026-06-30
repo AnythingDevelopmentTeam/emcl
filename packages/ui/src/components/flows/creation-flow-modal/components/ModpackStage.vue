@@ -57,8 +57,8 @@
 </template>
 
 <script setup lang="ts">
-import { CompassIcon, ImportIcon, RightArrowIcon } from '@modrinth/assets'
-import { commonMessages, defineMessages, useVIntl } from '@modrinth/ui'
+import { CompassIcon, ImportIcon, RightArrowIcon } from '@emcl/assets'
+import { commonMessages, defineMessages, useVIntl } from '@emcl/ui'
 import { defineAsyncComponent, h, onMounted, ref, watch } from 'vue'
 
 import { useDebugLogger } from '#ui/composables/debug-logger'

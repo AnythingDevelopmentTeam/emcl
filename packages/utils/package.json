@@ -1,5 +1,5 @@
 {
-	"name": "@modrinth/utils",
+	"name": "@emcl/utils",
 	"version": "0.0.0",
 	"private": true,
 	"main": "./index.ts",
@@ -9,8 +9,8 @@
 		"fix": "eslint . --fix && prettier --write ."
 	},
 	"devDependencies": {
-		"@modrinth/tooling-config": "workspace:*",
-		"@modrinth/api-client": "workspace:*"
+		"@emcl/tooling-config": "workspace:*",
+		"@emcl/api-client": "workspace:*"
 	},
 	"dependencies": {
 		"@codemirror/commands": "^6.3.2",

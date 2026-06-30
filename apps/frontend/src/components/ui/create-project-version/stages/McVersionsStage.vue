@@ -33,8 +33,8 @@
 </template>
 
 <script lang="ts" setup>
-import { XIcon } from '@modrinth/assets'
-import { ButtonStyled, TagItem } from '@modrinth/ui'
+import { XIcon } from '@emcl/assets'
+import { ButtonStyled, TagItem } from '@emcl/ui'
 
 import { injectManageVersionContext } from '~/providers/version/manage-version-modal'
 

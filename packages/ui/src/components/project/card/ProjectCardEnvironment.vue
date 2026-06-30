@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Labrinth } from '@modrinth/api-client'
-import { ClientIcon, GlobeIcon, ServerIcon } from '@modrinth/assets'
+import type { Labrinth } from '@emcl/api-client'
+import { ClientIcon, GlobeIcon, ServerIcon } from '@emcl/assets'
 
 import { defineMessages, useVIntl } from '../../../composables'
 import { TagItem } from '../../base'

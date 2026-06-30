@@ -74,8 +74,8 @@
 </template>
 
 <script setup lang="ts" generic="T">
-import { ChevronDownIcon, MessageIcon, ReplyIcon, SendIcon } from '@modrinth/assets'
-import type { QuickReply } from '@modrinth/moderation'
+import { ChevronDownIcon, MessageIcon, ReplyIcon, SendIcon } from '@emcl/assets'
+import type { QuickReply } from '@emcl/moderation'
 import {
 	ButtonStyled,
 	CopyCode,
@@ -83,8 +83,8 @@ import {
 	MarkdownEditor,
 	OverflowMenu,
 	type OverflowMenuOption,
-} from '@modrinth/ui'
-import type { Thread, User } from '@modrinth/utils'
+} from '@emcl/ui'
+import type { Thread, User } from '@emcl/utils'
 import dayjs from 'dayjs'
 
 import { useImageUpload } from '~/composables/image-upload.ts'

@@ -257,7 +257,7 @@ import {
 	ShareIcon,
 	SpinnerIcon,
 	TrashIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	ButtonStyled,
 	ConfirmModal,
@@ -266,7 +266,7 @@ import {
 	injectProjectPageContext,
 	OverflowMenu,
 	ProjectPageVersions,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { onMounted, useTemplateRef, watch } from 'vue'
 
 import CreateProjectVersionModal from '~/components/ui/create-project-version/CreateProjectVersionModal.vue'

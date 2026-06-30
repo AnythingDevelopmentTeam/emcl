@@ -576,7 +576,7 @@ impl AuthProvider {
             AuthProvider::GitHub => {
                 let response = reqwest::Client::new()
                     .get("https://api.github.com/user")
-                    .header(reqwest::header::USER_AGENT, "Modrinth")
+                    .header(reqwest::header::USER_AGENT, "EMCL")
                     .header(AUTHORIZATION, format!("token {token}"))
                     .send()
                     .await?;
@@ -625,7 +625,7 @@ impl AuthProvider {
 
                 let discord_user: DiscordUser = reqwest::Client::new()
                     .get("https://discord.com/api/v10/users/@me")
-                    .header(reqwest::header::USER_AGENT, "Modrinth")
+                    .header(reqwest::header::USER_AGENT, "EMCL")
                     .header(AUTHORIZATION, format!("Bearer {token}"))
                     .send()
                     .await?
@@ -657,7 +657,7 @@ impl AuthProvider {
 
                 let microsoft_user: MicrosoftUser = reqwest::Client::new()
                     .get("https://graph.microsoft.com/v1.0/me?$select=id,displayName,mail,userPrincipalName")
-                    .header(reqwest::header::USER_AGENT, "Modrinth")
+                    .header(reqwest::header::USER_AGENT, "EMCL")
                     .header(AUTHORIZATION, format!("Bearer {token}"))
                     .send()
                     .await?.json().await?;
@@ -689,7 +689,7 @@ impl AuthProvider {
 
                 let gitlab_user: GitLabUser = reqwest::Client::new()
                     .get("https://gitlab.com/api/v4/user")
-                    .header(reqwest::header::USER_AGENT, "Modrinth")
+                    .header(reqwest::header::USER_AGENT, "EMCL")
                     .header(AUTHORIZATION, format!("Bearer {token}"))
                     .send()
                     .await?
@@ -715,7 +715,7 @@ impl AuthProvider {
 
                 let google_user: GoogleUser = reqwest::Client::new()
                     .get("https://www.googleapis.com/userinfo/v2/me")
-                    .header(reqwest::header::USER_AGENT, "Modrinth")
+                    .header(reqwest::header::USER_AGENT, "EMCL")
                     .header(AUTHORIZATION, format!("Bearer {token}"))
                     .send()
                     .await?
@@ -808,7 +808,7 @@ impl AuthProvider {
                     .get(format!(
                         "{api_url}identity/openidconnect/userinfo?schema=openid"
                     ))
-                    .header(reqwest::header::USER_AGENT, "Modrinth")
+                    .header(reqwest::header::USER_AGENT, "EMCL")
                     .header(AUTHORIZATION, format!("Bearer {token}"))
                     .send()
                     .await?

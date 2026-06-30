@@ -1,5 +1,6 @@
 import { install_job_listener } from './events'
 import type { InstanceLink, InstanceLoader } from './types'
+import { invoke } from './tauri-compat'
 
 export interface PackLocationVersionId {
 	type: 'fromVersionId'

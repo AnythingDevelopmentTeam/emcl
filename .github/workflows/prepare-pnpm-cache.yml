@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   prepare:
-    if: github.repository_owner == 'modrinth'
+    if: true
     runs-on: blacksmith-2vcpu-ubuntu-2404
     steps:
       - name: Checkout

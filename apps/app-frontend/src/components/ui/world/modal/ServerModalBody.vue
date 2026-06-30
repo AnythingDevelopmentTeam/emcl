@@ -5,7 +5,7 @@ import {
 	type MessageDescriptor,
 	StyledInput,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 
 import type { ServerPackStatus } from '@/helpers/worlds.ts'
 
@@ -51,7 +51,7 @@ const messages = defineMessages({
 	},
 	placeholderAddress: {
 		id: 'app.world.server-modal.placeholder-address',
-		defaultMessage: 'example.modrinth.gg',
+		defaultMessage: 'example.minecraft.net',
 	},
 	selectAnOption: {
 		id: 'app.world.server-modal.select-an-option',

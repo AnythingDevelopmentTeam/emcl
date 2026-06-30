@@ -3,7 +3,7 @@ import {
 	injectModrinthClient,
 	injectModrinthServerContext,
 	ServersManageBackupsPage,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { useQueryClient } from '@tanstack/vue-query'
 
 const client = injectModrinthClient()

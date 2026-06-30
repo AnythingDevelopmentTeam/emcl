@@ -71,7 +71,7 @@ export async function showLauncherLogsFolder() {
 export async function createInstanceShortcut(instanceName, instanceId, options = {}) {
 	try {
 		const outputPath = await window.electronAPI.dialogSave({
-			defaultPath: `Modrinth - ${instanceName}`,
+			defaultPath: `Shortcut - ${instanceName}`,
 		})
 
 		if (!outputPath) return null

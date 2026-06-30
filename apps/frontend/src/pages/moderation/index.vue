@@ -124,7 +124,7 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { ListFilterIcon, ScaleIcon, SearchIcon, SortAscIcon, SortDescIcon } from '@modrinth/assets'
+import { ListFilterIcon, ScaleIcon, SearchIcon, SortAscIcon, SortDescIcon } from '@emcl/assets'
 import {
 	ButtonStyled,
 	Combobox,
@@ -136,7 +136,7 @@ import {
 	Pagination,
 	StyledInput,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import Fuse from 'fuse.js'
 import ConfettiExplosion from 'vue-confetti-explosion'
 

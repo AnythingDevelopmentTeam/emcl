@@ -1,6 +1,6 @@
-import type { Labrinth } from '@modrinth/api-client'
-import { PackageOpenIcon } from '@modrinth/assets'
-import type { ModerationModpackPermissionApprovalType } from '@modrinth/utils'
+import type { Labrinth } from '@emcl/api-client'
+import { PackageOpenIcon } from '@emcl/assets'
+import type { ModerationModpackPermissionApprovalType } from '@emcl/utils'
 
 import type { Stage } from '../types/stage'
 

@@ -27,9 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { NewspaperIcon } from '@modrinth/assets'
-import { articles as rawArticles } from '@modrinth/blog'
-import { ButtonStyled, defineMessages, NewsArticleCard, useVIntl } from '@modrinth/ui'
+import { NewspaperIcon } from '@emcl/assets'
+import { articles as rawArticles } from '@emcl/blog'
+import { ButtonStyled, defineMessages, NewsArticleCard, useVIntl } from '@emcl/ui'
 import { computed, ref } from 'vue'
 
 const { formatMessage } = useVIntl()

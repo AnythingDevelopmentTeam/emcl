@@ -141,7 +141,7 @@ import {
 	SERVER_CATEGORY_ICON_MAP,
 	StarIcon,
 	TriangleAlertIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	Checkbox,
 	ConfirmLeaveModal,
@@ -153,8 +153,8 @@ import {
 	usePageLeaveSafety,
 	useSavable,
 	useVIntl,
-} from '@modrinth/ui'
-import { formatProjectType, sortedCategories } from '@modrinth/utils'
+} from '@emcl/ui'
+import { formatProjectType, sortedCategories } from '@emcl/utils'
 import { computed } from 'vue'
 
 interface Category {

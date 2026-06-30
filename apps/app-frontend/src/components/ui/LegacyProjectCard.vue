@@ -1,6 +1,6 @@
 <script setup>
-import { DownloadIcon, HeartIcon, TagIcon } from '@modrinth/assets'
-import { Avatar, FormattedTag, TagItem, useCompactNumber } from '@modrinth/ui'
+import { DownloadIcon, HeartIcon, TagIcon } from '@emcl/assets'
+import { Avatar, FormattedTag, TagItem, useCompactNumber } from '@emcl/ui'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { computed } from 'vue'
@@ -68,7 +68,7 @@ const toTransparent = computed(() => {
 				'background-image': `url(${
 					project.featured_gallery ??
 					project.gallery[0] ??
-					'https://launcher-files.modrinth.com/assets/maze-bg.png'
+					''
 				})`,
 			}"
 		>

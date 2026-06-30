@@ -77,8 +77,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Archon } from '@modrinth/api-client'
-import { GlobeIcon, PackageIcon, RightArrowIcon, SpinnerIcon, UsersIcon } from '@modrinth/assets'
+import type { Archon } from '@emcl/api-client'
+import { GlobeIcon, PackageIcon, RightArrowIcon, SpinnerIcon, UsersIcon } from '@emcl/assets'
 import {
 	ButtonStyled,
 	defineMessages,
@@ -86,7 +86,7 @@ import {
 	injectNotificationManager,
 	useServerPermissions,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { useQueryClient } from '@tanstack/vue-query'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'

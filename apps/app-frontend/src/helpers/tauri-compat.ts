@@ -1,29 +1,51 @@
+import { invoke as tauriInvoke, convertFileSrc as tauriConvertFileSrc } from '@tauri-apps/api/core'
+import { getVersion as tauriGetVersion } from '@tauri-apps/api/app'
+import { getCurrentWindow as tauriGetCurrentWindow } from '@tauri-apps/api/window'
+import { getCurrentWebview as tauriGetCurrentWebview } from '@tauri-apps/api/webview'
+import { listen } from '@tauri-apps/api/event'
+import { open as dialogOpen, save as dialogSave } from '@tauri-apps/plugin-dialog'
+import { platform as osPlatform } from '@tauri-apps/plugin-os'
+import { openUrl as openerOpenUrl } from '@tauri-apps/plugin-opener'
+import {
+	mkdir as fsMkdir,
+	readDir as fsReadDir,
+	readFile as fsReadFile,
+	readTextFile as fsReadTextFile,
+	remove as fsRemove,
+	rename as fsRename,
+	stat as fsStat,
+	writeFile as fsWriteFile,
+	writeTextFile as fsWriteTextFile,
+} from '@tauri-apps/plugin-fs'
+
 export async function getVersion() {
-	return await window.electronAPI!.getAppVersion()
+	return await tauriGetVersion()
 }
 
 export function getCurrentWindow() {
+	const win = tauriGetCurrentWindow()
 	return {
-		setDecorations: async (decorated: boolean) => window.electronAPI!.windowSetDecorations(decorated),
-		isMaximized: async () => window.electronAPI!.windowIsMaximized(),
-		minimize: async () => window.electronAPI!.windowMinimize(),
-		unmaximize: async () => { /* no-op */ },
-		maximize: async () => window.electronAPI!.windowMaximize(),
-		close: async () => window.electronAPI!.windowClose(),
+		setDecorations: async (decorated: boolean) => {
+			await tauriInvoke('toggle_decorations', { b: decorated })
+		},
+		isMaximized: async () => await win.isMaximized(),
+		minimize: async () => await win.minimize(),
+		unmaximize: async () => await win.unmaximize(),
+		maximize: async () => await win.maximize(),
+		close: async () => await win.close(),
 		onResized: (callback: () => void) => {
-			const cleanup = window.electronAPI!.onWindowResized(callback)
-			return cleanup
+			return win.listen('resized', callback)
 		},
 	}
 }
 
 export async function getOsType(): Promise<string> {
-	const os = await window.electronAPI.utilsGetOs()
-	return os.toLowerCase()
+	const p = await osPlatform()
+	return p.toLowerCase()
 }
 
 export async function openUrl(url: string): Promise<void> {
-	return window.electronAPI.openerOpenUrl(url)
+	await openerOpenUrl(url)
 }
 
 export async function saveWindowState(_flags: any): Promise<void> {
@@ -41,12 +63,7 @@ export const StateFlags = {
 }
 
 export async function invoke(cmd: string, args?: any): Promise<any> {
-	console.warn('[tauri-compat] invoke() called:', cmd, args)
-	if (cmd === 'show_window') return
-	if (cmd === 'plugin:updater|check') {
-		throw new Error('App updates not implemented in Electron build')
-	}
-	throw new Error(`Tauri invoke not supported: ${cmd}`)
+	return await tauriInvoke(cmd, args)
 }
 
 export async function tauriFetch(input: RequestInfo, init?: RequestInit): Promise<Response> {
@@ -54,62 +71,69 @@ export async function tauriFetch(input: RequestInfo, init?: RequestInit): Promis
 }
 
 export function convertFileSrc(filePath: string): string {
-	return `file://${filePath}`
+	return tauriConvertFileSrc(filePath)
 }
 
 export async function open(options?: any): Promise<any> {
-	return await window.electronAPI.dialogOpen(options ?? {})
+	return await dialogOpen(options)
 }
 
 export async function save(options?: any): Promise<any> {
-	return await window.electronAPI.dialogSave(options ?? {})
+	return await dialogSave(options)
 }
 
 export async function readFile(filePath: string): Promise<string> {
-	return await window.electronAPI.fileRead(filePath)
+	const bytes = await fsReadFile(filePath)
+	return new TextDecoder().decode(bytes)
 }
 
 export async function platform(): Promise<string> {
-	const os = await window.electronAPI.utilsGetOs()
-	return os.toLowerCase()
+	const p = await osPlatform()
+	return p.toLowerCase()
 }
 
 export function getCurrentWebview(): any {
+	const wv = tauriGetCurrentWebview()
 	return {
 		onDragDropEvent: (callback: (event: any) => void) => {
-			console.warn('[tauri-compat] onDragDropEvent not implemented')
-			return () => {}
+			return wv.listen('tauri://drag-drop', (event) => {
+				callback(event.payload)
+			})
 		},
 	}
 }
 
 export type DragDropEvent = any
 
-// Filesystem stubs — not implemented in Electron
-export async function mkdir(_path: string, _options?: any): Promise<void> {
-	console.warn('[tauri-compat] mkdir not implemented')
+export async function mkdir(path: string, options?: any): Promise<void> {
+	await fsMkdir(path, options)
 }
-export async function readDir(_path: string): Promise<any[]> {
-	console.warn('[tauri-compat] readDir not implemented')
-	return []
+
+export async function readDir(path: string): Promise<any[]> {
+	return await fsReadDir(path)
 }
-export async function readTextFile(_path: string): Promise<string> {
-	console.warn('[tauri-compat] readTextFile not implemented')
-	return ''
+
+export async function readTextFile(path: string): Promise<string> {
+	return await fsReadTextFile(path)
 }
-export async function remove(_path: string, _options?: any): Promise<void> {
-	console.warn('[tauri-compat] remove not implemented')
+
+export async function remove(path: string, options?: any): Promise<void> {
+	await fsRemove(path, options)
 }
-export async function rename(_old: string, _new: string): Promise<void> {
-	console.warn('[tauri-compat] rename not implemented')
+
+export async function rename(oldPath: string, newPath: string): Promise<void> {
+	await fsRename(oldPath, newPath)
 }
-export async function stat(_path: string): Promise<any> {
-	console.warn('[tauri-compat] stat not implemented')
-	return null
+
+export async function stat(path: string): Promise<any> {
+	return await fsStat(path)
 }
-export async function writeFile(_path: string, _data: any, _options?: any): Promise<void> {
-	console.warn('[tauri-compat] writeFile not implemented')
+
+export async function writeFile(path: string, data: any, options?: any): Promise<void> {
+	const bytes = typeof data === 'string' ? new TextEncoder().encode(data) : data
+	await fsWriteFile(path, bytes, options)
 }
-export async function writeTextFile(_path: string, _data: string): Promise<void> {
-	console.warn('[tauri-compat] writeTextFile not implemented')
+
+export async function writeTextFile(path: string, data: string): Promise<void> {
+	await fsWriteTextFile(path, data)
 }

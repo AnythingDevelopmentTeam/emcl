@@ -18,8 +18,8 @@
 </template>
 
 <script setup lang="ts">
-import { useFormatBytes } from '@modrinth/ui'
-import { fileIsValid } from '@modrinth/utils'
+import { useFormatBytes } from '@emcl/ui'
+import { fileIsValid } from '@emcl/utils'
 import { ref } from 'vue'
 
 const props = withDefaults(

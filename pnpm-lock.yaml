@@ -19,12 +19,12 @@ importers:
       '@crowdin/crowdin-api-client':
         specifier: ^1.55.2
         version: 1.55.2
+      '@emcl/tooling-config':
+        specifier: workspace:*
+        version: link:packages/tooling-config
       '@formatjs/icu-messageformat-parser':
         specifier: ^2.11.4
         version: 2.11.4
-      '@modrinth/tooling-config':
-        specifier: workspace:*
-        version: link:packages/tooling-config
       '@tailwindcss/container-queries':
         specifier: ^0.1.1
         version: 0.1.1(tailwindcss@4.1.18)
@@ -61,13 +61,13 @@ importers:
 
   apps/app:
     dependencies:
-      '@modrinth/app-frontend':
+      '@emcl/app-frontend':
         specifier: workspace:*
         version: link:../app-frontend
-      '@modrinth/app-lib':
+      '@emcl/app-lib':
         specifier: workspace:*
         version: link:../../packages/app-lib
-      '@modrinth/daedalus':
+      '@emcl/daedalus':
         specifier: workspace:*
         version: link:../../packages/daedalus
     devDependencies:
@@ -102,16 +102,16 @@ importers:
 
   apps/app-frontend:
     dependencies:
-      '@modrinth/api-client':
+      '@emcl/api-client':
         specifier: workspace:^
         version: link:../../packages/api-client
-      '@modrinth/assets':
+      '@emcl/assets':
         specifier: workspace:*
         version: link:../../packages/assets
-      '@modrinth/ui':
+      '@emcl/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@modrinth/utils':
+      '@emcl/utils':
         specifier: workspace:*
         version: link:../../packages/utils
       '@sentry/vue':
@@ -124,29 +124,20 @@ importers:
         specifier: 5.90.7
         version: 5.90.7(vue@3.5.27(typescript@5.9.3))
       '@tauri-apps/api':
-        specifier: ^2.5.0
+        specifier: ^2.10.1
         version: 2.10.1
       '@tauri-apps/plugin-dialog':
-        specifier: ^2.2.1
-        version: 2.6.0
-      '@tauri-apps/plugin-fs':
-        specifier: ^2.4.5
-        version: 2.4.5
-      '@tauri-apps/plugin-http':
-        specifier: ~2.5.7
-        version: 2.5.7
-      '@tauri-apps/plugin-opener':
-        specifier: ^2.2.6
-        version: 2.5.3
-      '@tauri-apps/plugin-os':
-        specifier: ^2.2.1
-        version: 2.3.2
-      '@tauri-apps/plugin-updater':
         specifier: ^2.7.1
-        version: 2.10.0
-      '@tauri-apps/plugin-window-state':
-        specifier: ^2.2.2
-        version: 2.4.1
+        version: 2.7.1
+      '@tauri-apps/plugin-fs':
+        specifier: ^2.5.1
+        version: 2.5.1
+      '@tauri-apps/plugin-opener':
+        specifier: ^2.5.4
+        version: 2.5.4
+      '@tauri-apps/plugin-os':
+        specifier: ^2.3.2
+        version: 2.3.2
       '@types/three':
         specifier: ^0.172.0
         version: 0.172.0
@@ -199,15 +190,15 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0(vue@3.5.27(typescript@5.9.3))
     devDependencies:
+      '@emcl/tooling-config':
+        specifier: workspace:*
+        version: link:../../packages/tooling-config
       '@eslint/compat':
         specifier: ^1.1.1
         version: 1.4.1(eslint@9.39.2(jiti@1.21.7))
       '@formatjs/cli':
         specifier: ^6.2.12
         version: 6.12.2(@vue/compiler-core@3.5.27)(vue@3.5.27(typescript@5.9.3))
-      '@modrinth/tooling-config':
-        specifier: workspace:*
-        version: link:../../packages/tooling-config
       '@nuxt/eslint-config':
         specifier: ^0.5.6
         version: 0.5.7(@typescript-eslint/utils@8.54.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.9.3))(eslint@9.39.2(jiti@1.21.7))(typescript@5.9.3)
@@ -255,7 +246,7 @@ importers:
 
   apps/daedalus_client:
     dependencies:
-      '@modrinth/daedalus':
+      '@emcl/daedalus':
         specifier: workspace:*
         version: link:../../packages/daedalus
 
@@ -267,7 +258,7 @@ importers:
       '@astrojs/starlight':
         specifier: ^0.32.2
         version: 0.32.6(astro@5.17.1(@types/node@24.12.2)(db0@0.3.4)(ioredis@5.9.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.57.1)(sass@1.97.3)(terser@5.46.0)(typescript@5.9.3)(yaml@2.8.2))
-      '@modrinth/assets':
+      '@emcl/assets':
         specifier: workspace:*
         version: link:../../packages/assets
       astro:
@@ -285,30 +276,30 @@ importers:
 
   apps/frontend:
     dependencies:
+      '@emcl/api-client':
+        specifier: workspace:*
+        version: link:../../packages/api-client
+      '@emcl/assets':
+        specifier: workspace:*
+        version: link:../../packages/assets
+      '@emcl/blog':
+        specifier: workspace:*
+        version: link:../../packages/blog
+      '@emcl/moderation':
+        specifier: workspace:*
+        version: link:../../packages/moderation
+      '@emcl/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@emcl/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@formatjs/intl-localematcher':
         specifier: ^0.5.4
         version: 0.5.10
       '@ltd/j-toml':
         specifier: ^1.38.0
         version: 1.38.0
-      '@modrinth/api-client':
-        specifier: workspace:*
-        version: link:../../packages/api-client
-      '@modrinth/assets':
-        specifier: workspace:*
-        version: link:../../packages/assets
-      '@modrinth/blog':
-        specifier: workspace:*
-        version: link:../../packages/blog
-      '@modrinth/moderation':
-        specifier: workspace:*
-        version: link:../../packages/moderation
-      '@modrinth/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      '@modrinth/utils':
-        specifier: workspace:*
-        version: link:../../packages/utils
       '@sentry/nuxt':
         specifier: ^10.33.0
         version: 10.38.0(@opentelemetry/api@1.9.0)(@opentelemetry/context-async-hooks@2.5.0(@opentelemetry/api@1.9.0))(@opentelemetry/core@2.5.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.211.0(@opentelemetry/api@1.9.0))(@opentelemetry/resources@2.5.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.5.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.39.0)(magicast@0.5.1)(nuxt@3.20.2(@parcel/watcher@2.5.6)(@types/node@24.12.2)(@vue/compiler-sfc@3.5.27)(cac@6.7.14)(db0@0.3.4)(eslint@9.39.2(jiti@2.6.1))(ioredis@5.9.2)(lightningcss@1.32.0)(magicast@0.5.1)(optionator@0.9.4)(rolldown@1.0.0-rc.12)(rollup@4.57.1)(sass@1.97.3)(terser@5.46.0)(typescript@5.9.3)(vite@8.0.3(@types/node@24.12.2)(esbuild@0.27.3)(jiti@2.6.1)(sass@1.97.3)(terser@5.46.0)(yaml@2.8.2))(vue-tsc@2.2.12(typescript@5.9.3))(xml2js@0.6.2)(yaml@2.8.2))(pinia@3.0.4(typescript@5.9.3)(vue@3.5.27(typescript@5.9.3)))(rollup@4.57.1)(vue@3.5.27(typescript@5.9.3))
@@ -409,12 +400,12 @@ importers:
         specifier: ^1.0.14
         version: 1.0.15
     devDependencies:
+      '@emcl/tooling-config':
+        specifier: workspace:*
+        version: link:../../packages/tooling-config
       '@formatjs/cli':
         specifier: ^6.2.12
         version: 6.12.2(@vue/compiler-core@3.5.27)(vue@3.5.27(typescript@5.9.3))
-      '@modrinth/tooling-config':
-        specifier: workspace:*
-        version: link:../../packages/tooling-config
       '@types/dompurify':
         specifier: ^3.0.5
         version: 3.2.0
@@ -478,7 +469,7 @@ importers:
         specifier: ^1.4.1
         version: 1.5.1
     devDependencies:
-      '@modrinth/tooling-config':
+      '@emcl/tooling-config':
         specifier: workspace:*
         version: link:../tooling-config
       '@tauri-apps/plugin-http':
@@ -495,7 +486,7 @@ importers:
 
   packages/assets:
     devDependencies:
-      '@modrinth/tooling-config':
+      '@emcl/tooling-config':
         specifier: workspace:*
         version: link:../tooling-config
       '@types/node':
@@ -513,7 +504,7 @@ importers:
 
   packages/blog:
     dependencies:
-      '@modrinth/utils':
+      '@emcl/utils':
         specifier: workspace:*
         version: link:../utils
       dayjs:
@@ -535,7 +526,7 @@ importers:
         specifier: ^0.6.2
         version: 0.6.2
     devDependencies:
-      '@modrinth/tooling-config':
+      '@emcl/tooling-config':
         specifier: workspace:*
         version: link:../tooling-config
       '@types/glob':
@@ -558,28 +549,28 @@ importers:
 
   packages/moderation:
     dependencies:
-      '@modrinth/api-client':
+      '@emcl/api-client':
         specifier: workspace:*
         version: link:../api-client
-      '@modrinth/assets':
+      '@emcl/assets':
         specifier: workspace:*
         version: link:../assets
-      '@modrinth/utils':
+      '@emcl/utils':
         specifier: workspace:*
         version: link:../utils
       vue:
         specifier: ^3.5.13
         version: 3.5.27(typescript@5.9.3)
     devDependencies:
+      '@emcl/tooling-config':
+        specifier: workspace:*
+        version: link:../tooling-config
+      '@emcl/ui':
+        specifier: workspace:*
+        version: link:../ui
       '@formatjs/cli':
         specifier: ^6.2.12
         version: 6.12.2(@vue/compiler-core@3.5.27)(vue@3.5.27(typescript@5.9.3))
-      '@modrinth/tooling-config':
-        specifier: workspace:*
-        version: link:../tooling-config
-      '@modrinth/ui':
-        specifier: workspace:*
-        version: link:../ui
 
   packages/napi-theseus: {}
 
@@ -658,21 +649,21 @@ importers:
       '@codemirror/view':
         specifier: ^6.22.1
         version: 6.39.12
+      '@emcl/api-client':
+        specifier: workspace:*
+        version: link:../api-client
+      '@emcl/assets':
+        specifier: workspace:*
+        version: link:../assets
+      '@emcl/blog':
+        specifier: workspace:*
+        version: link:../blog
+      '@emcl/utils':
+        specifier: workspace:*
+        version: link:../utils
       '@intercom/messenger-js-sdk':
         specifier: ^0.0.14
         version: 0.0.14
-      '@modrinth/api-client':
-        specifier: workspace:*
-        version: link:../api-client
-      '@modrinth/assets':
-        specifier: workspace:*
-        version: link:../assets
-      '@modrinth/blog':
-        specifier: workspace:*
-        version: link:../blog
-      '@modrinth/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@tanstack/vue-query':
         specifier: 5.90.7
         version: 5.90.7(vue@3.5.27(typescript@5.9.3))
@@ -782,12 +773,12 @@ importers:
         specifier: ^1.0.14
         version: 1.0.15
     devDependencies:
+      '@emcl/tooling-config':
+        specifier: workspace:*
+        version: link:../tooling-config
       '@formatjs/cli':
         specifier: ^6.2.12
         version: 6.12.2(@vue/compiler-core@3.5.27)(vue@3.5.27(typescript@5.9.3))
-      '@modrinth/tooling-config':
-        specifier: workspace:*
-        version: link:../tooling-config
       '@storybook/addon-a11y':
         specifier: ^10.1.10
         version: 10.2.4(storybook@10.2.4(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
@@ -888,10 +879,10 @@ importers:
         specifier: ^1.0.14
         version: 1.0.15
     devDependencies:
-      '@modrinth/api-client':
+      '@emcl/api-client':
         specifier: workspace:*
         version: link:../api-client
-      '@modrinth/tooling-config':
+      '@emcl/tooling-config':
         specifier: workspace:*
         version: link:../tooling-config
 
@@ -4300,6 +4291,9 @@ packages:
   '@tauri-apps/api@2.10.1':
     resolution: {integrity: sha512-hKL/jWf293UDSUN09rR69hrToyIXBb8CjGaWC7gfinvnQrBVvnLr08FeFi38gxtugAVyVcTa5/FD/Xnkb1siBw==}
 
+  '@tauri-apps/api@2.11.1':
+    resolution: {integrity: sha512-M2FPuYND2m+wh5hfW9ZpSdxMPdEJovPBWwoHJmwUpysTYNHaOkVFN419m/K0LIgjb/7KU2vBgsUepJWugQCvAA==}
+
   '@tauri-apps/cli-darwin-arm64@2.5.0':
     resolution: {integrity: sha512-VuVAeTFq86dfpoBDNYAdtQVLbP0+2EKCHIIhkaxjeoPARR0sLpFHz2zs0PcFU76e+KAaxtEtAJAXGNUc8E1PzQ==}
     engines: {node: '>= 10'}
@@ -4376,26 +4370,20 @@ packages:
     engines: {node: '>= 10'}
     hasBin: true
 
-  '@tauri-apps/plugin-dialog@2.6.0':
-    resolution: {integrity: sha512-q4Uq3eY87TdcYzXACiYSPhmpBA76shgmQswGkSVio4C82Sz2W4iehe9TnKYwbq7weHiL88Yw19XZm7v28+Micg==}
+  '@tauri-apps/plugin-dialog@2.7.1':
+    resolution: {integrity: sha512-OK1UBXYt+ojcmxMktzzuyonYIFta8CmAASpX+CA+DTGK24KlHjhYI6x2iOJ/TjZF4N7/ACK1oFmEOjIY9IhzOQ==}
 
-  '@tauri-apps/plugin-fs@2.4.5':
-    resolution: {integrity: sha512-dVxWWGE6VrOxC7/jlhyE+ON/Cc2REJlM35R3PJX3UvFw2XwYhLGQVAIyrehenDdKjotipjYEVc4YjOl3qq90fA==}
+  '@tauri-apps/plugin-fs@2.5.1':
+    resolution: {integrity: sha512-9Lz+Jopp6QyeEWhlpkMx4R/+P9HgR+AVAI4vOZhlT8Xaymtz8iVI/Ov984/XTqgJz/5gz5NretqPB/XEMS3NhQ==}
 
   '@tauri-apps/plugin-http@2.5.7':
     resolution: {integrity: sha512-+F2lEH/c9b0zSsOXKq+5hZNcd9F4IIKCK1T17RqMwpCmVnx2aoqY8yIBccCd25HTYUb3j6NPVbRax/m00hKG8A==}
 
-  '@tauri-apps/plugin-opener@2.5.3':
-    resolution: {integrity: sha512-CCcUltXMOfUEArbf3db3kCE7Ggy1ExBEBl51Ko2ODJ6GDYHRp1nSNlQm5uNCFY5k7/ufaK5Ib3Du/Zir19IYQQ==}
+  '@tauri-apps/plugin-opener@2.5.4':
+    resolution: {integrity: sha512-1HnPkb+AmgO29HBazm4uPLKB+r7zzcTBW1d0fyYp1uP+jwtpoiNDGKMMzz58SFp49nOIrxdE3aUJtT57lfO9CQ==}
 
   '@tauri-apps/plugin-os@2.3.2':
     resolution: {integrity: sha512-n+nXWeuSeF9wcEsSPmRnBEGrRgOy6jjkSU+UVCOV8YUGKb2erhDOxis7IqRXiRVHhY8XMKks00BJ0OAdkpf6+A==}
-
-  '@tauri-apps/plugin-updater@2.10.0':
-    resolution: {integrity: sha512-ljN8jPlnT0aSn8ecYhuBib84alxfMx6Hc8vJSKMJyzGbTPFZAC44T2I1QNFZssgWKrAlofvJqCC6Rr472JWfkQ==}
-
-  '@tauri-apps/plugin-window-state@2.4.1':
-    resolution: {integrity: sha512-OuvdrzyY8Q5Dbzpj+GcrnV1iCeoZbcFdzMjanZMMcAEUNy/6PH5pxZPXpaZLOR7whlzXiuzx0L9EKZbH7zpdRw==}
 
   '@testing-library/dom@10.4.1':
     resolution: {integrity: sha512-o4PXJQidqJl82ckFaXUeoAW+XysPLauYI43Abki5hABd853iMhitooc6znOnczgbTYmEP6U6/y1ZyKAIsvMKGg==}
@@ -14289,6 +14277,8 @@ snapshots:
 
   '@tauri-apps/api@2.10.1': {}
 
+  '@tauri-apps/api@2.11.1': {}
+
   '@tauri-apps/cli-darwin-arm64@2.5.0':
     optional: true
 
@@ -14336,31 +14326,23 @@ snapshots:
       '@tauri-apps/cli-win32-ia32-msvc': 2.5.0
       '@tauri-apps/cli-win32-x64-msvc': 2.5.0
 
-  '@tauri-apps/plugin-dialog@2.6.0':
+  '@tauri-apps/plugin-dialog@2.7.1':
     dependencies:
-      '@tauri-apps/api': 2.10.1
+      '@tauri-apps/api': 2.11.1
 
-  '@tauri-apps/plugin-fs@2.4.5':
+  '@tauri-apps/plugin-fs@2.5.1':
     dependencies:
-      '@tauri-apps/api': 2.10.1
+      '@tauri-apps/api': 2.11.1
 
   '@tauri-apps/plugin-http@2.5.7':
     dependencies:
       '@tauri-apps/api': 2.10.1
 
-  '@tauri-apps/plugin-opener@2.5.3':
+  '@tauri-apps/plugin-opener@2.5.4':
     dependencies:
-      '@tauri-apps/api': 2.10.1
+      '@tauri-apps/api': 2.11.1
 
   '@tauri-apps/plugin-os@2.3.2':
-    dependencies:
-      '@tauri-apps/api': 2.10.1
-
-  '@tauri-apps/plugin-updater@2.10.0':
-    dependencies:
-      '@tauri-apps/api': 2.10.1
-
-  '@tauri-apps/plugin-window-state@2.4.1':
     dependencies:
       '@tauri-apps/api': 2.10.1
 

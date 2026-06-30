@@ -54,8 +54,8 @@
 </template>
 
 <script setup lang="ts">
-import { CheckIcon, XIcon } from '@modrinth/assets'
-import type { Project } from '@modrinth/utils'
+import { CheckIcon, XIcon } from '@emcl/assets'
+import type { Project } from '@emcl/utils'
 import { computed, ref } from 'vue'
 
 import { useVIntl } from '../../composables'

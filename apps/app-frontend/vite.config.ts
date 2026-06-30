@@ -39,7 +39,7 @@ export default defineConfig({
 	resolve: {
 		alias: [
 			{
-				find: '@modrinth/api-client',
+				find: '@emcl/api-client',
 				replacement: apiClientSource,
 			},
 			{

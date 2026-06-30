@@ -298,7 +298,7 @@ import {
 	TrashIcon,
 	UploadIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	ButtonStyled,
 	ConfirmModal,
@@ -308,7 +308,7 @@ import {
 	NewModal as Modal,
 	StyledInput,
 	useFormatDateTime,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { useEventListener } from '@vueuse/core'
 
 import { isPermission } from '~/utils/permissions.ts'

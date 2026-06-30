@@ -7,8 +7,7 @@ export type ModrinthCredentials = {
 
 export async function login(): Promise<ModrinthCredentials | null> {
 	try {
-		const result = await window.electronAPI.mrAuthGet()
-		if (!result) throw new Error('Modrinth login not supported yet in Electron build')
+		const result = await window.electronAPI.mrAuthLogin()
 		return result
 	} catch {
 		return null

@@ -1,6 +1,6 @@
-import type { Labrinth } from '@modrinth/api-client'
-import { getCategoryIcon, GlobeIcon, SERVER_CATEGORY_ICON_MAP, UserIcon } from '@modrinth/assets'
-import { sortedCategories } from '@modrinth/utils'
+import type { Labrinth } from '@emcl/api-client'
+import { getCategoryIcon, GlobeIcon, SERVER_CATEGORY_ICON_MAP, UserIcon } from '@emcl/assets'
+import { sortedCategories } from '@emcl/utils'
 import { computed, type ComputedRef, type Ref, ref, shallowRef } from 'vue'
 import { useRoute } from 'vue-router'
 

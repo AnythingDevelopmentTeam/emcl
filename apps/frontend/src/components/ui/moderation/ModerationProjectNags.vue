@@ -82,7 +82,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Labrinth } from '@modrinth/api-client'
+import type { Labrinth } from '@emcl/api-client'
 import {
 	AsteriskIcon,
 	ChevronRightIcon,
@@ -91,10 +91,10 @@ import {
 	ScaleIcon,
 	SendIcon,
 	TriangleAlertIcon,
-} from '@modrinth/assets'
-import type { Nag, NagContext, NagStatus } from '@modrinth/moderation'
-import { nags } from '@modrinth/moderation'
-import { ButtonStyled, defineMessages, type MessageDescriptor, useVIntl } from '@modrinth/ui'
+} from '@emcl/assets'
+import type { Nag, NagContext, NagStatus } from '@emcl/moderation'
+import { nags } from '@emcl/moderation'
+import { ButtonStyled, defineMessages, type MessageDescriptor, useVIntl } from '@emcl/ui'
 import type { Component } from 'vue'
 import { computed } from 'vue'
 

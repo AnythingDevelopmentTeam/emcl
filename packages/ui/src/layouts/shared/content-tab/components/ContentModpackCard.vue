@@ -8,7 +8,7 @@ import {
 	Settings2Icon,
 	SpinnerIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import { Tooltip } from 'floating-vue'
 import { computed, getCurrentInstance, onMounted, onUnmounted, ref } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'

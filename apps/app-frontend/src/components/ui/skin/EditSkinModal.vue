@@ -130,7 +130,7 @@
 </template>
 
 <script setup lang="ts">
-import { CheckIcon, SaveIcon, SpinnerIcon, UploadIcon, XIcon } from '@modrinth/assets'
+import { CheckIcon, SaveIcon, SpinnerIcon, UploadIcon, XIcon } from '@emcl/assets'
 import {
 	ButtonStyled,
 	CapeButton,
@@ -143,8 +143,8 @@ import {
 	SkinPreviewRenderer,
 	useScrollIndicator,
 	useVIntl,
-} from '@modrinth/ui'
-import { arrayBufferToBase64 } from '@modrinth/utils'
+} from '@emcl/ui'
+import { arrayBufferToBase64 } from '@emcl/utils'
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue'
 
 import {

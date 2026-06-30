@@ -9,6 +9,7 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
         .invoke_handler(tauri::generate_handler![
             check_reachable,
             login,
+            create_offline,
             remove_user,
             get_default_user,
             set_default_user,
@@ -81,6 +82,12 @@ pub async fn login<R: Runtime>(
 
     window.close()?;
     Ok(None)
+}
+
+/// Create an offline-mode Minecraft account
+#[tauri::command]
+pub async fn create_offline(username: String) -> Result<Credentials> {
+    Ok(minecraft_auth::create_offline(&username).await?)
 }
 
 #[tauri::command]

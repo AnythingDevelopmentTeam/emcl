@@ -330,8 +330,8 @@
 </template>
 
 <script setup>
-import { ImageIcon, ScaleIcon, TrashIcon, TriangleAlertIcon, UploadIcon } from '@modrinth/assets'
-import { MIN_SUMMARY_CHARS } from '@modrinth/moderation'
+import { ImageIcon, ScaleIcon, TrashIcon, TriangleAlertIcon, UploadIcon } from '@emcl/assets'
+import { MIN_SUMMARY_CHARS } from '@emcl/moderation'
 import {
 	Avatar,
 	ButtonStyled,
@@ -346,8 +346,8 @@ import {
 	UnsavedChangesPopup,
 	useFormatBytes,
 	usePageLeaveSafety,
-} from '@modrinth/ui'
-import { fileIsValid, formatProjectStatus, formatProjectType } from '@modrinth/utils'
+} from '@emcl/ui'
+import { fileIsValid, formatProjectStatus, formatProjectType } from '@emcl/utils'
 
 import FileInput from '~/components/ui/FileInput.vue'
 import { useAuth } from '~/composables/auth.js'

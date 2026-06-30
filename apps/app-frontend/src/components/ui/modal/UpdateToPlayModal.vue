@@ -17,15 +17,15 @@
 </template>
 
 <script setup lang="ts">
-import type { Labrinth } from '@modrinth/api-client'
-import { DownloadIcon } from '@modrinth/assets'
+import type { Labrinth } from '@emcl/api-client'
+import { DownloadIcon } from '@emcl/assets'
 import {
 	commonMessages,
 	type ContentDiffItem,
 	ContentDiffModal,
 	defineMessages,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { openUrl } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import { computed, ref, watch } from 'vue'
@@ -256,7 +256,7 @@ async function handleUpdate() {
 
 function handleReport() {
 	if (instance.value?.link?.project_id) {
-		openUrl(`https://modrinth.com/report?item=project&itemID=${instance.value.link.project_id}`)
+		openUrl(`https://example.com/report?item=project&itemID=${instance.value.link.project_id}`)
 	}
 }
 

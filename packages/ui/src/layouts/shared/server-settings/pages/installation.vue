@@ -76,8 +76,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Archon } from '@modrinth/api-client'
-import { RotateCounterClockwiseIcon } from '@modrinth/assets'
+import type { Archon } from '@emcl/api-client'
+import { RotateCounterClockwiseIcon } from '@emcl/assets'
 import {
 	ButtonStyled,
 	commonMessages,
@@ -99,7 +99,7 @@ import {
 	useModrinthServersConsole,
 	useServerPermissions,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import { computed, ref, useTemplateRef, watch } from 'vue'
 

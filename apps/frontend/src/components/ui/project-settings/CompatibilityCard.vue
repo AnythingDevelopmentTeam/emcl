@@ -208,7 +208,7 @@ import {
 	PackageIcon,
 	PackagePlusIcon,
 	RefreshCwIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	Avatar,
 	ButtonStyled,
@@ -216,8 +216,8 @@ import {
 	injectModrinthClient,
 	injectProjectPageContext,
 	TagItem,
-} from '@modrinth/ui'
-import { formatVersionsForDisplay } from '@modrinth/utils'
+} from '@emcl/ui'
+import { formatVersionsForDisplay } from '@emcl/utils'
 import { useQuery } from '@tanstack/vue-query'
 
 import { useGeneratedState } from '~/composables/generated'

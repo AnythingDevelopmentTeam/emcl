@@ -1,5 +1,5 @@
-import type { LoadingStateProvider } from '@modrinth/ui'
-import { createLoadingStateCore, provideLoadingState } from '@modrinth/ui'
+import type { LoadingStateProvider } from '@emcl/ui'
+import { createLoadingStateCore, provideLoadingState } from '@emcl/ui'
 import { watch } from 'vue'
 
 /**

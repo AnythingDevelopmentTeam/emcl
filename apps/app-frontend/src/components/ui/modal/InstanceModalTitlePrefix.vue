@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ChevronRightIcon } from '@modrinth/assets'
-import { Avatar } from '@modrinth/ui'
+import { ChevronRightIcon } from '@emcl/assets'
+import { Avatar } from '@emcl/ui'
 import { convertFileSrc } from '@/helpers/tauri-compat'
 
 import type { GameInstance } from '@/helpers/types'

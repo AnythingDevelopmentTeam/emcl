@@ -128,8 +128,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Labrinth } from '@modrinth/api-client'
-import { PlusIcon, XIcon } from '@modrinth/assets'
+import type { Labrinth } from '@emcl/api-client'
+import { PlusIcon, XIcon } from '@emcl/assets'
 import {
 	ButtonStyled,
 	Chips,
@@ -142,7 +142,7 @@ import {
 	NewModal,
 	StyledInput,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { computed, defineAsyncComponent, h } from 'vue'
 
 import { generateUrlSlug } from '~/utils/slugs'

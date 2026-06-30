@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Combobox, defineMessages, ThemeSelector, Toggle, useVIntl } from '@modrinth/ui'
+import { Combobox, defineMessages, ThemeSelector, Toggle, useVIntl } from '@emcl/ui'
 import { ref, watch } from 'vue'
 
 import { get, set } from '@/helpers/settings.ts'

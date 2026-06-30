@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { PlusIcon, RightArrowIcon, XIcon } from '@modrinth/assets'
+import { PlusIcon, RightArrowIcon, XIcon } from '@emcl/assets'
 import {
 	ButtonStyled,
 	commonMessages,
@@ -42,7 +42,7 @@ import {
 	IntlFormatted,
 	NewModal,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { ref } from 'vue'
 
 const { formatMessage } = useVIntl()

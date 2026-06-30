@@ -1,5 +1,5 @@
 <template>
-	<ModrinthServersPurchaseModal
+	<ServersPurchaseModal
 		v-if="customer && regionsData"
 		ref="purchaseModal"
 		:publishable-key="props.stripePublishableKey"
@@ -27,13 +27,13 @@
 </template>
 
 <script setup lang="ts">
-import type { Archon, Labrinth } from '@modrinth/api-client'
+import type { Archon, Labrinth } from '@emcl/api-client'
 import {
 	injectModrinthClient,
 	injectNotificationManager,
-	ModrinthServersPurchaseModal,
+	ServersPurchaseModal,
 	useDebugLogger,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { useMutation, useQuery } from '@tanstack/vue-query'
 import { computed, ref, watch } from 'vue'
 
@@ -50,7 +50,7 @@ const checkoutReturnUrl = computed(() => {
 const { addNotification } = injectNotificationManager()
 const { labrinth, archon } = injectModrinthClient()
 const debug = useDebugLogger('ServersUpgradeModalWrapper')
-const purchaseModal = ref<InstanceType<typeof ModrinthServersPurchaseModal> | null>(null)
+const purchaseModal = ref<InstanceType<typeof ServersPurchaseModal> | null>(null)
 
 // stripe type
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

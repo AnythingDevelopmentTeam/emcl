@@ -1,59 +1,77 @@
+import { listen } from '@tauri-apps/api/event'
+
 export async function loading_listener(callback) {
-	return window.electronAPI.onCommand((payload) => {
-		if (payload?.event?.type?.startsWith('Loading')) {
-			callback(payload)
+	return listen('command', (event) => {
+		if (event.payload?.event?.type?.startsWith('Loading')) {
+			callback(event.payload)
 		}
 	})
 }
 
 export async function process_listener(callback) {
-	return window.electronAPI.onCommand((payload) => {
-		if (payload?.event === 'launched' || payload?.event === 'finished') {
-			callback(payload)
+	return listen('process', (event) => {
+		if (event.payload?.event === 'launched' || event.payload?.event === 'finished') {
+			callback(event.payload)
 		}
 	})
 }
 
 export async function instance_listener(callback) {
-	return window.electronAPI.onCommand((payload) => {
-		if (payload?.instance_id) {
-			callback(payload)
+	return listen('instance', (event) => {
+		if (event.payload?.instance_id) {
+			callback(event.payload)
 		}
 	})
 }
 
 export async function instance_bulk_update_progress_listener(callback) {
-	return window.electronAPI.onCommand(callback)
+	return listen('instance_bulk_update_progress', (event) => {
+		callback(event.payload)
+	})
 }
 
 export async function install_job_listener(callback) {
-	return window.electronAPI.onCommand(callback)
+	return listen('command', (event) => {
+		callback(event.payload)
+	})
 }
 
 export async function command_listener(callback) {
-	return window.electronAPI.onCommand(callback)
+	return listen('command', (event) => {
+		callback(event.payload)
+	})
 }
 
 export async function warning_listener(callback) {
-	return window.electronAPI.onCommand((payload) => {
-		if (payload?.message) {
-			callback(payload)
+	return listen('warning', (event) => {
+		if (event.payload?.message) {
+			callback(event.payload)
 		}
 	})
 }
 
 export async function friend_listener(callback) {
-	return window.electronAPI.onCommand(callback)
+	return listen('friend', (event) => {
+		callback(event.payload)
+	})
 }
 
 export async function notification_listener(callback) {
-	return window.electronAPI.onNotification(callback)
+	return listen('notification', (event) => {
+		callback(event.payload)
+	})
 }
 
 export async function log_listener(callback) {
-	return window.electronAPI.onCommand((payload) => {
-		if (payload?.instance_id && (payload?.type === 'log4j' || payload?.type === 'legacy')) {
-			callback(payload)
+	const unlisten1 = await listen('log4j', (event) => {
+		if (event.payload?.instance_id) {
+			callback(event.payload)
 		}
 	})
+	const unlisten2 = await listen('legacy_log', (event) => {
+		if (event.payload?.instance_id) {
+			callback(event.payload)
+		}
+	})
+	return () => { unlisten1(); unlisten2() }
 }

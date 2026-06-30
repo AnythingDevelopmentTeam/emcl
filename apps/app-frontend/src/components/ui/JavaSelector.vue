@@ -81,8 +81,8 @@ import {
 	SearchIcon,
 	SpinnerIcon,
 	XCircleIcon,
-} from '@modrinth/assets'
-import { ButtonStyled, injectNotificationManager, StyledInput } from '@modrinth/ui'
+} from '@emcl/assets'
+import { ButtonStyled, injectNotificationManager, StyledInput } from '@emcl/ui'
 import { open } from '@/helpers/tauri-compat'
 import { ref, watch } from 'vue'
 

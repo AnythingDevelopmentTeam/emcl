@@ -188,8 +188,8 @@ import {
 	ClipboardCopyIcon,
 	EllipsisVerticalIcon,
 	LinkIcon,
-} from '@modrinth/assets'
-import { type ExtendedReport, reportQuickReplies } from '@modrinth/moderation'
+} from '@emcl/assets'
+import { type ExtendedReport, reportQuickReplies } from '@emcl/moderation'
 import {
 	Avatar,
 	ButtonStyled,
@@ -200,8 +200,8 @@ import {
 	type OverflowMenuOption,
 	useFormatDateTime,
 	useRelativeTime,
-} from '@modrinth/ui'
-import { formatProjectType } from '@modrinth/utils'
+} from '@emcl/ui'
+import { formatProjectType } from '@emcl/utils'
 import { computed } from 'vue'
 
 import { isStaff } from '~/helpers/users.js'

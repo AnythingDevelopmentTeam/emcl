@@ -136,8 +136,8 @@
 </template>
 
 <script setup lang="ts">
-import { PinIcon } from '@modrinth/assets'
-import { useScrollIndicator, useVIntl } from '@modrinth/ui'
+import { PinIcon } from '@emcl/assets'
+import { useScrollIndicator, useVIntl } from '@emcl/ui'
 
 import { analyticsChartMessages } from '../../analytics-messages'
 

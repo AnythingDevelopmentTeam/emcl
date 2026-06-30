@@ -36,11 +36,7 @@ export async function login() {
  * @returns {Promise<Object>} A Credentials object for the offline user.
  */
 export async function create_offline(username) {
-	try {
-		return await window.electronAPI.authCreateOffline(username)
-	} catch {
-		return null
-	}
+	return await window.electronAPI.authCreateOffline(username)
 }
 
 /**

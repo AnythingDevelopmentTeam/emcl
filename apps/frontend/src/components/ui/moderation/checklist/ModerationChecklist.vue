@@ -458,7 +458,7 @@ import {
 	ToggleLeftIcon,
 	ToggleRightIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	type Action,
 	type ActionState,
@@ -483,7 +483,7 @@ import {
 	processMessage,
 	type Stage,
 	type ToggleAction,
-} from '@modrinth/moderation'
+} from '@emcl/moderation'
 import {
 	Avatar,
 	ButtonStyled,
@@ -498,13 +498,13 @@ import {
 	type OverflowMenuOption,
 	StyledInput,
 	useDebugLogger,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import {
 	type ModerationJudgements,
 	type ModerationModpackItem,
 	type ProjectStatus,
 	renderHighlightedString,
-} from '@modrinth/utils'
+} from '@emcl/utils'
 import { useQueryClient } from '@tanstack/vue-query'
 import { computedAsync, useDebounceFn } from '@vueuse/core'
 import type { Component } from 'vue'

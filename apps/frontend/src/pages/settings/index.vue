@@ -178,7 +178,7 @@
 </template>
 
 <script setup lang="ts">
-import { CodeIcon, RadioButtonCheckedIcon, RadioButtonIcon } from '@modrinth/assets'
+import { CodeIcon, RadioButtonCheckedIcon, RadioButtonIcon } from '@emcl/assets'
 import {
 	ButtonStyled,
 	defineMessages,
@@ -188,8 +188,8 @@ import {
 	ThemeSelector,
 	Toggle,
 	useVIntl,
-} from '@modrinth/ui'
-import { formatProjectType } from '@modrinth/utils'
+} from '@emcl/ui'
+import { formatProjectType } from '@emcl/utils'
 
 import MessageBanner from '~/components/ui/MessageBanner.vue'
 import type { DisplayLocation } from '~/plugins/cosmetics'

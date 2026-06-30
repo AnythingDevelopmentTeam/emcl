@@ -115,9 +115,9 @@
 	</div>
 </template>
 <script setup lang="ts">
-import type { Labrinth } from '@modrinth/api-client'
-import { CheckIcon, CurrencyIcon } from '@modrinth/assets'
-import { ButtonStyled, useFormatDateTime, useFormatPrice, useRelativeTime } from '@modrinth/ui'
+import type { Labrinth } from '@emcl/api-client'
+import { CheckIcon, CurrencyIcon } from '@emcl/assets'
+import { ButtonStyled, useFormatDateTime, useFormatPrice, useRelativeTime } from '@emcl/ui'
 import dayjs from 'dayjs'
 
 import { products } from '~/generated/state.json'

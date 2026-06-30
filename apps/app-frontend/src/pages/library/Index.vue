@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PlusIcon } from '@modrinth/assets'
-import { ButtonStyled, injectNotificationManager, NavTabs } from '@modrinth/ui'
+import { PlusIcon } from '@emcl/assets'
+import { ButtonStyled, injectNotificationManager, NavTabs } from '@emcl/ui'
 import { inject, onUnmounted, ref, shallowRef } from 'vue'
 import { useRoute } from 'vue-router'
 

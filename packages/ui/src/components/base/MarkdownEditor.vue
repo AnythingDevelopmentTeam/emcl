@@ -328,9 +328,9 @@ import {
 	UploadIcon,
 	XIcon,
 	YouTubeIcon,
-} from '@modrinth/assets'
-import { markdownCommands, modrinthMarkdownEditorKeymap } from '@modrinth/utils/codemirror'
-import { renderHighlightedString } from '@modrinth/utils/highlightjs'
+} from '@emcl/assets'
+import { markdownCommands, modrinthMarkdownEditorKeymap } from '@emcl/utils/codemirror'
+import { renderHighlightedString } from '@emcl/utils/highlightjs'
 import { type Component, computed, onBeforeUnmount, onMounted, ref, toRef, watch } from 'vue'
 
 import { defineMessages, type MessageDescriptor, useVIntl } from '../../composables/i18n'

@@ -7,7 +7,7 @@ import {
 	PanelVersionFeature,
 	TauriModrinthClient,
 	VerboseLoggingFeature,
-} from '@modrinth/api-client'
+} from '@emcl/api-client'
 import {
 	ChangeSkinIcon,
 	ExternalIcon,
@@ -22,7 +22,7 @@ import {
 	SettingsIcon,
 	UserIcon,
 	WorldIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	Admonition,
 	Avatar,
@@ -45,8 +45,8 @@ import {
 	useDebugLogger,
 	useFormatBytes,
 	useVIntl,
-} from '@modrinth/ui'
-import { renderString } from '@modrinth/utils'
+} from '@emcl/ui'
+import { renderString } from '@emcl/utils'
 import { useQuery } from '@tanstack/vue-query'
 import { getVersion, invoke, getCurrentWindow, tauriFetch, openUrl, getOsType, saveWindowState, StateFlags } from '@/helpers/tauri-compat'
 
@@ -100,6 +100,13 @@ import {
 	openAppUpdateChangelog,
 	setAppUpdateActions,
 } from '@/providers/app-update.ts'
+import {
+	create_offline as create_offline_account,
+	get_default_user,
+	set_default_user,
+	remove_user,
+	users as get_mc_users,
+} from '@/helpers/auth'
 import { createContentInstall, provideContentInstall } from '@/providers/content-install'
 import {
 	provideAppUpdateDownloadProgress,
@@ -112,7 +119,7 @@ import { setupLoadingStateProvider } from '@/providers/setup/loading-state'
 import { useError } from '@/store/error.js'
 import { useTheming } from '@/store/state'
 
-import { generateSkinPreviews } from './helpers/rendering/batch-skin-renderer'
+import { generateSkinPreviews, getPlayerHeadUrl } from './helpers/rendering/batch-skin-renderer'
 import { get_available_capes, get_available_skins } from './helpers/skins'
 import { AppNotificationManager } from './providers/app-notifications'
 import { AppPopupNotificationManager } from './providers/app-popup-notifications'
@@ -233,6 +240,7 @@ const authUnreachable = computed(() => {
 
 onMounted(async () => {
 	await useCheckDisableMouseover()
+	await refreshMcAccounts()
 
 	document.querySelector('body').addEventListener('click', handleClick)
 	document.querySelector('body').addEventListener('auxclick', handleAuxClick)
@@ -345,7 +353,7 @@ async function setupApp() {
 		}),
 	)
 
-	fetch(`https://api.modrinth.com/appCriticalAnnouncement.json?version=${version}`)
+	fetch(`https://example.com/api/announcement.json?version=${version}`)
 		.then((response) => response.json())
 		.then((res) => {
 			if (res && res.header && res.body) {
@@ -354,7 +362,7 @@ async function setupApp() {
 		})
 		.catch(() => {
 			console.log(
-				`No critical announcement found at https://api.modrinth.com/appCriticalAnnouncement.json?version=${version}`,
+				`No critical announcement found at https://example.com/api/announcement.json?version=${version}`,
 			)
 		})
 
@@ -578,6 +586,75 @@ async function signIn() {
 	} finally {
 		modrinthLoginFlowWaitModal.value.hide()
 	}
+}
+
+const showOfflineDialog = ref(false)
+const offlineUsername = ref('')
+const mcAccounts = ref([])
+const mcDefaultUser = ref()
+const mcAccountHeadUrl = ref('')
+async function refreshMcAccounts() {
+	mcDefaultUser.value = await get_default_user()
+	const list = await get_mc_users()
+	mcAccounts.value = Array.isArray(list) ? [...list] : []
+	mcAccounts.value.sort((a, b) => (a.profile?.name ?? '').localeCompare(b.profile?.name ?? ''))
+	mcAccountHeadUrl.value = ''
+	try {
+		const skins = await get_available_skins()
+		const equipped = skins.find((s) => s.is_equipped)
+		if (equipped) {
+			mcAccountHeadUrl.value = await getPlayerHeadUrl(equipped)
+		}
+	} catch {}
+}
+const selectedMcAccount = computed(() =>
+	mcAccounts.value.find((a) => a.profile.id === mcDefaultUser.value),
+)
+async function createOfflineAccount() {
+	const name = offlineUsername.value.trim()
+	if (!name) return
+	try {
+		const cred = await create_offline_account(name)
+		if (cred) {
+			console.log('Offline account created:', cred)
+			await set_default_user(cred.profile.id)
+			await refreshMcAccounts()
+			addNotification({
+				title: 'Offline account created',
+				text: `Signed in as "${cred.profile.name}"`,
+				type: 'success',
+				autoCloseMs: 5000,
+			})
+		} else {
+			addNotification({
+				title: 'Failed to create offline account',
+				text: 'Backend returned no credentials. Check console for details.',
+				type: 'error',
+			})
+			console.error('create_offline returned null/undefined')
+		}
+	} catch (e) {
+		addNotification({
+			title: 'Failed to create offline account',
+			text: String(e),
+			type: 'error',
+		})
+	}
+	showOfflineDialog.value = false
+	offlineUsername.value = ''
+}
+
+async function signOutMcAccount() {
+	const user = selectedMcAccount.value
+	if (!user) return
+	await remove_user(user.profile.id)
+	await refreshMcAccounts()
+	addNotification({
+		title: 'Signed out',
+		text: `Removed account "${user.profile.name}"`,
+		type: 'info',
+		autoCloseMs: 3000,
+	})
 }
 
 async function logOut() {
@@ -867,7 +944,7 @@ async function checkUpdates() {
 async function checkLinuxUpdates() {
 	try {
 		const [response, currentVersion] = await Promise.all([
-			fetch('https://launcher-files.modrinth.com/updates.json'),
+			fetch('https://example.com/updates.json'),
 			getVersion(),
 		])
 		const updates = await response.json()
@@ -955,7 +1032,7 @@ async function installUpdate() {
 setAppUpdateActions({
 	download: downloadAvailableUpdate,
 	install: installUpdate,
-	changelog: () => openUrl('https://modrinth.com/news/changelog?filter=app'),
+	changelog: () => openUrl('https://example.com/changelog'),
 })
 
 function handleClick(e) {
@@ -1023,6 +1100,39 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 		<Suspense>
 			<AuthGrantFlowWaitModal ref="modrinthLoginFlowWaitModal" @flow-cancel="cancelLogin" />
 		</Suspense>
+		<Teleport to="body">
+			<div
+				v-if="showOfflineDialog"
+				class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50"
+				@click.self="showOfflineDialog = false"
+			>
+				<div class="bg-bg-raised border border-surface-5 rounded-xl p-6 shadow-2xl w-80">
+					<h3 class="text-contrast font-semibold text-lg mb-4">Offline Account</h3>
+					<input
+						v-model="offlineUsername"
+						type="text"
+						class="w-full px-3 py-2 rounded-lg bg-bg-raised border border-surface-5 text-primary outline-none mb-4"
+						placeholder="Enter username..."
+						@keydown.enter="createOfflineAccount"
+					/>
+					<div class="flex gap-2 justify-end">
+						<button
+							class="px-4 py-2 rounded-lg bg-button-bg text-primary border border-surface-5 cursor-pointer hover:brightness-90"
+							@click="showOfflineDialog = false"
+						>
+							Cancel
+						</button>
+						<button
+							class="px-4 py-2 rounded-lg bg-brand text-on-brand cursor-pointer hover:brightness-90 disabled:opacity-50"
+							:disabled="!offlineUsername.trim()"
+							@click="createOfflineAccount"
+						>
+							Create
+						</button>
+					</div>
+				</div>
+			</div>
+		</Teleport>
 		<CreationFlowModal
 			ref="installationModal"
 			type="instance"
@@ -1077,12 +1187,12 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 			</NavButton>
 			<OverflowMenu
 				v-if="credentials?.user"
-				v-tooltip.right="`Modrinth account`"
+				v-tooltip.right="`Minecraft account`"
 				class="w-12 h-12 text-primary rounded-full flex items-center justify-center text-2xl transition-all bg-transparent hover:bg-button-bg hover:text-contrast border-0 cursor-pointer"
 				:options="[
 					{
 						id: 'view-profile',
-						action: () => openUrl('https://modrinth.com/user/' + credentials.user.username),
+						action: () => openUrl('https://example.com/user/' + credentials.user.username),
 					},
 					{
 						id: 'sign-out',
@@ -1106,8 +1216,33 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 				</template>
 				<template #sign-out> <LogOutIcon /> Sign out </template>
 			</OverflowMenu>
-			<NavButton v-else v-tooltip.right="'Sign in to a Modrinth account'" :to="() => signIn()">
+			<NavButton v-else v-tooltip.right="'Sign in to a Minecraft account'" :to="() => signIn()">
 				<LogInIcon class="text-brand" />
+			</NavButton>
+			<OverflowMenu
+				v-if="!credentials?.user && selectedMcAccount"
+				v-tooltip.right="selectedMcAccount.profile.name"
+				class="w-12 h-12 text-primary rounded-full flex items-center justify-center text-2xl transition-all bg-transparent hover:bg-button-bg hover:text-contrast border-0 cursor-pointer"
+				:options="[
+					{
+						id: 'manage-skins',
+						action: () => router.push('/skins'),
+					},
+					{
+						id: 'sign-out',
+						action: () => signOutMcAccount(),
+						color: 'danger',
+					},
+				]"
+				placement="right-end"
+			>
+				<Avatar v-if="mcAccountHeadUrl" :src="mcAccountHeadUrl" alt="" size="32px" circle />
+				<span v-else class="text-xs font-semibold truncate max-w-[2rem]">{{ selectedMcAccount.profile.name[0]?.toUpperCase() }}</span>
+				<template #manage-skins> <UserIcon /> Manage skins </template>
+				<template #sign-out> <LogOutIcon /> Sign out </template>
+			</OverflowMenu>
+			<NavButton v-if="!credentials?.user && !selectedMcAccount" v-tooltip.right="'Offline account'" :to="() => showOfflineDialog = true">
+				<UserIcon class="text-secondary" />
 			</NavButton>
 		</div>
 		<div data-tauri-drag-region class="app-grid-statusbar bg-bg-raised h-[--top-bar-height] flex">

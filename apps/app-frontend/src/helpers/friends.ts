@@ -1,4 +1,4 @@
-import type { User } from '@modrinth/utils'
+import type { User } from '@emcl/utils'
 import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
 

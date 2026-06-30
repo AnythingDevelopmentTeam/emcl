@@ -9,7 +9,7 @@ import {
 	SearchIcon,
 	SendIcon,
 	TrashIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	Accordion,
 	Avatar,
@@ -20,7 +20,7 @@ import {
 	defineMessages,
 	IntlFormatted,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 
 import ATLauncher from '~/assets/images/external/atlauncher.svg?component'
 import CurseForge from '~/assets/images/external/curseforge.svg?component'

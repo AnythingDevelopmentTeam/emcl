@@ -1,5 +1,5 @@
-import type { Archon } from '@modrinth/api-client'
-import type { IconComponent } from '@modrinth/assets'
+import type { Archon } from '@emcl/api-client'
+import type { IconComponent } from '@emcl/assets'
 import {
 	DatabaseBackupIcon,
 	FileIcon,
@@ -8,7 +8,7 @@ import {
 	ServerIcon,
 	SettingsIcon,
 	UsersIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 
 import type { DropdownFilterBarOption } from '#ui/components/base/DropdownFilterBar.vue'
 import type {

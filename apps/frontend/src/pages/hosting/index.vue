@@ -4,7 +4,7 @@
 		data-pyro
 		class="servers-hero relative isolate -mt-44 h-full min-h-screen pt-8"
 	>
-		<ModrinthServersPurchaseModal
+		<ServersPurchaseModal
 			v-if="customer"
 			:key="`purchase-modal-${customer.id}`"
 			ref="purchaseModal"
@@ -632,7 +632,7 @@ import {
 	TerminalSquareIcon,
 	TransferIcon,
 	VersionIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	ButtonStyled,
 	commonMessages,
@@ -641,11 +641,11 @@ import {
 	injectNotificationManager,
 	IntlFormatted,
 	LoaderIcon,
-	ModrinthServersPurchaseModal,
+	ServersPurchaseModal,
 	useFormatPrice,
 	useVIntl,
-} from '@modrinth/ui'
-import { monthsInInterval } from '@modrinth/ui/src/utils/billing.ts'
+} from '@emcl/ui'
+import { monthsInInterval } from '@emcl/ui/src/utils/billing.ts'
 import { useQuery } from '@tanstack/vue-query'
 import { computed } from 'vue'
 

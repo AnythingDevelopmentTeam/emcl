@@ -1,5 +1,5 @@
-import type { Labrinth } from '@modrinth/api-client'
-import type { ContentItem, ContentOwner } from '@modrinth/ui'
+import type { Labrinth } from '@emcl/api-client'
+import type { ContentItem, ContentOwner } from '@emcl/ui'
 
 import type { InstallJobSnapshot } from './install'
 import type {
@@ -9,6 +9,7 @@ import type {
 	GameInstance,
 	InstanceLoader,
 } from './types'
+import { invoke } from './tauri-compat'
 
 export async function remove(instanceId: string): Promise<void> {
 	try {
@@ -45,7 +46,11 @@ export async function get_projects(
 }
 
 export async function get_installed_project_ids(instanceId: string): Promise<string[]> {
-	throw new Error('get_installed_project_ids not implemented in Electron build')
+	try {
+		return await invoke('plugin:instance|instance_get_installed_project_ids', { instanceId })
+	} catch {
+		return []
+	}
 }
 
 export type InstanceInstallTarget = {
@@ -68,14 +73,22 @@ export async function get_install_candidates(
 	projectType: string,
 	targets: InstanceInstallTarget[],
 ): Promise<InstanceInstallCandidate[]> {
-	throw new Error('get_install_candidates not implemented in Electron build')
+	try {
+		return await invoke('plugin:instance|instance_get_install_candidates', { projectId, projectType, targets })
+	} catch {
+		return []
+	}
 }
 
 export async function get_content_items(
 	instanceId: string,
 	cacheBehaviour?: CacheBehaviour,
 ): Promise<ContentItem[]> {
-	throw new Error('get_content_items not implemented in Electron build')
+	try {
+		return await invoke('plugin:instance|instance_get_content_items', { instanceId, cacheBehaviour })
+	} catch {
+		return []
+	}
 }
 
 export interface LinkedModpackInfo {
@@ -91,29 +104,49 @@ export async function get_linked_modpack_info(
 	instanceId: string,
 	cacheBehaviour?: CacheBehaviour,
 ): Promise<LinkedModpackInfo | null> {
-	throw new Error('get_linked_modpack_info not implemented in Electron build')
+	try {
+		return await invoke('plugin:instance|instance_get_linked_modpack_info', { instanceId, cacheBehaviour })
+	} catch {
+		return null
+	}
 }
 
 export async function get_linked_modpack_content(
 	instanceId: string,
 	cacheBehaviour?: CacheBehaviour,
 ): Promise<ContentItem[]> {
-	throw new Error('get_linked_modpack_content not implemented in Electron build')
+	try {
+		return await invoke('plugin:instance|instance_get_linked_modpack_content', { instanceId, cacheBehaviour })
+	} catch {
+		return []
+	}
 }
 
 export async function get_dependencies_as_content_items(
 	dependencies: Labrinth.Versions.v3.Dependency[],
 	cacheBehaviour?: CacheBehaviour,
 ): Promise<ContentItem[]> {
-	throw new Error('get_dependencies_as_content_items not implemented in Electron build')
+	try {
+		return await invoke('plugin:instance|instance_get_dependencies_as_content_items', { dependencies, cacheBehaviour })
+	} catch {
+		return []
+	}
 }
 
 export async function get_full_path(instanceId: string): Promise<string> {
-	throw new Error('get_full_path not implemented in Electron build')
+	try {
+		return await invoke('plugin:instance|instance_get_full_path', { instanceId })
+	} catch {
+		return ''
+	}
 }
 
 export async function get_mod_full_path(instanceId: string, projectPath: string): Promise<string> {
-	throw new Error('get_mod_full_path not implemented in Electron build')
+	try {
+		return await invoke('plugin:instance|instance_get_mod_full_path', { instanceId, projectPath })
+	} catch {
+		return ''
+	}
 }
 
 export interface JavaVersion {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { injectNotificationManager } from '@modrinth/ui'
-import type { SearchResult } from '@modrinth/utils'
+import { injectNotificationManager } from '@emcl/ui'
+import type { SearchResult } from '@emcl/utils'
 import dayjs from 'dayjs'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vue-router'

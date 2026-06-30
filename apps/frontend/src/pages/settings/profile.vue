@@ -88,7 +88,7 @@
 </template>
 
 <script setup>
-import { TrashIcon, UndoIcon, UploadIcon, UserIcon } from '@modrinth/assets'
+import { TrashIcon, UndoIcon, UploadIcon, UserIcon } from '@emcl/assets'
 import {
 	Avatar,
 	ButtonStyled,
@@ -101,7 +101,7 @@ import {
 	UnsavedChangesPopup,
 	useSavable,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 
 const { addNotification } = injectNotificationManager()
 const { formatMessage } = useVIntl()

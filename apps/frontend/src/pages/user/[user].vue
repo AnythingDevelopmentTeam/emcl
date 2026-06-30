@@ -529,7 +529,7 @@ import {
 	SaveIcon,
 	SpinnerIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	Avatar,
 	ButtonStyled,
@@ -552,8 +552,8 @@ import {
 	UserBadges,
 	useRelativeTime,
 	useVIntl,
-} from '@modrinth/ui'
-import { isAdmin, isStaff, UserBadge } from '@modrinth/utils'
+} from '@emcl/ui'
+import { isAdmin, isStaff, UserBadge } from '@emcl/utils'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import { onServerPrefetch } from 'vue'
 

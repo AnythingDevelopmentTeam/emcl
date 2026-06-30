@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MoreVerticalIcon, TrashIcon, UserIcon, XIcon } from '@modrinth/assets'
+import { MoreVerticalIcon, TrashIcon, UserIcon, XIcon } from '@emcl/assets'
 import {
 	Accordion,
 	Avatar,
@@ -7,7 +7,7 @@ import {
 	defineMessages,
 	OverflowMenu,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { openUrl } from '@/helpers/tauri-compat'
 import { useTemplateRef } from 'vue'
 
@@ -54,7 +54,7 @@ function createContextMenuOptions(friend: FriendWithUserData) {
 }
 
 function openProfile(username: string) {
-	openUrl('https://modrinth.com/user/' + username)
+	openUrl('https://example.com/user/' + username)
 }
 
 const friendOptions = useTemplateRef('friendOptions')

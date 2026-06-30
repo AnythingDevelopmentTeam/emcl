@@ -36,8 +36,8 @@
 </template>
 
 <script setup lang="ts">
-import { RefreshCwIcon } from '@modrinth/assets'
-import { ButtonStyled, injectProjectPageContext, useVIntl } from '@modrinth/ui'
+import { RefreshCwIcon } from '@emcl/assets'
+import { ButtonStyled, injectProjectPageContext, useVIntl } from '@emcl/ui'
 
 import {
 	createAnalyticsDashboardContext,

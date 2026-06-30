@@ -1,5 +1,5 @@
-import type { AbstractModrinthClient, Labrinth } from '@modrinth/api-client'
-import { injectModrinthClient } from '@modrinth/ui'
+import type { AbstractModrinthClient, Labrinth } from '@emcl/api-client'
+import { injectModrinthClient } from '@emcl/ui'
 import { computed, proxyRefs, ref } from 'vue'
 
 import {

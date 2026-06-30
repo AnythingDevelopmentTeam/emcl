@@ -283,7 +283,7 @@ import {
 	SendIcon,
 	UserXIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import { type Component, computed, onMounted, onUnmounted, ref } from 'vue'
 
 import { useFormatDateTime, useRelativeTime } from '../../../composables'

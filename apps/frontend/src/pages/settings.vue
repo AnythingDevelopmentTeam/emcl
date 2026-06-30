@@ -100,8 +100,8 @@ import {
 	ShieldIcon,
 	ToggleRightIcon,
 	UserIcon,
-} from '@modrinth/assets'
-import { commonMessages, commonSettingsMessages, defineMessages, useVIntl } from '@modrinth/ui'
+} from '@emcl/assets'
+import { commonMessages, commonSettingsMessages, defineMessages, useVIntl } from '@emcl/ui'
 
 import NavStack from '~/components/ui/NavStack.vue'
 

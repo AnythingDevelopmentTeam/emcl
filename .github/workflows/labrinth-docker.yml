@@ -148,7 +148,7 @@ jobs:
           # https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#adding-a-description-to-multi-arch-images
           DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
         with:
-          images: ghcr.io/modrinth/labrinth
+          images: labrinth
           labels: |
             org.opencontainers.image.title=labrinth
             org.opencontainers.image.description=Modrinth API

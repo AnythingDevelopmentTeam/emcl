@@ -11,6 +11,30 @@
 				{{ formatMessage(messages.signInToMinecraft) }}
 			</button>
 		</ButtonStyled>
+		<div class="flex gap-2 items-center">
+			<div class="flex-1 h-px bg-surface-5" />
+			<span class="text-secondary text-xs">{{ formatMessage(messages.or) }}</span>
+			<div class="flex-1 h-px bg-surface-5" />
+		</div>
+		<ButtonStyled color="secondary">
+			<button @click="showOfflineInput = true">
+				{{ formatMessage(messages.offlineAccount) }}
+			</button>
+		</ButtonStyled>
+		<div v-if="showOfflineInput" class="flex gap-2 items-center">
+			<input
+				v-model="offlineUsername"
+				type="text"
+				class="flex-1 px-3 py-2 rounded-lg bg-bg-raised border border-surface-5 text-primary outline-none"
+				:placeholder="formatMessage(messages.offlineUsernamePlaceholder)"
+				@keydown.enter="createOffline"
+			/>
+			<ButtonStyled color="brand">
+				<button :disabled="!offlineUsername.trim()" @click="createOffline">
+					{{ formatMessage(messages.create) }}
+				</button>
+			</ButtonStyled>
+		</div>
 	</div>
 	<Accordion
 		v-else
@@ -25,7 +49,7 @@
 					:src="
 						selectedAccount
 							? avatarUrl
-							: 'https://launcher-files.modrinth.com/assets/steve_head.png'
+							: ''
 					"
 				/>
 				<div class="flex flex-col items-start w-full min-w-0">
@@ -91,7 +115,7 @@ import {
 	RadioButtonIcon,
 	SpinnerIcon,
 	TrashIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	Accordion,
 	Avatar,
@@ -99,12 +123,13 @@ import {
 	defineMessages,
 	injectNotificationManager,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import type { Ref } from 'vue'
 import { computed, onUnmounted, ref } from 'vue'
 
 import { trackEvent } from '@/helpers/analytics'
 import {
+	create_offline as create_offline_flow,
 	get_default_user,
 	login as login_flow,
 	remove_user,
@@ -136,6 +161,8 @@ const loginDisabled = ref(false)
 const defaultUser = ref<string | undefined>()
 const equippedSkin = ref<Skin | null>(null)
 const headUrlCache = ref(new Map<string, string>())
+const showOfflineInput = ref(false)
+const offlineUsername = ref('')
 
 async function refreshValues() {
 	defaultUser.value = await get_default_user().catch(handleError)
@@ -202,7 +229,7 @@ const avatarUrl = computed(() => {
 	if (selectedAccount.value?.profile?.id) {
 		return `https://mc-heads.net/avatar/${selectedAccount.value.profile.id}/128`
 	}
-	return 'https://launcher-files.modrinth.com/assets/steve_head.png'
+	return ''
 })
 
 function getAccountAvatarUrl(account: MinecraftCredential) {
@@ -216,6 +243,19 @@ function getAccountAvatarUrl(account: MinecraftCredential) {
 		}
 	}
 	return `https://mc-heads.net/avatar/${account.profile.id}/128`
+}
+
+async function createOffline() {
+	const name = offlineUsername.value.trim()
+	if (!name) return
+	loginDisabled.value = true
+	const cred = await create_offline_flow(name).catch(handleSevereError)
+	if (cred) {
+		await setAccount(cred)
+	}
+	showOfflineInput.value = false
+	offlineUsername.value = ''
+	loginDisabled.value = false
 }
 
 async function setAccount(account: MinecraftCredential) {
@@ -282,6 +322,22 @@ const messages = defineMessages({
 	signInToMinecraft: {
 		id: 'minecraft-account.sign-in',
 		defaultMessage: 'Sign in to Minecraft',
+	},
+	or: {
+		id: 'minecraft-account.or',
+		defaultMessage: 'or',
+	},
+	offlineAccount: {
+		id: 'minecraft-account.offline',
+		defaultMessage: 'Offline account',
+	},
+	offlineUsernamePlaceholder: {
+		id: 'minecraft-account.offline-username',
+		defaultMessage: 'Enter username...',
+	},
+	create: {
+		id: 'minecraft-account.create',
+		defaultMessage: 'Create',
 	},
 })
 </script>

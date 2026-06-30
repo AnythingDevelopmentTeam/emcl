@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Labrinth } from '@modrinth/api-client'
+import type { Labrinth } from '@emcl/api-client'
 import {
 	BugIcon,
 	CheckCircleIcon,
@@ -20,8 +20,8 @@ import {
 	TimerIcon,
 	TriangleAlertIcon,
 	XIcon,
-} from '@modrinth/assets'
-import { type TechReviewContext, techReviewQuickReplies } from '@modrinth/moderation'
+} from '@emcl/assets'
+import { type TechReviewContext, techReviewQuickReplies } from '@emcl/moderation'
 import {
 	Avatar,
 	ButtonStyled,
@@ -37,14 +37,14 @@ import {
 	useFormatBytes,
 	useFormatDateTime,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import {
 	capitalizeString,
 	formatProjectType,
 	highlightCodeLines,
 	type ThreadMessage,
 	type User,
-} from '@modrinth/utils'
+} from '@emcl/utils'
 import dayjs from 'dayjs'
 import { computed, reactive, ref, watch } from 'vue'
 

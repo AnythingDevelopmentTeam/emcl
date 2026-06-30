@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Labrinth } from '@modrinth/api-client'
-import { PlusIcon, SpinnerIcon, XIcon } from '@modrinth/assets'
+import type { Labrinth } from '@emcl/api-client'
+import { PlusIcon, SpinnerIcon, XIcon } from '@emcl/assets'
 import { useMutation } from '@tanstack/vue-query'
 import { computed, ref, useTemplateRef } from 'vue'
 

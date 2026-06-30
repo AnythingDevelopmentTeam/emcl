@@ -81,14 +81,14 @@
 	</div>
 </template>
 <script setup>
-import { HeartIcon, ModrinthPlusIcon, SettingsIcon, SparklesIcon, StarIcon } from '@modrinth/assets'
+import { HeartIcon, ModrinthPlusIcon, SettingsIcon, SparklesIcon, StarIcon } from '@emcl/assets'
 import {
 	ButtonStyled,
 	injectNotificationManager,
 	PurchaseModal,
 	useFormatPrice,
-} from '@modrinth/ui'
-import { calculateSavings, getCurrency } from '@modrinth/utils'
+} from '@emcl/ui'
+import { calculateSavings, getCurrency } from '@emcl/utils'
 
 import { useBaseFetch } from '@/composables/fetch.js'
 import { products } from '~/generated/state.json'

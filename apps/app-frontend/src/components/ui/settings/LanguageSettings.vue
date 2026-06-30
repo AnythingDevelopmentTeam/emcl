@@ -7,7 +7,7 @@ import {
 	languageSelectorMessages,
 	LOCALES,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { computed, ref, watch } from 'vue'
 
 import { get, set } from '@/helpers/settings.ts'
@@ -55,7 +55,7 @@ async function onLocaleChange(newLocale: string) {
 			:values="{ platform }"
 		>
 			<template #~crowdin-link="{ children }">
-				<AutoLink to="https://translate.modrinth.com">
+				<AutoLink to="https://example.com/translate">
 					<component :is="() => children" />
 				</AutoLink>
 			</template>

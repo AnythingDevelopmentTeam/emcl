@@ -53,7 +53,7 @@ export const [injectContentManager, provideContentManager] =
 ```vue
 <!-- apps/frontend/src/pages/instance/content.vue -->
 <script setup lang="ts">
-import { provideContentManager, ContentPageLayout } from '@modrinth/ui'
+import { provideContentManager, ContentPageLayout } from '@emcl/ui'
 
 const { data: items } = useQuery({
 	queryKey: ['content', instanceId],
@@ -79,7 +79,7 @@ provideContentManager({
 ```vue
 <!-- apps/app-frontend/src/pages/instance/Mods.vue -->
 <script setup lang="ts">
-import { provideContentManager, ContentPageLayout } from '@modrinth/ui'
+import { provideContentManager, ContentPageLayout } from '@emcl/ui'
 import { invoke } from '@tauri-apps/api/core'
 
 const items = ref<ContentItem[]>([])
@@ -137,7 +137,7 @@ Wrapped pages handle their own data fetching (typically via TanStack Query and `
 ```vue
 <!-- apps/frontend/src/pages/hosting/manage/[id]/content.vue -->
 <script setup lang="ts">
-import { ServersManageContentPage } from '@modrinth/ui'
+import { ServersManageContentPage } from '@emcl/ui'
 </script>
 
 <template>
@@ -173,7 +173,7 @@ When a wrapped layout uses that pattern, the **thin platform page** that imports
 **Rule:** For each primary `useQuery` in the wrapped layout that gates first paint (and thus `useReadyState` / `ReadyTransition`), the website and app route shells must call `queryClient.ensureQueryData` with the **same** `queryKey`, `queryFn`, and `staleTime` as that query. Wrap the call in `try/catch` and swallow errors so navigation does not fail during setup; the mounted layout’s `useQuery` still runs and surfaces errors to the user.
 
 ```ts
-import { injectModrinthClient, injectModrinthServerContext, ServersManageFilesPage } from '@modrinth/ui'
+import { injectModrinthClient, injectModrinthServerContext, ServersManageFilesPage } from '@emcl/ui'
 import { useQueryClient } from '@tanstack/vue-query'
 
 const client = injectModrinthClient()

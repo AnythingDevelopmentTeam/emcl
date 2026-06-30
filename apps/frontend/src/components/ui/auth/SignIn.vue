@@ -166,8 +166,8 @@ import {
 	RightArrowIcon,
 	SteamColorIcon,
 	UserKeyIcon,
-} from '@modrinth/assets'
-import { ButtonStyled, commonMessages, defineMessages, StyledInput, useVIntl } from '@modrinth/ui'
+} from '@emcl/assets'
+import { ButtonStyled, commonMessages, defineMessages, StyledInput, useVIntl } from '@emcl/ui'
 import { useStorage } from '@vueuse/core'
 import { computed } from 'vue'
 import type { LocationQuery } from 'vue-router'

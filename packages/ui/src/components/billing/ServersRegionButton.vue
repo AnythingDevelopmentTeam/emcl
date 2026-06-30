@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Archon } from '@modrinth/api-client'
-import { SignalIcon, SpinnerIcon } from '@modrinth/assets'
-import { getPingLevel } from '@modrinth/utils'
+import type { Archon } from '@emcl/api-client'
+import { SignalIcon, SpinnerIcon } from '@emcl/assets'
+import { getPingLevel } from '@emcl/utils'
 import { computed } from 'vue'
 
 import { useVIntl } from '../../composables/i18n'

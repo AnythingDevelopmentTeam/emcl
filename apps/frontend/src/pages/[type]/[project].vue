@@ -1070,7 +1070,7 @@ import {
 	VersionIcon,
 	WrenchIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	Admonition,
 	Avatar,
@@ -1107,9 +1107,9 @@ import {
 	useFormatPrice,
 	useRelativeTime,
 	useVIntl,
-} from '@modrinth/ui'
-import VersionSummary from '@modrinth/ui/src/components/version/VersionSummary.vue'
-import { capitalizeString, formatProjectType, renderString } from '@modrinth/utils'
+} from '@emcl/ui'
+import VersionSummary from '@emcl/ui/src/components/version/VersionSummary.vue'
+import { capitalizeString, formatProjectType, renderString } from '@emcl/utils'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { useLocalStorage } from '@vueuse/core'
 import dayjs from 'dayjs'

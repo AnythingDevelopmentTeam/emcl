@@ -9,7 +9,7 @@ import {
 	SettingsIcon,
 	ShieldIcon,
 	ToggleRightIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	commonMessages,
 	commonSettingsMessages,
@@ -18,7 +18,7 @@ import {
 	ProgressBar,
 	TabbedModal,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { getVersion, platform as getOsPlatform } from '@/helpers/tauri-compat'
 import { ref, watch } from 'vue'
 

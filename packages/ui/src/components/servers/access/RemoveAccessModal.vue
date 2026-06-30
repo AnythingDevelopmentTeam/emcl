@@ -83,7 +83,7 @@
 </template>
 
 <script setup lang="ts">
-import { TrashIcon, UserXIcon, XIcon } from '@modrinth/assets'
+import { TrashIcon, UserXIcon, XIcon } from '@emcl/assets'
 import { computed, ref, watch } from 'vue'
 
 import { useRelativeTime } from '../../../composables'

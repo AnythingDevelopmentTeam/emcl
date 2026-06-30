@@ -3,7 +3,7 @@ use crate::event::{InstancePayloadType, LoadingBarType};
 use crate::state::instances::adapters::sqlite::instance_rows;
 use crate::state::{ProjectType, State};
 use crate::util::fetch;
-use modrinth_content_management::{
+use content_management::{
     ContentType, ResolutionPreferences, ResolveContentPlan,
 };
 use std::collections::HashMap;

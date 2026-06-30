@@ -11,7 +11,7 @@
 			:logged-in="loggedIn"
 			@continue="handleGuestPlanContinue"
 		/>
-		<ModrinthServersPurchaseModal
+		<ServersPurchaseModal
 			v-if="customer && paymentMethods && regions"
 			ref="purchaseModal"
 			:publishable-key="props.stripePublishableKey"
@@ -228,8 +228,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Archon, Labrinth } from '@modrinth/api-client'
-import { HammerIcon, LoaderCircleIcon, PlusIcon, SearchIcon } from '@modrinth/assets'
+import type { Archon, Labrinth } from '@emcl/api-client'
+import { HammerIcon, LoaderCircleIcon, PlusIcon, SearchIcon } from '@emcl/assets'
 import {
 	AutoLink,
 	ButtonStyled,
@@ -239,14 +239,14 @@ import {
 	injectModrinthClient,
 	injectNotificationManager,
 	IntlFormatted,
-	ModrinthServersPurchaseModal,
+	ServersPurchaseModal,
 	ResubscribeModal,
 	ServerListEmpty,
 	ServersGuestPlanModal,
 	StyledInput,
 	useServerBackupDownload,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import { useIntervalFn } from '@vueuse/core'
 import dayjs from 'dayjs'
@@ -400,7 +400,7 @@ function startNewServerPolling(initialServers: Archon.Servers.v0.Server[]) {
 }
 
 const guestPlanModal = ref<InstanceType<typeof ServersGuestPlanModal> | null>(null)
-const purchaseModal = ref<InstanceType<typeof ModrinthServersPurchaseModal> | null>(null)
+const purchaseModal = ref<InstanceType<typeof ServersPurchaseModal> | null>(null)
 type UpgradeModalRef = ComponentPublicInstance<{ open: (id?: string) => void | Promise<void> }>
 const medalUpgradeModal = ref<UpgradeModalRef | null>(null)
 const resubscribeModal = ref<InstanceType<typeof ResubscribeModal> | null>(null)

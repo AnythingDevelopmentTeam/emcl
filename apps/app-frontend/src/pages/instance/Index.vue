@@ -267,7 +267,7 @@
 	</div>
 </template>
 <script setup lang="ts">
-import type { Labrinth } from '@modrinth/api-client'
+import type { Labrinth } from '@emcl/api-client'
 import {
 	BoxesIcon,
 	CheckCircleIcon,
@@ -291,7 +291,7 @@ import {
 	UpdatedIcon,
 	UserPlusIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	Avatar,
 	ButtonStyled,
@@ -304,7 +304,7 @@ import {
 	ServerRecentPlays,
 	ServerRegion,
 	useLoadingBarToken,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { useQueryClient } from '@tanstack/vue-query'
 import { convertFileSrc } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'

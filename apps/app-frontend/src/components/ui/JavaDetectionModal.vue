@@ -37,8 +37,8 @@
 	</ModalWrapper>
 </template>
 <script setup>
-import { CheckIcon, PlusIcon, XIcon } from '@modrinth/assets'
-import { ButtonStyled, injectNotificationManager, Table } from '@modrinth/ui'
+import { CheckIcon, PlusIcon, XIcon } from '@emcl/assets'
+import { ButtonStyled, injectNotificationManager, Table } from '@emcl/ui'
 import { ref } from 'vue'
 
 import ModalWrapper from '@/components/ui/modal/ModalWrapper.vue'

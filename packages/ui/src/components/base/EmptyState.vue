@@ -30,7 +30,7 @@ import {
 	NoMessagesIllustration,
 	NoSearchResultIllustration,
 	NoTasksIllustration,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import type { Component } from 'vue'
 import { computed } from 'vue'
 

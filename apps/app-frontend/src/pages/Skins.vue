@@ -7,7 +7,7 @@ import {
 	LogInIcon,
 	RotateCounterClockwiseIcon,
 	SpinnerIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	ButtonStyled,
 	commonMessages,
@@ -18,8 +18,8 @@ import {
 	injectNotificationManager,
 	SkinPreviewRenderer,
 	useVIntl,
-} from '@modrinth/ui'
-import { arrayBufferToBase64 } from '@modrinth/utils'
+} from '@emcl/ui'
+import { arrayBufferToBase64 } from '@emcl/utils'
 import { useQuery } from '@tanstack/vue-query'
 import { type DragDropEvent, getCurrentWebview } from '@/helpers/tauri-compat'
 import { computedAsync } from '@vueuse/core'
@@ -59,7 +59,7 @@ type VirtualSkinSectionListExpose = {
 }
 
 const PENDING_SKIN_REFRESH_DELAY_MS = 11_000
-const DEFAULT_SKIN_SECTION_SORT_ORDER = ['Default skins', 'Modrinth Pride']
+const DEFAULT_SKIN_SECTION_SORT_ORDER = ['Default skins', 'Pride']
 const messages = defineMessages({
 	skinSelectorTitle: {
 		id: 'app.skins.title',
@@ -67,16 +67,15 @@ const messages = defineMessages({
 	},
 	modrinthPrideSection: {
 		id: 'app.skins.section.modrinth-pride',
-		defaultMessage: 'Modrinth Pride',
+		defaultMessage: 'Pride',
 	},
 	modrinthPrideTooltip: {
 		id: 'app.skins.section.modrinth-pride.tooltip',
-		defaultMessage:
-			'You received these skins for donating to a Modrinth Pride fundraiser during Pride Month.',
+		defaultMessage: 'Pride fundraiser skins',
 	},
 	modrinthSection: {
 		id: 'app.skins.section.modrinth',
-		defaultMessage: 'Modrinth',
+		defaultMessage: 'Default',
 	},
 	defaultSkinsSection: {
 		id: 'app.skins.section.default-skins',
@@ -165,7 +164,7 @@ const messages = defineMessages({
 	},
 	excitedRinthbotAlt: {
 		id: 'app.skins.sign-in.rinthbot-alt',
-		defaultMessage: 'Excited Modrinth Bot',
+		defaultMessage: 'Excited Bot',
 	},
 	signInTitle: {
 		id: 'app.skins.sign-in.title',
@@ -174,7 +173,7 @@ const messages = defineMessages({
 	signInDescription: {
 		id: 'app.skins.sign-in.description',
 		defaultMessage:
-			'Please sign into your Minecraft account to use the skin management features of the Modrinth app.',
+			'Please sign into your Minecraft account to use the skin management features.',
 	},
 	signInButton: {
 		id: 'app.skins.sign-in.button',

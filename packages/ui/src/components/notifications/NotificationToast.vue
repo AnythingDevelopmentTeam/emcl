@@ -171,7 +171,7 @@
 </template>
 
 <script setup lang="ts">
-import { XIcon } from '@modrinth/assets'
+import { XIcon } from '@emcl/assets'
 import { type Component, computed, ref } from 'vue'
 
 import { useFormatBytes, useFormatNumber } from '../../composables'

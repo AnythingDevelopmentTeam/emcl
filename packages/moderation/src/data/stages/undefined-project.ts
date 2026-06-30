@@ -1,4 +1,4 @@
-import { XIcon } from '@modrinth/assets'
+import { XIcon } from '@emcl/assets'
 
 import type { Stage } from '../../types/stage'
 

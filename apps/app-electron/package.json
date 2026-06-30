@@ -1,5 +1,5 @@
 {
-	"name": "@modrinth/app-electron",
+	"name": "@emcl/app-electron",
 	"private": true,
 	"version": "1.0.0-local",
 	"main": "dist-electron/main.js",

@@ -52,8 +52,8 @@
 </template>
 
 <script setup>
-import { PlusIcon, UsersIcon } from '@modrinth/assets'
-import { Avatar, ButtonStyled, defineMessages, injectModrinthClient, useVIntl } from '@modrinth/ui'
+import { PlusIcon, UsersIcon } from '@emcl/assets'
+import { Avatar, ButtonStyled, defineMessages, injectModrinthClient, useVIntl } from '@emcl/ui'
 import { useQuery } from '@tanstack/vue-query'
 
 import OrganizationCreateModal from '~/components/ui/create/OrganizationCreateModal.vue'

@@ -1,4 +1,4 @@
-import type { ExtendedReport, OwnershipTarget } from '@modrinth/moderation'
+import type { ExtendedReport, OwnershipTarget } from '@emcl/moderation'
 import type {
 	Organization,
 	Project,
@@ -7,7 +7,7 @@ import type {
 	Thread,
 	User,
 	Version,
-} from '@modrinth/utils'
+} from '@emcl/utils'
 
 export const useModerationCache = () => ({
 	threads: useState<Map<string, Thread>>('moderation-report-cache-threads', () => new Map()),
@@ -180,7 +180,7 @@ export async function enrichReportBatch(reports: Report[]): Promise<ExtendedRepo
 	})
 }
 
-// Doesn't need to be in @modrinth/moderation because it is specific to the frontend.
+// Doesn't need to be in @emcl/moderation because it is specific to the frontend.
 export interface ModerationOwnershipUser {
 	kind: 'user'
 	id: string

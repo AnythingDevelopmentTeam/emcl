@@ -1,6 +1,6 @@
-import type { Labrinth } from '@modrinth/api-client'
-import type { ContentInstallInstance, ContentInstallProjectInfo, ContentItem } from '@modrinth/ui'
-import { createContext, defineMessage, useVIntl } from '@modrinth/ui'
+import type { Labrinth } from '@emcl/api-client'
+import type { ContentInstallInstance, ContentInstallProjectInfo, ContentItem } from '@emcl/ui'
+import { createContext, defineMessage, useVIntl } from '@emcl/ui'
 import { convertFileSrc, openUrl } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import { nextTick, type Ref, ref } from 'vue'
@@ -451,7 +451,7 @@ export function createContentInstall(opts: {
 									name: org.name,
 									iconUrl: org.icon_url,
 									circle: false,
-									link: () => openUrl(`https://modrinth.com/organization/${orgSlug}`),
+									link: () => openUrl(`https://example.com/organization/${orgSlug}`),
 								},
 							}
 						}
@@ -474,7 +474,7 @@ export function createContentInstall(opts: {
 										name: owner.user.username,
 										iconUrl: owner.user.avatar_url,
 										circle: true,
-										link: () => openUrl(`https://modrinth.com/user/${owner.user.username}`),
+										link: () => openUrl(`https://example.com/user/${owner.user.username}`),
 									},
 								}
 							}

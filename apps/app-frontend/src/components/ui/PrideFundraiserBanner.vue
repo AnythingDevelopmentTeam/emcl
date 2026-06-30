@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { CalendarIcon, UsersIcon, XIcon } from '@modrinth/assets'
-import { injectModrinthClient, ProgressBar } from '@modrinth/ui'
+import { CalendarIcon, UsersIcon, XIcon } from '@emcl/assets'
+import { injectModrinthClient, ProgressBar } from '@emcl/ui'
 import { useQuery } from '@tanstack/vue-query'
 import { openUrl } from '@/helpers/tauri-compat'
 import { computed, ref } from 'vue'
@@ -23,7 +23,7 @@ const shouldShowBanner = computed(
 )
 
 async function openPrideFundraiser() {
-	await openUrl('https://modrinth.com/pride?from=app')
+	// Pride fundraiser link removed
 }
 
 function dismissBanner() {

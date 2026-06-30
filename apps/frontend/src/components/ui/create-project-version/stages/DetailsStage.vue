@@ -61,7 +61,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Chips, MarkdownEditor, StyledInput, Tabs, type TabsTab } from '@modrinth/ui'
+import { Chips, MarkdownEditor, StyledInput, Tabs, type TabsTab } from '@emcl/ui'
 
 import { useImageUpload } from '~/composables/image-upload.ts'
 import { injectManageVersionContext } from '~/providers/version/manage-version-modal'

@@ -1,6 +1,6 @@
 <script setup>
-import { BoxIcon, FolderOpenIcon, FolderSearchIcon, TrashIcon } from '@modrinth/assets'
-import { ButtonStyled, injectNotificationManager, Slider, StyledInput } from '@modrinth/ui'
+import { BoxIcon, FolderOpenIcon, FolderSearchIcon, TrashIcon } from '@emcl/assets'
+import { ButtonStyled, injectNotificationManager, Slider, StyledInput } from '@emcl/ui'
 import { open } from '@/helpers/tauri-compat'
 import { ref, watch } from 'vue'
 

@@ -19,8 +19,8 @@
 </template>
 
 <script setup lang="ts">
-import { DropdownIcon } from '@modrinth/assets'
-import { ButtonStyled } from '@modrinth/ui'
+import { DropdownIcon } from '@emcl/assets'
+import { ButtonStyled } from '@emcl/ui'
 
 const props = withDefaults(
 	defineProps<{

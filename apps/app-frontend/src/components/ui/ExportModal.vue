@@ -1,5 +1,5 @@
 <script setup>
-import { WrenchIcon, XIcon } from '@modrinth/assets'
+import { WrenchIcon, XIcon } from '@emcl/assets'
 import {
 	Accordion,
 	ButtonStyled,
@@ -9,7 +9,7 @@ import {
 	injectNotificationManager,
 	StyledInput,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { save } from '@/helpers/tauri-compat'
 import { ref } from 'vue'
 
@@ -129,7 +129,7 @@ const exportPack = async () => {
 		defaultPath: `${nameInput.value} ${versionInput.value}.mrpack`,
 		filters: [
 			{
-				name: 'Modrinth Modpack',
+				name: 'Modpack',
 				extensions: ['mrpack'],
 			},
 		],

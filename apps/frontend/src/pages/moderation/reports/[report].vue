@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { injectModrinthClient } from '@modrinth/ui'
-import type { Report } from '@modrinth/utils'
+import { injectModrinthClient } from '@emcl/ui'
+import type { Report } from '@emcl/utils'
 import { useQuery } from '@tanstack/vue-query'
 
 import ModerationReportCard from '~/components/ui/moderation/ModerationReportCard.vue'

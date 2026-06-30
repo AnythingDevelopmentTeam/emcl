@@ -39,9 +39,9 @@
 </template>
 
 <script lang="ts" setup>
-import type { Labrinth } from '@modrinth/api-client'
-import { getLoaderIcon } from '@modrinth/assets'
-import { Chips, FormattedTag, TagItem } from '@modrinth/ui'
+import type { Labrinth } from '@emcl/api-client'
+import { getLoaderIcon } from '@emcl/assets'
+import { Chips, FormattedTag, TagItem } from '@emcl/ui'
 
 const selectedLoaders = defineModel<string[]>({ default: [] })
 

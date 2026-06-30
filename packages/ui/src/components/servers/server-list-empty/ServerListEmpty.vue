@@ -150,8 +150,8 @@ import {
 	PlusIcon,
 	RightArrowIcon,
 	UsersIcon,
-} from '@modrinth/assets'
-import { AutoLink } from '@modrinth/ui'
+} from '@emcl/assets'
+import { AutoLink } from '@emcl/ui'
 
 import ButtonStyled from '#ui/components/base/ButtonStyled.vue'
 

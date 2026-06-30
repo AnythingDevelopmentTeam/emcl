@@ -137,7 +137,7 @@
 </template>
 
 <script setup lang="ts">
-import { XIcon } from '@modrinth/assets'
+import { XIcon } from '@emcl/assets'
 import { computed, nextTick, onUnmounted, ref } from 'vue'
 
 import { useVIntl } from '../../composables/i18n'

@@ -106,9 +106,9 @@
 </template>
 
 <script setup>
-import { ReportIcon, UnknownIcon, VersionIcon } from '@modrinth/assets'
-import { Avatar, Badge, CopyCode, useFormatDateTime, useRelativeTime } from '@modrinth/ui'
-import { formatProjectType, renderHighlightedString } from '@modrinth/utils'
+import { ReportIcon, UnknownIcon, VersionIcon } from '@emcl/assets'
+import { Avatar, Badge, CopyCode, useFormatDateTime, useRelativeTime } from '@emcl/ui'
+import { formatProjectType, renderHighlightedString } from '@emcl/utils'
 
 import ThreadSummary from '~/components/ui/thread/ThreadSummary.vue'
 import { getProjectTypeForUrl } from '~/helpers/projects.js'

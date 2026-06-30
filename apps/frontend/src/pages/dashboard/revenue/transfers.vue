@@ -88,7 +88,7 @@ import {
 	DownloadIcon,
 	GenericListIcon,
 	SpinnerIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	ButtonStyled,
 	Combobox,
@@ -98,8 +98,8 @@ import {
 	useFormatDateTime,
 	useFormatMoney,
 	useVIntl,
-} from '@modrinth/ui'
-import { capitalizeString } from '@modrinth/utils'
+} from '@emcl/ui'
+import { capitalizeString } from '@emcl/utils'
 import { useQuery } from '@tanstack/vue-query'
 import dayjs from 'dayjs'
 

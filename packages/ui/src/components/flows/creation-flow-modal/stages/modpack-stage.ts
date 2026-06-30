@@ -1,4 +1,4 @@
-import { LeftArrowIcon } from '@modrinth/assets'
+import { LeftArrowIcon } from '@emcl/assets'
 import { markRaw } from 'vue'
 
 import { commonMessages } from '#ui/utils/common-messages'

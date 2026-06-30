@@ -108,8 +108,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Archon } from '@modrinth/api-client'
-import { PlusIcon, XCircleIcon } from '@modrinth/assets'
+import type { Archon } from '@emcl/api-client'
+import { PlusIcon, XCircleIcon } from '@emcl/assets'
 import {
 	Avatar,
 	ButtonStyled,
@@ -120,8 +120,8 @@ import {
 	TagItem,
 	useFormatDateTime,
 	useRelativeTime,
-} from '@modrinth/ui'
-import type { User } from '@modrinth/utils'
+} from '@emcl/ui'
+import type { User } from '@emcl/utils'
 import dayjs from 'dayjs'
 import { computed, ref } from 'vue'
 

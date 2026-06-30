@@ -187,7 +187,7 @@ async fn update_tax_amounts(
                             new_tax_amount: tax_amount,
                             product_name: product
                                 .name
-                                .unwrap_or_else(|| "Modrinth".to_owned()),
+                                .unwrap_or_else(|| "EMCL".to_owned()),
                         },
                     )
                 };

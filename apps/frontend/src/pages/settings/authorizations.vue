@@ -87,7 +87,7 @@
 	</div>
 </template>
 <script setup>
-import { CheckIcon, TrashIcon } from '@modrinth/assets'
+import { CheckIcon, TrashIcon } from '@emcl/assets'
 import {
 	Avatar,
 	ButtonStyled,
@@ -98,7 +98,7 @@ import {
 	injectModrinthClient,
 	injectNotificationManager,
 	useVIntl,
-} from '@modrinth/ui'
+} from '@emcl/ui'
 import { useQuery } from '@tanstack/vue-query'
 
 import { useScopes } from '~/composables/auth/scopes.ts'

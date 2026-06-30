@@ -65,11 +65,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Labrinth } from '@modrinth/api-client'
-import { ArrowLeftRightIcon, CheckIcon, XIcon } from '@modrinth/assets'
-import { ButtonStyled, Combobox, injectProjectPageContext } from '@modrinth/ui'
-import type { ComboboxOption } from '@modrinth/ui/src/components/base/Combobox.vue'
-import { acceptFileFromProjectType } from '@modrinth/utils'
+import type { Labrinth } from '@emcl/api-client'
+import { ArrowLeftRightIcon, CheckIcon, XIcon } from '@emcl/assets'
+import { ButtonStyled, Combobox, injectProjectPageContext } from '@emcl/ui'
+import type { ComboboxOption } from '@emcl/ui/src/components/base/Combobox.vue'
+import { acceptFileFromProjectType } from '@emcl/utils'
 
 import {
 	fileTypeLabels,

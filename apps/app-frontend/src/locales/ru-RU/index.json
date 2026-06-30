@@ -693,7 +693,7 @@
     "message": "{title} — {count}"
   },
   "friends.sign-in-to-add-friends": {
-    "message": "<link>Войдите в аккаунт Modrinth</link>, чтобы добавлять друзей и следить за ними!"
+    "message": "<link>Войдите в аккаунт</link>, чтобы добавлять друзей"
   },
   "instance.add-server.add-and-play": {
     "message": "Добавить и играть"

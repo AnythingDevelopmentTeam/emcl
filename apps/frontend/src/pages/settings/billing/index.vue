@@ -277,7 +277,7 @@
 			>
 				<div class="flex flex-col justify-between gap-4">
 					<div class="flex flex-col gap-4">
-						<ModrinthServersIcon class="flex h-8 w-fit" />
+						<ServersIcon class="flex h-8 w-fit" />
 						<div class="flex flex-col gap-6">
 							<ServerListing
 								v-if="subscription.serverInfo"
@@ -691,7 +691,7 @@ import {
 	TrashIcon,
 	UpdatedIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 import {
 	AddPaymentMethodModal,
 	ButtonStyled,
@@ -711,13 +711,13 @@ import {
 	useFormatPrice,
 	useServerBackupDownload,
 	useVIntl,
-} from '@modrinth/ui'
-import { calculateSavings, getCurrency } from '@modrinth/utils'
+} from '@emcl/ui'
+import { calculateSavings, getCurrency } from '@emcl/utils'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import { useIntervalFn } from '@vueuse/core'
 import { computed, ref, watch } from 'vue'
 
-import ModrinthServersIcon from '~/components/brand/ModrinthServersIcon.vue'
+import ServersIcon from '~/components/brand/ServersIcon.vue'
 import ServersUpgradeModalWrapper from '~/components/ui/servers/ServersUpgradeModalWrapper.vue'
 import { products } from '~/generated/state.json'
 

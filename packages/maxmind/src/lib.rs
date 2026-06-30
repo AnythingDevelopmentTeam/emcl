@@ -86,9 +86,9 @@ pub async fn init_reader() -> Result<maxminddb::Reader<Bytes>> {
         let license_key = env_var("MAXMIND_LICENSE_KEY")?;
 
         let dirs = directories::ProjectDirs::from(
-            "com.modrinth",
-            "Modrinth",
-            "modrinth-backend",
+            "com.emcl",
+            "EMCL",
+            "emcl-backend",
         )
         .wrap_err("failed to get cache directory")?;
         let cache_dir = dirs.cache_dir();

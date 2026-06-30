@@ -1,6 +1,6 @@
 ---
 name: i18n-pass
-description: Perform an i18n localization pass on changed files or a pull request, converting hard-coded English strings to the @modrinth/ui i18n system. Use when internationalizing a set of changes, reviewing a PR for untranslated strings, or converting a specific component.
+description: Perform an i18n localization pass on changed files or a pull request, converting hard-coded English strings to the @emcl/ui i18n system. Use when internationalizing a set of changes, reviewing a PR for untranslated strings, or converting a specific component.
 argument-hint: [file-path-or-pr-number]
 ---
 

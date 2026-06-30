@@ -82,8 +82,8 @@
 </template>
 
 <script setup lang="ts">
-import { RightArrowIcon, TransferIcon, XIcon } from '@modrinth/assets'
-import { Admonition, Avatar, ButtonStyled, NewModal, StyledInput } from '@modrinth/ui'
+import { RightArrowIcon, TransferIcon, XIcon } from '@emcl/assets'
+import { Admonition, Avatar, ButtonStyled, NewModal, StyledInput } from '@emcl/ui'
 import { computed, ref } from 'vue'
 
 const props = defineProps<{

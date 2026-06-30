@@ -1,4 +1,4 @@
-import { provideFileDrop } from '@modrinth/ui'
+import { provideFileDrop } from '@emcl/ui'
 import { invoke, getCurrentWebview } from '@/helpers/tauri-compat'
 import type { DragDropEvent } from '@/helpers/tauri-compat'
 

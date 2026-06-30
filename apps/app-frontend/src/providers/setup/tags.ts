@@ -1,5 +1,5 @@
-import type { AbstractWebNotificationManager } from '@modrinth/ui'
-import { provideTags } from '@modrinth/ui'
+import type { AbstractWebNotificationManager } from '@emcl/ui'
+import { provideTags } from '@emcl/ui'
 import { ref } from 'vue'
 
 import { get_game_versions, get_loaders } from '@/helpers/tags'

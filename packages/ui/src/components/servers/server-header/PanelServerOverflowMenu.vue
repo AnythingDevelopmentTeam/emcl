@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { ClipboardCopyIcon, MoreVerticalIcon, ServerIcon } from '@modrinth/assets'
+import { ClipboardCopyIcon, MoreVerticalIcon, ServerIcon } from '@emcl/assets'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 

@@ -49,7 +49,7 @@ import {
 	SpinnerIcon,
 	TrashIcon,
 	XIcon,
-} from '@modrinth/assets'
+} from '@emcl/assets'
 
 import ButtonStyled from '#ui/components/base/ButtonStyled.vue'
 

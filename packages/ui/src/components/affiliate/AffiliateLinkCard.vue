@@ -31,8 +31,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Labrinth } from '@modrinth/api-client'
-import { AffiliateIcon, XCircleIcon } from '@modrinth/assets'
+import type { Labrinth } from '@emcl/api-client'
+import { AffiliateIcon, XCircleIcon } from '@emcl/assets'
 
 import { defineMessages, useVIntl } from '../../composables/i18n'
 import { AutoBrandIcon, ButtonStyled, CopyCode } from '../index'

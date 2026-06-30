@@ -1,4 +1,4 @@
-import type { AbstractPopupNotificationManager, AbstractWebNotificationManager } from '@modrinth/ui'
+import type { AbstractPopupNotificationManager, AbstractWebNotificationManager } from '@emcl/ui'
 
 import { setupCreationModal } from './setup/creation-modal'
 import { setupFileDropProvider } from './setup/file-drop'

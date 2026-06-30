@@ -116,7 +116,7 @@
 </template>
 
 <script setup lang="ts">
-import { SearchIcon, XIcon } from '@modrinth/assets'
+import { SearchIcon, XIcon } from '@emcl/assets'
 import { type Component, computed, ref } from 'vue'
 
 const model = defineModel<string | number | undefined>()
