@@ -1,13 +1,13 @@
 <script setup>
 import { SpinnerIcon } from '@emcl/assets'
 import { Avatar, injectNotificationManager } from '@emcl/ui'
-import { convertFileSrc } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import { onUnmounted, ref } from 'vue'
 
 import NavButton from '@/components/ui/NavButton.vue'
 import { instance_listener } from '@/helpers/events.js'
 import { list } from '@/helpers/instance'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 
 const { handleError } = injectNotificationManager()
 
@@ -27,7 +27,7 @@ const getInstances = async () => {
 			const dateB = dateBCreated.isAfter(dateBPlayed) ? dateBCreated : dateBPlayed
 
 			if (dateA.isSame(dateB)) {
-				return a.name.localeCompare(b.name)
+				return (a.name ?? '').localeCompare(b.name ?? '')
 			}
 
 			return dateB - dateA

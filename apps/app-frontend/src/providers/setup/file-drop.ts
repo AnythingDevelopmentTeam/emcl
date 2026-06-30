@@ -1,6 +1,7 @@
 import { provideFileDrop } from '@emcl/ui'
-import { invoke, getCurrentWebview } from '@/helpers/tauri-compat'
+
 import type { DragDropEvent } from '@/helpers/tauri-compat'
+import { getCurrentWebview } from '@/helpers/tauri-compat'
 
 function getFileName(path: string) {
 	return path.split(/[\\/]/).pop() || 'file'
@@ -15,8 +16,13 @@ function toLogicalPosition(position: { x: number; y: number }) {
 }
 
 async function readDraggedFile(path: string) {
-	const data = await invoke<number[]>('plugin:files|file_read_dragged_file', { path })
-	return new Uint8Array(data)
+	const isElectron = typeof window !== 'undefined' && 'electronAPI' in window
+	if (isElectron && window.electronAPI) {
+		const result = await window.electronAPI.fileRead(path)
+		const bytes = typeof result === 'string' ? new TextEncoder().encode(result) : new Uint8Array(result as any)
+		return bytes
+	}
+	return new Uint8Array()
 }
 
 export function setupFileDropProvider() {

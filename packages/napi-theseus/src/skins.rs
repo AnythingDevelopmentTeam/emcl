@@ -2,6 +2,27 @@ use crate::error::map_theseus;
 use crate::runtime;
 use napi::bindgen_prelude::*;
 
+/// Normalize a skin texture (URL or PNG bytes) to modern 64x64 format
+#[napi]
+pub async fn skins_normalize_skin_texture(texture: Either<String, Buffer>) -> napi::Result<Buffer> {
+	let url_or_blob = match texture {
+		Either::A(url) => theseus::minecraft_skins::UrlOrBlob::Url(
+			url.parse().map_err(|e: url::ParseError| {
+				napi::Error::from_reason(format!("Invalid URL: {e}"))
+			})?,
+		),
+		Either::B(buf) => theseus::minecraft_skins::UrlOrBlob::Blob(bytes::Bytes::copy_from_slice(&buf)),
+	};
+	let handle = runtime().spawn(async move {
+		let result = map_theseus(
+			theseus::minecraft_skins::normalize_skin_texture(&url_or_blob).await,
+		)?;
+		Ok(Buffer::from(result.to_vec()))
+	});
+	handle.await
+		.map_err(|e| napi::Error::from_reason(format!("{e}")))?
+}
+
 /// Get available capes
 #[napi]
 pub async fn skins_get_available_capes() -> napi::Result<Vec<serde_json::Value>> {

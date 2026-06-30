@@ -4677,7 +4677,7 @@
     "defaultMessage": "Undismissable"
   },
   "servers.purchase.notification.success.text": {
-    "defaultMessage": "Your Modrinth Hosting purchase was completed successfully."
+    "defaultMessage": "Your Hosting purchase was completed successfully."
   },
   "servers.purchase.notification.success.title": {
     "defaultMessage": "Purchase success"

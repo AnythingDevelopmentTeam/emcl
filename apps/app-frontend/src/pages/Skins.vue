@@ -21,7 +21,6 @@ import {
 } from '@emcl/ui'
 import { arrayBufferToBase64 } from '@emcl/utils'
 import { useQuery } from '@tanstack/vue-query'
-import { type DragDropEvent, getCurrentWebview } from '@/helpers/tauri-compat'
 import { computedAsync } from '@vueuse/core'
 import type { Ref } from 'vue'
 import { computed, inject, onMounted, onUnmounted, ref, useTemplateRef, watch } from 'vue'
@@ -49,6 +48,7 @@ import {
 	save_custom_skin,
 	set_custom_skin_order,
 } from '@/helpers/skins.ts'
+import { type DragDropEvent, getCurrentWebview } from '@/helpers/tauri-compat'
 import { hasPride26Badge } from '@/helpers/user-campaigns.ts'
 import { handleSevereError } from '@/store/error'
 import { useTheming } from '@/store/state'
@@ -199,6 +199,7 @@ const offline = ref(!navigator.onLine)
 const accountsCard = inject('accountsCard') as Ref<typeof AccountsCard>
 const currentUser = ref(undefined)
 const currentUserId = ref<string | undefined>(undefined)
+const isOfflineAccount = ref(false)
 
 const username = computed(() => currentUser.value?.profile?.name ?? undefined)
 const selectedSkin = ref<Skin | null>(null)
@@ -346,6 +347,14 @@ async function loadCapes() {
 async function loadSkins() {
 	try {
 		const loadedSkins = (await get_available_skins()) ?? []
+		if (!loadedSkins || loadedSkins.length === 0) {
+			// Offline accounts can't fetch skins from the API
+			if (currentUser.value) {
+				isOfflineAccount.value = true
+				return
+			}
+		}
+		isOfflineAccount.value = false
 		const loadedEquippedSkin = loadedSkins.find((s) => s.is_equipped)
 		const locallyKnownEquippedSkin =
 			originalSelectedSkin.value &&
@@ -367,6 +376,11 @@ async function loadSkins() {
 		originalSelectedSkin.value = selectedSkin.value
 	} catch (error) {
 		if (currentUser.value && error instanceof Error) {
+			if (error.message.includes('Minecraft authentication error') ||
+				error.message.includes('authentication')) {
+				isOfflineAccount.value = true
+				return
+			}
 			handleError(error)
 		}
 	}
@@ -1023,7 +1037,7 @@ await loadSkins()
 		@proceed="deleteSkin"
 	/>
 
-	<div v-if="currentUser" class="skin-layout box-border min-h-full p-4">
+	<div v-if="currentUser && !isOfflineAccount" class="skin-layout box-border min-h-full p-4">
 		<div class="sticky top-6 self-start p-2 pt-0">
 			<h1 class="m-0 text-2xl font-bold flex items-center gap-2">
 				{{ formatMessage(messages.skinSelectorTitle) }}
@@ -1103,6 +1117,22 @@ await loadSkins()
 				@add-skin-dragleave="onAddSkinDragLeave"
 				@add-skin-drop="onAddSkinDrop"
 			/>
+		</div>
+	</div>
+
+	<div v-else-if="isOfflineAccount" class="box-border flex min-h-full items-center justify-center pt-[25%]">
+		<div
+			class="relative mx-auto flex w-full max-w-xl flex-col gap-5 rounded-lg bg-bg-raised p-7 shadow-lg"
+		>
+			<div class="flex flex-col gap-5">
+				<h1 class="text-3xl font-extrabold m-0">Sign in with Microsoft</h1>
+				<p class="text-lg m-0">
+					You are using an offline account. Skin management requires a Microsoft account.
+				</p>
+				<p class="text-base m-0 text-secondary">
+					Sign in with your Microsoft account to customize your skin and cape.
+				</p>
+			</div>
 		</div>
 	</div>
 

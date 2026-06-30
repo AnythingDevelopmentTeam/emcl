@@ -1,5 +1,6 @@
 import { provideFilePicker } from '@emcl/ui'
-import { convertFileSrc, invoke, open, readFile } from '@/helpers/tauri-compat'
+
+import { convertFileSrc, open, readFile } from '@/helpers/tauri-compat'
 
 function getFileName(path: string, fallback: string) {
 	return path.split(/[\\/]/).pop() || fallback
@@ -17,9 +18,16 @@ async function createFileFromPath(path: string, fallbackName: string, type?: str
 }
 
 async function createNativeFileFromPath(path: string, fallbackName: string, type?: string) {
-	const bytes = await invoke<number[]>('plugin:files|file_read_dragged_file', { path })
+	const isElectron = typeof window !== 'undefined' && 'electronAPI' in window
+	let bytes: Uint8Array
+	if (isElectron && window.electronAPI) {
+		const result = await window.electronAPI.fileRead(path)
+		bytes = typeof result === 'string' ? new TextEncoder().encode(result) : new Uint8Array(result as any)
+	} else {
+		bytes = new Uint8Array()
+	}
 	const name = getFileName(path, fallbackName)
-	return new File([new Uint8Array(bytes)], name, type ? { type } : undefined)
+	return new File([bytes], name, type ? { type } : undefined)
 }
 
 export function setupFilePickerProvider() {

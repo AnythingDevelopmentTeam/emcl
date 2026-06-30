@@ -2,7 +2,6 @@
 import { LoaderCircleIcon } from '@emcl/assets'
 import type { GameVersion } from '@emcl/ui'
 import { GAME_MODES, HeadingLink, injectNotificationManager } from '@emcl/ui'
-import { platform } from '@/helpers/tauri-compat'
 import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
@@ -14,6 +13,7 @@ import { instance_listener, process_listener } from '@/helpers/events'
 import { kill, run } from '@/helpers/instance'
 import { get_all } from '@/helpers/process'
 import { get_game_versions } from '@/helpers/tags'
+import { platform } from '@/helpers/tauri-compat'
 import type { GameInstance } from '@/helpers/types'
 import {
 	get_instance_protocol_version,
@@ -52,7 +52,7 @@ const TWO_WEEKS_AGO = dayjs().subtract(14, 'day')
 const MAX_LINUX_POPULATES = 3
 
 // Track populate calls on Linux to prevent server ping spam
-const isLinux = platform() === 'linux'
+const isLinux = await platform() === 'linux'
 const linuxPopulateCount = ref(0)
 
 type BaseJumpBackInItem = {

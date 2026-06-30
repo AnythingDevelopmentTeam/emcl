@@ -78,7 +78,7 @@ async function fetchFeaturedMods() {
 	if (response) {
 		featuredMods.value = response.result.hits
 	} else {
-		featuredModpacks.value = []
+		featuredMods.value = []
 	}
 }
 

@@ -113,45 +113,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "Kan ikke nå autentificeringsservere"
   },
-  "app.browse.add-servers-to-instance": {
-    "message": "Tilføjet server til instance"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Tilføj til en instance"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Tilføj til instance"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Tilføjet til {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Tilføjet"
-  },
-  "app.browse.already-added": {
-    "message": "Allerede tilføjet"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Tilbage til instance"
-  },
-  "app.browse.discover-content": {
-    "message": "Opdag indhold"
-  },
-  "app.browse.discover-servers": {
-    "message": "Opdag servere"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Gem allerede tilføjet til servere"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Modpacks"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Ved at tilføje indhold kan der opstå kompatibilitetsproblemer, når du tilslutter dig serveren. Alt tilføjet indhold går desuden tabt, når du opdaterer indholdet på din server instance."
-  },
-  "app.browse.server.installing": {
-    "message": "Installere"
-  },
   "app.content-install.no-compatible-versions": {
     "message": "Ingen tilgængelige versioner passer til {compatibilityLabel}. Vælg en version for at installere. Afhængigheder bliver ikke installeret automatisk."
   },
@@ -286,15 +247,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "En opdatering er krævet for at spille {name}. Venligst opdater til den seneste version for at køre spillet."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Dette projekt er allerede installeret"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Tilbage til udforsk"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Installer indhold til instance"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Udvikler-tilstand aktiveret."
@@ -826,30 +778,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Log ind på Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "Givet af instanceen"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Spille version er givet af instanceen"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Loader er givet af instanceen"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Synkroniser med instance"
-  },
-  "search.filter.locked.server": {
-    "message": "Givet af serveren"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Kun klient-sided mods kan blive tilføjet til denne server instance"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Spille version er givet af serveren"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Loader er givet af serveren"
   },
   "unknown-pack-warning-modal.body": {
     "message": "En fil behandles kun, hvis den uploades til Modrinth, uanset filformat (herunder .mrpack)."

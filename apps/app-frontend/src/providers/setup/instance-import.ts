@@ -1,12 +1,12 @@
 import type { AbstractWebNotificationManager } from '@emcl/ui'
 import { provideInstanceImport } from '@emcl/ui'
-import { open } from '@/helpers/tauri-compat'
 
 import {
 	get_default_launcher_path,
 	get_importable_instances,
 	import_instance,
 } from '@/helpers/import.js'
+import { open } from '@/helpers/tauri-compat'
 
 export function setupInstanceImportProvider(notificationManager: AbstractWebNotificationManager) {
 	const { handleError } = notificationManager

@@ -11,12 +11,6 @@
   "app.action-bar.hide-more-running-instances": {
     "message": "További futó példányok elrejtése"
   },
-  "app.action-bar.install.retry": {
-    "message": "Újra"
-  },
-  "app.action-bar.install.unknown-instance": {
-    "message": "Ismeretlen profil"
-  },
   "app.action-bar.make-primary-instance": {
     "message": "Beállítás elsődleges példányként"
   },
@@ -92,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Indító minimalizálása"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "A rendszer ablakkeret használata (az alkalmazás újraindítása szükséges)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Rendszer ablakkeret használata"
-  },
   "app.appearance-settings.select-option": {
     "message": "Válassz egy lehetőséget"
   },
@@ -124,45 +112,6 @@
   },
   "app.auth-servers.unreachable.header": {
     "message": "Nem lehet elérni a hitelesítési kiszolgálókat"
-  },
-  "app.browse.add-servers-to-instance": {
-    "message": "Szerver hozzáadása a példányhoz"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Hozzáadás egy példányhoz"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Példányhoz adás"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Hozzáadás ehhez: {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Hozzáadva"
-  },
-  "app.browse.already-added": {
-    "message": "Már hozzá van adva"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Vissza a példányhoz"
-  },
-  "app.browse.discover-content": {
-    "message": "Tartalom böngészése"
-  },
-  "app.browse.discover-servers": {
-    "message": "Szerverek böngészése"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Már hozzáadott szerverek elrejtése"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Modcsomagok"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "A tartalom hozzáadása ronthatja a kompatibilitást a szerverhez való csatlakozáskor. A hozzáadott tartalom elveszik, ha frissíted a szerverprofil tartalmát."
-  },
-  "app.browse.server.installing": {
-    "message": "Letöltés..."
   },
   "app.content-install.no-compatible-versions": {
     "message": "Nincs a(z) {compatibilityLabel} verziónak megfelelő elérhető verzió. Válassz ki egy verziót, ha mégis telepíteni szeretnéd. A függőségek nem települnek automatikusan."
@@ -193,9 +142,6 @@
   },
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0"
-  },
-  "app.install.phase.resolving_loader": {
-    "message": ""
   },
   "app.instance.confirm-delete.admonition-body": {
     "message": "Az profilodhoz tartozó összes adat véglegesen törlődik, beleértve a világokat, a beállításokat és az összes telepített tartalmat."
@@ -301,15 +247,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "Frissítés szükséges ehhez: {name}. Kérlek, frissíts a legújabb verzióra a játék elindításához."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Ez a projekt már telepítve van"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Vissza a böngészéshez"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Tartalom telepítése a profilba"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Fejlesztői mód bekapcsolva."
@@ -892,30 +829,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Bejelentkezés a Minecraftba"
-  },
-  "search.filter.locked.instance": {
-    "message": "Pédány által megadva"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "A játékverziót az adott példány biztosítja"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "A betöltőt az adott példány biztosítja"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Profil szinkronizálása"
-  },
-  "search.filter.locked.server": {
-    "message": "A szerver által van megadva"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Csak kliensoldali modok adhatók hozzá a szerverprofilhoz"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "A játékverziót a szerver biztosítja"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "A betöltőt a szerver biztosítja"
   },
   "unknown-pack-warning-modal.body": {
     "message": "Egy fájlt csak akkor vizsgálunk meg, ha azt feltöltik a Modrinthra, függetlenül a fájlformátumtól (beleértve a .mrpack formátumot is)."

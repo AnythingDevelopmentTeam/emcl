@@ -159,7 +159,6 @@ import {
 	useVIntl,
 } from '@emcl/ui'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
-import { platform } from '@/helpers/tauri-compat'
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -173,6 +172,7 @@ import { trackEvent } from '@/helpers/analytics'
 import { get_project, get_project_v3 } from '@/helpers/cache.js'
 import { instance_listener } from '@/helpers/events'
 import { get_game_versions } from '@/helpers/tags'
+import { platform } from '@/helpers/tauri-compat'
 import type { GameInstance } from '@/helpers/types'
 import { ensureManagedServerWorldExists, getServerAddress } from '@/helpers/worlds'
 import {

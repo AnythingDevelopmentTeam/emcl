@@ -35,7 +35,7 @@ export interface OpeningCommand {
 // This should be called during the initializion/opening of the launcher
 export async function initialize_state() {
 	try {
-		return await window.electronAPI.initState()
+		return await window.electronAPI.initState('EMCL')
 	} catch {
 		return null
 	}

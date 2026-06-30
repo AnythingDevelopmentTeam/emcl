@@ -86,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Мінімізувати запускач"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Використовувати рамку системного вікна (потрібно перезапустити програму)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Системне оформлення"
-  },
   "app.appearance-settings.select-option": {
     "message": "Виберіть опцію"
   },
@@ -118,45 +112,6 @@
   },
   "app.auth-servers.unreachable.header": {
     "message": "Не вдається зв’язатися зі серверами автентифікації"
-  },
-  "app.browse.add-servers-to-instance": {
-    "message": "Додавання сервера до профілю"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Додати до профілю"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Додати до профілю"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Додати до «{instanceName}»"
-  },
-  "app.browse.added": {
-    "message": "Додано"
-  },
-  "app.browse.already-added": {
-    "message": "Уже додано"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Назад до профілю"
-  },
-  "app.browse.discover-content": {
-    "message": "Дослідити вміст"
-  },
-  "app.browse.discover-servers": {
-    "message": "Дослідити сервера"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Сховати наявні сервери"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Збірки"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Додавання вмісту може порушити сумісність при приєднанні до сервера. Усі додані матеріали також будуть утрачені під час оновлення вмісту профілю сервера."
-  },
-  "app.browse.server.installing": {
-    "message": "Установлення"
   },
   "app.content-install.no-compatible-versions": {
     "message": "Жодна доступна версія не сумісна з {compatibilityLabel}. Виберіть версію, щоб усе одно її встановити. Залежності не встановлюватимуться автоматично."
@@ -292,15 +247,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "«{name}» потребує оновлення, щоб грати. Будь ласка, оновіть до останньої версії, щоб запустити гру."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Проєкт уже встановлено"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Повернутися до дослідження"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Установити вміст до профілю"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Увімкнено режим розробника."
@@ -889,30 +835,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Увійти в Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "Надано профілем"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Версія гри надана профілем"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Завантажувач наданий профілем"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Синхронізувати з профілем"
-  },
-  "search.filter.locked.server": {
-    "message": "Надано сервером"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "До профілю сервера можна додавати лише клієнтські моди"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Версія гри надана сервером"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Завантажувач наданий сервером"
   },
   "unknown-pack-warning-modal.body": {
     "message": "Файл перевірятиметься лише, якщо його завантажено на Modrinth, незалежно від його формату (включно з .mrpack)."

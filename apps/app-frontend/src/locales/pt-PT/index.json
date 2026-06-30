@@ -80,27 +80,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "Não foi possível alcançar os servidores de autenticação"
   },
-  "app.browse.add-to-instance": {
-    "message": "Adicionar à instância"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Adicionar a {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Adicionado"
-  },
-  "app.browse.already-added": {
-    "message": "Já adicionado"
-  },
-  "app.browse.discover-content": {
-    "message": "Descobrir conteúdo"
-  },
-  "app.browse.discover-servers": {
-    "message": "Descobrir servidores"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Modpacks"
-  },
   "app.export-modal.description-placeholder": {
     "message": "Insere a descrição do modpack..."
   },
@@ -610,29 +589,5 @@
   },
   "instance.worlds.world_in_use": {
     "message": "Mundo está em uso"
-  },
-  "search.filter.locked.instance": {
-    "message": "Fornecido pela instância"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Versão do jogo é fornecida pela instância"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Carregador é fornecido pela instância"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Sincronizar com a instância"
-  },
-  "search.filter.locked.server": {
-    "message": "Fornecido pelo servidor"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Apenas mods no cliente podem ser adicionados à instância de servidor"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Versão do jogo é fornecida pelo servidor"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Carregador é fornecido pelo servidor"
   }
 }

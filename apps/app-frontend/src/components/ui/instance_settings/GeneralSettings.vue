@@ -12,7 +12,6 @@ import {
 	useVIntl,
 } from '@emcl/ui'
 import { useQueryClient } from '@tanstack/vue-query'
-import { convertFileSrc, open } from '@/helpers/tauri-compat'
 import { computed, type Ref, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -20,6 +19,7 @@ import ConfirmDeleteInstanceModal from '@/components/ui/modal/ConfirmDeleteInsta
 import { trackEvent } from '@/helpers/analytics'
 import { install_duplicate_instance } from '@/helpers/install'
 import { edit, edit_icon, list, remove } from '@/helpers/instance'
+import { convertFileSrc, open } from '@/helpers/tauri-compat'
 import { injectInstanceSettings } from '@/providers/instance-settings'
 
 import type { GameInstance } from '../../../helpers/types'

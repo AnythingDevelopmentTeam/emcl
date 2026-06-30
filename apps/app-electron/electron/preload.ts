@@ -39,6 +39,12 @@ const electronAPI = {
 		ipcRenderer.invoke('instance:toggle_disable_project', id, projectId, desiredEnabled),
 	instanceExportMrpack: (id: string, exportPath: string, candidates?: string[], versionId?: string, description?: string, name?: string) =>
 		ipcRenderer.invoke('instance:export_mrpack', id, exportPath, candidates ?? [], versionId ?? null, description ?? null, name ?? null),
+	instanceAddProjectFromVersion: (instanceId: string, versionId: string, reason: string, dependentOnVersionId?: string) =>
+		ipcRenderer.invoke('instance:add_project_from_version', instanceId, versionId, reason, dependentOnVersionId ?? null),
+	instanceRemoveProject: (instanceId: string, projectPath: string) =>
+		ipcRenderer.invoke('instance:remove_project', instanceId, projectPath),
+	instanceInstallProjectWithDependencies: (instanceId: string, request: any) =>
+		ipcRenderer.invoke('instance:install_project_with_dependencies', instanceId, JSON.stringify(request)),
 
 	// Install
 	installCreateInstance: (name: string, gameVersion: string, loader: string, loaderVersion?: string, iconPath?: string, linkJson?: string) =>
@@ -129,6 +135,8 @@ const electronAPI = {
 	skinsSaveCustomSkin: (skinJson: string, textureBlob: ArrayBuffer, variant: string, capeJson?: string, replaceTexture?: boolean) =>
 		ipcRenderer.invoke('skins:save_custom_skin', skinJson, Buffer.from(textureBlob), variant, capeJson ?? null, replaceTexture ?? false),
 	skinsFlushPendingSkinChange: () => ipcRenderer.invoke('skins:flush_pending_skin_change'),
+	skinsNormalizeTexture: (texture: string | Uint8Array) =>
+		ipcRenderer.invoke('skins:normalize_texture', texture),
 
 	// Files
 	fileRead: (filePath: string) => ipcRenderer.invoke('file:read', filePath),
@@ -162,6 +170,11 @@ const electronAPI = {
 		const handler = (_e: any, payload: any) => callback(payload);
 		ipcRenderer.on('notification', handler);
 		return () => { ipcRenderer.removeListener('notification', handler); };
+	},
+	onNativeError: (callback: (payload: any) => void) => {
+		const handler = (_e: any, payload: any) => callback(payload);
+		ipcRenderer.on('native-error', handler);
+		return () => { ipcRenderer.removeListener('native-error', handler); };
 	},
 	onWindowResized: (callback: () => void) => {
 		ipcRenderer.on('window-resized', () => callback());

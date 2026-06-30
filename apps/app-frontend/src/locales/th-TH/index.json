@@ -86,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "ย่อลันเชอร์"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "ใช้กรอบหน้าต่างระบบ (ต้องรีสตาร์ทแอป)"
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "ของตกแต่งดั้งเดิม"
-  },
   "app.appearance-settings.select-option": {
     "message": "เลือกตัวเลือก"
   },
@@ -118,45 +112,6 @@
   },
   "app.auth-servers.unreachable.header": {
     "message": "ไม่สามารถเชื่อมต่อถึงเซิร์ฟเวอร์ได้"
-  },
-  "app.browse.add-servers-to-instance": {
-    "message": "เพิ่มเซิร์ฟเวอร์ลงในอินสแตนซ์"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "เพิ่มลงในอินสแตนซ์"
-  },
-  "app.browse.add-to-instance": {
-    "message": "เพิ่มลงในโปรแกรม"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "เพิ่มลงใน {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "เพิ่ม"
-  },
-  "app.browse.already-added": {
-    "message": "เพิ่มแล้ว"
-  },
-  "app.browse.back-to-instance": {
-    "message": "กลับสู่อินสแตนซ์"
-  },
-  "app.browse.discover-content": {
-    "message": "สำรวจเนื้อหา"
-  },
-  "app.browse.discover-servers": {
-    "message": "สำรวจเซิร์ฟเวอร์"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "ซ่อนเซิร์ฟเวอร์ที่ดำเนินการเพิ่มแล้ว"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "แพ็กม็อด"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "การเพิ่มเนื้อหาอาจทำให้ใช้งานร่วมกันไม่ได้เมื่อเข้าร่วมเซิร์ฟเวอร์ เนื้อหาที่เพิ่มเข้ามาจะหายไปเมื่อคุณอัปเดตอินสแตนซ์ของเซิร์ฟเวอร์"
-  },
-  "app.browse.server.installing": {
-    "message": "กำลังติดตั้ง"
   },
   "app.content-install.no-compatible-versions": {
     "message": "ไม่มีเวอร์ชันที่เข้ากันได้ {compatibilityLabel} โปรดเลือกเวอร์ชันที่จะติดตั้ง ไฟล์ที่จำเป็นจะไม่ถูกติดตั้งโดยอัตโนมัติ"
@@ -292,15 +247,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "จำเป็นต้องอัปเดตเพื่อเล่น {name} กรุณาอัปเดตเป็นเวอร์ชันล่าสุดเพื่อเปิดเกม"
-  },
-  "app.project.install-button.already-installed": {
-    "message": "โปรเจคนี้ถูกติดตั้งแล้ว"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "กลับไปที่หน้าค้นหา"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "ติดตั้งเนื้อหาลงสู่อินสแตนซ์"
   },
   "app.settings.developer-mode-enabled": {
     "message": "โหมดนักพัฒนาเปิดอยู่"
@@ -838,30 +784,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "ลงชื่อเข้าใช้ Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "โปรแกรมเป็นผู้กำหนด"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "เวอร์ชันเกมถูกกำหนดไว้โดยโปรแกรมแล้ว"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "ตัวรันถูกกำหนดไว้โดยโปรแกรมแล้ว"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "เชื่อมต่อกับโปรแกรม"
-  },
-  "search.filter.locked.server": {
-    "message": "เซิร์ฟเวอร์เป็นผู้กำหนด"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "มีเพียงม็อดสำหรับฝั่งเครื่องของผู้เล่นเท่านั้นที่สามารถเพิ่มลงในโปรแกรมเซิร์ฟเวอร์ดังกล่าวได้"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "เวอร์ชันเกมถูกกำหนดโดยเซิร์ฟเวอร์แล้ว"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "ตัวรันถูกกำหนดโดยเซิร์ฟเวอร์แล้ว"
   },
   "unknown-pack-warning-modal.body": {
     "message": "ไฟล์จะได้รับการตรวจสอบโดยไม่คำนึงถึงประเภทของไฟล์ (รวมทั้ง .mrpack) เมื่อไฟล์ถูกอัปโหลดขึ้น Modrinth"

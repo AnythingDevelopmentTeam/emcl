@@ -86,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimaliseer launcher"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Gebruik systeem venster frame (app opnieuw starten vereist)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Oorspronkelijke versieringen"
-  },
   "app.appearance-settings.select-option": {
     "message": "Selecteer een optie"
   },
@@ -118,45 +112,6 @@
   },
   "app.auth-servers.unreachable.header": {
     "message": "Authenticatieservers kunnen niet worden bereikt"
-  },
-  "app.browse.add-servers-to-instance": {
-    "message": "Server toevoegen aan instantie"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Voeg toe aan een instantie"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Voeg aan instantie toe"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Voeg aan {instanceName} toe"
-  },
-  "app.browse.added": {
-    "message": "Toegevoegd"
-  },
-  "app.browse.already-added": {
-    "message": "Al toegevoegd"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Terug naar instantie"
-  },
-  "app.browse.discover-content": {
-    "message": "Ontdek content"
-  },
-  "app.browse.discover-servers": {
-    "message": "Ontdek servers"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Verberg al toegevoegde servers"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Modpacks"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Het toevoegen van content kan de compatibiliteit verbreken bij het verbinden met de server. Alle toegevoegde inhoud gaat ook verloren wanneer u de content van de serverinstantie bijwerkt."
-  },
-  "app.browse.server.installing": {
-    "message": "Installeren"
   },
   "app.content-install.no-compatible-versions": {
     "message": "Er zijn geen beschikbare versies die overeenkomen met {compatibilityLabel}. Selecteer toch een versie om te installeren. Afhankelijkheden worden niet automatisch geïnstalleerd."
@@ -292,15 +247,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "Een update is vereist om {name} te spelen. Update naar de laatste versie om het spel te starten."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Dit project is al geïnstalleerd"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Terug naar Ontdekken"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Installeer content naar instantie"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Ontwikkelaarsmodus ingeschakeld."
@@ -889,30 +835,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Log in bij Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "Aangeboden door de instantie"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Game versie is aangeboden door de instantie"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Loader is aangeboden door de instantie"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Synchroniseer installatie"
-  },
-  "search.filter.locked.server": {
-    "message": "Aangeleverd door de server"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Alleen client-side mods kunnen toegevoegd worden aan de server instantie"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Spel versie is gegeven door de server"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Loader is gegeven door de server"
   },
   "unknown-pack-warning-modal.body": {
     "message": "Een bestand wordt alleen beoordeeld als het naar Modrinth is geüpload, ongeacht het bestandsformaat (inclusief .mrpack)."

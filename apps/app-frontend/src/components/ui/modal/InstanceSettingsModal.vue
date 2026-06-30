@@ -18,7 +18,6 @@ import {
 } from '@emcl/ui'
 import type { PlatformTag } from '@emcl/utils'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
-import { convertFileSrc } from '@/helpers/tauri-compat'
 import { computed, nextTick, ref, watch } from 'vue'
 
 import GeneralSettings from '@/components/ui/instance_settings/GeneralSettings.vue'
@@ -30,6 +29,7 @@ import { get_project_v3 } from '@/helpers/cache'
 import { get_linked_modpack_info } from '@/helpers/instance'
 import { get_loader_versions } from '@/helpers/metadata'
 import { get_game_versions, get_loaders } from '@/helpers/tags'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import { provideInstanceSettings } from '@/providers/instance-settings'
 
 import type { GameInstance } from '../../../helpers/types'

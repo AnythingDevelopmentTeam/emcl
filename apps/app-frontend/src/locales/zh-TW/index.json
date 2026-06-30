@@ -11,33 +11,6 @@
   "app.action-bar.hide-more-running-instances": {
     "message": "隱藏更多執行中的實例"
   },
-  "app.action-bar.install.dismiss": {
-    "message": "忽略"
-  },
-  "app.action-bar.install.failed": {
-    "message": "無法安裝"
-  },
-  "app.action-bar.install.failed-app-closed": {
-    "message": "由於應用程式關閉，無法安裝。"
-  },
-  "app.action-bar.install.failed-network": {
-    "message": "由於網路錯誤，無法安裝。"
-  },
-  "app.action-bar.install.failed-unknown": {
-    "message": "由於未知錯誤，無法安裝。"
-  },
-  "app.action-bar.install.open-instance": {
-    "message": "開啟實例"
-  },
-  "app.action-bar.install.retry": {
-    "message": "重試"
-  },
-  "app.action-bar.install.unknown-instance": {
-    "message": "未知的實例"
-  },
-  "app.action-bar.installs": {
-    "message": "安裝"
-  },
   "app.action-bar.make-primary-instance": {
     "message": "設為主要實例"
   },
@@ -113,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "最小化啟動器"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "使用系統內建的視窗外框（需要重啟應用程式）。"
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "原生視窗"
-  },
   "app.appearance-settings.select-option": {
     "message": "選擇選項"
   },
@@ -152,45 +119,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "無法連線到驗證伺服器"
   },
-  "app.browse.add-servers-to-instance": {
-    "message": "將伺服器新增至實例"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "新增至實例"
-  },
-  "app.browse.add-to-instance": {
-    "message": "新增至實例"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "新增至「{instanceName}」"
-  },
-  "app.browse.added": {
-    "message": "已新增"
-  },
-  "app.browse.already-added": {
-    "message": "已經新增"
-  },
-  "app.browse.back-to-instance": {
-    "message": "回到實例"
-  },
-  "app.browse.discover-content": {
-    "message": "探索內容"
-  },
-  "app.browse.discover-servers": {
-    "message": "探索伺服器"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "隱藏已新增的伺服器"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "模組包"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "加入內容可能會導致加入伺服器時發生相容性問題。當你更新伺服器實例內容時，任何新增的內容也會遺失。"
-  },
-  "app.browse.server.installing": {
-    "message": "安裝中"
-  },
   "app.content-install.no-compatible-versions": {
     "message": "沒有符合 {compatibilityLabel} 的可用版本。請選擇一個版本強制安裝。不會自動安裝相依模組。"
   },
@@ -220,60 +148,6 @@
   },
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0"
-  },
-  "app.install.phase.downloading_content": {
-    "message": "正在下載內容"
-  },
-  "app.install.phase.downloading_minecraft": {
-    "message": "正在下載 Minecraft"
-  },
-  "app.install.phase.downloading_pack_file": {
-    "message": "正在下載模組包檔案"
-  },
-  "app.install.phase.extracting_overrides": {
-    "message": "正在解壓縮覆寫檔案"
-  },
-  "app.install.phase.finalizing": {
-    "message": "即將完成"
-  },
-  "app.install.phase.preparing_instance": {
-    "message": "正在準備實例"
-  },
-  "app.install.phase.preparing_java": {
-    "message": "正在準備 Java"
-  },
-  "app.install.phase.preparing_java.downloading": {
-    "message": "正在下載 Java {version}"
-  },
-  "app.install.phase.preparing_java.extracting": {
-    "message": "正在解壓縮 Java {version}"
-  },
-  "app.install.phase.preparing_java.fetching-metadata": {
-    "message": "正在擷取 Java {version}"
-  },
-  "app.install.phase.preparing_java.resolving": {
-    "message": "正在準備 Java {version}"
-  },
-  "app.install.phase.preparing_java.validating": {
-    "message": "正在驗證 Java {version}"
-  },
-  "app.install.phase.reading_pack_manifest": {
-    "message": "正在讀取模組包清單"
-  },
-  "app.install.phase.resolving_loader": {
-    "message": "正在解析載入器"
-  },
-  "app.install.phase.resolving_minecraft": {
-    "message": "正在解析 Minecraft"
-  },
-  "app.install.phase.resolving_pack": {
-    "message": "正在解析內容"
-  },
-  "app.install.phase.rolling_back": {
-    "message": "正在復原"
-  },
-  "app.install.phase.running_loader_processors": {
-    "message": "正在執行載入器處理程式"
   },
   "app.instance.confirm-delete.admonition-body": {
     "message": "你實例中的所有資料將被永久刪除，包含你的世界、設定檔以及所有已安裝的內容。"
@@ -412,15 +286,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "需要更新才能遊玩「{name}」。請更新至最新版本以啟動遊戲。"
-  },
-  "app.project.install-button.already-installed": {
-    "message": "這個專案已安裝"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "返回瀏覽"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "將內容安裝至實例"
   },
   "app.settings.developer-mode-enabled": {
     "message": "開發人員模式已啟用。"
@@ -1012,30 +877,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "登入 Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "由該實例提供"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "遊戲版本由實例提供"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "載入器版本由實例提供"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "與實例同步"
-  },
-  "search.filter.locked.server": {
-    "message": "由伺服器提供"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "只有用戶端模組可以被加到伺服器實例"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "遊戲版本由伺服器提供"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "載入器由伺服器提供"
   },
   "unknown-pack-warning-modal.body": {
     "message": "只有上傳至 Modrinth 的檔案才會經過審查，無論其檔案格式為何（包含 .mrpack）。"

@@ -1,33 +1,9 @@
 {
-  "app.action-bar.install.failed": {
-    "message": "Neuspešna instalacija"
-  },
-  "app.action-bar.install.failed-app-closed": {
-    "message": "Neuspešna instalacija zbog zatvaranja aplikacije."
-  },
   "app.auth-servers.unreachable.body": {
     "message": "Minecraft serveri za autentifikaciju su možda trenutno nedostupni. Molimo vas da proverite vašu internet vezu i pokušajte ponovo kasnije."
   },
   "app.auth-servers.unreachable.header": {
     "message": "Serveri za autentifikaciju su nedostupni"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Dodaj na instancu"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Dodaj na {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Dodato"
-  },
-  "app.browse.already-added": {
-    "message": "Već je dodato"
-  },
-  "app.browse.discover-content": {
-    "message": "Otkrij sadržaj"
-  },
-  "app.browse.discover-servers": {
-    "message": "Otkrij servere"
   },
   "app.export-modal.description-placeholder": {
     "message": "Ukucaj opis modpacka..."

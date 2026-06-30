@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { DropdownIcon, FolderOpenIcon, PlusIcon } from '@emcl/assets'
 import { ButtonStyled, injectNotificationManager, OverflowMenu } from '@emcl/ui'
-import { open } from '@/helpers/tauri-compat'
 import { useRouter } from 'vue-router'
 
 import { add_project_from_path } from '@/helpers/instance'
+import { open } from '@/helpers/tauri-compat'
 
 const { handleError } = injectNotificationManager()
 

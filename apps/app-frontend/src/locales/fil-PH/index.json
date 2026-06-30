@@ -86,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Liitin ang launcher"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Gamitin ang system window frame (kailangan i-restart ang app)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Native decorations"
-  },
   "app.appearance-settings.select-option": {
     "message": "Pumili ng opsiyon"
   },
@@ -115,45 +109,6 @@
   },
   "app.auth-servers.unreachable.header": {
     "message": "Hindi maabot ang mga authentication server"
-  },
-  "app.browse.add-servers-to-instance": {
-    "message": "Idinaragdag ang server sa instansiya"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Idagdag sa instansiya"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Idagdag sa instansiya"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Idagdag sa {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Dinagdag"
-  },
-  "app.browse.already-added": {
-    "message": "Nadagdag na"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Bumalik sa instansiya"
-  },
-  "app.browse.discover-content": {
-    "message": "Tumuklas ng kontento"
-  },
-  "app.browse.discover-servers": {
-    "message": "Tumuklas ng mga server"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Itago ang mga nailagay na mga servers"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Modpacks"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Maaaring makasisira sa pagkakatugma sa pagsasali ng server ang pagdaragdag ng kontento. Ang anumang kontento ay mawawala sa pag-update ng kontento ng instansiyang pang-server."
-  },
-  "app.browse.server.installing": {
-    "message": "Ini-install"
   },
   "app.export-modal.description-placeholder": {
     "message": "Ilagay ang paglalarawan ng modpack..."
@@ -286,12 +241,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "Kailangang mag-update upang malaro ang {name}. Mangyaring mag-update sa pinakabagong bersiyon upang ma-launch ang laro."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Naka-install na ang proyektong ito"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Bumalik sa pagtutuklas"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Binuksan ang moda ng nagdi-develop."
@@ -721,30 +670,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Mag sign in kay Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "Sagot na ng instansiya"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Sagot na ng instansiya ang bersiyon ng laro"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Sagot na ng instansiya ang loader ng laro"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Maki-sync sa instansiya"
-  },
-  "search.filter.locked.server": {
-    "message": "Handog ng server"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Mga mod sa panig ng client lamang ang maidadaragdag sa instansiyang server"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Ang bersiyon ng laro ay handog ng server"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Ang loader ay handog na ng server"
   },
   "unknown-pack-warning-modal.body": {
     "message": "Ang file ay nasusuri lamang kapag ito ay na-upload sa Modrinth, walang pili sa file format nito (kabilang na ang .mrpack)."

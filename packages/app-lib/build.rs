@@ -24,6 +24,15 @@ fn set_env() {
             continue;
         }
 
+        // Don't override environment variables already set in the shell
+        // This allows CI/production builds (and Electron) to inject production URLs
+        // while keeping the .env file as the default for local Tauri development.
+        if let Ok(val) = env::var(&var_name) {
+            if !val.is_empty() {
+                continue;
+            }
+        }
+
         println!("cargo::rustc-env={var_name}={var_value}");
     }
 }

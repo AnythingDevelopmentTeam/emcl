@@ -62,6 +62,7 @@ regex = { workspace = true }
 reqwest = { workspace = true, features = [
   "brotli",
   "charset",
+  "cookies",
   "deflate",
   "gzip",
   "http2",

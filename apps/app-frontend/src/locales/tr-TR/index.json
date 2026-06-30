@@ -11,33 +11,6 @@
   "app.action-bar.hide-more-running-instances": {
     "message": "Diğer çalışan kurulumları gizle"
   },
-  "app.action-bar.install.dismiss": {
-    "message": "Reddet"
-  },
-  "app.action-bar.install.failed": {
-    "message": "Yükleme yapılamadı"
-  },
-  "app.action-bar.install.failed-app-closed": {
-    "message": "Yükleme uygulama kapandığından yapılamadı."
-  },
-  "app.action-bar.install.failed-network": {
-    "message": "Yükleme ağ hatasından dolayı yapılamadı."
-  },
-  "app.action-bar.install.failed-unknown": {
-    "message": "Yükleme bilinmeyen bir hatadan yapılamadı."
-  },
-  "app.action-bar.install.open-instance": {
-    "message": "Kurulumu aç"
-  },
-  "app.action-bar.install.retry": {
-    "message": "Yeniden Dene"
-  },
-  "app.action-bar.install.unknown-instance": {
-    "message": "Bilinmeyen kurulum"
-  },
-  "app.action-bar.installs": {
-    "message": "Yüklenenler"
-  },
   "app.action-bar.make-primary-instance": {
     "message": "Birincil kurulum yap"
   },
@@ -113,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Launcher'i simge durumuna at"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Sistem pencere kenarlıklarını kullan (Yeniden başlatma gerekli)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Yerel pencere öğeleri"
-  },
   "app.appearance-settings.select-option": {
     "message": "Bir seçenek seçin"
   },
@@ -152,45 +119,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "Doğrulama sunucularına erişilemedi"
   },
-  "app.browse.add-servers-to-instance": {
-    "message": "Sunucuyu kuruluma ekle"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Bir kuruluma ekle"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Kuruluma ekle"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "{instanceName}'a ekle"
-  },
-  "app.browse.added": {
-    "message": "Ekli"
-  },
-  "app.browse.already-added": {
-    "message": "Zaten ekli"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Kuruluma dön"
-  },
-  "app.browse.discover-content": {
-    "message": "İçerik keşfet"
-  },
-  "app.browse.discover-servers": {
-    "message": "Sunucuları keşfet"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Zaten eklenmiş sunucuları gizle"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Mod paketleri"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Yeni bir içerik eklemek sunucuya girerkenki uyumluluğu bozabilir. Herhangi eklenmiş içerik ise sunucu kurulumunu güncellemeye çalıştığınızda kaybolacaktır."
-  },
-  "app.browse.server.installing": {
-    "message": "Yükleniyor"
-  },
   "app.content-install.no-compatible-versions": {
     "message": "Kullanılabilir sürümler {compatibilityLabel} ile eşleşmiyor. Yine de kurulacak bir sürüm seçin. Bağımlılıklar otomatik olarak yüklenmeyecektir."
   },
@@ -220,60 +148,6 @@
   },
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0"
-  },
-  "app.install.phase.downloading_content": {
-    "message": "İçerik indiriliyor"
-  },
-  "app.install.phase.downloading_minecraft": {
-    "message": "Minecraft yükleniyor"
-  },
-  "app.install.phase.downloading_pack_file": {
-    "message": "Paket dosyaları yükleniyor"
-  },
-  "app.install.phase.extracting_overrides": {
-    "message": "Geçersiz kılmalar ayıklanıyor"
-  },
-  "app.install.phase.finalizing": {
-    "message": "Tamamlanıyor"
-  },
-  "app.install.phase.preparing_instance": {
-    "message": "Kurulum hazırlanıyor"
-  },
-  "app.install.phase.preparing_java": {
-    "message": "Java Hazırlanıyor"
-  },
-  "app.install.phase.preparing_java.downloading": {
-    "message": "Java {version} İndiriliyor"
-  },
-  "app.install.phase.preparing_java.extracting": {
-    "message": "Java {version} ayıklanıyor"
-  },
-  "app.install.phase.preparing_java.fetching-metadata": {
-    "message": "Java {version} getiriliyor"
-  },
-  "app.install.phase.preparing_java.resolving": {
-    "message": "Java {version} Hazırlanıyor"
-  },
-  "app.install.phase.preparing_java.validating": {
-    "message": "Java {version} doğrulanıyor"
-  },
-  "app.install.phase.reading_pack_manifest": {
-    "message": "Paket manifesti okunuyor"
-  },
-  "app.install.phase.resolving_loader": {
-    "message": "Yükleyici çözümleniyor"
-  },
-  "app.install.phase.resolving_minecraft": {
-    "message": "Minecraft çözümleniyor"
-  },
-  "app.install.phase.resolving_pack": {
-    "message": "İçerik çözümleniyor"
-  },
-  "app.install.phase.rolling_back": {
-    "message": "Değişiklikler geri alınıyor"
-  },
-  "app.install.phase.running_loader_processors": {
-    "message": "Yükleyici işlemcileri çalıştırılıyor"
   },
   "app.instance.confirm-delete.admonition-body": {
     "message": "Dünyalarınız, yapılandırmalarınız ve yüklü tüm içerikler ve tüm veriler kalıcı olarak silinecek."
@@ -412,15 +286,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "{name} oyununu oynamak için güncelleme gereklidir. Oyunu başlatmak için lütfen en son sürüme güncelleyin."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Bu proje zaten kurulu"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Keşfete geri dön"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "İçeriği kuruluma yükle"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Geliştirici modu açıldı."
@@ -1012,30 +877,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Minecraft'a giriş yapın"
-  },
-  "search.filter.locked.instance": {
-    "message": "Kurulum tarafından sağlanan"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Oyun sürümü veren kurulumlar"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Yükleyici veren kurulumlar"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Kurulumla senkronize et"
-  },
-  "search.filter.locked.server": {
-    "message": "Sunucu tarafından sağlanmıştır"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Sunucu örneğine yalnızca istemci tarafında çalışan modlar eklenebilir"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Oyun sürümü sunucu tarafından sağlanıyor"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Yükleyici sunucu tarafından sağlanıyor"
   },
   "unknown-pack-warning-modal.body": {
     "message": "Dosya formatı ne olursa olsun (.mrpack dahil), bir dosya yalnızca Modrinth'e yüklendiğinde denetlenir."

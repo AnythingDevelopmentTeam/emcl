@@ -355,17 +355,5 @@
   },
   "instance.worlds.world_in_use": {
     "message": "Verdenen er i bruk"
-  },
-  "search.filter.locked.instance": {
-    "message": "Levert av instansen"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Spillversjon er levert av instansen"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Oppstarter er levert av instansen"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Synkroniser med instans"
   }
 }

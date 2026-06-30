@@ -1,3 +1,11 @@
+interface NativeErrorPayload {
+	method: string
+	message: string
+	stack: string
+	args: string[]
+	timestamp: number
+}
+
 interface ElectronAPI {
 	// State
 	initState: (appIdentifier: string) => Promise<void>
@@ -117,6 +125,7 @@ interface ElectronAPI {
 	skinsRemoveCustomSkin: (skinJson: string) => Promise<void>
 	skinsSaveCustomSkin: (skinJson: string, textureBlob: ArrayBuffer, variant: string, capeJson?: string, replaceTexture?: boolean) => Promise<string>
 	skinsFlushPendingSkinChange: () => Promise<void>
+	skinsNormalizeTexture: (texture: string | Uint8Array) => Promise<Uint8Array>
 
 	// Files
 	fileRead: (filePath: string) => Promise<string>
@@ -142,6 +151,16 @@ interface ElectronAPI {
 	openerOpenUrl: (url: string) => Promise<void>
 	openerOpenPath: (filePath: string) => Promise<string>
 	openerShowItemInFolder: (filePath: string) => void
+
+	// Instance Mod Ops (Node.js fallback)
+	instanceAddProjectFromVersion: (instanceId: string, versionId: string, reason: string, dependentOnVersionId?: string) => Promise<string>
+	instanceRemoveProject: (instanceId: string, projectPath: string) => Promise<void>
+	instanceInstallProjectWithDependencies: (instanceId: string, request: any) => Promise<any>
+
+	// Events (from main process)
+	onCommand: (callback: (payload: any) => void) => () => void
+	onNotification: (callback: (payload: any) => void) => () => void
+	onNativeError: (callback: (payload: NativeErrorPayload) => void) => () => void
 }
 
 interface Window {

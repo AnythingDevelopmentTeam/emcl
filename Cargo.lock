@@ -6167,6 +6167,7 @@ dependencies = [
  "serde_json",
  "theseus",
  "tokio",
+ "url",
  "uuid 1.23.3",
 ]
 

@@ -37,6 +37,12 @@ export async function get_loader_versions(loader) {
 	const data = await fetchJson(metaUrl)
 	if (!data) return null
 
+	// Fabric/Quilt v2/v3 API no longer returns minecraftVersion
+	// Check if the response has the expected format
+	if (data.length > 0 && !data[0].minecraftVersion) {
+		return null
+	}
+
 	const versions = {}
 	for (const entry of data) {
 		const mcVersion = entry.minecraftVersion?.gameVersionId ?? entry.minecraftVersion

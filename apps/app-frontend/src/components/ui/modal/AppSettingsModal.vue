@@ -4,7 +4,6 @@ import {
 	GameIcon,
 	GaugeIcon,
 	LanguagesIcon,
-	ModrinthIcon,
 	PaintbrushIcon,
 	SettingsIcon,
 	ShieldIcon,
@@ -19,7 +18,6 @@ import {
 	TabbedModal,
 	useVIntl,
 } from '@emcl/ui'
-import { getVersion, platform as getOsPlatform } from '@/helpers/tauri-compat'
 import { ref, watch } from 'vue'
 
 import AppearanceSettings from '@/components/ui/settings/AppearanceSettings.vue'
@@ -31,6 +29,7 @@ import PrivacySettings from '@/components/ui/settings/PrivacySettings.vue'
 import ResourceManagementSettings from '@/components/ui/settings/ResourceManagementSettings.vue'
 import type { AppSettings } from '@/helpers/settings.ts'
 import { get, set } from '@/helpers/settings.ts'
+import { getVersion, platform as getOsPlatform } from '@/helpers/tauri-compat'
 import { injectAppUpdateDownloadProgress } from '@/providers/download-progress.ts'
 import { useTheming } from '@/store/state'
 
@@ -168,19 +167,14 @@ const messages = defineMessages({
 					{{ formatMessage(developerModeEnabled) }}
 				</p>
 				<div class="flex items-center gap-3">
-					<button
-						class="p-0 m-0 bg-transparent border-none cursor-pointer button-animation"
-						:class="{
-							'text-brand': themeStore.devMode,
-							'text-secondary': !themeStore.devMode,
-						}"
-						@click="devModeCount"
-					>
-						<ModrinthIcon class="w-6 h-6" />
-					</button>
 					<div class="max-w-[200px]">
-						<p class="m-0">EMCL {{ version }}</p>
-						<p class="m-0">
+						<button
+							class="p-0 m-0 bg-transparent border-none cursor-pointer"
+							@click="devModeCount"
+						>
+							<p class="m-0 text-secondary">EMCL {{ version }}</p>
+						</button>
+						<p class="m-0 text-secondary">
 							<span v-if="osPlatform === 'macos'">macOS</span>
 							<span v-else class="capitalize">{{ osPlatform }}</span>
 							{{ osVersion }}

@@ -11,33 +11,6 @@
   "app.action-bar.hide-more-running-instances": {
     "message": "Hide more running instances"
   },
-  "app.action-bar.install.dismiss": {
-    "message": "Dismiss"
-  },
-  "app.action-bar.install.failed": {
-    "message": "Install failed"
-  },
-  "app.action-bar.install.failed-app-closed": {
-    "message": "Installation failed due to app closing."
-  },
-  "app.action-bar.install.failed-network": {
-    "message": "Installation failed due to a network error."
-  },
-  "app.action-bar.install.failed-unknown": {
-    "message": "Installation failed due to an unknown error."
-  },
-  "app.action-bar.install.open-instance": {
-    "message": "Open instance"
-  },
-  "app.action-bar.install.retry": {
-    "message": "Retry"
-  },
-  "app.action-bar.install.unknown-instance": {
-    "message": "Unknown instance"
-  },
-  "app.action-bar.installs": {
-    "message": "Installs"
-  },
   "app.action-bar.make-primary-instance": {
     "message": "Make primary instance"
   },
@@ -113,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimize launcher"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Use system window frame (app restart required)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Native decorations"
-  },
   "app.appearance-settings.select-option": {
     "message": "Select an option"
   },
@@ -152,45 +119,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "Cannot reach authentication servers"
   },
-  "app.browse.add-servers-to-instance": {
-    "message": "Adding server to instance"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Add to an instance"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Add to instance"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Add to {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Added"
-  },
-  "app.browse.already-added": {
-    "message": "Already added"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Back to instance"
-  },
-  "app.browse.discover-content": {
-    "message": "Discover content"
-  },
-  "app.browse.discover-servers": {
-    "message": "Discover servers"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Hide already added servers"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Modpacks"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Adding content can break compatibility when joining the server. Any added content will also be lost when you update the server instance content."
-  },
-  "app.browse.server.installing": {
-    "message": "Installing"
-  },
   "app.content-install.no-compatible-versions": {
     "message": "No available versions match {compatibilityLabel}. Select a version to install anyway. Dependencies will not be installed automatically."
   },
@@ -220,60 +148,6 @@
   },
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0"
-  },
-  "app.install.phase.downloading_content": {
-    "message": "Downloading content"
-  },
-  "app.install.phase.downloading_minecraft": {
-    "message": "Downloading Minecraft"
-  },
-  "app.install.phase.downloading_pack_file": {
-    "message": "Downloading pack file"
-  },
-  "app.install.phase.extracting_overrides": {
-    "message": "Extracting overrides"
-  },
-  "app.install.phase.finalizing": {
-    "message": "Finalizing"
-  },
-  "app.install.phase.preparing_instance": {
-    "message": "Preparing instance"
-  },
-  "app.install.phase.preparing_java": {
-    "message": "Preparing Java"
-  },
-  "app.install.phase.preparing_java.downloading": {
-    "message": "Downloading Java {version}"
-  },
-  "app.install.phase.preparing_java.extracting": {
-    "message": "Extracting Java {version}"
-  },
-  "app.install.phase.preparing_java.fetching-metadata": {
-    "message": "Fetching Java {version}"
-  },
-  "app.install.phase.preparing_java.resolving": {
-    "message": "Preparing Java {version}"
-  },
-  "app.install.phase.preparing_java.validating": {
-    "message": "Validating Java {version}"
-  },
-  "app.install.phase.reading_pack_manifest": {
-    "message": "Reading pack manifest"
-  },
-  "app.install.phase.resolving_loader": {
-    "message": "Resolving loader"
-  },
-  "app.install.phase.resolving_minecraft": {
-    "message": "Resolving Minecraft"
-  },
-  "app.install.phase.resolving_pack": {
-    "message": "Resolving content"
-  },
-  "app.install.phase.rolling_back": {
-    "message": "Rolling back"
-  },
-  "app.install.phase.running_loader_processors": {
-    "message": "Running loader processors"
   },
   "app.instance.confirm-delete.admonition-body": {
     "message": "All data for your instance will be permanently deleted, including your worlds, configs, and all installed content."
@@ -413,15 +287,6 @@
   "app.modal.update-to-play.update-required-description": {
     "message": "An update is required to play {name}. Please update to the latest version to launch the game."
   },
-  "app.project.install-button.already-installed": {
-    "message": "This project is already installed"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Back to discover"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Install content to instance"
-  },
   "app.settings.developer-mode-enabled": {
     "message": "Developer mode enabled."
   },
@@ -555,13 +420,13 @@
     "message": "MINECON Earth 2017"
   },
   "app.skins.section.modrinth": {
-    "message": "Modrinth"
+    "message": "Default"
   },
   "app.skins.section.modrinth-pride": {
-    "message": "Modrinth Pride"
+    "message": "Pride"
   },
   "app.skins.section.modrinth-pride.tooltip": {
-    "message": "You received these skins for donating to a Modrinth Pride fundraiser during Pride Month."
+    "message": "Pride fundraiser skins"
   },
   "app.skins.section.mounts-of-mayhem": {
     "message": "Mounts of Mayhem"
@@ -585,10 +450,10 @@
     "message": "Sign In"
   },
   "app.skins.sign-in.description": {
-    "message": "Please sign into your Minecraft account to use the skin management features of the Modrinth app."
+    "message": "Please sign into your Minecraft account to use the skin management features."
   },
   "app.skins.sign-in.rinthbot-alt": {
-    "message": "Excited Modrinth Bot"
+    "message": "Excited Bot"
   },
   "app.skins.sign-in.title": {
     "message": "Please sign in"
@@ -627,7 +492,7 @@
     "message": "Version {version} was successfully installed!"
   },
   "app.world.server-modal.placeholder-address": {
-    "message": "example.modrinth.gg"
+    "message": "example.minecraft.net"
   },
   "app.world.server-modal.select-an-option": {
     "message": "Select an option"
@@ -643,6 +508,12 @@
   },
   "app.world.world-item.players-online": {
     "message": "{count} online"
+  },
+  "browse.actions.install": {
+    "message": "Install"
+  },
+  "browse.actions.installing": {
+    "message": "Installing..."
   },
   "friends.action.add-friend": {
     "message": "Add a friend"
@@ -660,10 +531,10 @@
     "message": "It may be different from their Minecraft username!"
   },
   "friends.add-friend.username.placeholder": {
-    "message": "Enter Modrinth username..."
+    "message": "Enter username..."
   },
   "friends.add-friend.username.title": {
-    "message": "What's your friend's Modrinth username?"
+    "message": "What's your friend's username?"
   },
   "friends.add-friends-to-share": {
     "message": "<link>Add friends</link> to see what they're playing!"
@@ -705,7 +576,7 @@
     "message": "{title} - {count}"
   },
   "friends.sign-in-to-add-friends": {
-    "message": "<link>Sign in to a Modrinth account</link> to add friends and see what they're playing!"
+    "message": "<link>Sign in to a Minecraft account</link> to add friends and see what they're playing!"
   },
   "instance.add-server.add-and-play": {
     "message": "Add and play"
@@ -1001,11 +872,23 @@
   "minecraft-account.add-account": {
     "message": "Add account"
   },
+  "minecraft-account.create": {
+    "message": "Create"
+  },
   "minecraft-account.label": {
     "message": "Minecraft account"
   },
   "minecraft-account.not-signed-in": {
     "message": "Not signed in"
+  },
+  "minecraft-account.offline": {
+    "message": "Offline account"
+  },
+  "minecraft-account.offline-username": {
+    "message": "Enter username..."
+  },
+  "minecraft-account.or": {
+    "message": "or"
   },
   "minecraft-account.remove-account": {
     "message": "Remove account"
@@ -1016,32 +899,29 @@
   "minecraft-account.sign-in": {
     "message": "Sign in to Minecraft"
   },
-  "search.filter.locked.instance": {
-    "message": "Provided by the instance"
+  "project.actions.install": {
+    "message": "Install"
   },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Game version is provided by the instance"
+  "project.actions.open-on-modrinth": {
+    "message": "Open on Modrinth"
   },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Loader is provided by the instance"
+  "project.loading": {
+    "message": "Loading..."
   },
-  "search.filter.locked.instance.sync": {
-    "message": "Sync with instance"
+  "project.not-found": {
+    "message": "Project not found"
   },
-  "search.filter.locked.server": {
-    "message": "Provided by the server"
+  "project.team.title": {
+    "message": "Team"
   },
-  "search.filter.locked.server-environment.title": {
-    "message": "Only client-side mods can be added to the server instance"
+  "project.version.latest": {
+    "message": "Latest version"
   },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Game version is provided by the server"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Loader is provided by the server"
+  "project.versions.none": {
+    "message": "No versions available yet."
   },
   "unknown-pack-warning-modal.body": {
-    "message": "A file is only reviewed if it’s uploaded to Modrinth, regardless of its file format (including .mrpack)."
+    "message": "A file is only reviewed if it’s uploaded to our platform, regardless of its file format (including .mrpack)."
   },
   "unknown-pack-warning-modal.dont-show-again": {
     "message": "Don't show this warning again"
@@ -1056,7 +936,7 @@
     "message": "Malware is often distributed through modpack files by sharing them on platforms like Discord."
   },
   "unknown-pack-warning-modal.warning.body": {
-    "message": "We couldn't find this file on Modrinth. We strongly recommend only installing files from sources you trust."
+    "message": "We couldn't find this file on the platform. We strongly recommend only installing files from sources you trust."
   },
   "unknown-pack-warning-modal.warning.title": {
     "message": "Unknown file warning"

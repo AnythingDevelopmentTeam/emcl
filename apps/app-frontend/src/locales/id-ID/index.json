@@ -86,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Kecilkan peluncur"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Gunakan bingkai jendela sistem (wajib menjalankan ulang aplikasi)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Hiasan asli"
-  },
   "app.appearance-settings.select-option": {
     "message": "Pilih opsi"
   },
@@ -118,45 +112,6 @@
   },
   "app.auth-servers.unreachable.header": {
     "message": "Tidak dapat terhubung ke server autentikasi"
-  },
-  "app.browse.add-servers-to-instance": {
-    "message": "Menambah server ke instans"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Tambah ke instans"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Tambah ke instans"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Tambah ke {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Ditambahkan"
-  },
-  "app.browse.already-added": {
-    "message": "Telah ditambahkan"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Kembali ke instans"
-  },
-  "app.browse.discover-content": {
-    "message": "Temukan konten"
-  },
-  "app.browse.discover-servers": {
-    "message": "Temukan server"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Sembunyikan server yang sudah ditambah"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Paket Mod"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Menambah konten dapat merusak kompatibilitas saat bergabung ke server. Konten tambahan apa pun akan hilang ketika Anda memperbarui konten instans server."
-  },
-  "app.browse.server.installing": {
-    "message": "Memasang"
   },
   "app.content-install.no-compatible-versions": {
     "message": "Tidak ada versi tersedia yang cocok untuk {compatibilityLabel}. Anda tetap dapat memilih versi yang akan dipasang. Dependensi tidak akan dipasang secara otomatis."
@@ -292,15 +247,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "{name} perlu diperbarui sebelum dimainkan. Mohon perbarui ke versi terkini untuk meluncurkan permainan."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Proyek ini sudah terpasang"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Kembali ke halaman pencarian"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Pasang konten ke instans"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Mode pengembang dihidupkan."
@@ -889,30 +835,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Masuk ke Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "Disediakan oleh instans"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Versi permainan disediakan oleh instans"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Pemuat disediakan oleh instans"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Sinkronkan dengan instans"
-  },
-  "search.filter.locked.server": {
-    "message": "Disediakan oleh server"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Anda hanya dapat menambahkan mod sisi klien pada instans server"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Versi permainan disediakan oleh server"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Pemuat disediakan oleh server"
   },
   "unknown-pack-warning-modal.body": {
     "message": "Berkas hanya akan ditinjau bila ia diunggah ke Modrinth, tak peduli format berkasnya (termasuk .mrpack)."

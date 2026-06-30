@@ -26,13 +26,13 @@ import {
 	defineMessages,
 	useVIntl,
 } from '@emcl/ui'
-import { openUrl } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import { computed, ref, watch } from 'vue'
 
 import { get_project_many, get_version, get_version_many } from '@/helpers/cache.js'
 import { wait_for_install_job } from '@/helpers/install'
 import { update_managed_modrinth_version } from '@/helpers/instance'
+import { openUrl } from '@/helpers/tauri-compat'
 import type { GameInstance } from '@/helpers/types'
 import { injectServerInstall } from '@/providers/server-install'
 

@@ -10,11 +10,11 @@ import {
 	useDebugLogger,
 	useVIntl,
 } from '@emcl/ui'
-import { invoke, mkdir, readDir, readFile as readFileBytes, readTextFile, remove, rename, stat, writeFile as writeFileBytes, writeTextFile } from '@/helpers/tauri-compat'
 import { onUnmounted, ref, watch } from 'vue'
 
 import { instance_listener } from '@/helpers/events'
 import { get_full_path } from '@/helpers/instance'
+import { invoke, mkdir, readDir, readFile as readFileBytes, readTextFile, remove, rename, stat, writeFile as writeFileBytes, writeTextFile } from '@/helpers/tauri-compat'
 import type { GameInstance } from '@/helpers/types'
 import { highlightInFolder } from '@/helpers/utils'
 
@@ -209,10 +209,18 @@ async function handleWriteFile(path: string, content: string) {
 }
 
 async function handleDownloadFile(path: string, _fileName: string) {
-	await invoke('plugin:files|file_save_as', {
-		instanceId: props.instance.id,
-		filePath: path,
-	})
+	try {
+		await invoke('plugin:files|file_save_as', {
+			instanceId: props.instance.id,
+			filePath: path,
+		})
+	} catch {
+		addNotification({
+			title: 'Download not available',
+			text: 'File download is not implemented in this build',
+			type: 'warn',
+		})
+	}
 }
 
 const uploadState = ref<UploadState>({

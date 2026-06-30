@@ -1,15 +1,10 @@
 <script setup>
 import {
-	AuthFeature,
-	ModrinthApiError,
-	NodeAuthFeature,
-	nodeAuthState,
-	PanelVersionFeature,
-	TauriModrinthClient,
-	VerboseLoggingFeature,
+	GenericModrinthClient,
 } from '@emcl/api-client'
 import {
 	ChangeSkinIcon,
+	CompassIcon,
 	ExternalIcon,
 	HomeIcon,
 	LeftArrowIcon,
@@ -35,8 +30,8 @@ import {
 	I18nDebugPanel,
 	LoadingBar,
 	NotificationPanel,
-	OverflowMenu,
 	PopupNotificationPanel,
+	provideAuth,
 	provideModalBehavior,
 	provideModrinthClient,
 	provideNotificationManager,
@@ -48,37 +43,36 @@ import {
 } from '@emcl/ui'
 import { renderString } from '@emcl/utils'
 import { useQuery } from '@tanstack/vue-query'
-import { getVersion, invoke, getCurrentWindow, tauriFetch, openUrl, getOsType, saveWindowState, StateFlags } from '@/helpers/tauri-compat'
-
 import { computed, onMounted, onUnmounted, provide, ref, watch } from 'vue'
 import { RouterView, useRoute, useRouter } from 'vue-router'
 
 import AppActionBar from '@/components/ui/AppActionBar.vue'
 import Breadcrumbs from '@/components/ui/Breadcrumbs.vue'
 import ErrorModal from '@/components/ui/ErrorModal.vue'
-import FriendsList from '@/components/ui/friends/FriendsList.vue'
 import UnknownPackWarningModal from '@/components/ui/install_flow/UnknownPackWarningModal.vue'
 import MinecraftAuthErrorModal from '@/components/ui/minecraft-auth-error-modal/MinecraftAuthErrorModal.vue'
 import AppSettingsModal from '@/components/ui/modal/AppSettingsModal.vue'
-import AuthGrantFlowWaitModal from '@/components/ui/modal/AuthGrantFlowWaitModal.vue'
 import ModpackAlreadyInstalledModal from '@/components/ui/modal/ModpackAlreadyInstalledModal.vue'
 import NavButton from '@/components/ui/NavButton.vue'
 import QuickInstanceSwitcher from '@/components/ui/QuickInstanceSwitcher.vue'
-import WindowControls from '@/components/ui/WindowControls.vue'
 import { useCheckDisableMouseover } from '@/composables/macCssFix.js'
 import { config } from '@/config'
-
-import { debugAnalytics, initAnalytics, trackEvent } from '@/helpers/analytics'
-import { check_reachable } from '@/helpers/auth.js'
-import { get_user, get_version } from '@/helpers/cache.js'
+import { initAnalytics, trackEvent } from '@/helpers/analytics'
+import {
+	create_offline as create_offline_account,
+	get_default_user,
+	remove_user,
+	set_default_user,
+	users as get_mc_users,
+} from '@/helpers/auth'
+import { check_reachable, login as msaLogin } from '@/helpers/auth.js'
+import { get_version } from '@/helpers/cache.js'
 import { command_listener, notification_listener, warning_listener } from '@/helpers/events.js'
 import { install_create_modpack_instance, install_get_modpack_preview } from '@/helpers/install'
 import { list, run } from '@/helpers/instance'
-import { cancelLogin, get as getCreds, login, logout } from '@/helpers/mr_auth.ts'
-
 import { get as getSettings, set as setSettings } from '@/helpers/settings.ts'
 import { get_opening_command, initialize_state } from '@/helpers/state'
-import { hasActivePride26Midas, hasMidasBadge } from '@/helpers/user-campaigns.ts'
+import { getCurrentWindow, getOsType, getVersion, invoke, isTauri,openUrl, saveWindowState, StateFlags  } from '@/helpers/tauri-compat'
 import {
 	areUpdatesEnabled,
 	enqueueUpdateForInstallation,
@@ -100,21 +94,12 @@ import {
 	openAppUpdateChangelog,
 	setAppUpdateActions,
 } from '@/providers/app-update.ts'
-import {
-	create_offline as create_offline_account,
-	get_default_user,
-	set_default_user,
-	remove_user,
-	users as get_mc_users,
-} from '@/helpers/auth'
 import { createContentInstall, provideContentInstall } from '@/providers/content-install'
 import {
 	provideAppUpdateDownloadProgress,
 	subscribeToDownloadProgress,
 } from '@/providers/download-progress.ts'
-
 import { setupProviders } from '@/providers/setup'
-import { setupAuthProvider } from '@/providers/setup/auth'
 import { setupLoadingStateProvider } from '@/providers/setup/loading-state'
 import { useError } from '@/store/error.js'
 import { useTheming } from '@/store/state'
@@ -127,12 +112,6 @@ import { AppPopupNotificationManager } from './providers/app-popup-notifications
 const themeStore = useTheming()
 const router = useRouter()
 const route = useRoute()
-const credentials = ref()
-const sidebarToggled = ref(true)
-const unsubscribeSidebarToggle = themeStore.$subscribe(() => {
-	sidebarToggled.value = !themeStore.toggleSidebar
-})
-const sidebarVisible = computed(() => sidebarToggled.value)
 
 const notificationManager = new AppNotificationManager()
 provideNotificationManager(notificationManager)
@@ -143,38 +122,24 @@ providePopupNotificationManager(popupNotificationManager)
 const { addPopupNotification } = popupNotificationManager
 
 const appVersion = getVersion()
-const tauriApiClient = new TauriModrinthClient({
+const apiClient = new GenericModrinthClient({
 	userAgent: async () => `modrinth/theseus/${await appVersion} (support@modrinth.com)`,
 	labrinthBaseUrl: config.labrinthBaseUrl,
 	archonBaseUrl: config.archonBaseUrl,
-	features: [
-		new NodeAuthFeature({
-			getAuth: () => nodeAuthState.getAuth?.() ?? null,
-			refreshAuth: async () => {
-				if (nodeAuthState.refreshAuth) {
-					await nodeAuthState.refreshAuth()
-				}
-			},
-		}),
-		new AuthFeature({
-			token: async () => (await getCreds())?.session,
-		}),
-		new PanelVersionFeature(),
-		new VerboseLoggingFeature(),
-	],
+	features: [],
 })
-provideModrinthClient(tauriApiClient)
-const { data: authenticatedModrinthUser } = useQuery({
-	queryKey: computed(() => ['authenticated-user', 'campaigns', credentials.value?.user?.id]),
-	queryFn: () => tauriApiClient.labrinth.users_v3.getAuthenticated(),
-	enabled: () => !!credentials.value?.session,
-	retry: false,
+provideModrinthClient(apiClient)
+provideAuth({
+	session_token: ref(null),
+	user: ref(null),
+	isReady: ref(true),
+	requestSignIn: () => {},
 })
 providePageContext({
 	hierarchicalSidebarAvailable: ref(true),
 	floatingActionBarOffsets: {
 		left: ref('4rem'),
-		right: computed(() => (sidebarVisible.value ? '300px' : '0px')),
+		right: ref('0px'),
 	},
 	featureFlags: {},
 	openExternalUrl: (url) => openUrl(url),
@@ -206,7 +171,6 @@ window.addEventListener('online', () => {
 })
 
 const showOnboarding = ref(false)
-const nativeDecorations = ref(false)
 
 const os = ref('')
 const isDevEnvironment = ref(false)
@@ -245,13 +209,44 @@ onMounted(async () => {
 	document.querySelector('body').addEventListener('click', handleClick)
 	document.querySelector('body').addEventListener('auxclick', handleAuxClick)
 
+	if (window.electronAPI?.onNotification) {
+		window.electronAPI.onNotification((payload) => {
+			if (payload?.type === 'error') {
+				addNotification({
+					type: 'error',
+					title: payload.title ?? 'Error',
+					text: payload.text ?? 'Unknown error',
+				})
+			} else if (payload?.type === 'info') {
+				addNotification({
+					type: 'info',
+					title: payload.title ?? 'Info',
+					text: payload.text ?? '',
+				})
+			}
+		})
+	}
+
+	if (window.electronAPI?.onNativeError) {
+		const lastErrorKey = ref('')
+		window.electronAPI.onNativeError((payload) => {
+			const key = `${payload.method}:${payload.message}`
+			if (key === lastErrorKey.value) return
+			lastErrorKey.value = key
+			setTimeout(() => { if (lastErrorKey.value === key) lastErrorKey.value = '' }, 3000)
+			const err = new Error(payload.message)
+			err.name = `NativeError: ${payload.method}`
+			err.stack = payload.stack
+			error.showError(err, null, false, 'native_backend')
+		})
+	}
+
 	checkUpdates()
 })
 
 onUnmounted(async () => {
 	document.querySelector('body').removeEventListener('click', handleClick)
 	document.querySelector('body').removeEventListener('auxclick', handleAuxClick)
-	unsubscribeSidebarToggle()
 	clearDelayedUpdatePopup()
 
 	await unlistenUpdateDownload?.()
@@ -282,16 +277,13 @@ const messages = defineMessages({
 
 async function setupApp() {
 	const {
-		native_decorations,
 		theme,
 		locale,
 		telemetry,
-		collapsed_navigation,
 		hide_nametag_skins_page,
 		advanced_rendering,
 		onboarded,
 		default_page,
-		toggle_sidebar,
 		developer_mode,
 		feature_flags,
 		pending_update_toast_for_version,
@@ -312,14 +304,9 @@ async function setupApp() {
 	const version = await getVersion()
 	showOnboarding.value = !onboarded
 
-	nativeDecorations.value = native_decorations
-	if (os.value !== 'MacOS') await getCurrentWindow().setDecorations(native_decorations)
-
 	themeStore.setThemeState(theme)
-	themeStore.collapsedNavigation = collapsed_navigation
 	themeStore.advancedRendering = advanced_rendering
 	themeStore.hideNametagSkinsPage = hide_nametag_skins_page
-	themeStore.toggleSidebar = toggle_sidebar
 	themeStore.devMode = developer_mode
 	themeStore.featureFlags = feature_flags
 	stateInitialized.value = true
@@ -341,6 +328,8 @@ async function setupApp() {
 	const osType = await getOsType()
 	if (osType === 'macos') {
 		document.getElementsByTagName('html')[0].classList.add('mac')
+	} else if (osType === 'linux') {
+		document.getElementsByTagName('html')[0].classList.add('linux')
 	} else {
 		document.getElementsByTagName('html')[0].classList.add('windows')
 	}
@@ -367,7 +356,6 @@ async function setupApp() {
 		})
 
 	get_opening_command().then(handleCommand)
-	fetchCredentials()
 
 	try {
 		const skins = (await get_available_skins()) ?? []
@@ -422,13 +410,6 @@ let routerToken = null
 let suspenseToken = null
 
 let suspensePending = false
-
-const sidebarOverlayScrollbarsOptions = Object.freeze({
-	overflow: {
-		x: 'hidden',
-		y: 'scroll',
-	},
-})
 
 router.beforeEach(() => {
 	suspensePending = false
@@ -529,64 +510,11 @@ const modInstallModal = ref()
 const contentInstallModpackAlreadyInstalledModal = ref()
 const incompatibilityWarningModal = ref()
 
-const modrinthLoginFlowWaitModal = ref()
-
 watch(incompatibilityWarningModal, (modal) => {
 	if (modal) {
 		setContentIncompatibilityWarningModal(modal)
 	}
 })
-
-setupAuthProvider(credentials, async (_redirectPath) => {
-	await signIn()
-})
-
-async function validateSession(sessionToken) {
-	try {
-		const response = await tauriFetch(`${config.labrinthBaseUrl}/v2/user`, {
-			method: 'GET',
-			headers: { Authorization: sessionToken },
-		})
-		if (response.status === 401) return false
-		return true
-	} catch {
-		return true
-	}
-}
-
-async function fetchCredentials() {
-	const creds = await getCreds().catch(handleError)
-	if (creds && creds.user_id) {
-		if (creds.session && !(await validateSession(creds.session))) {
-			await logout().catch(handleError)
-			credentials.value = null
-			return
-		}
-		creds.user = await get_user(creds.user_id, 'bypass').catch(handleError)
-	}
-	credentials.value = creds ?? null
-}
-
-async function signIn() {
-	modrinthLoginFlowWaitModal.value.show()
-
-	try {
-		await login()
-		await fetchCredentials()
-	} catch (error) {
-		if (
-			typeof error === 'object' &&
-			typeof error['message'] === 'string' &&
-			error.message.includes('Login canceled')
-		) {
-			// Not really an error due to being a result of user interaction, show nothing
-		} else {
-			handleError(error)
-		}
-	} finally {
-		modrinthLoginFlowWaitModal.value.hide()
-	}
-}
 
 const showOfflineDialog = ref(false)
 const offlineUsername = ref('')
@@ -657,20 +585,28 @@ async function signOutMcAccount() {
 	})
 }
 
-async function logOut() {
-	await logout().catch(handleError)
-	await fetchCredentials()
+async function signInMinecraft() {
+	try {
+		const cred = await msaLogin()
+		if (cred) {
+			await set_default_user(cred.profile.id)
+			await refreshMcAccounts()
+		}
+	} catch (error) {
+		if (
+			typeof error === 'object' &&
+			typeof error['message'] === 'string' &&
+			error.message.includes('Login canceled')
+		) {
+			// User cancelled, do nothing
+		} else {
+			handleError(error)
+		}
+	}
 }
 
-const hasPlus = computed(
-	() =>
-		!!credentials.value?.user &&
-		(hasMidasBadge(credentials.value.user) ||
-			hasActivePride26Midas(authenticatedModrinthUser.value?.campaigns?.pride_26)),
-)
-
 onMounted(() => {
-	invoke('show_window')
+	if (isTauri) invoke('show_window')
 
 	error.setErrorModal(errorModal.value)
 	error.setMinecraftAuthErrorModal(minecraftAuthErrorModal.value)
@@ -897,6 +833,10 @@ async function checkUpdates() {
 	}
 
 	async function performCheck() {
+		if (!isTauri) {
+			console.log('Update checks not available outside Tauri')
+			return
+		}
 		const update = await invoke('plugin:updater|check')
 		if (!update) {
 			console.log('No update available')
@@ -1032,7 +972,7 @@ async function installUpdate() {
 setAppUpdateActions({
 	download: downloadAvailableUpdate,
 	install: installUpdate,
-	changelog: () => openUrl('https://example.com/changelog'),
+	changelog: () => openUrl('https://modrinth.com/app/changelog'),
 })
 
 function handleClick(e) {
@@ -1097,16 +1037,13 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 		<Suspense>
 			<AppSettingsModal ref="settingsModal" />
 		</Suspense>
-		<Suspense>
-			<AuthGrantFlowWaitModal ref="modrinthLoginFlowWaitModal" @flow-cancel="cancelLogin" />
-		</Suspense>
 		<Teleport to="body">
 			<div
 				v-if="showOfflineDialog"
 				class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50"
 				@click.self="showOfflineDialog = false"
 			>
-				<div class="bg-bg-raised border border-surface-5 rounded-xl p-6 shadow-2xl w-80">
+				<div class="bg-bg-raised border border-surface-5 rounded-xl p-6 shadow-2xl w-96">
 					<h3 class="text-contrast font-semibold text-lg mb-4">Offline Account</h3>
 					<input
 						v-model="offlineUsername"
@@ -1115,7 +1052,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 						placeholder="Enter username..."
 						@keydown.enter="createOfflineAccount"
 					/>
-					<div class="flex gap-2 justify-end">
+					<div class="flex gap-2 justify-end mb-4">
 						<button
 							class="px-4 py-2 rounded-lg bg-button-bg text-primary border border-surface-5 cursor-pointer hover:brightness-90"
 							@click="showOfflineDialog = false"
@@ -1128,6 +1065,14 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 							@click="createOfflineAccount"
 						>
 							Create
+						</button>
+					</div>
+					<div class="border-t border-surface-5 pt-4">
+						<button
+							class="w-full px-4 py-2 rounded-lg bg-brand text-on-brand cursor-pointer hover:brightness-90 font-semibold"
+							@click="showOfflineDialog = false; signInMinecraft()"
+						>
+							Or even better, login with Microsoft Account!
 						</button>
 					</div>
 				</div>
@@ -1167,6 +1112,9 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 			>
 				<LibraryIcon />
 			</NavButton>
+			<NavButton v-tooltip.right="'Browse content'" to="/browse/mod">
+				<CompassIcon />
+			</NavButton>
 			<div class="h-px w-6 mx-auto my-2 bg-surface-5"></div>
 			<suspense>
 				<QuickInstanceSwitcher />
@@ -1186,41 +1134,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 				<SettingsIcon />
 			</NavButton>
 			<OverflowMenu
-				v-if="credentials?.user"
-				v-tooltip.right="`Minecraft account`"
-				class="w-12 h-12 text-primary rounded-full flex items-center justify-center text-2xl transition-all bg-transparent hover:bg-button-bg hover:text-contrast border-0 cursor-pointer"
-				:options="[
-					{
-						id: 'view-profile',
-						action: () => openUrl('https://example.com/user/' + credentials.user.username),
-					},
-					{
-						id: 'sign-out',
-						action: () => logOut(),
-						color: 'danger',
-					},
-				]"
-				placement="right-end"
-			>
-				<Avatar :src="credentials?.user?.avatar_url" alt="" size="32px" circle />
-				<template #view-profile>
-					<UserIcon />
-					<span class="inline-flex items-center gap-1">
-						Signed in as
-						<span class="inline-flex items-center gap-1 text-contrast font-semibold">
-							<Avatar :src="credentials?.user?.avatar_url" alt="" size="20px" circle />
-							{{ credentials?.user?.username }}
-						</span>
-					</span>
-					<ExternalIcon />
-				</template>
-				<template #sign-out> <LogOutIcon /> Sign out </template>
-			</OverflowMenu>
-			<NavButton v-else v-tooltip.right="'Sign in to a Minecraft account'" :to="() => signIn()">
-				<LogInIcon class="text-brand" />
-			</NavButton>
-			<OverflowMenu
-				v-if="!credentials?.user && selectedMcAccount"
+				v-if="selectedMcAccount"
 				v-tooltip.right="selectedMcAccount.profile.name"
 				class="w-12 h-12 text-primary rounded-full flex items-center justify-center text-2xl transition-all bg-transparent hover:bg-button-bg hover:text-contrast border-0 cursor-pointer"
 				:options="[
@@ -1241,9 +1155,14 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 				<template #manage-skins> <UserIcon /> Manage skins </template>
 				<template #sign-out> <LogOutIcon /> Sign out </template>
 			</OverflowMenu>
-			<NavButton v-if="!credentials?.user && !selectedMcAccount" v-tooltip.right="'Offline account'" :to="() => showOfflineDialog = true">
-				<UserIcon class="text-secondary" />
-			</NavButton>
+			<template v-if="!selectedMcAccount">
+				<NavButton v-tooltip.right="'Sign in with Microsoft'" :to="() => signInMinecraft()">
+					<LogInIcon class="text-brand" />
+				</NavButton>
+				<NavButton v-tooltip.right="'Offline account'" :to="() => showOfflineDialog = true">
+					<UserIcon class="text-secondary" />
+				</NavButton>
+			</template>
 		</div>
 		<div data-tauri-drag-region class="app-grid-statusbar bg-bg-raised h-[--top-bar-height] flex">
 			<div data-tauri-drag-region class="flex min-w-0 flex-1 overflow-hidden p-3">
@@ -1264,33 +1183,18 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 				<Breadcrumbs class="pt-[2px]" />
 			</div>
 			<section data-tauri-drag-region class="flex shrink-0 ml-auto items-center">
-				<ButtonStyled
-					v-if="themeStore.toggleSidebar"
-					:type="sidebarToggled ? 'standard' : 'transparent'"
-					circular
-				>
-					<button
-						class="mr-3 transition-transform"
-						:class="{ 'rotate-180': !sidebarToggled }"
-						@click="sidebarToggled = !sidebarToggled"
-					>
-						<RightArrowIcon />
-					</button>
-				</ButtonStyled>
 				<div class="flex mr-3">
 					<Suspense>
 						<AppActionBar />
 					</Suspense>
 				</div>
-				<WindowControls />
-			</section>
+				</section>
 		</div>
 	</div>
 	<div
 		v-if="stateInitialized"
 		class="app-contents"
 		:class="{
-			'sidebar-enabled': sidebarVisible,
 			'disable-advanced-rendering': !themeStore.advancedRendering,
 		}"
 	>
@@ -1345,28 +1249,10 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 				</template>
 			</RouterView>
 		</div>
-		<div
-			class="app-sidebar mt-px shrink-0 flex flex-col border-0 border-l-[1px] border-[--brand-gradient-border] border-solid"
-		>
-			<div
-				v-overlay-scrollbars="sidebarOverlayScrollbarsOptions"
-				class="app-sidebar-scrollable flex-grow shrink relative pb-12"
-				data-overlayscrollbars-initialize
-			>
-				<div id="sidebar-teleport-target" class="sidebar-teleport-content"></div>
-				<div class="sidebar-default-content" :class="{ 'sidebar-enabled': sidebarVisible }">
-					<div class="p-4 border-0 border-b-[1px] border-[--brand-gradient-border] border-solid">
-						<suspense>
-							<FriendsList :credentials="credentials" :sign-in="() => signIn()" />
-						</suspense>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 	<I18nDebugPanel />
-	<NotificationPanel :has-sidebar="sidebarVisible" />
-	<PopupNotificationPanel :has-sidebar="sidebarVisible" />
+	<NotificationPanel />
+	<PopupNotificationPanel />
 	<ErrorModal ref="errorModal" />
 	<MinecraftAuthErrorModal ref="minecraftAuthErrorModal" />
 	<ContentInstallModal
@@ -1409,7 +1295,6 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 .app-contents {
 	--top-bar-height: 3rem;
 	--left-bar-width: 4rem;
-	--right-bar-width: 300px;
 }
 
 .app-grid-layout {
@@ -1440,6 +1325,10 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	-webkit-app-region: no-drag;
 }
 
+[data-tauri-drag-region] {
+	-webkit-app-region: drag;
+}
+
 .app-contents {
 	position: absolute;
 	z-index: 1;
@@ -1450,14 +1339,6 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	height: calc(100vh - var(--top-bar-height));
 	background-color: var(--color-bg);
 	border-top-left-radius: var(--radius-xl);
-
-	display: grid;
-	grid-template-columns: 1fr 0px;
-	// transition: grid-template-columns 0.4s ease-in-out;
-
-	&.sidebar-enabled {
-		grid-template-columns: 1fr 300px;
-	}
 }
 
 .loading-indicator-container {
@@ -1465,39 +1346,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	overflow: hidden;
 }
 
-.app-sidebar {
-	overflow: visible;
-	width: 300px;
-	position: relative;
-	height: calc(100vh - var(--top-bar-height));
-	background: var(--brand-gradient-bg);
-
-	--color-button-bg: var(--brand-gradient-button);
-	--color-button-bg-hover: var(--brand-gradient-border);
-	--color-divider: var(--brand-gradient-border);
-	--color-divider-dark: var(--brand-gradient-border);
-}
-
-.app-sidebar::after {
-	content: '';
-	position: absolute;
-	bottom: 250px;
-	left: 0;
-	right: 0;
-	height: 5rem;
-	background: var(--brand-gradient-fade-out-color);
-	pointer-events: none;
-}
-
-.app-sidebar.has-plus::after {
-	display: none;
-}
-
 .disable-advanced-rendering {
-	.app-sidebar::before {
-		box-shadow: none;
-	}
-
 	&.app-contents::before {
 		box-shadow: none;
 	}
@@ -1509,19 +1358,7 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	}
 }
 
-.app-sidebar::before {
-	content: '';
-	box-shadow: -15px 0 15px -15px rgba(0, 0, 0, 0.1) inset;
-	top: 0;
-	bottom: 0;
-	left: -2rem;
-	width: 2rem;
-	position: absolute;
-	pointer-events: none;
-}
-
 .app-viewport {
-	flex-grow: 1;
 	height: 100%;
 	overflow: auto;
 	overflow-x: hidden;
@@ -1542,18 +1379,6 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 	border-width: 1px;
 	border-style: solid;
 	pointer-events: none;
-}
-
-.sidebar-teleport-content {
-	display: contents;
-}
-
-.sidebar-default-content {
-	display: none;
-}
-
-.sidebar-teleport-content:empty + .sidebar-default-content.sidebar-enabled {
-	display: contents;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1612,6 +1437,14 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 }
 </style>
 <style>
+.v-popper__popper {
+	z-index: 9999 !important;
+}
+
+.v-popper--open {
+	z-index: 9999 !important;
+}
+
 .os-theme-dark,
 .os-theme-light {
 	--os-handle-bg: var(--color-scrollbar) !important;

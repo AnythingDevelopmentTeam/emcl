@@ -306,7 +306,6 @@ import {
 	useLoadingBarToken,
 } from '@emcl/ui'
 import { useQueryClient } from '@tanstack/vue-query'
-import { convertFileSrc } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -325,6 +324,7 @@ import { install_existing_instance, install_pack_to_existing_instance } from '@/
 import { get, get_full_path, kill, run } from '@/helpers/instance'
 import { type InstanceContentData, loadInstanceContentData } from '@/helpers/instance-content'
 import { get_by_instance_id } from '@/helpers/process'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import type { GameInstance } from '@/helpers/types'
 import { createInstanceShortcut, showInstanceInFolder } from '@/helpers/utils.js'
 import { get_server_status, refreshWorlds } from '@/helpers/worlds'

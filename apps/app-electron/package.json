@@ -6,10 +6,10 @@
 	"scripts": {
 		"dev": "concurrently \"pnpm dev:native\" \"pnpm dev:electron\"",
 		"dev:no-native": "concurrently \"cd ../../apps/app-frontend && pnpm dev\" \"wait-on http://localhost:1420 && electron .\"",
-		"dev:native": "cd ../../packages/napi-theseus && cargo build --release && node scripts/copy-addon.js",
+		"dev:native": "MODRINTH_API_URL='https://api.modrinth.com/v2/' MODRINTH_API_URL_V3='https://api.modrinth.com/v3/' MODRINTH_URL='https://modrinth.com/' MODRINTH_API_BASE_URL='https://api.modrinth.com/' MODRINTH_LAUNCHER_META_URL='https://launcher-meta.modrinth.com/' MODRINTH_SOCKET_URL='wss://api.modrinth.com/' MODRINTH_ARCHON_BASE_URL='https://archon.modrinth.com/' cd ../../packages/napi-theseus && cargo build --release && node scripts/copy-addon.js",
 		"dev:electron": "wait-on http://localhost:1420 && electron .",
 		"build": "pnpm build:native && pnpm build:electron",
-		"build:native": "cd ../../packages/napi-theseus && cargo build --release && node scripts/copy-addon.js",
+		"build:native": "MODRINTH_API_URL='https://api.modrinth.com/v2/' MODRINTH_API_URL_V3='https://api.modrinth.com/v3/' MODRINTH_URL='https://modrinth.com/' MODRINTH_API_BASE_URL='https://api.modrinth.com/' MODRINTH_LAUNCHER_META_URL='https://launcher-meta.modrinth.com/' MODRINTH_SOCKET_URL='wss://api.modrinth.com/' MODRINTH_ARCHON_BASE_URL='https://archon.modrinth.com/' cd ../../packages/napi-theseus && cargo build --release && node scripts/copy-addon.js",
 		"build:electron": "tsc && electron-builder",
 		"build:ts": "tsc"
 	},
@@ -30,6 +30,7 @@
 		"directories": {
 			"output": "release"
 		},
+		"icon": "icons/icon.png",
 		"files": [
 			"dist-electron/**/*",
 			"../../apps/app-frontend/dist/**/*"

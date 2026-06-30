@@ -77,12 +77,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimumkan pelancar"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Gunakan bingkai tetingkap sistem (aplikasi perlu dimulakan semula)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Hiasan asli"
-  },
   "app.appearance-settings.select-option": {
     "message": "Pilih satu pilihan"
   },
@@ -103,45 +97,6 @@
   },
   "app.auth-servers.unreachable.header": {
     "message": "Tidak dapat mencapai pelayan pengesahan"
-  },
-  "app.browse.add-servers-to-instance": {
-    "message": "Menambah pelayan ke dalam pemasangan"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Tambahkan ke dalam pemasangan"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Tambahkan ke dalam pemasangan"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Tambahkan ke {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Ditambah"
-  },
-  "app.browse.already-added": {
-    "message": "Sudah ditambah"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Kembali ke pemasangan"
-  },
-  "app.browse.discover-content": {
-    "message": "Temui kandungan"
-  },
-  "app.browse.discover-servers": {
-    "message": "Temui pelayan"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Sembunyikan pelayan yang sudah ditambah"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Pek Mod"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Menambah kandungan boleh merosakkan keserasian apabila menyertai pelayan. Sebarang kandungan yang ditambah juga akan hilang apabila anda mengemas kini kandungan pemasangan pelayan."
-  },
-  "app.browse.server.installing": {
-    "message": "Sedang memasang"
   },
   "app.content-install.no-compatible-versions": {
     "message": "Tiada versi tersedia yang sepadan dengan {compatibilityLabel}. Pilih versi untuk dipasang juga. Kebergantungan tidak akan dipasang secara automatik."
@@ -277,15 +232,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "Kemas kini diperlukan untuk memainkan {name}. Sila kemas kini kepada versi terkini untuk melancarkan permainan."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Projek ini sudah dipasang"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Kembali menemukan"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Pasang kandungan ke dalam pemasangan"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Mod pembangun didayakan."
@@ -805,30 +751,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Daftar masuk ke dalam Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "Disediakan oleh pemasangan ini"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Versi permainan adalah disediakan oleh pemasangan ini"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Pemuat adalah disediakan oleh pemasangan ini"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Selaraskan dengan pemasangan"
-  },
-  "search.filter.locked.server": {
-    "message": "Disediakan oleh pelayan"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Hanya mod bahagian pelanggan sahaja yang boleh ditambah pada pemasangan pelayan"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Versi permainan adalah disediakan oleh pelayan"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Pemuat adalah disediakan oleh pelayan"
   },
   "unknown-pack-warning-modal.body": {
     "message": "Sesuatu fail hanya disemak jika ia dimuat naik ke Modrinth, tanpa mengira format failnya (termasuk .mrpack)."

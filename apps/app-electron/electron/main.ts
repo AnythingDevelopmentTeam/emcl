@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain, protocol, shell, session } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
+import * as crypto from 'crypto';
 
 const isDev = !app.isPackaged;
 let native: any = null;
@@ -23,6 +24,12 @@ function loadNativeAddon() {
 	} catch (e) {
 		console.error(`Failed to load native addon:`, e);
 	}
+}
+
+// Enable Wayland support for the UI
+if (process.platform === 'linux') {
+	app.commandLine.appendSwitch('enable-features', 'UseOzonePlatform');
+	app.commandLine.appendSwitch('ozone-platform-hint', 'auto');
 }
 
 const gotLock = app.requestSingleInstanceLock();
@@ -54,7 +61,8 @@ function createWindow() {
 		minWidth: 1100,
 		minHeight: 700,
 		title: 'EMCL',
-		frame: false,
+		frame: true,
+		icon: '/home/vesno/Изображения/blender/Untitled.png',
 		show: false,
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
@@ -64,13 +72,23 @@ function createWindow() {
 		},
 	});
 
-	if (isDev) {
-		mainWindow.loadURL('http://localhost:1420');
-		mainWindow.webContents.openDevTools();
+	const frontendDist = path.join(__dirname, '../../app-frontend/dist');
+	const frontendIndex = path.join(frontendDist, 'index.html');
+
+	if (fs.existsSync(frontendIndex)) {
+		mainWindow.loadFile(frontendIndex);
 	} else {
-		const frontendDist = path.join(__dirname, '../../apps/app-frontend/dist');
-		mainWindow.loadFile(path.join(frontendDist, 'index.html'));
+		mainWindow.loadURL('http://localhost:1420');
 	}
+	if (isDev) {
+		mainWindow.webContents.openDevTools();
+	}
+
+	// Capture renderer console messages for debugging
+	mainWindow.webContents.on('console-message', (_e, level, message, line, sourceId) => {
+		const levelStr = ['verbose', 'info', 'warning', 'error'][level] ?? 'unknown';
+		console.log(`[renderer:${levelStr}] ${message} (${sourceId}:${line})`);
+	});
 
 	mainWindow.on('resize', () => {
 		mainWindow?.webContents.send('window-resized');
@@ -99,8 +117,28 @@ async function safeNativeCall<T>(method: string, defaultValue: T, ...args: any[]
 		const fn = native[method];
 		if (typeof fn !== 'function') throw new Error(`Native method not found: ${method}`);
 		return await fn(...args);
-	} catch (e) {
-		console.warn(`[native] ${method} failed:`, e);
+	} catch (e: any) {
+		const msg = e?.message ?? String(e);
+		const stack = e?.stack;
+		console.error(`[native] ${method} failed:`, msg);
+		if (stack) console.error(`[native] Stack:`, stack);
+
+		// Send toast notification
+		mainWindow?.webContents.send('notification', {
+			type: 'error',
+			title: `Backend error: ${method}`,
+			text: msg,
+		});
+
+		// Send severe error for error modal (with full details)
+		mainWindow?.webContents.send('native-error', {
+			method,
+			message: msg,
+			stack: stack ?? new Error().stack ?? '',
+			args: args.map(a => typeof a === 'string' ? a.slice(0, 200) : String(a).slice(0, 200)),
+			timestamp: Date.now(),
+		});
+
 		return defaultValue;
 	}
 }
@@ -113,14 +151,45 @@ function registerIpcHandlers() {
 
 	// Complete Microsoft OAuth login flow: open auth window, wait for redirect, finish login
 	ipcMain.handle('auth:login', async () => {
+		// Try SISU auth flow first (requires cookie_store on reqwest)
 		const flow = await safeNativeCall<any>("authBeginLogin", null);
+		const flowJson = flow ? JSON.stringify(flow) : null;
 
-		if (!flow || !flow.auth_request_uri) {
-			return null;
+		const authUrl = flow?.auth_request_uri;
+
+		if (!authUrl) {
+			// Fallback: manual PKCE OAuth (no SISU)
+			const verifierBytes = crypto.randomBytes(64);
+			const verifier = verifierBytes.toString('hex');
+			const challengeHash = crypto.createHash('sha256').update(verifier).digest();
+			const challenge = challengeHash
+				.toString('base64')
+				.replace(/\+/g, '-')
+				.replace(/\//g, '_')
+				.replace(/=+$/, '');
+
+			const fallbackFlow = {
+				verifier,
+				challenge,
+				session_id: '',
+				auth_request_uri:
+					`https://login.live.com/oauth20_authorize.srf?` +
+					`client_id=${encodeURIComponent('00000000402b5328')}` +
+					`&response_type=code` +
+					`&redirect_uri=${encodeURIComponent('https://login.live.com/oauth20_desktop.srf')}` +
+					`&scope=${encodeURIComponent('service::user.auth.xboxlive.com::MBI_SSL')}` +
+					`&code_challenge=${encodeURIComponent(challenge)}` +
+					`&code_challenge_method=S256` +
+					`&state=${encodeURIComponent(verifierBytes.toString('base64').replace(/\+/g, '-').replace(/\//g, '_').slice(0, 32))}` +
+					`&prompt=select_account`,
+			};
+			return doAuthWindow(fallbackFlow.auth_request_uri, JSON.stringify(fallbackFlow));
 		}
 
-		const flowJson = JSON.stringify(flow);
+		return doAuthWindow(authUrl, flowJson!);
+	});
 
+	async function doAuthWindow(authUrl: string, flowJson: string) {
 		const authWindow = new BrowserWindow({
 			width: 800,
 			height: 700,
@@ -133,7 +202,7 @@ function registerIpcHandlers() {
 			},
 		});
 
-		authWindow.loadURL(flow!.auth_request_uri);
+		authWindow.loadURL(authUrl);
 
 		return new Promise((resolve, reject) => {
 			const checkUrl = () => {
@@ -171,7 +240,7 @@ function registerIpcHandlers() {
 				resolve(null);
 			});
 		});
-	});
+	}
 
 	ipcMain.handle('auth:get_default_user', async () => safeNativeCall("authGetDefaultUser", null,  ));
 	ipcMain.handle('auth:set_default_user', async (_e, user: string) => safeNativeCall("authSetDefaultUser", undefined, user));
@@ -198,6 +267,64 @@ function registerIpcHandlers() {
 	ipcMain.handle('instance:toggle_disable_project', async (_e, id: string, projectId: string, desiredEnabled?: boolean) => safeNativeCall("instanceToggleDisableProject", undefined, id, projectId, desiredEnabled ?? null));
 	ipcMain.handle('instance:export_mrpack', async (_e, id: string, path: string, candidates: string[], versionId?: string, description?: string, name?: string) => safeNativeCall("instanceExportMrpack", null, id, path, candidates, versionId ?? null, description ?? null, name ?? null));
 
+	// ==================== INSTANCE MOD OPS (Node.js fallback) ====================
+	ipcMain.handle('instance:add_project_from_version', async (_e, instanceId: string, versionId: string, reason: string, dependentOnVersionId?: string) => {
+		try {
+			const instance: any = await safeNativeCall("instanceGet", null, instanceId);
+			if (!instance || !instance.path) throw new Error('Instance not found');
+			const versionRes = await fetch(`https://api.modrinth.com/v2/version/${versionId}`);
+			if (!versionRes.ok) throw new Error('Failed to fetch version');
+			const version = await versionRes.json();
+			const primaryFile = version.files?.find((f: any) => !f.optional) ?? version.files?.[0];
+			if (!primaryFile) throw new Error('No downloadable file found');
+			const modsDir = path.join(instance.path, 'mods');
+			fs.mkdirSync(modsDir, { recursive: true });
+			const fileRes = await fetch(primaryFile.url);
+			if (!fileRes.ok) throw new Error('Failed to download file');
+			fs.writeFileSync(path.join(modsDir, primaryFile.filename), Buffer.from(await fileRes.arrayBuffer()));
+			return primaryFile.filename;
+		} catch (e) {
+			console.warn('[native] add_project_from_version failed:', e);
+			return '';
+		}
+	});
+	ipcMain.handle('instance:remove_project', async (_e, instanceId: string, projectPath: string) => {
+		try {
+			const instance: any = await safeNativeCall("instanceGet", null, instanceId);
+			if (!instance || !instance.path) throw new Error('Instance not found');
+			const fullPath = path.join(instance.path, projectPath);
+			if (fs.existsSync(fullPath)) fs.rmSync(fullPath, { recursive: true });
+		} catch (e) {
+			console.warn('[native] remove_project failed:', e);
+		}
+	});
+	ipcMain.handle('instance:install_project_with_dependencies', async (_e, instanceId: string, requestJson: string) => {
+		try {
+			const request = JSON.parse(requestJson);
+			const { project_id, version_id, content_type } = request;
+			const instance: any = await safeNativeCall("instanceGet", null, instanceId);
+			if (!instance || !instance.path) throw new Error('Instance not found');
+			const versionRes = await fetch(`https://api.modrinth.com/v2/version/${version_id}`);
+			if (!versionRes.ok) throw new Error('Failed to fetch version');
+			const version = await versionRes.json();
+			const primaryFile = version.files?.find((f: any) => !f.optional) ?? version.files?.[0];
+			if (!primaryFile) throw new Error('No downloadable file found');
+			const subDir = content_type === 'shader' ? 'shaderpacks'
+				: content_type === 'resourcepack' ? 'resourcepacks'
+				: content_type === 'datapack' ? 'datapacks'
+				: 'mods';
+			const targetDir = path.join(instance.path, subDir);
+			fs.mkdirSync(targetDir, { recursive: true });
+			const fileRes = await fetch(primaryFile.url);
+			if (!fileRes.ok) throw new Error('Failed to download file');
+			fs.writeFileSync(path.join(targetDir, primaryFile.filename), Buffer.from(await fileRes.arrayBuffer()));
+			return { primary: { project_id, version_id, dependent_on_version_id: null }, dependencies: [], skipped: [] };
+		} catch (e) {
+			console.warn('[native] install_project_with_dependencies failed:', e);
+			return { primary: { project_id: null, version_id: null, dependent_on_version_id: null }, dependencies: [], skipped: [] };
+		}
+	});
+
 	// ==================== INSTALL ====================
 	ipcMain.handle('install:create_instance', async (_e, name: string, gameVersion: string, loader: string, loaderVersion?: string, iconPath?: string, linkJson?: string) => safeNativeCall("installCreateInstance", null, name, gameVersion, loader, loaderVersion ?? null, iconPath ?? null, linkJson ?? null));
 	ipcMain.handle('install:job_list', async (_e, includeFinished: boolean) => safeNativeCall("installJobList", [], includeFinished));
@@ -207,8 +334,41 @@ function registerIpcHandlers() {
 	ipcMain.handle('install:job_dismiss', async (_e, jobId: string) => safeNativeCall("installJobDismiss", undefined, jobId));
 
 	// ==================== SETTINGS ====================
-	ipcMain.handle('settings:get', async () => safeNativeCall("settingsGet", null,  ));
-	ipcMain.handle('settings:set', async (_e, settingsJson: string) => safeNativeCall("settingsSet", undefined, settingsJson));
+	ipcMain.handle('settings:get', async () => {
+		const raw = await safeNativeCall<any>("settingsGet", null);
+		if (!raw) return null;
+		// Transform Rust format → frontend format
+		const memory = raw.memory;
+		const res = raw.game_resolution;
+		return {
+			...raw,
+			memory: {
+				memory_override: false,
+				memory_ceiling: memory?.maximum ?? 4096,
+				memory_floor: 1024,
+			},
+			game_resolution: {
+				width: Array.isArray(res) ? res[0] : 854,
+				height: Array.isArray(res) ? res[1] : 480,
+			},
+		};
+	});
+	ipcMain.handle('settings:set', async (_e, settingsJson: string) => {
+		try {
+			const s = JSON.parse(settingsJson);
+			// Transform frontend format → Rust format
+			if (s.memory && typeof s.memory === 'object') {
+				s.memory = { maximum: s.memory.memory_ceiling ?? 4096 };
+			}
+			if (s.game_resolution && typeof s.game_resolution === 'object') {
+				s.game_resolution = [s.game_resolution.width ?? 854, s.game_resolution.height ?? 480];
+			}
+			return await safeNativeCall("settingsSet", undefined, JSON.stringify(s));
+		} catch (e) {
+			console.warn('[native] settings:set transform failed:', e);
+			return undefined;
+		}
+	});
 	ipcMain.handle('settings:cancel_directory_change', async (_e, appId: string) => safeNativeCall("settingsCancelDirectoryChange", undefined, appId));
 
 	// ==================== JRE ====================
@@ -282,6 +442,7 @@ function registerIpcHandlers() {
 	ipcMain.handle('skins:remove_custom_skin', async (_e, skinJson: string) => safeNativeCall("skinsRemoveCustomSkin", undefined, skinJson));
 	ipcMain.handle('skins:save_custom_skin', async (_e, skinJson: string, textureBlob: Buffer, variant: string, capeJson?: string, replaceTexture?: boolean) => safeNativeCall("skinsSaveCustomSkin", undefined, skinJson, textureBlob, variant, capeJson ?? null, replaceTexture ?? false));
 	ipcMain.handle('skins:flush_pending_skin_change', async () => safeNativeCall("skinsFlushPendingSkinChange", undefined,  ));
+	ipcMain.handle('skins:normalize_texture', async (_e, texture: string | Buffer) => safeNativeCall("skinsNormalizeSkinTexture", null, texture));
 
 	// ==================== FILES ====================
 	ipcMain.handle('file:read', async (_e, filePath: string) => safeNativeCall("fileRead", "", filePath));

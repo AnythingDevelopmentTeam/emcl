@@ -12,7 +12,6 @@ import {
 	TrashIcon,
 } from '@emcl/assets'
 import { HeadingLink, injectNotificationManager } from '@emcl/ui'
-import { openUrl } from '@/helpers/tauri-compat'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -89,7 +88,7 @@ const handleInstanceRightClick = async (event, passedInstance) => {
 	const runningProcesses = await get_by_instance_id(passedInstance.id).catch(handleError)
 
 	const options =
-		runningProcesses.length > 0
+		runningProcesses?.length > 0
 			? [
 					{
 						name: 'stop',
@@ -178,7 +177,7 @@ const handleOptionsClick = async (args) => {
 		}
 		case 'open_link':
 			if (args.item.slug) {
-				openUrl(`https://example.com/${args.item.project_type}/${args.item.slug}`)
+				router.push(`/project/${args.item.slug}`)
 			}
 			break
 		case 'copy_link':

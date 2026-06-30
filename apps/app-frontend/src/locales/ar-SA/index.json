@@ -80,33 +80,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "تعذر الوصول إلى خوادم المصادقة"
   },
-  "app.browse.add-to-instance": {
-    "message": "أضف للنموذج"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "أضف للنموذج {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "مضاف"
-  },
-  "app.browse.already-added": {
-    "message": "مضاف فعلا"
-  },
-  "app.browse.back-to-instance": {
-    "message": "العودة للنموذج"
-  },
-  "app.browse.discover-content": {
-    "message": "استكشف محتوى"
-  },
-  "app.browse.discover-servers": {
-    "message": "استكشف خوادم"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "إخفاء الخوادم المضافة مسبقًا"
-  },
-  "app.browse.server.installing": {
-    "message": "جاري التثبيت"
-  },
   "app.export-modal.description-placeholder": {
     "message": "أدخل وصف التعديل..."
   },
@@ -235,12 +208,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "هناك تحديث مطلوب للعب بـ {name}. الرجاء التحديث إلى أحدث اصدار لتشغيل اللعبة."
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "العودة إلى الاستكشاف"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "تثبيت المحتويات الى النموذج"
   },
   "app.settings.developer-mode-enabled": {
     "message": "تم تفعيل وضع المطوّر."
@@ -700,30 +667,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "سجل دخولك لـ ماينكرافت"
-  },
-  "search.filter.locked.instance": {
-    "message": "مقدَّم من النسخة"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "إصدار اللعبة مقدَّم من النسخة"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "المحمّل مقدَّم من النسخة"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "مزامنة مع النسخة"
-  },
-  "search.filter.locked.server": {
-    "message": "يقدمها الخادم"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "يمكن إضافة التعديلات **المحليه** فقط إلى نموذج الخادم"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "يتم توفير نسخة اللعبة من قبل الخادم"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "يتم توفير المحمّل من قبل الخادم"
   },
   "unknown-pack-warning-modal.dont-show-again": {
     "message": "لا تعرض هذا التحذير مجددا"

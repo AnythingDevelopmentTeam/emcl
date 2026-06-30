@@ -17,7 +17,6 @@ import {
 	StyledInput,
 	useVIntl,
 } from '@emcl/ui'
-import { open } from '@/helpers/tauri-compat'
 import { computed, readonly, ref, watch } from 'vue'
 
 import JavaDetectionModal from '@/components/ui/JavaDetectionModal.vue'
@@ -25,6 +24,7 @@ import useJavaTest from '@/composables/useJavaTest'
 import useMemorySlider from '@/composables/useMemorySlider'
 import { edit, get_optimal_jre_key } from '@/helpers/instance'
 import { get } from '@/helpers/settings.ts'
+import { open } from '@/helpers/tauri-compat'
 import { injectInstanceSettings } from '@/providers/instance-settings'
 
 import type { AppSettings } from '../../../helpers/types'

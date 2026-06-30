@@ -36,13 +36,6 @@
 			"link": "https://modrinth.com/news/article/analytics-overhaul"
 		},
 		{
-			"title": "Modrinth Hosting in the App",
-			"summary": "Buy, setup, and manage your server all in the Modrinth App.",
-			"thumbnail": "https://modrinth.com/news/article/modrinth-hosting-in-app/thumbnail.webp",
-			"date": "2026-04-12T21:30:00.000Z",
-			"link": "https://modrinth.com/news/article/modrinth-hosting-in-app"
-		},
-		{
 			"title": "Content Management Overhaul",
 			"summary": "Overhauled content management for both Modrinth Hosting servers and Modrinth App instances.",
 			"thumbnail": "https://modrinth.com/news/article/content-management-overhaul/thumbnail.webp",
@@ -78,13 +71,6 @@
 			"link": "https://modrinth.com/news/article/standing-by-our-values"
 		},
 		{
-			"title": "Modrinth Servers Launches in Asia",
-			"summary": "Our latest Modrinth Servers datacenter is in Singapore.",
-			"thumbnail": "https://modrinth.com/news/article/modrinth-servers-asia/thumbnail.webp",
-			"date": "2025-09-08T21:45:00.000Z",
-			"link": "https://modrinth.com/news/article/modrinth-servers-asia"
-		},
-		{
 			"title": "Creators: Verify Your Environment Metadata",
 			"summary": "We've overhauled the environment metadata on Modrinth, and all creators must verify their settings.",
 			"thumbnail": "https://modrinth.com/news/article/new-environments/thumbnail.webp",
@@ -99,13 +85,6 @@
 			"link": "https://modrinth.com/news/article/free-server-medal"
 		},
 		{
-			"title": "Skins — Now in Modrinth App!",
-			"summary": "Customize your look, save your favorite skins, and swap them out in a flash, all within Modrinth App.",
-			"thumbnail": "https://modrinth.com/news/article/skins-now-in-modrinth-app/thumbnail.webp",
-			"date": "2025-07-06T23:45:00.000Z",
-			"link": "https://modrinth.com/news/article/skins-now-in-modrinth-app"
-		},
-		{
 			"title": "Creator Updates, July 2025",
 			"summary": "Addressing recent growth and growing pains that have been affecting creators.",
 			"thumbnail": "https://modrinth.com/news/default.webp",
@@ -118,20 +97,6 @@
 			"thumbnail": "https://modrinth.com/news/article/pride-campaign-2025/thumbnail.webp",
 			"date": "2025-07-01T18:00:00.000Z",
 			"link": "https://modrinth.com/news/article/pride-campaign-2025"
-		},
-		{
-			"title": "A New Chapter for Modrinth Servers",
-			"summary": "Modrinth Servers is now fully operated in-house by the Modrinth Team.",
-			"thumbnail": "https://modrinth.com/news/article/a-new-chapter-for-modrinth-servers/thumbnail.webp",
-			"date": "2025-03-13T00:00:00.000Z",
-			"link": "https://modrinth.com/news/article/a-new-chapter-for-modrinth-servers"
-		},
-		{
-			"title": "Host your own server with Modrinth Servers — now in beta",
-			"summary": "Fast, simple, reliable servers directly integrated into Modrinth.",
-			"thumbnail": "https://modrinth.com/news/article/modrinth-servers-beta/thumbnail.webp",
-			"date": "2024-11-03T06:00:00.000Z",
-			"link": "https://modrinth.com/news/article/modrinth-servers-beta"
 		},
 		{
 			"title": "Quintupling Creator Revenue and Becoming Sustainable",
@@ -176,13 +141,6 @@
 			"link": "https://modrinth.com/news/article/download-adjustment"
 		},
 		{
-			"title": "Introducing Modrinth App Beta",
-			"summary": "Changing the modded Minecraft landscape with the new Modrinth App, alongside several other major features.",
-			"thumbnail": "https://modrinth.com/news/default.webp",
-			"date": "2023-08-05T20:00:00.000Z",
-			"link": "https://modrinth.com/news/article/modrinth-app-beta"
-		},
-		{
 			"title": "(April Fools 2023) Powering up your experience: Modrinth Technologies™️ beta launch!",
 			"summary": "Welcome to the new era of Modrinth. We can't wait to hear your feedback.",
 			"thumbnail": "https://modrinth.com/news/article/new-site-beta/thumbnail.webp",
@@ -195,20 +153,6 @@
 			"thumbnail": "https://modrinth.com/news/default.webp",
 			"date": "2023-02-01T20:00:00.000Z",
 			"link": "https://modrinth.com/news/article/accelerating-development"
-		},
-		{
-			"title": "Modrinth's Anniversary Update",
-			"summary": "Marking two years of Modrinth and discussing our New Year's Resolutions for 2023.",
-			"thumbnail": "https://modrinth.com/news/article/two-years-of-modrinth/thumbnail.webp",
-			"date": "2023-01-07T00:00:00.000Z",
-			"link": "https://modrinth.com/news/article/two-years-of-modrinth"
-		},
-		{
-			"title": "Two years of Modrinth: a retrospective",
-			"summary": "The history of Modrinth as we know it from December 2020 to December 2022.",
-			"thumbnail": "https://modrinth.com/news/default.webp",
-			"date": "2023-01-07T00:00:00.000Z",
-			"link": "https://modrinth.com/news/article/two-years-of-modrinth-history"
 		},
 		{
 			"title": "Creators can now make money on Modrinth!",
@@ -265,20 +209,6 @@
 			"thumbnail": "https://modrinth.com/news/article/licensing-guide/thumbnail.webp",
 			"date": "2021-05-16T00:00:00.000Z",
 			"link": "https://modrinth.com/news/article/licensing-guide"
-		},
-		{
-			"title": "Welcome to Modrinth Beta",
-			"summary": "After six months of work, Modrinth enters Beta, helping modders host their mods with ease!",
-			"thumbnail": "https://modrinth.com/news/article/modrinth-beta/thumbnail.webp",
-			"date": "2020-12-01T00:00:00.000Z",
-			"link": "https://modrinth.com/news/article/modrinth-beta"
-		},
-		{
-			"title": "What is Modrinth?",
-			"summary": "Hello, we are Modrinth – an open source mods hosting platform. Sounds dry, doesn't it? So let me tell you our story – and I promise, it won't be boring!",
-			"thumbnail": "https://modrinth.com/news/default.webp",
-			"date": "2020-11-27T00:00:00.000Z",
-			"link": "https://modrinth.com/news/article/whats-modrinth"
 		}
 	]
 }

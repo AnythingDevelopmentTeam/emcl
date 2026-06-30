@@ -92,7 +92,6 @@ import {
 	versionChangesGameVersion,
 } from '@emcl/ui'
 import { useQuery, useQueryClient } from '@tanstack/vue-query'
-import { convertFileSrc, getCurrentWebview, open, openUrl } from '@/helpers/tauri-compat'
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
@@ -118,6 +117,7 @@ import {
 	update_managed_modrinth_version,
 } from '@/helpers/instance'
 import { type InstanceContentData, loadInstanceContentData } from '@/helpers/instance-content'
+import { convertFileSrc, getCurrentWebview, open, openUrl } from '@/helpers/tauri-compat'
 import type { CacheBehaviour, GameInstance } from '@/helpers/types'
 import { highlightModInInstance } from '@/helpers/utils.js'
 import { injectContentInstall } from '@/providers/content-install'

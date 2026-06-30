@@ -1,21 +1,17 @@
-import { invoke } from '@/helpers/tauri-compat'
-
 import cssContent from '@/assets/stylesheets/macFix.css?inline'
 
 export async function useCheckDisableMouseover() {
 	try {
-		// Fetch the CSS content from the Rust backend
-		let should_disable_mouseover = await invoke('plugin:utils|should_disable_mouseover')
+		const os = window.electronAPI
+			? (await window.electronAPI.utilsGetOs()).toLowerCase()
+			: 'linux'
 
-		if (should_disable_mouseover) {
-			// Create a style element and set its content
+		if (os === 'macos') {
 			const styleElement = document.createElement('style')
 			styleElement.innerHTML = cssContent
-
-			// Append the style element to the document's head
 			document.head.appendChild(styleElement)
 		}
 	} catch (error) {
-		console.error('Error checking OS version from Rust backend', error)
+		console.error('Error checking OS version', error)
 	}
 }

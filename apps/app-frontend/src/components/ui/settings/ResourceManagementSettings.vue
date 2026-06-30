@@ -1,12 +1,12 @@
 <script setup>
 import { BoxIcon, FolderOpenIcon, FolderSearchIcon, TrashIcon } from '@emcl/assets'
 import { ButtonStyled, injectNotificationManager, Slider, StyledInput } from '@emcl/ui'
-import { open } from '@/helpers/tauri-compat'
 import { ref, watch } from 'vue'
 
 import ConfirmModalWrapper from '@/components/ui/modal/ConfirmModalWrapper.vue'
 import { purge_cache_types } from '@/helpers/cache.js'
 import { get, set } from '@/helpers/settings.ts'
+import { open } from '@/helpers/tauri-compat'
 import { showAppDbBackupsFolder } from '@/helpers/utils.js'
 import { useTheming } from '@/store/state'
 

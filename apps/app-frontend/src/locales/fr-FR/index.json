@@ -11,33 +11,6 @@
   "app.action-bar.hide-more-running-instances": {
     "message": "Masquer plus d'instances en exécution"
   },
-  "app.action-bar.install.dismiss": {
-    "message": "Rejeter"
-  },
-  "app.action-bar.install.failed": {
-    "message": "Échec de l'installation"
-  },
-  "app.action-bar.install.failed-app-closed": {
-    "message": "Échec de l'installation dû à la fermeture de l'app."
-  },
-  "app.action-bar.install.failed-network": {
-    "message": "Échec de l'installation dû à une erreur réseau."
-  },
-  "app.action-bar.install.failed-unknown": {
-    "message": "Échec de l'installation dû à une erreur inconnue."
-  },
-  "app.action-bar.install.open-instance": {
-    "message": "Ouvrir l'instance"
-  },
-  "app.action-bar.install.retry": {
-    "message": "Réessayer"
-  },
-  "app.action-bar.install.unknown-instance": {
-    "message": "Instance inconnue"
-  },
-  "app.action-bar.installs": {
-    "message": "Installations"
-  },
   "app.action-bar.make-primary-instance": {
     "message": "Définir en tante qu'instance première"
   },
@@ -113,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimiser le lanceur"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Utiliser le cadre fenêtre du système (redémarrage de l'application requis)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Décorations natives"
-  },
   "app.appearance-settings.select-option": {
     "message": "Sélectionnez une option"
   },
@@ -152,45 +119,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "Impossible de contacter les serveurs d'authentification"
   },
-  "app.browse.add-servers-to-instance": {
-    "message": "Ajouter le serveur à l'instance"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Ajouter à une instance"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Ajouter à l'instance"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Ajouter à {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Ajouté"
-  },
-  "app.browse.already-added": {
-    "message": "Déjà ajouté"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Retour à l'instance"
-  },
-  "app.browse.discover-content": {
-    "message": "Découvrir du contenu"
-  },
-  "app.browse.discover-servers": {
-    "message": "Découvrir des serveurs"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Masquer les serveurs déjà ajoutés"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Modpacks"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Ajouter du contenu peut briser la comptabilité en rejoignant le serveur. Tout contenu en plus sera également perdu lorsque vous mettrez à jour le contenu de l'instance du serveur."
-  },
-  "app.browse.server.installing": {
-    "message": "Installation en cours"
-  },
   "app.content-install.no-compatible-versions": {
     "message": "Aucune version disponible ne correspond à {compatibilityLabel}. Sélectionnez une version pour l'installer malgré tout. Les dépendances ne seront pas installées automatiquement."
   },
@@ -220,60 +148,6 @@
   },
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0"
-  },
-  "app.install.phase.downloading_content": {
-    "message": "Téléchargement du contenu"
-  },
-  "app.install.phase.downloading_minecraft": {
-    "message": "Téléchargement de Minecraft"
-  },
-  "app.install.phase.downloading_pack_file": {
-    "message": "Téléchargement du fichier de pack"
-  },
-  "app.install.phase.extracting_overrides": {
-    "message": "Extraction des fichiers personnalisés"
-  },
-  "app.install.phase.finalizing": {
-    "message": "Finalisation"
-  },
-  "app.install.phase.preparing_instance": {
-    "message": "Préparation de l'instance"
-  },
-  "app.install.phase.preparing_java": {
-    "message": "Préparation de Java"
-  },
-  "app.install.phase.preparing_java.downloading": {
-    "message": "Téléchargement de Java {version}"
-  },
-  "app.install.phase.preparing_java.extracting": {
-    "message": "Extraction de Java {version}"
-  },
-  "app.install.phase.preparing_java.fetching-metadata": {
-    "message": "Récupération de Java {version}"
-  },
-  "app.install.phase.preparing_java.resolving": {
-    "message": "Préparation de Java {version}"
-  },
-  "app.install.phase.preparing_java.validating": {
-    "message": "Validation de Java {version}"
-  },
-  "app.install.phase.reading_pack_manifest": {
-    "message": "Lecture du manifeste du pack"
-  },
-  "app.install.phase.resolving_loader": {
-    "message": "Résolution du loader"
-  },
-  "app.install.phase.resolving_minecraft": {
-    "message": "Résolution de Minecraft"
-  },
-  "app.install.phase.resolving_pack": {
-    "message": "Résolution du contenu"
-  },
-  "app.install.phase.rolling_back": {
-    "message": "Annulation"
-  },
-  "app.install.phase.running_loader_processors": {
-    "message": "Exécution des processeurs du chargeur"
   },
   "app.instance.confirm-delete.admonition-body": {
     "message": "Toutes les données pour votre instance seront supprimées à jamais, y compris vos mondes, vos configurations, et le contenu installé."
@@ -412,15 +286,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "Une mise à jour est requise pour jouer à {name}. Veuillez mettre à jour à la dernière version pour lancer le jeu."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Ce projet a déjà été installé"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Retour vers la page découvrir"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Installer du contenu à l'instance"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Mode développeur activé."
@@ -1009,30 +874,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Se connecter à Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "Procuré par l'instance"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "La version du jeu est procuré par l'instance"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Le modloader est procuré par l'instance"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Synchroniser avec l'instance"
-  },
-  "search.filter.locked.server": {
-    "message": "Fournis par le serveur"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Seuls les mods client peuvent être ajoutés à l'instance du serveur"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Version du jeu est procurée par le serveur"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Le loader est procuré par le serveur"
   },
   "unknown-pack-warning-modal.body": {
     "message": "Un fichier n’est révisé que s’il est téléchargé sur Modrinth, quel que soit son format de fichier (y compris .mrpack)."

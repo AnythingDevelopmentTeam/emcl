@@ -41,14 +41,6 @@ const messages = defineMessages({
 		id: 'app.appearance-settings.hide-nametag.description',
 		defaultMessage: 'Disables the nametag above your player on the skins page.',
 	},
-	nativeDecorationsTitle: {
-		id: 'app.appearance-settings.native-decorations.title',
-		defaultMessage: 'Native decorations',
-	},
-	nativeDecorationsDescription: {
-		id: 'app.appearance-settings.native-decorations.description',
-		defaultMessage: 'Use system window frame (app restart required).',
-	},
 	minimizeLauncherTitle: {
 		id: 'app.appearance-settings.minimize-launcher.title',
 		defaultMessage: 'Minimize launcher',
@@ -84,14 +76,6 @@ const messages = defineMessages({
 	jumpBackIntoWorldsDescription: {
 		id: 'app.appearance-settings.jump-back-into-worlds.description',
 		defaultMessage: 'Includes recent worlds in the "Jump back in" section on the Home page.',
-	},
-	toggleSidebarTitle: {
-		id: 'app.appearance-settings.toggle-sidebar.title',
-		defaultMessage: 'Toggle sidebar',
-	},
-	toggleSidebarDescription: {
-		id: 'app.appearance-settings.toggle-sidebar.description',
-		defaultMessage: 'Enables the ability to toggle the sidebar.',
 	},
 	unknownPackWarningTitle: {
 		id: 'app.appearance-settings.unknown-pack-warning.title',
@@ -170,16 +154,6 @@ watch(
 				}
 			"
 		/>
-	</div>
-
-	<div v-if="os !== 'MacOS'" class="mt-6 flex items-center justify-between gap-4">
-		<div>
-			<h2 class="m-0 text-lg font-semibold text-contrast">
-				{{ formatMessage(messages.nativeDecorationsTitle) }}
-			</h2>
-			<p class="m-0 mt-1">{{ formatMessage(messages.nativeDecorationsDescription) }}</p>
-		</div>
-		<Toggle id="native-decorations" v-model="settings.native_decorations" />
 	</div>
 
 	<div class="mt-6 flex items-center justify-between">
@@ -314,22 +288,4 @@ watch(
 		/>
 	</div>
 
-	<div class="mt-6 flex items-center justify-between">
-		<div>
-			<h2 class="m-0 text-lg font-semibold text-contrast">
-				{{ formatMessage(messages.toggleSidebarTitle) }}
-			</h2>
-			<p class="m-0 mt-1">{{ formatMessage(messages.toggleSidebarDescription) }}</p>
-		</div>
-		<Toggle
-			id="toggle-sidebar"
-			:model-value="settings.toggle_sidebar"
-			@update:model-value="
-				(e) => {
-					settings.toggle_sidebar = !!e
-					themeStore.toggleSidebar = settings.toggle_sidebar
-				}
-			"
-		/>
-	</div>
 </template>

@@ -1,5 +1,4 @@
 // AUTO-GENERATED FILE - DO NOT EDIT
-import { article as a_new_chapter_for_modrinth_servers } from "./a_new_chapter_for_modrinth_servers";
 import { article as accelerating_development } from "./accelerating_development";
 import { article as analytics_overhaul } from "./analytics_overhaul";
 import { article as becoming_sustainable } from "./becoming_sustainable";
@@ -20,11 +19,6 @@ import { article as licensing_guide } from "./licensing_guide";
 import { article as modpack_changes } from "./modpack_changes";
 import { article as modpack_permissions } from "./modpack_permissions";
 import { article as modpacks_alpha } from "./modpacks_alpha";
-import { article as modrinth_app_beta } from "./modrinth_app_beta";
-import { article as modrinth_beta } from "./modrinth_beta";
-import { article as modrinth_hosting_in_app } from "./modrinth_hosting_in_app";
-import { article as modrinth_servers_asia } from "./modrinth_servers_asia";
-import { article as modrinth_servers_beta } from "./modrinth_servers_beta";
 import { article as new_environments } from "./new_environments";
 import { article as new_site_beta } from "./new_site_beta";
 import { article as plugins_resource_packs } from "./plugins_resource_packs";
@@ -33,17 +27,12 @@ import { article as pride_campaign_2026 } from "./pride_campaign_2026";
 import { article as redesign } from "./redesign";
 import { article as russian_censorship } from "./russian_censorship";
 import { article as server_access } from "./server_access";
-import { article as skins_now_in_modrinth_app } from "./skins_now_in_modrinth_app";
 import { article as standing_by_our_values } from "./standing_by_our_values";
 import { article as standing_by_our_values_russian } from "./standing_by_our_values_russian";
 import { article as streamlined_version_creation } from "./streamlined_version_creation";
-import { article as two_years_of_modrinth } from "./two_years_of_modrinth";
-import { article as two_years_of_modrinth_history } from "./two_years_of_modrinth_history";
-import { article as whats_modrinth } from "./whats_modrinth";
 import { article as windows_borderless_malware_disclosure } from "./windows_borderless_malware_disclosure";
 
 export const articles = [
-  a_new_chapter_for_modrinth_servers,
   accelerating_development,
   analytics_overhaul,
   becoming_sustainable,
@@ -64,11 +53,6 @@ export const articles = [
   modpack_changes,
   modpack_permissions,
   modpacks_alpha,
-  modrinth_app_beta,
-  modrinth_beta,
-  modrinth_hosting_in_app,
-  modrinth_servers_asia,
-  modrinth_servers_beta,
   new_environments,
   new_site_beta,
   plugins_resource_packs,
@@ -77,12 +61,8 @@ export const articles = [
   redesign,
   russian_censorship,
   server_access,
-  skins_now_in_modrinth_app,
   standing_by_our_values,
   standing_by_our_values_russian,
   streamlined_version_creation,
-  two_years_of_modrinth,
-  two_years_of_modrinth_history,
-  whats_modrinth,
   windows_borderless_malware_disclosure
 ];

@@ -1,11 +1,17 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory,createWebHistory } from 'vue-router'
 
 import * as Pages from '@/pages'
+import BrowseDiscover from '@/pages/browse/Discover.vue'
 import * as Instance from '@/pages/instance'
 import * as Library from '@/pages/library'
+import Project from '@/pages/project/Project.vue'
+
+// createWebHistory() doesn't work with file:// protocol (Electron)
+// because the pathname is the full filesystem path, not a route path.
+const isElectron = typeof window !== 'undefined' && 'electronAPI' in window
 
 export default new createRouter({
-	history: createWebHistory(),
+	history: isElectron ? createWebHashHistory() : createWebHistory(),
 	routes: [
 		{
 			path: '/',
@@ -119,6 +125,19 @@ export default new createRouter({
 					},
 				},
 			],
+		},
+		{
+			path: '/project/:slug',
+			name: 'Project',
+			component: Project,
+			meta: {
+				breadcrumb: [{ name: 'Project' }],
+			},
+		},
+		{
+			path: '/browse/:type',
+			name: 'BrowseDiscover',
+			component: BrowseDiscover,
 		},
 	],
 	linkActiveClass: 'router-link-active',

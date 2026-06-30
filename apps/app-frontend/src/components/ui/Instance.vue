@@ -8,7 +8,6 @@ import {
 	TimerIcon,
 } from '@emcl/assets'
 import { Avatar, ButtonStyled, injectNotificationManager, useRelativeTime } from '@emcl/ui'
-import { convertFileSrc } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -18,6 +17,7 @@ import { process_listener } from '@/helpers/events'
 import { install_existing_instance, install_pack_to_existing_instance } from '@/helpers/install'
 import { kill, run } from '@/helpers/instance'
 import { get_by_instance_id } from '@/helpers/process'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import { showInstanceInFolder } from '@/helpers/utils.js'
 import { handleSevereError } from '@/store/error.js'
 
@@ -49,7 +49,7 @@ const modLoading = computed(
 		currentEvent.value === 'installing' ||
 		(currentEvent.value === 'launched' && !playing.value),
 )
-const installing = computed(() => props.instance.install_stage.includes('installing'))
+const installing = computed(() => (props.instance.install_stage ?? '').includes('installing'))
 const installed = computed(() => props.instance.install_stage === 'installed')
 
 const router = useRouter()
@@ -61,7 +61,7 @@ const seeInstance = async () => {
 const checkProcess = async () => {
 	const runningProcesses = await get_by_instance_id(props.instance.id).catch(handleError)
 
-	playing.value = runningProcesses.length > 0
+	playing.value = (runningProcesses ?? []).length > 0
 }
 
 const play = async (e, context) => {

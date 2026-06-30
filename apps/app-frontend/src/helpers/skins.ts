@@ -188,7 +188,17 @@ export async function get_normalized_skin_texture(skin: Skin): Promise<string> {
 }
 
 export async function normalize_skin_texture(texture: Uint8Array | string): Promise<Uint8Array> {
-	throw new Error('normalize_skin_texture not implemented in Electron build')
+	try {
+		const result = await window.electronAPI.skinsNormalizeTexture(texture)
+		return new Uint8Array(result)
+	} catch {
+		// Fallback: return the original texture as-is
+		if (typeof texture === 'string') {
+			const resp = await fetch(texture)
+			return new Uint8Array(await resp.arrayBuffer())
+		}
+		return texture
+	}
 }
 
 export async function unequip_skin(): Promise<void> {

@@ -473,7 +473,8 @@ function getLoaderVersionsForGameVersion(
 	// Some loaders (e.g. Fabric) list all versions under a placeholder entry
 	const placeholder = manifest.find((x) => x.id === '${modrinth.gameVersion}')
 	if (placeholder) {
-		if (!manifest.some((x) => x.id === gameVersion)) return []
+		// If the only entry is the placeholder, the loader supports all game versions
+		if (manifest.length > 1 && !manifest.some((x) => x.id === gameVersion)) return []
 		debug(
 			'getLoaderVersionsForGameVersion: using placeholder, loaders:',
 			placeholder.loaders.length,

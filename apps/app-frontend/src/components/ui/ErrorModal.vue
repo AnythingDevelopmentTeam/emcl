@@ -133,15 +133,18 @@ async function repairInstance() {
 	loadingRepair.value = false
 }
 
-const hasDebugInfo = computed(
-	() =>
-		errorType.value === 'directory_move' ||
-		errorType.value === 'minecraft_auth' ||
-		errorType.value === 'state_init' ||
-		errorType.value === 'no_loader_version',
-)
+const hasDebugInfo = computed(() => true)
 
-const debugInfo = computed(() => error.value.message ?? error.value ?? 'No error message.')
+const debugInfo = computed(() => {
+	let info = error.value?.message ?? error.value ?? 'No error message.'
+	if (error.value?.stack) {
+		info += '\n\nStack trace:\n' + error.value.stack
+	}
+	if (error.value?.name?.startsWith('NativeError:')) {
+		info = `[${error.value.name}]\n${info}`
+	}
+	return info
+})
 
 const copied = ref(false)
 

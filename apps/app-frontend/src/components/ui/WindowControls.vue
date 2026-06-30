@@ -32,10 +32,10 @@
 <script setup>
 import { MaximizeIcon, MinimizeIcon, RestoreIcon, XIcon } from '@emcl/assets'
 import { ButtonStyled } from '@emcl/ui'
-import { getCurrentWindow, saveWindowState, StateFlags } from '@/helpers/tauri-compat'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 import { get as getSettings } from '@/helpers/settings.ts'
+import { getCurrentWindow, saveWindowState, StateFlags } from '@/helpers/tauri-compat'
 import { getOS } from '@/helpers/utils.js'
 import { useTheming } from '@/store/state'
 
@@ -50,7 +50,8 @@ const alwaysShowAppControls = computed(() => themeStore.getFeatureFlag('always_s
 const showControls = computed(
 	() =>
 		alwaysShowAppControls.value ||
-		(!nativeDecorations.value && (os.value === 'Windows' || os.value === 'Linux')),
+		os.value === 'Linux' ||
+		(!nativeDecorations.value && os.value === 'Windows'),
 )
 
 onMounted(async () => {

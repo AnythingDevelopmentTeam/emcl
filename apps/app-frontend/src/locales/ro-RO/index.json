@@ -394,29 +394,5 @@
   },
   "instance.worlds.world_in_use": {
     "message": "Lumea este în folosință"
-  },
-  "search.filter.locked.instance": {
-    "message": "Oferit de instanță"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Versiunea jocului este oferit de instanță"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Loader-ul este oferit de instanță"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Sincronizează cu instanța"
-  },
-  "search.filter.locked.server": {
-    "message": "Furnizat de server"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Numai modurile de pe partea clientului pot fi adăugate la instanța serverului"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Versiunea jocului este furnizată de server"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Încărcătorul este furnizat de server"
   }
 }

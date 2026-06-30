@@ -34,13 +34,13 @@ import {
 	useVIntl,
 } from '@emcl/ui'
 import { getPingLevel } from '@emcl/utils'
-import { convertFileSrc } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import { Tooltip } from 'floating-vue'
 import type { Component } from 'vue'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import { copyToClipboard, createInstanceShortcut } from '@/helpers/utils'
 import type {
 	ProtocolVersion,

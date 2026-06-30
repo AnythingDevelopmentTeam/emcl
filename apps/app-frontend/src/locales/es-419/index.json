@@ -11,33 +11,6 @@
   "app.action-bar.hide-more-running-instances": {
     "message": "Ocultar más instancias en ejecución"
   },
-  "app.action-bar.install.dismiss": {
-    "message": "Descartar"
-  },
-  "app.action-bar.install.failed": {
-    "message": "La instalación falló"
-  },
-  "app.action-bar.install.failed-app-closed": {
-    "message": "La instalación falló porque la aplicación se cerró."
-  },
-  "app.action-bar.install.failed-network": {
-    "message": "La instalación falló debido a un error de red."
-  },
-  "app.action-bar.install.failed-unknown": {
-    "message": "La instalación falló debido a un error desconocido."
-  },
-  "app.action-bar.install.open-instance": {
-    "message": "Abrir instancia"
-  },
-  "app.action-bar.install.retry": {
-    "message": "Reintentar"
-  },
-  "app.action-bar.install.unknown-instance": {
-    "message": "Instancia desconocida"
-  },
-  "app.action-bar.installs": {
-    "message": "Instalaciones"
-  },
   "app.action-bar.make-primary-instance": {
     "message": "Hacer instancia principal"
   },
@@ -113,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimizar launcher"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Usar el borde de ventana del sistema (requiere reiniciar la aplicación)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Decoraciones nativas"
-  },
   "app.appearance-settings.select-option": {
     "message": "Selecciona una opción"
   },
@@ -152,45 +119,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "No se puede acceder a los servidores de autenticación"
   },
-  "app.browse.add-servers-to-instance": {
-    "message": "Añadiendo servidor a instancia"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Añadir a una instancia"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Añadir a instancia"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Añadir a {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Añadido"
-  },
-  "app.browse.already-added": {
-    "message": "Ya se ha añadido"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Volver a instancia"
-  },
-  "app.browse.discover-content": {
-    "message": "Descubrir contenido"
-  },
-  "app.browse.discover-servers": {
-    "message": "Descubrir servidores"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Ocultar servidores ya añadidos"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Modpacks"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Añadir contenido puede romper la compatibilidad cuando te unes al servidor. Cualquier contenido añadido tambien se perderá cuando actualizes el contenido en la instancia del servidor."
-  },
-  "app.browse.server.installing": {
-    "message": "Instalando"
-  },
   "app.content-install.no-compatible-versions": {
     "message": "No hay versiones disponibles que coincidan con {compatibilityLabel}. Selecciona una versión para instalarla de todas formas. Las dependencias no se instalarán automáticamente."
   },
@@ -220,60 +148,6 @@
   },
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0"
-  },
-  "app.install.phase.downloading_content": {
-    "message": "Descargando contenido"
-  },
-  "app.install.phase.downloading_minecraft": {
-    "message": "Descargando Minecraft"
-  },
-  "app.install.phase.downloading_pack_file": {
-    "message": "Descargando el archivo del paquete"
-  },
-  "app.install.phase.extracting_overrides": {
-    "message": "Extracción de anulaciones"
-  },
-  "app.install.phase.finalizing": {
-    "message": "Finalizando"
-  },
-  "app.install.phase.preparing_instance": {
-    "message": "Preparando la instancia"
-  },
-  "app.install.phase.preparing_java": {
-    "message": "Preparando Java"
-  },
-  "app.install.phase.preparing_java.downloading": {
-    "message": "Descargando Java {version}"
-  },
-  "app.install.phase.preparing_java.extracting": {
-    "message": "Descomprimiendo Java {version}"
-  },
-  "app.install.phase.preparing_java.fetching-metadata": {
-    "message": "Obteniendo Java {version}"
-  },
-  "app.install.phase.preparing_java.resolving": {
-    "message": "Preparando Java {version}"
-  },
-  "app.install.phase.preparing_java.validating": {
-    "message": "Validación de Java {version}"
-  },
-  "app.install.phase.reading_pack_manifest": {
-    "message": "Leer el manifiesto del paquete"
-  },
-  "app.install.phase.resolving_loader": {
-    "message": "Resolviendo el cargador"
-  },
-  "app.install.phase.resolving_minecraft": {
-    "message": "Resolviendo Minecraft"
-  },
-  "app.install.phase.resolving_pack": {
-    "message": "Resolviendo el contenido"
-  },
-  "app.install.phase.rolling_back": {
-    "message": "Revertir"
-  },
-  "app.install.phase.running_loader_processors": {
-    "message": "Ejecutando los procesadores del cargador"
   },
   "app.instance.confirm-delete.admonition-body": {
     "message": "Todos los datos de tu instancia se eliminarán permanentemente, incluidos tus mundos, configuraciones y todo el contenido instalado."
@@ -412,15 +286,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "Se requiere una actualización para jugar {name}. Por favor, actualiza a la versión más reciente para iniciar el juego."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Este proyecto ya está instalado"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Volver al explorador"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Instalar contenido a la instancia"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Modo desarrollador activado."
@@ -1012,30 +877,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Inicia sesión en Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "Proporcionado por la instancia"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "La versión del juego es proporcionada por la instancia"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "El loader es proporcionado por la instancia"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Sincronizar con la instancia"
-  },
-  "search.filter.locked.server": {
-    "message": "Proporcionado por el servidor"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Solo se pueden añadir mods que sean del lado del cliente a la instancia del servidor"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "La versión del juego es proporcionada por el servidor"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "El loader es proporcionado por el servidor"
   },
   "unknown-pack-warning-modal.body": {
     "message": "Un archivo solo es revisado si es subido a Modrinth, independientemente de su formato de archivo (incluyendo .mrpack)."

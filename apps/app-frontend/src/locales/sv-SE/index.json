@@ -11,33 +11,6 @@
   "app.action-bar.hide-more-running-instances": {
     "message": "Göm fler aktiva instanser"
   },
-  "app.action-bar.install.dismiss": {
-    "message": "Avvisa"
-  },
-  "app.action-bar.install.failed": {
-    "message": "Installationen misslyckades"
-  },
-  "app.action-bar.install.failed-app-closed": {
-    "message": "Installationen misslyckades för att appen stängdes."
-  },
-  "app.action-bar.install.failed-network": {
-    "message": "Installationen misslyckades av ett nätverksfel."
-  },
-  "app.action-bar.install.failed-unknown": {
-    "message": "Installationen misslyckades med ett okänt fel."
-  },
-  "app.action-bar.install.open-instance": {
-    "message": "Öppna instans"
-  },
-  "app.action-bar.install.retry": {
-    "message": "Försök igen"
-  },
-  "app.action-bar.install.unknown-instance": {
-    "message": "Okänd instans"
-  },
-  "app.action-bar.installs": {
-    "message": "Installationer"
-  },
   "app.action-bar.make-primary-instance": {
     "message": "Gör till primärinstans"
   },
@@ -113,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Minimera programstartare"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Använd systemets fönsterram (omstart av app krävs)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Inbyggda fönsterdekorationer"
-  },
   "app.appearance-settings.select-option": {
     "message": "Välj ett alternativ"
   },
@@ -152,45 +119,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "Kan ej nå autentiseringsservrarna"
   },
-  "app.browse.add-servers-to-instance": {
-    "message": "Lägger till server till instans"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Lägg till i en instans"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Lägg till i instans"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Lägg till i {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Tillagd"
-  },
-  "app.browse.already-added": {
-    "message": "Redan tillagd"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Tillbaka till instans"
-  },
-  "app.browse.discover-content": {
-    "message": "Upptäck innehåll"
-  },
-  "app.browse.discover-servers": {
-    "message": "Upptäck servrar"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Dölj servrar som redan är tillagda"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Modpaket"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Att lägga till innehåll kan bryta kompatibiliteten när du ansluter dig till servern. Allt tillagt innehåll kommer att förloras när du uppdaterar serverinstansen."
-  },
-  "app.browse.server.installing": {
-    "message": "Installerar"
-  },
   "app.content-install.no-compatible-versions": {
     "message": "Ingen tillgänglig version matchar {compatibilityLabel}. Välj en version att installera ändå. Beroenden kommer inte installeras automatiskt."
   },
@@ -220,54 +148,6 @@
   },
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0"
-  },
-  "app.install.phase.downloading_content": {
-    "message": "Laddar ner innehåll"
-  },
-  "app.install.phase.downloading_minecraft": {
-    "message": "Laddar ner Minecraft"
-  },
-  "app.install.phase.downloading_pack_file": {
-    "message": "Laddar ner pack fil"
-  },
-  "app.install.phase.extracting_overrides": {
-    "message": "Extraherar överskrivningar"
-  },
-  "app.install.phase.finalizing": {
-    "message": "Avslutar"
-  },
-  "app.install.phase.preparing_instance": {
-    "message": "Förbereder instans"
-  },
-  "app.install.phase.preparing_java": {
-    "message": "Förbereder Java"
-  },
-  "app.install.phase.preparing_java.downloading": {
-    "message": "Laddar ner Java {version}"
-  },
-  "app.install.phase.preparing_java.extracting": {
-    "message": "Extraherar Java {version}"
-  },
-  "app.install.phase.preparing_java.fetching-metadata": {
-    "message": "Hämtar Java {version}"
-  },
-  "app.install.phase.preparing_java.resolving": {
-    "message": "Förbereder Java {version}"
-  },
-  "app.install.phase.preparing_java.validating": {
-    "message": "Bekräftar Java {version}"
-  },
-  "app.install.phase.reading_pack_manifest": {
-    "message": "Läser pack information"
-  },
-  "app.install.phase.resolving_loader": {
-    "message": "Laddar ner loadern"
-  },
-  "app.install.phase.resolving_minecraft": {
-    "message": "Laddar ner Minecraft"
-  },
-  "app.install.phase.resolving_pack": {
-    "message": "Laddar ner innehåll"
   },
   "app.instance.confirm-delete.admonition-body": {
     "message": "All data från din instans kommer permanent raderas, däribland dina världar, konfigurationer samt allt installerat innehåll."
@@ -400,15 +280,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "En uppdatering krävs för att spela {name}. Vänligen uppdatera till senaste version för att starta spelet."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Detta projekt är redan installerat"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Tillbaka till upptäck"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Installera innehåll till instans"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Utvecklarläge aktiverat."
@@ -997,30 +868,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Logga in till Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "Tillhandahållet av instansen"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Spel version är tillhandahållet av instansen"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Laddaren tillhandahålls av instansen"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Synkronisera med instansen"
-  },
-  "search.filter.locked.server": {
-    "message": "Tillhandahållet av servern"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Endast klient-sido moddar kan läggas till i serverinstansen"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Spelversion tillhandahålls av servern"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Loader tillhandahålls av servern"
   },
   "unknown-pack-warning-modal.body": {
     "message": "En fil granskas bara om den laddas upp till Modrinth, oavsett dess filformat (däribland .mrpack)."

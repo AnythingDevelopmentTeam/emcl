@@ -11,33 +11,6 @@
   "app.action-bar.hide-more-running-instances": {
     "message": "Скрыть другие активные сборки"
   },
-  "app.action-bar.install.dismiss": {
-    "message": "Закрыть"
-  },
-  "app.action-bar.install.failed": {
-    "message": "Установка не удалась"
-  },
-  "app.action-bar.install.failed-app-closed": {
-    "message": "Установка не удалась из-за закрытия приложения."
-  },
-  "app.action-bar.install.failed-network": {
-    "message": "Установка не удалась из-за сетевой ошибки."
-  },
-  "app.action-bar.install.failed-unknown": {
-    "message": "Установка не удалась из-за неизвестной ошибки."
-  },
-  "app.action-bar.install.open-instance": {
-    "message": "Открыть сборку"
-  },
-  "app.action-bar.install.retry": {
-    "message": "Повторить"
-  },
-  "app.action-bar.install.unknown-instance": {
-    "message": "Неизвестная сборка"
-  },
-  "app.action-bar.installs": {
-    "message": "Установки"
-  },
   "app.action-bar.make-primary-instance": {
     "message": "Сделать основной сборкой"
   },
@@ -113,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Сворачивание лаунчера"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Использовать системную рамку окна (требуется перезапуск)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Системное оформление"
-  },
   "app.appearance-settings.select-option": {
     "message": "Выберите вариант"
   },
@@ -152,45 +119,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "Нет связи с серверами аутентификации"
   },
-  "app.browse.add-servers-to-instance": {
-    "message": "Добавление серверов в сборку"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Добавить в сборку"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Добавить в сборку"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Добавить в {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Добавлено"
-  },
-  "app.browse.already-added": {
-    "message": "Уже добавлено"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Вернуться к сборке"
-  },
-  "app.browse.discover-content": {
-    "message": "Поиск проектов"
-  },
-  "app.browse.discover-servers": {
-    "message": "Поиск серверов"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Скрывать добавленные"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Сборки"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Добавление контента может сломать совместимость при подключении к серверу. Весь добавленный контент также будет удалён при обновлении сервера."
-  },
-  "app.browse.server.installing": {
-    "message": "Установка"
-  },
   "app.content-install.no-compatible-versions": {
     "message": "Не найдено доступных версий, совместимых с {compatibilityLabel}. Выберите версию для установки вручную. Зависимости не будут установлены автоматически."
   },
@@ -220,57 +148,6 @@
   },
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0"
-  },
-  "app.install.phase.downloading_content": {
-    "message": "Скачивание контента"
-  },
-  "app.install.phase.downloading_minecraft": {
-    "message": "Скачивание Minecraft"
-  },
-  "app.install.phase.downloading_pack_file": {
-    "message": "Скачивание файла сборки"
-  },
-  "app.install.phase.extracting_overrides": {
-    "message": "Извлечение переопределений"
-  },
-  "app.install.phase.finalizing": {
-    "message": "Завершение"
-  },
-  "app.install.phase.preparing_instance": {
-    "message": "Подготовка сборки"
-  },
-  "app.install.phase.preparing_java": {
-    "message": "Подготовка Java"
-  },
-  "app.install.phase.preparing_java.downloading": {
-    "message": "Скачивание Java {version}"
-  },
-  "app.install.phase.preparing_java.extracting": {
-    "message": "Распаковка Java {version}"
-  },
-  "app.install.phase.preparing_java.fetching-metadata": {
-    "message": "Получение Java {version}"
-  },
-  "app.install.phase.preparing_java.resolving": {
-    "message": "Подготовка Java {version}"
-  },
-  "app.install.phase.preparing_java.validating": {
-    "message": "Проверка Java {version}"
-  },
-  "app.install.phase.reading_pack_manifest": {
-    "message": "Чтение манифеста сборки"
-  },
-  "app.install.phase.resolving_minecraft": {
-    "message": "Загрузка версий"
-  },
-  "app.install.phase.resolving_pack": {
-    "message": "Загрузка контента"
-  },
-  "app.install.phase.rolling_back": {
-    "message": "Откат"
-  },
-  "app.install.phase.running_loader_processors": {
-    "message": "Запуск процессоров загрузчика"
   },
   "app.instance.confirm-delete.admonition-body": {
     "message": "Все данные сборки будут удалены навсегда, в том числе миры, настройки и весь установленный контент."
@@ -403,15 +280,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "Обновите {name} до последней версии, чтобы запустить игру."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Этот проект уже установлен"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Вернуться к поиску"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Установка контента в сборку"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Режим разработчика включён."
@@ -1000,30 +868,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Войти в Minecraft"
-  },
-  "search.filter.locked.instance": {
-    "message": "Управляется сборкой"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Версия игры управляется сборкой"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Загрузчик управляется сборкой"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Использовать из сборки"
-  },
-  "search.filter.locked.server": {
-    "message": "Управляется сервером"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "В серверной сборке доступны только клиентские моды"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Версия игры управляется сервером"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Загрузчик управляется сервером"
   },
   "unknown-pack-warning-modal.body": {
     "message": "Файл проверяется только в том случае, если он загружен на Modrinth, независимо от его формата (включая .mrpack)."

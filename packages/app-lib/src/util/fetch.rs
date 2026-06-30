@@ -189,6 +189,7 @@ static GLOBAL_FETCH_FENCE: LazyLock<FetchFence> =
 
 fn reqwest_client_builder() -> reqwest::ClientBuilder {
     reqwest::Client::builder()
+        .cookie_store(true)
         .tcp_keepalive(Some(time::Duration::from_secs(10)))
         .user_agent(crate::launcher_user_agent())
 }

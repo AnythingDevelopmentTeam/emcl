@@ -8,12 +8,12 @@ import {
 	StyledInput,
 } from '@emcl/ui'
 import { useQueryClient } from '@tanstack/vue-query'
-import { convertFileSrc } from '@/helpers/tauri-compat'
 import { computed, ref } from 'vue'
 
 import ModalWrapper from '@/components/ui/modal/ModalWrapper.vue'
 import { trackEvent } from '@/helpers/analytics'
 import { list } from '@/helpers/instance'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import { add_server_to_instance, get_instance_worlds } from '@/helpers/worlds.ts'
 
 const { handleError } = injectNotificationManager()

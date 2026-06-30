@@ -80,12 +80,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "ランチャーを最小化"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "OSデフォルトのウィンドウUIを使用します。（アプリの再起動が必要です）"
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "OSのウィンドウUIを使用"
-  },
   "app.appearance-settings.select-option": {
     "message": "オプションを選択してください"
   },
@@ -112,33 +106,6 @@
   },
   "app.auth-servers.unreachable.header": {
     "message": "認証サーバーにアクセスできません"
-  },
-  "app.browse.add-to-instance": {
-    "message": "インスタンスに追加"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "{instanceName} に追加"
-  },
-  "app.browse.added": {
-    "message": "追加済み"
-  },
-  "app.browse.already-added": {
-    "message": "すでに追加済み"
-  },
-  "app.browse.discover-content": {
-    "message": "コンテンツを探す"
-  },
-  "app.browse.discover-servers": {
-    "message": "サーバーを探す"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "既に追加済みのサーバーを非表示にする"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Modパック"
-  },
-  "app.browse.server.installing": {
-    "message": "インストール中"
   },
   "app.export-modal.description-placeholder": {
     "message": "Modパックの説明を入力…"
@@ -721,30 +688,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Minecraftにサインイン"
-  },
-  "search.filter.locked.instance": {
-    "message": "インスタンスによる条件"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "ゲームバージョンはインスタンスによる条件です"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "ローダーはインスタンスによる条件です"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "インスタンスと同期"
-  },
-  "search.filter.locked.server": {
-    "message": "サーバーによる条件"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "サーバーインスタンスにはクライアント側Modのみ追加可能"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "ゲームバージョンはサーバーによる条件です"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "ローダーはサーバーによる条件です"
   },
   "unknown-pack-warning-modal.body": {
     "message": "ファイル形式に関わらず、Modrinthにアップロードされたファイルのみが確認されます。(.mrpackを含む)"

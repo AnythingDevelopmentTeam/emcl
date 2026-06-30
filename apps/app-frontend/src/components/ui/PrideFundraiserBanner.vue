@@ -2,8 +2,9 @@
 import { CalendarIcon, UsersIcon, XIcon } from '@emcl/assets'
 import { injectModrinthClient, ProgressBar } from '@emcl/ui'
 import { useQuery } from '@tanstack/vue-query'
-import { openUrl } from '@/helpers/tauri-compat'
 import { computed, ref } from 'vue'
+
+import { openUrl } from '@/helpers/tauri-compat'
 
 const DISMISSED_STORAGE_KEY = 'pride-fundraiser-2026-dismissed'
 

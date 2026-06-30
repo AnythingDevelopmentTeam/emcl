@@ -167,18 +167,18 @@ const filteredResults = computed(() => {
 	const { group = 'Group', sortBy = 'Name' } = state.value
 
 	const instances = props.instances.filter((instance) => {
-		return instance.name.toLowerCase().includes(search.value.toLowerCase())
+		return (instance.name ?? '').toLowerCase().includes(search.value.toLowerCase())
 	})
 
 	if (sortBy === 'Name') {
 		instances.sort((a, b) => {
-			return a.name.localeCompare(b.name)
+			return (a.name ?? '').localeCompare(b.name ?? '')
 		})
 	}
 
 	if (sortBy === 'Game version') {
 		instances.sort((a, b) => {
-			return a.game_version.localeCompare(b.game_version, undefined, { numeric: true })
+			return (a.game_version ?? '').localeCompare(b.game_version ?? '', undefined, { numeric: true })
 		})
 	}
 
@@ -190,7 +190,7 @@ const filteredResults = computed(() => {
 
 	if (sortBy === 'Date created') {
 		instances.sort((a, b) => {
-			return dayjs(b.date_created).diff(dayjs(a.date_created))
+			return dayjs(b.date_created ?? 0).diff(dayjs(a.date_created ?? 0))
 		})
 	}
 

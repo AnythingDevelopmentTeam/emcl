@@ -8,11 +8,11 @@ import {
 	OverflowMenu,
 	useVIntl,
 } from '@emcl/ui'
-import { openUrl } from '@/helpers/tauri-compat'
 import { useTemplateRef } from 'vue'
 
 import ContextMenu from '@/components/ui/ContextMenu.vue'
 import type { FriendWithUserData } from '@/helpers/friends.ts'
+import { openUrl } from '@/helpers/tauri-compat'
 
 const { formatMessage } = useVIntl()
 

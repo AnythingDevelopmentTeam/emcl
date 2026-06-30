@@ -159,7 +159,6 @@ import {
 	type PopupNotificationProgressItem,
 	useVIntl,
 } from '@emcl/ui'
-import { convertFileSrc } from '@/helpers/tauri-compat'
 import { Dropdown } from 'floating-vue'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
@@ -171,6 +170,7 @@ import { get_many as getInstances } from '@/helpers/instance'
 import { get_all as getRunningProcesses, kill as killProcess } from '@/helpers/process'
 import type { LoadingBar } from '@/helpers/state'
 import { progress_bars_list } from '@/helpers/state'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import type { GameInstance } from '@/helpers/types'
 import {
 	appUpdateState,

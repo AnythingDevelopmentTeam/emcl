@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { GameIcon, LeftArrowIcon } from '@emcl/assets'
 import { Avatar, ButtonStyled, FormattedTag } from '@emcl/ui'
-import { convertFileSrc } from '@/helpers/tauri-compat'
 import { computed } from 'vue'
+
+import { convertFileSrc } from '@/helpers/tauri-compat'
 
 type Instance = {
 	game_version: string

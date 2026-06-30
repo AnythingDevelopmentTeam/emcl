@@ -1,6 +1,8 @@
-# Monorepo
+# EMCL
 
-Welcome to the monorepo — it contains all projects, both frontend and backend.
+**EMCL is a fork of the Modrinth App.**
+
+An Electron-based Minecraft launcher that runs native Rust code for Java management, Minecraft installation, and instance management.
 
 ## Development
 
@@ -18,4 +20,4 @@ If you discover a security vulnerability within our codebase, please follow our 
 
 ## License
 
-All packages in this repository are licensed under their respective licenses. Refer to the LICENSE file in each package for more information.
+ELMC is a fork of the Modrinth App. Refer to the LICENSE file in each package for more information.

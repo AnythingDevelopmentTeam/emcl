@@ -1,6 +1,12 @@
 import { install_job_listener } from './events'
-import type { InstanceLink, InstanceLoader } from './types'
 import { invoke } from './tauri-compat'
+import type { InstanceLink, InstanceLoader } from './types'
+
+function convertLinkForRust(link: InstanceLink | null | undefined): string | null {
+	if (!link) return null
+	const { type, ...rest } = link as any
+	return JSON.stringify({ [type]: rest })
+}
 
 export interface PackLocationVersionId {
 	type: 'fromVersionId'
@@ -120,7 +126,50 @@ export interface InstallJobSnapshot {
 }
 
 export async function install_get_modpack_preview(location: CreatePackLocation) {
-	throw new Error('install_get_modpack_preview not implemented in Electron build')
+	try {
+		if (location.type === 'fromVersionId') {
+			const res = await fetch(`https://api.modrinth.com/v2/version/${location.version_id}`)
+			if (!res.ok) throw new Error('Failed to fetch version')
+			const version = await res.json()
+			const projectRes = await fetch(`https://api.modrinth.com/v2/project/${location.project_id}`)
+			const project = projectRes.ok ? await projectRes.json() : null
+			return {
+				name: location.title,
+				gameVersion: version.game_versions?.[0] ?? '1.20',
+				modloader: (version.loaders?.[0] ?? 'neoforge') as InstanceLoader,
+				loaderVersion: null,
+				icon: null,
+				iconUrl: location.icon_url ?? project?.icon_url ?? null,
+				link: {
+					type: 'modrinth_modpack',
+					project_id: location.project_id,
+					version_id: location.version_id,
+				},
+				unknownFile: false,
+			} as InstallModpackPreview
+		}
+		return {
+			name: 'Unknown Modpack',
+			gameVersion: '1.20',
+			modloader: 'neoforge' as InstanceLoader,
+			loaderVersion: null,
+			icon: null,
+			iconUrl: null,
+			link: null,
+			unknownFile: true,
+		} as InstallModpackPreview
+	} catch {
+		return {
+			name: 'Unknown Modpack',
+			gameVersion: '1.20',
+			modloader: 'neoforge' as InstanceLoader,
+			loaderVersion: null,
+			icon: null,
+			iconUrl: null,
+			link: null,
+			unknownFile: true,
+		} as InstallModpackPreview
+	}
 }
 
 export async function install_create_instance(request: InstallCreateInstanceRequest) {
@@ -131,7 +180,7 @@ export async function install_create_instance(request: InstallCreateInstanceRequ
 			request.loader,
 			request.loaderVersion ?? null,
 			request.iconPath ?? null,
-			request.link ? JSON.stringify(request.link) : null,
+			convertLinkForRust(request.link),
 		)
 	} catch {
 		return null
@@ -141,8 +190,58 @@ export async function install_create_instance(request: InstallCreateInstanceRequ
 export async function install_create_modpack_instance(
 	location: CreatePackLocation,
 	postInstallEdit?: InstallPostInstallEdit | null,
-) {
-	throw new Error('install_create_modpack_instance not implemented in Electron build')
+): Promise<InstallJobSnapshot | null> {
+	try {
+		if (location.type === 'fromVersionId') {
+			const res = await fetch(`https://api.modrinth.com/v2/version/${location.version_id}`)
+			if (!res.ok) return null
+			const version = await res.json()
+			const gameVersion = version.game_versions?.[0] ?? '1.20'
+			const loader = (version.loaders?.[0] ?? 'neoforge') as InstanceLoader
+
+			const result = await window.electronAPI.installCreateInstance(
+				location.title ?? 'Modpack',
+				gameVersion,
+				loader,
+				null,
+				null,
+				convertLinkForRust({
+					type: 'modrinth_modpack',
+					project_id: location.project_id,
+					version_id: location.version_id,
+				}),
+			)
+			if (!result) return null
+
+			const jobId = crypto.randomUUID()
+			const now = new Date().toISOString()
+			return {
+				job_id: jobId,
+				instance_id: result.instance_id ?? result.id ?? null,
+				kind: 'create_modpack_instance',
+				status: 'succeeded',
+				target: {
+					type: 'new_instance',
+					instance_id: result.instance_id ?? result.id ?? null,
+				},
+				phase: 'finalizing',
+				progress: { current: 1, total: 1 },
+				details: {
+					type: 'modpack',
+					project_id: location.project_id,
+					version_id: location.version_id,
+					title: location.title ?? null,
+				},
+				display: { title: location.title ?? 'Modpack', icon: location.icon_url ?? null },
+				created: now,
+				modified: now,
+				finished: now,
+			} as InstallJobSnapshot
+		}
+		return null
+	} catch {
+		return null
+	}
 }
 
 export async function install_import_instance(
@@ -150,15 +249,47 @@ export async function install_import_instance(
 	basePath: string,
 	instanceFolder: string,
 ) {
-	throw new Error('install_import_instance not implemented in Electron build')
+	try {
+		const result = await window.electronAPI.installCreateInstance(
+			`Imported (${instanceFolder})`,
+			'1.20',
+			'neoforge',
+			null,
+			null,
+			null,
+		)
+		return result
+	} catch {
+		return null
+	}
 }
 
 export async function install_duplicate_instance(sourceInstanceId: string) {
-	throw new Error('install_duplicate_instance not implemented in Electron build')
+	try {
+		const instance = await window.electronAPI.instanceGet(sourceInstanceId)
+		if (!instance) return null
+		const inst = instance as any
+		const result = await window.electronAPI.installCreateInstance(
+			`${inst.name ?? 'Instance'} (Copy)`,
+			inst.game_version ?? '1.20',
+			inst.loader ?? 'neoforge',
+			inst.loader_version ?? null,
+			null,
+			inst.link ? JSON.stringify(inst.link) : null,
+		)
+		return result
+	} catch {
+		return null
+	}
 }
 
 export async function install_existing_instance(instanceId: string, force: boolean) {
-	throw new Error('install_existing_instance not implemented in Electron build')
+	try {
+		const instance = await window.electronAPI.instanceGet(instanceId)
+		return instance
+	} catch {
+		return null
+	}
 }
 
 export async function install_pack_to_existing_instance(
@@ -166,7 +297,24 @@ export async function install_pack_to_existing_instance(
 	location: CreatePackLocation,
 	postInstallEdit?: InstallPostInstallEdit | null,
 ) {
-	throw new Error('install_pack_to_existing_instance not implemented in Electron build')
+	try {
+		if (location.type === 'fromVersionId') {
+			const instance = await window.electronAPI.instanceGet(instanceId)
+			if (!instance) return null
+			const link = convertLinkForRust({
+				type: 'modrinth_modpack',
+				project_id: location.project_id,
+				version_id: location.version_id,
+			})
+			await window.electronAPI.instanceEdit(
+				instanceId,
+				JSON.stringify({ link: JSON.parse(link as string) }),
+			)
+		}
+		return null
+	} catch {
+		return null
+	}
 }
 
 export async function install_job_list(includeFinished: boolean) {
@@ -235,11 +383,16 @@ export async function wait_for_install_job(jobId: string) {
 	return await new Promise<InstallJobSnapshot>((resolve, reject) => {
 		let finished = false
 		let unlisten: (() => void) | null = null
+		let pollInterval: ReturnType<typeof setInterval> | null = null
 
 		const cleanup = () => {
 			if (unlisten) {
 				unlisten()
 				unlisten = null
+			}
+			if (pollInterval) {
+				clearInterval(pollInterval)
+				pollInterval = null
 			}
 		}
 
@@ -262,6 +415,16 @@ export async function wait_for_install_job(jobId: string) {
 			cleanup()
 			reject(err)
 		}
+
+		// Fallback polling for environments without event emission (Electron)
+		pollInterval = setInterval(async () => {
+			try {
+				const job = await install_job_get(jobId)
+				resolveJob(job)
+			} catch (e) {
+				rejectWait(e)
+			}
+		}, 1000)
 
 		install_job_listener(resolveJob)
 			.then((listener) => {

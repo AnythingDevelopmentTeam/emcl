@@ -19,7 +19,6 @@ import {
 	useVIntl,
 } from '@emcl/ui'
 import { capitalizeString } from '@emcl/utils'
-import { convertFileSrc } from '@/helpers/tauri-compat'
 import type { Dayjs } from 'dayjs'
 import { computed, nextTick, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -29,6 +28,7 @@ import { get_project } from '@/helpers/cache'
 import { process_listener } from '@/helpers/events'
 import { kill, run } from '@/helpers/instance'
 import { get_by_instance_id } from '@/helpers/process'
+import { convertFileSrc } from '@/helpers/tauri-compat'
 import type { GameInstance } from '@/helpers/types'
 import { showInstanceInFolder } from '@/helpers/utils'
 import { handleSevereError } from '@/store/error'
@@ -114,7 +114,7 @@ const unlistenProcesses = await process_listener(async () => {
 const checkProcess = async () => {
 	const runningProcesses = await get_by_instance_id(props.instance.id).catch(handleError)
 
-	playing.value = runningProcesses.length > 0
+	playing.value = (runningProcesses ?? []).length > 0
 }
 
 onMounted(() => {

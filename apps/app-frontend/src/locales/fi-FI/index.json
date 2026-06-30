@@ -11,33 +11,6 @@
   "app.action-bar.hide-more-running-instances": {
     "message": "Piilota enemmän käynnissä olevia instansseja"
   },
-  "app.action-bar.install.dismiss": {
-    "message": "Hylkää"
-  },
-  "app.action-bar.install.failed": {
-    "message": "Asennus epäonnistui"
-  },
-  "app.action-bar.install.failed-app-closed": {
-    "message": "Asennus epäonnistui sovelluksen sulkeutumisen vuoksi."
-  },
-  "app.action-bar.install.failed-network": {
-    "message": "Asennus epäonnistui verkkovirheen vuoksi."
-  },
-  "app.action-bar.install.failed-unknown": {
-    "message": "Asennus epäonnistui tuntemattoman virheen vuoksi."
-  },
-  "app.action-bar.install.open-instance": {
-    "message": "Avaa instanssi"
-  },
-  "app.action-bar.install.retry": {
-    "message": "Yritä uudelleen"
-  },
-  "app.action-bar.install.unknown-instance": {
-    "message": "Tuntematon instanssi"
-  },
-  "app.action-bar.installs": {
-    "message": "Asennukset"
-  },
   "app.action-bar.make-primary-instance": {
     "message": "Aseta ensisijaiseksi instanssiksi"
   },
@@ -113,12 +86,6 @@
   "app.appearance-settings.minimize-launcher.title": {
     "message": "Piilota käynnistysohjelma"
   },
-  "app.appearance-settings.native-decorations.description": {
-    "message": "Käytä järjestelmän ikkuna kehystä (Vaatii sovelluksen uudelleen käynnistämisen)."
-  },
-  "app.appearance-settings.native-decorations.title": {
-    "message": "Natiivit koristukset"
-  },
   "app.appearance-settings.select-option": {
     "message": "Valitse vaihtoehto"
   },
@@ -152,45 +119,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "Todennuspalvelimiin ei saada yhteyttä"
   },
-  "app.browse.add-servers-to-instance": {
-    "message": "Lisää palvelin instanssiin"
-  },
-  "app.browse.add-to-an-instance": {
-    "message": "Lisää instanssiin"
-  },
-  "app.browse.add-to-instance": {
-    "message": "Lisää instanssiin"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "Lisää instanssiin {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "Lisätty"
-  },
-  "app.browse.already-added": {
-    "message": "On jo asennettu"
-  },
-  "app.browse.back-to-instance": {
-    "message": "Takaisin instanssiin"
-  },
-  "app.browse.discover-content": {
-    "message": "Löydä sisältöä"
-  },
-  "app.browse.discover-servers": {
-    "message": "Löydä palvelimia"
-  },
-  "app.browse.hide-added-servers": {
-    "message": "Piilota lisätyt palvelimet"
-  },
-  "app.browse.project-type.modpacks": {
-    "message": "Modipaketit"
-  },
-  "app.browse.server-instance-content-warning": {
-    "message": "Sisällön lisääminen voi rikkoa yhteensopivuuden palvelimelle liittyessä. Kaikki lisätty sisältö katoaa myös kun päivität palvelin instanssin sisällön."
-  },
-  "app.browse.server.installing": {
-    "message": "Asennetaan"
-  },
   "app.content-install.no-compatible-versions": {
     "message": "Yhtään versiota ei ole saatavilla yhteensopivuudella {compatibilityLabel}. Valitse asennettava versio siitä huolimatta. Riippuvuuksia ei asenneta automaattisesti."
   },
@@ -220,60 +148,6 @@
   },
   "app.export-modal.version-number-placeholder": {
     "message": "1.0.0"
-  },
-  "app.install.phase.downloading_content": {
-    "message": "Ladataan sisältöä"
-  },
-  "app.install.phase.downloading_minecraft": {
-    "message": "Ladataan Minecraftia"
-  },
-  "app.install.phase.downloading_pack_file": {
-    "message": "Ladataan paketti tiedostoja"
-  },
-  "app.install.phase.extracting_overrides": {
-    "message": "Puretaan ohituksia"
-  },
-  "app.install.phase.finalizing": {
-    "message": "Viimeistellään"
-  },
-  "app.install.phase.preparing_instance": {
-    "message": "Valmistellaan instanssia"
-  },
-  "app.install.phase.preparing_java": {
-    "message": "Valmistellaan Javaa"
-  },
-  "app.install.phase.preparing_java.downloading": {
-    "message": "Ladataan Java {version}"
-  },
-  "app.install.phase.preparing_java.extracting": {
-    "message": "Puretaan Java {version}"
-  },
-  "app.install.phase.preparing_java.fetching-metadata": {
-    "message": "Haetaan Java {version}"
-  },
-  "app.install.phase.preparing_java.resolving": {
-    "message": "Valmistellaan Java {version}"
-  },
-  "app.install.phase.preparing_java.validating": {
-    "message": "Tarkistetaan Java {version}"
-  },
-  "app.install.phase.reading_pack_manifest": {
-    "message": "Luetaan paketin manifestia"
-  },
-  "app.install.phase.resolving_loader": {
-    "message": "Ratkaistaan lataajaa"
-  },
-  "app.install.phase.resolving_minecraft": {
-    "message": "Ratkaistaan Minecraftia"
-  },
-  "app.install.phase.resolving_pack": {
-    "message": "Ratkaistaan sisältöä"
-  },
-  "app.install.phase.rolling_back": {
-    "message": "Palautetaan muutoksia"
-  },
-  "app.install.phase.running_loader_processors": {
-    "message": "Suoritetaan lataajan käsittelijöitä"
   },
   "app.instance.confirm-delete.admonition-body": {
     "message": "Kaikki sinun instanssisi data poistetaan pysyvästi, sisältäen maailmasi, konfiguraatiosi ja asennetun sisällön."
@@ -412,15 +286,6 @@
   },
   "app.modal.update-to-play.update-required-description": {
     "message": "Pävitys vaaditaan pelataksesi {name}. Päivitä viimeisimpään versioon pelataksesi."
-  },
-  "app.project.install-button.already-installed": {
-    "message": "Tämä projekti on jo asennettu"
-  },
-  "app.project.install-context.back-to-browse": {
-    "message": "Takaisin sisällön löytöön"
-  },
-  "app.project.install-context.install-content-to-instance": {
-    "message": "Asenna sisältöä instanssiin"
   },
   "app.settings.developer-mode-enabled": {
     "message": "Kehittäjätila käytössä."
@@ -1012,30 +877,6 @@
   },
   "minecraft-account.sign-in": {
     "message": "Kirjaudu sisään Minecraftiin"
-  },
-  "search.filter.locked.instance": {
-    "message": "Annettu instanssin toimesta"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "Peli version antaa instanssi"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "Lataajan antaa instanssi"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "Synkronoi instanssin kanssa"
-  },
-  "search.filter.locked.server": {
-    "message": "Palvelimen tarjoama"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "Voit lisätä vain paikallisia modeja palvelin instanssiin"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "Peliversio on palvelimen tarjoama"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "Modialusta on palvelimen tarjoama"
   },
   "unknown-pack-warning-modal.body": {
     "message": "Tiedosto tarkistetaan vain jos se on ladattu Modrinthiin, riippumatta tiedoston muodosta (mukaanlukien .mrpack)."

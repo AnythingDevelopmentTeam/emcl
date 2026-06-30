@@ -83,13 +83,13 @@ import {
 	XCircleIcon,
 } from '@emcl/assets'
 import { ButtonStyled, injectNotificationManager, StyledInput } from '@emcl/ui'
-import { open } from '@/helpers/tauri-compat'
 import { ref, watch } from 'vue'
 
 import JavaDetectionModal from '@/components/ui/JavaDetectionModal.vue'
 import useJavaTest from '@/composables/useJavaTest'
 import { trackEvent } from '@/helpers/analytics'
 import { auto_install_java, find_filtered_jres, get_jre } from '@/helpers/jre.js'
+import { open } from '@/helpers/tauri-compat'
 
 const { handleError } = injectNotificationManager()
 

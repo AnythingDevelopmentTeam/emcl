@@ -32,24 +32,6 @@
   "app.auth-servers.unreachable.header": {
     "message": "לא ניתן לגשת לשרתי האימות"
   },
-  "app.browse.add-to-instance": {
-    "message": "הוספה להתקנה"
-  },
-  "app.browse.add-to-instance-name": {
-    "message": "הוסף אל {instanceName}"
-  },
-  "app.browse.added": {
-    "message": "נוסף"
-  },
-  "app.browse.already-added": {
-    "message": "כבר נוסף"
-  },
-  "app.browse.discover-content": {
-    "message": "גלה תוכן"
-  },
-  "app.browse.discover-servers": {
-    "message": "גלה שרתים"
-  },
   "app.export-modal.description-placeholder": {
     "message": "הזן את תיאור חבילת המודים..."
   },
@@ -550,29 +532,5 @@
   },
   "instance.worlds.world_in_use": {
     "message": "עולם בשימוש"
-  },
-  "search.filter.locked.instance": {
-    "message": "מסופק על ידי ההתקנה"
-  },
-  "search.filter.locked.instance-game-version.title": {
-    "message": "גרסאת המשחק מסופקת על ידי ההתקנה"
-  },
-  "search.filter.locked.instance-loader.title": {
-    "message": "מטען מודים מסופק ע\"י ההתקן"
-  },
-  "search.filter.locked.instance.sync": {
-    "message": "סנכרן עם התקנה"
-  },
-  "search.filter.locked.server": {
-    "message": "מסופק על ידי השרת"
-  },
-  "search.filter.locked.server-environment.title": {
-    "message": "ניתן להוסיף רק מודים בצד הלקוח לשרת"
-  },
-  "search.filter.locked.server-game-version.title": {
-    "message": "גרסת המשחק מסופקת על ידי השרת"
-  },
-  "search.filter.locked.server-loader.title": {
-    "message": "הטוען מסופק על ידי השרת"
   }
 }

@@ -1,7 +1,6 @@
 import type { Labrinth } from '@emcl/api-client'
 import type { ContentInstallInstance, ContentInstallProjectInfo, ContentItem } from '@emcl/ui'
 import { createContext, defineMessage, useVIntl } from '@emcl/ui'
-import { convertFileSrc, openUrl } from '@/helpers/tauri-compat'
 import dayjs from 'dayjs'
 import { nextTick, type Ref, ref } from 'vue'
 import type { Router } from 'vue-router'
@@ -31,6 +30,7 @@ import {
 	type ResolveContentPlan,
 } from '@/helpers/instance'
 import { get_game_versions } from '@/helpers/tags'
+import { convertFileSrc, openUrl } from '@/helpers/tauri-compat'
 import type { GameInstance, InstanceLoader } from '@/helpers/types'
 import { useTheming } from '@/store/state'
 interface ModalRef {
