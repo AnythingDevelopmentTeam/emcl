@@ -62,7 +62,7 @@ function createWindow() {
 		minHeight: 700,
 		title: 'EMCL',
 		frame: true,
-		icon: '/home/vesno/Изображения/blender/Untitled.png',
+		icon: path.join(__dirname, '../icons/icon.png'),
 		show: false,
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),

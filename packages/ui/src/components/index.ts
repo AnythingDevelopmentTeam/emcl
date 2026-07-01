@@ -1,7 +1,6 @@
 export * from './affiliate'
 export * from './base'
 export * from './billing'
-export * from './brand'
 export * from './changelog'
 export * from './chart'
 export * from './content'

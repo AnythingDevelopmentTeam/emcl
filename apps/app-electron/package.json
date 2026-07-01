@@ -27,6 +27,7 @@
 	"build": {
 		"appId": "com.emcl.EMCL",
 		"productName": "EMCL",
+		"icon": "icons/icon.png",
 		"directories": {
 			"output": "release"
 		},
