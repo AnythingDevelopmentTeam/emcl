@@ -157,10 +157,9 @@
 						<span class="flex items-center gap-2 font-semibold text-contrast">
 							<!-- TODO(backend): provide proper metadata for midas (MR+) subscriptions -->
 							<template v-if="subscription.price_id === 'a6eRm92L'">
-								<ModrinthPlusIcon class="h-7 w-min" />
+	
 							</template>
 							<template v-else-if="subscription.metadata?.type === 'pyro'">
-								<ServersIcon class="h-7 w-min" />
 							</template>
 							<template v-else-if="subscription.metadata?.type === 'medal'">
 								<span>Medal Trial Server</span>
@@ -219,7 +218,6 @@ import {
 	CheckIcon,
 	CurrencyIcon,
 	ExternalIcon,
-	ModrinthPlusIcon,
 	ServerIcon,
 	UserIcon,
 	XIcon,
@@ -244,7 +242,6 @@ import { DEFAULT_CREDIT_EMAIL_MESSAGE } from '@emcl/utils/utils.ts'
 import { useQuery } from '@tanstack/vue-query'
 import dayjs from 'dayjs'
 
-import ServersIcon from '~/components/brand/ServersIcon.vue'
 import AdminBillingChargeCard from '~/components/ui/admin/AdminBillingChargeCard.vue'
 
 const { addNotification } = injectNotificationManager()

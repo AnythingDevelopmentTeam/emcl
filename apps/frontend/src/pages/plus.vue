@@ -23,7 +23,7 @@
 	/>
 	<div class="main-hero">
 		<div class="flex max-w-screen-lg flex-col items-center gap-4 text-center">
-			<ModrinthPlusIcon class="h-8 w-max text-contrast" />
+	
 			<h1 class="m-0 text-[4rem]">Support creators and go ad-free</h1>
 			<p class="m-0 mb-4 text-[18px] leading-relaxed">
 				Subscribe to Modrinth Plus to go ad-free, support Modrinth's development, and get an
@@ -81,7 +81,7 @@
 	</div>
 </template>
 <script setup>
-import { HeartIcon, ModrinthPlusIcon, SettingsIcon, SparklesIcon, StarIcon } from '@emcl/assets'
+import { HeartIcon, SettingsIcon, SparklesIcon, StarIcon } from '@emcl/assets'
 import {
 	ButtonStyled,
 	injectNotificationManager,

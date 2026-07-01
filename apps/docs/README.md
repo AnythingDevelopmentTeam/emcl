@@ -1,6 +1,6 @@
-# Modrinth Documentation
+# EMCL Documentation
 
-Welcome to the Modrinth documentation!
+EMCL is a fork of the Modrinth App (codename Theseus).
 
 ## Development
 

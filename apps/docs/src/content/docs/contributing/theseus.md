@@ -5,7 +5,7 @@ sidebar:
   order: 3
 ---
 
-EMCL is the Electron-based launcher that lets users conveniently play any mod or modpack on Modrinth. It uses a Rust native addon (napi-theseus) as the backend and Vue.js as the frontend.
+EMCL is a **fork of the Modrinth App (codename Theseus)** — an Electron-based launcher that lets users conveniently play any mod or modpack. It uses a Rust native addon (napi-theseus) as the backend and Vue.js as the frontend.
 
 ## Setup
 

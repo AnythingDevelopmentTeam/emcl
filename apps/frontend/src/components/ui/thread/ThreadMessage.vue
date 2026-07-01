@@ -27,10 +27,7 @@
 					{{ members[message.author_id].username }}
 				</AutoLink>
 				<ScaleIcon v-if="members[message.author_id].role === 'moderator'" v-tooltip="'Moderator'" />
-				<ModrinthIcon
-					v-else-if="members[message.author_id].role === 'admin'"
-					v-tooltip="'Modrinth Team'"
-				/>
+			
 				<EyeOffIcon
 					v-if="isPrivateMessage"
 					v-tooltip="'Only visible to moderators'"
@@ -135,7 +132,6 @@
 import {
 	EyeOffIcon,
 	MicrophoneIcon,
-	ModrinthIcon,
 	MoreHorizontalIcon,
 	ScaleIcon,
 	TrashIcon,

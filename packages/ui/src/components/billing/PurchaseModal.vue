@@ -261,7 +261,6 @@
 				v-show="loadingPaymentMethodModal !== 2"
 				class="flex min-h-[16rem] items-center justify-center md:w-[600px]"
 			>
-				<AnimatedLogo class="w-[80px]" />
 			</div>
 			<div v-show="loadingPaymentMethodModal === 2" class="min-h-[16rem] p-1 md:w-[600px]">
 				<div id="address-element"></div>
@@ -478,7 +477,6 @@ import Checkbox from '../base/Checkbox.vue'
 import Combobox from '../base/Combobox.vue'
 import Slider from '../base/Slider.vue'
 import StyledInput from '../base/StyledInput.vue'
-import AnimatedLogo from '../brand/AnimatedLogo.vue'
 import NewModal from '../modal/NewModal.vue'
 import LoaderIcon from '../servers/icons/LoaderIcon.vue'
 

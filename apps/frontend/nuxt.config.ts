@@ -11,19 +11,6 @@ const API_CLIENT_SOURCE = fileURLToPath(
 	new URL('../../packages/api-client/src/index.ts', import.meta.url),
 )
 
-const preloadedFonts = [
-	'inter/Inter-Regular.woff2',
-	'inter/Inter-Medium.woff2',
-	'inter/Inter-SemiBold.woff2',
-	'inter/Inter-Bold.woff2',
-]
-
-const favicons = {
-	'(prefers-color-scheme:no-preference)': '/favicon-light.ico',
-	'(prefers-color-scheme:light)': '/favicon-light.ico',
-	'(prefers-color-scheme:dark)': '/favicon.ico',
-}
-
 const PROD_MODRINTH_URL = 'https://modrinth.com'
 const STAGING_MODRINTH_URL = 'https://staging.modrinth.com'
 
@@ -37,24 +24,6 @@ export default defineNuxtConfig({
 			htmlAttrs: {
 				lang: 'en',
 			},
-			title: 'Modrinth',
-			link: [
-				// The type is necessary because the linter can't always compare this very nested/complex type on itself
-				...preloadedFonts.map((font): object => {
-					return {
-						rel: 'preload',
-						href: `https://cdn-raw.modrinth.com/fonts/${font}?v=3.19`,
-						as: 'font',
-						type: 'font/woff2',
-						crossorigin: 'anonymous',
-					}
-				}),
-				...Object.entries(favicons).map(([media, href]): object => {
-					return { rel: 'icon', type: 'image/x-icon', href, media }
-				}),
-				...Object.entries(favicons).map(([media, href]): object => {
-					return { rel: 'apple-touch-icon', type: 'image/x-icon', href, media, sizes: '64x64' }
-				}),
 				{
 					rel: 'search',
 					type: 'application/opensearchdescription+xml',

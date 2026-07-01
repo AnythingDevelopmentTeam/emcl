@@ -2,7 +2,6 @@ import type { Archon } from '@emcl/api-client'
 import {
 	CardIcon,
 	ListIcon,
-	ModrinthIcon,
 	SettingsIcon,
 	TextQuoteIcon,
 	VersionIcon,
@@ -74,7 +73,7 @@ export const serverSettingsTabDefinitions: ServerSettingsTabDefinition[] = [
 	{
 		id: 'admin-billing',
 		label: 'Admin Billing',
-		icon: ModrinthIcon,
+		icon: SettingsIcon,
 		href: ({ ownerId }) => `/admin/billing/${ownerId}`,
 		external: true,
 		shown: ({ isAdmin }) => isAdmin,

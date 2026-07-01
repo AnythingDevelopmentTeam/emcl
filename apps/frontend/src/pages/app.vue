@@ -25,7 +25,6 @@ import {
 import ATLauncher from '~/assets/images/external/atlauncher.svg?component'
 import CurseForge from '~/assets/images/external/curseforge.svg?component'
 import PrismIcon from '~/assets/images/external/prism.svg?component'
-import LogoAnimated from '~/components/brand/LogoAnimated.vue'
 import LatestNewsRow from '~/components/ui/news/LatestNewsRow.vue'
 import { homePageProjects } from '~/generated/state.json'
 
@@ -752,12 +751,10 @@ useSeoMeta({
 							<div class="cell">
 								<div>
 									<div class="icon-logo modrinth">
-										<LogoAnimated class="icon" />
-									</div>
-								</div>
 							</div>
-							<div class="cell important">{{ formatMessage(messages.modrinthApp) }}</div>
-							<div class="cell important">{{ formatMessage(messages.small) }}</div>
+						</div>
+						<div class="cell important">{{ formatMessage(messages.modrinthApp) }}</div>
+						<div class="cell important">{{ formatMessage(messages.small) }}</div>
 							<div class="cell important">{{ formatMessage(messages.lessThan150MB) }}</div>
 						</div>
 						<div class="row">
@@ -788,7 +785,6 @@ useSeoMeta({
 				</div>
 				<div class="feature gradient-border website">
 					<div class="icon-logo">
-						<LogoAnimated class="icon" />
 					</div>
 					<div class="ellipsis" />
 					<div class="projects-showcase">
@@ -827,7 +823,6 @@ useSeoMeta({
 					</div>
 					<div class="inner-circle circle">
 						<div class="icon-logo">
-							<LogoAnimated class="icon" />
 						</div>
 						<div class="launcher-badge top-left">
 							<img

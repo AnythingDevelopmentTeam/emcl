@@ -31,7 +31,7 @@
 					</template>
 
 					<span v-else>{{ formatMessage(messages.midasUpsell) }}</span>
-					<ModrinthPlusIcon class="h-8 w-min" />
+	
 					<div class="flex flex-col gap-2">
 						<span class="font-bold">{{ formatMessage(messages.midasBenefitsTitle) }}</span>
 						<div class="flex items-center gap-2">
@@ -277,7 +277,6 @@
 			>
 				<div class="flex flex-col justify-between gap-4">
 					<div class="flex flex-col gap-4">
-						<ServersIcon class="flex h-8 w-fit" />
 						<div class="flex flex-col gap-6">
 							<ServerListing
 								v-if="subscription.serverInfo"
@@ -681,7 +680,6 @@ import {
 	CheckCircleIcon,
 	EditIcon,
 	HistoryIcon,
-	ModrinthPlusIcon,
 	MoreVerticalIcon,
 	PlusIcon,
 	RightArrowIcon,
@@ -717,7 +715,6 @@ import { useQuery, useQueryClient } from '@tanstack/vue-query'
 import { useIntervalFn } from '@vueuse/core'
 import { computed, ref, watch } from 'vue'
 
-import ServersIcon from '~/components/brand/ServersIcon.vue'
 import ServersUpgradeModalWrapper from '~/components/ui/servers/ServersUpgradeModalWrapper.vue'
 import { products } from '~/generated/state.json'
 

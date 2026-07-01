@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ModrinthIcon, RightArrowIcon, XIcon } from '@emcl/assets'
+import { RightArrowIcon, XIcon } from '@emcl/assets'
 
 import AutoLink from '../base/AutoLink.vue'
 import ButtonStyled from '../base/ButtonStyled.vue'
@@ -22,12 +22,6 @@ withDefaults(
 	<div
 		class="brand-gradient-bg card-shadow bg-bg relative p-4 border-[1px] border-solid border-brand rounded-2xl grid grid-cols-[1fr_auto] overflow-hidden"
 	>
-		<ModrinthIcon
-			class="absolute -top-12 -right-12 size-48 text-brand-highlight opacity-25"
-			fill="none"
-			stroke="var(--color-brand)"
-			stroke-width="4"
-		/>
 		<div class="flex flex-col gap-2">
 			<span class="text-lg leading-tight font-extrabold text-contrast"
 				>Want to play with <br />

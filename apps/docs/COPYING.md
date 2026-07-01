@@ -1,6 +1,6 @@
 # Copying
 
-The source code of Modrinth's web frontend is licensed under the Creative Commons CC0 License, which is provided in the file [LICENSE](./LICENSE). However, some files listed below are licensed under a different license.
+EMCL is a fork of the Modrinth App. The source code of the documentation site is licensed under the Creative Commons CC0 License, which is provided in the file [LICENSE](./LICENSE). However, some files listed below are licensed under a different license.
 
 ## Modrinth logo
 

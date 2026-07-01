@@ -19,7 +19,6 @@ import {
 } from '@emcl/ui'
 import { commonSettingsMessages } from '@emcl/ui/src/utils/common-messages.js'
 
-import TextLogo from '~/components/brand/TextLogo.vue'
 
 const flags = useFeatureFlags()
 const { formatMessage } = useVIntl()
@@ -242,11 +241,6 @@ function developerModeIncrement() {
 					:aria-label="formatMessage(messages.siteInformation)"
 				>
 					<div class="flex items-center gap-2">
-						<TextLogo
-							aria-hidden="true"
-							class="text-logo button-base h-6 w-auto text-contrast lg:h-8"
-							@click="developerModeIncrement()"
-						/>
 						<ButtonStyled v-if="flags.developerMode" circular type="transparent" color="brand">
 							<nuxt-link
 								v-tooltip="formatMessage(commonSettingsMessages.featureFlags)"

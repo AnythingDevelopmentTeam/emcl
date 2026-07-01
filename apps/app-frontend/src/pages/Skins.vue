@@ -2,7 +2,6 @@
 import {
 	CheckIcon,
 	EditIcon,
-	ExcitedRinthbot,
 	EyeIcon,
 	LogInIcon,
 	RotateCounterClockwiseIcon,
@@ -161,10 +160,6 @@ const messages = defineMessages({
 	editSkinButton: {
 		id: 'app.skins.preview.edit-button',
 		defaultMessage: 'Edit skin',
-	},
-	excitedRinthbotAlt: {
-		id: 'app.skins.sign-in.rinthbot-alt',
-		defaultMessage: 'Excited Bot',
 	},
 	signInTitle: {
 		id: 'app.skins.sign-in.title',
@@ -1140,11 +1135,7 @@ await loadSkins()
 		<div
 			class="relative mx-auto flex w-full max-w-xl flex-col gap-5 rounded-lg bg-bg-raised p-7 shadow-lg"
 		>
-			<img
-				:src="ExcitedRinthbot"
-				:alt="formatMessage(messages.excitedRinthbotAlt)"
-				class="absolute -top-28 right-8 md:right-20 h-28 w-auto"
-			/>
+	
 			<div
 				class="absolute top-0 left-0 w-full h-[1px] opacity-40 bg-gradient-to-r from-transparent via-green-500 to-transparent"
 				style="

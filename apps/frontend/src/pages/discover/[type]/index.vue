@@ -34,7 +34,6 @@ import { useQueryClient } from '@tanstack/vue-query'
 import { useTimeoutFn } from '@vueuse/core'
 import { computed, ref, watch } from 'vue'
 
-import LogoAnimated from '~/components/brand/LogoAnimated.vue'
 import AdPlaceholder from '~/components/ui/AdPlaceholder.vue'
 import { projectQueryOptions } from '~/composables/queries/project'
 import { versionQueryOptions } from '~/composables/queries/version'
@@ -484,7 +483,6 @@ provideBrowseManager({
 		providedBy: formatMessage(messages.providedByServer),
 		gameVersionShaderMessage: formatMessage(messages.gameVersionShaderMessage),
 	},
-	loadingComponent: LogoAnimated,
 })
 </script>
 <template>

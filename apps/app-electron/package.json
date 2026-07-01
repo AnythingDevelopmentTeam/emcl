@@ -30,7 +30,6 @@
 		"directories": {
 			"output": "release"
 		},
-		"icon": "icons/icon.png",
 		"files": [
 			"dist-electron/**/*",
 			"../../apps/app-frontend/dist/**/*"

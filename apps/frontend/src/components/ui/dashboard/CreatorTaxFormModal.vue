@@ -109,9 +109,7 @@
 							);
 						"
 					></div>
-					<BrowserWindowSuccessIllustration
-						class="absolute left-[90px] top-[48px] h-[140px] w-[220px]"
-					/>
+	
 				</div>
 				<div class="flex flex-col gap-2">
 					<span class="text-2xl font-semibold text-contrast">{{
@@ -154,7 +152,6 @@
 
 <script setup lang="ts">
 import {
-	BrowserWindowSuccessIllustration,
 	DownloadIcon,
 	ExternalIcon,
 	RightArrowIcon,

@@ -3,22 +3,9 @@
 		<LoadingBar />
 		<NotificationPanel />
 		<div class="main">
-			<div v-if="is404" class="error-graphic">
-				<Logo404 />
-			</div>
+	
 			<div class="error-box" :class="{ 'has-bot': !is404 }">
-				<img
-					v-if="is401"
-					:src="AnnoyedRinthbot"
-					alt="Annoyed Modrinth bot"
-					class="error-box__sad-bot"
-				/>
-				<img
-					v-else-if="!is404"
-					:src="SadRinthbot"
-					alt="Sad Modrinth bot"
-					class="error-box__sad-bot"
-				/>
+	
 				<div v-if="!is404" class="error-box__top-glow" />
 				<div class="error-box__body">
 					<h1 class="error-box__title">{{ formatMessage(errorMessages.title) }}</h1>
@@ -89,7 +76,7 @@
 </template>
 
 <script setup>
-import { AnnoyedRinthbot, LogInIcon, SadRinthbot } from '@emcl/assets'
+import { LogInIcon } from '@emcl/assets'
 import {
 	Avatar,
 	ButtonStyled,
@@ -106,7 +93,6 @@ import {
 	useVIntl,
 } from '@emcl/ui'
 
-import Logo404 from '~/assets/images/404.svg'
 import { getSignInRouteObj } from '~/composables/auth.js'
 import { logout } from '~/composables/user.js'
 

@@ -125,7 +125,6 @@
 										:href="`modrinth://mod/${project.slug}`"
 										@click="() => installWithApp()"
 									>
-										<ModrinthIcon aria-hidden="true" />
 										{{ formatMessage(messages.installWithModrinthApp) }}
 										<ExternalIcon aria-hidden="true" />
 									</a>
@@ -1057,7 +1056,6 @@ import {
 	HeartIcon,
 	InfoIcon,
 	ListIcon,
-	ModrinthIcon,
 	MoreVerticalIcon,
 	PlayIcon,
 	PlusIcon,

@@ -4,7 +4,7 @@
 
 		<!-- User roles -->
 		<template v-else-if="type === 'admin'">
-			<ModrinthIcon aria-hidden="true" /> {{ formatMessage(messages.modrinthTeamLabel) }}
+			<ScaleIcon aria-hidden="true" /> {{ formatMessage(messages.modrinthTeamLabel) }}
 		</template>
 		<template v-else-if="type === 'moderator'">
 			<ScaleIcon aria-hidden="true" /> {{ formatMessage(messages.moderatorLabel) }}
@@ -93,7 +93,6 @@ import {
 	GlobeIcon,
 	LinkIcon,
 	LockIcon,
-	ModrinthIcon,
 	ScaleIcon,
 	ShieldCheckIcon,
 	UpdatedIcon,

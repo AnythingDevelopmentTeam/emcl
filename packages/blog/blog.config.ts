@@ -19,11 +19,6 @@ export const ROOT_FILE = path.join(COMPILED_DIR, 'index.ts')
 export const PUBLIC_SRC = repoPath('packages/blog/public')
 
 /**
- * An array of git-repository-root-relative paths where public assets should be copied to.
- */
-export const PUBLIC_LOCATIONS = [repoPath('apps/frontend/src/public/news/article')]
-
-/**
  * The git-repository-root-relative path to the frontend RSS feed file.
  */
 export const RSS_PATH = repoPath('apps/frontend/src/public/news/feed/rss.xml')

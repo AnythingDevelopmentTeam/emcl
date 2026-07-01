@@ -3,9 +3,9 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-c78aff?style=for-the-badge)](https://www.typescriptlang.org/)
 [![License: LGPL-3.0](https://img.shields.io/badge/License-LGPL%203.0-c78aff?style=for-the-badge)](LICENSE)
 
-Platform-agnostic TypeScript client for Modrinth's API across Node.js, browsers, Nuxt, and Tauri.
+Platform-agnostic TypeScript client for Modrinth's API across Node.js, browsers, Nuxt, and Electron/Tauri.
 
-**⚠️ We use this internally to power modrinth.com, Modrinth App, and Modrinth Hosting frontends. It may break without any notice, but you are welcome to use it.**
+**⚠️ Forked from the Modrinth monorepo. Used internally by EMCL. May break without notice.**
 
 ## Installation
 
@@ -67,14 +67,13 @@ export const useModrinthClient = async () => {
 }
 ```
 
-### Tauri
+### Tauri / Electron
 
 ```ts
-import { getVersion } from '@tauri-apps/api/app'
 import { AuthFeature, TauriModrinthClient } from '@emcl/api-client'
 
 const client = new TauriModrinthClient({
-	userAgent: async () => `modrinth/theseus/${await getVersion()} (support@modrinth.com)`,
+	userAgent: 'emcl/1.0.0',
 	features: [new AuthFeature({ token: process.env.MODRINTH_TOKEN })],
 })
 
