@@ -4,8 +4,6 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import svgLoader from 'vite-svg-loader'
 
-import tauriConf from '../app/tauri.conf.json'
-
 const projectRootDir = resolve(__dirname)
 const appLibEnvDir = resolve(projectRootDir, '../../packages/app-lib')
 const apiClientSource = resolve(projectRootDir, '../../packages/api-client/src/index.ts')
@@ -78,19 +76,31 @@ export default defineConfig({
 		port: 1420,
 		strictPort: true,
 		headers: {
-			'content-security-policy': Object.entries(tauriConf.app.security.csp)
-				.map(([directive, sources]) => {
-					// An additional websocket connect-src is required for Vite dev tools to work
-					if (directive === 'connect-src') {
-						sources = Array.isArray(sources) ? sources : [sources]
-						sources.push('ws://localhost:1420')
-					}
+			'content-security-policy': (() => {
+				const csp: Record<string, string | string[]> = {
+					'default-src': "'self' customprotocol: asset:",
+					'connect-src': "ipc: http://ipc.localhost https://modrinth.com https://*.modrinth.com https://*.nodes.modrinth.com https://*.posthog.com https://posthog.modrinth.com https://*.sentry.io https://api.mclo.gs http://textures.minecraft.net https://textures.minecraft.net https://js.stripe.com https://*.stripe.com wss://*.stripe.com https://*.intercom.io wss://*.intercom.io https://*.intercomcdn.com https://www.intercom-reporting.com https://app.getsentry.com wss://*.nodes.modrinth.com https://*.taila228c5.ts.net https://*.taila228c5.ts.net wss://*.taila228c5.ts.net https://fill.papermc.io https://api.purpurmc.org 'self' data: blob:",
+					'font-src': ['https://cdn-raw.modrinth.com/fonts/', 'https://js.intercomcdn.com'],
+					'img-src': "https: 'unsafe-inline' 'self' asset: http://asset.localhost http://textures.minecraft.net blob: data:",
+					'style-src': "'unsafe-inline' 'self'",
+					'script-src': "https://*.posthog.com https://posthog.modrinth.com https://js.stripe.com https://widget.intercom.io https://js.intercomcdn.com https://tally.so/widgets/embed.js 'self'",
+					'frame-src': "https://www.youtube.com https://www.youtube-nocookie.com https://discord.com https://tally.so/popup/ https://js.stripe.com https://hooks.stripe.com https://*.intercom.io https://intercom-sheets.com https://www.intercom-reporting.com https://app.intercom.com 'self'",
+					'media-src': 'https://*.githubusercontent.com',
+				}
 
-					return Array.isArray(sources)
-						? `${directive} ${sources.join(' ')}`
-						: `${directive} ${sources}`
-				})
-				.join('; '),
+				return Object.entries(csp)
+					.map(([directive, sources]) => {
+						if (directive === 'connect-src') {
+							sources = Array.isArray(sources) ? [...sources] : [sources]
+							sources.push('ws://localhost:1420')
+						}
+
+						return Array.isArray(sources)
+							? `${directive} ${sources.join(' ')}`
+							: `${directive} ${sources}`
+					})
+					.join('; ')
+			})(),
 		},
 	},
 	// to make use of `TAURI_ENV_DEBUG` and other env variables

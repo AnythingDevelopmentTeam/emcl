@@ -5,8 +5,6 @@
   "scripts": {
     "web:dev": "turbo run dev --filter=@emcl/frontend",
     "web:build": "turbo run build --filter=@emcl/frontend",
-    "app:dev": "turbo run dev --filter=@emcl/app",
-    "app:build": "turbo run build --filter=@emcl/app",
     "docs:dev": "turbo run dev --filter=@emcl/docs",
     "pages:build": "NITRO_PRESET=cloudflare-pages pnpm --filter frontend run build",
     "build": "turbo run build --continue",
